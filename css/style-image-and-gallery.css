@@ -1,0 +1,150 @@
+/**
+ * Wrapping Text Around Images
+ * @link https://codex.wordpress.org/Wrapping_Text_Around_Images
+ */
+
+/* Imagens responsivas
+ * ajuste automaticamente ao tamanho da tela ou do contêiner em que está inserida.
+ * largura máxima da imagem como 100% do contêiner e a altura como automática
+ */
+img {
+	max-width:100%;
+	height: auto;
+}
+
+img.alignright { float: right; }
+img.alignleft { float: left; }
+img.aligncenter { display: block; margin-left: auto; margin-right: auto; text-align:center; }
+.alignright { float: right; }
+.alignleft { float: left; }
+.aligncenter { display: block; margin-left: auto; margin-right: auto; text-align:center; }
+
+/**
+ * CSS for All Available WordPress Gallery Columns
+ * @link https://clicknathan.com/web-design/css-for-all-available-wordpress-gallery-columns/
+ * Do not use WordPress default gallery style
+ * add_filter( 'use_default_gallery_style', '__return_false' );
+ */
+
+.gallery:after { content: ""; display: table; clear: both; }
+
+img.aligncenter, div.aligncenter, figure.aligncenter { display: block; margin-left: auto; margin-right: auto; text-align: center; }
+img.alignright, div.alignright, figure.alignright {float: right;}
+img.alignleft, div.alignleft, figure.alignleft, img.wp-post-image.attachment-thumb { float: left; }
+figure { max-width: 100%; height: auto; }
+p img.alignright, p img.alignleft { margin-top: 0; }
+
+.gallery figure img { max-width:100%; height:auto; margin:0 auto; display:block; }
+
+.gallery figure { float:left; margin:0 2% 1em 0; }
+
+.gallery.gallery-columns-1 figure { width:100%; margin:0 0 1em 0; float:none; }
+
+
+.gallery.gallery-columns-3 figure { width:32%; }
+.gallery.gallery-columns-3 figure:nth-of-type(3n+3) { margin-right:0; }
+.gallery.gallery-columns-3 figure:nth-of-type(3n+4) { clear:left; }
+
+
+.gallery.gallery-columns-2 figure { width:49%; }
+.gallery.gallery-columns-2 figure:nth-of-type(even) { margin-right:0; }
+.gallery.gallery-columns-2 figure:nth-of-type(odd) { clear:left; }
+
+
+.gallery.gallery-columns-4 figure { width:23.25%; }
+.gallery.gallery-columns-4 figure:nth-of-type(4n+4) { margin-right:0; }
+.gallery.gallery-columns-4 figure:nth-of-type(4n+5) { clear:left; }
+
+
+.gallery.gallery-columns-5 figure { width:18%; }
+.gallery.gallery-columns-5 figure:nth-of-type(5n+5) { margin-right:0; }
+.gallery.gallery-columns-5 figure:nth-of-type(5n+6) { clear:left; }
+
+
+.gallery.gallery-columns-6 figure { width:14.2%; }
+.gallery.gallery-columns-6 figure:nth-of-type(6n+6) { margin-right:0; }
+.gallery.gallery-columns-6 figure:nth-of-type(6n+7) { clear:left; }
+
+
+.gallery.gallery-columns-7 figure { width:12%; }
+.gallery.gallery-columns-7 figure:nth-of-type(7n+7) { margin-right:0; }
+.gallery.gallery-columns-7 figure:nth-of-type(7n+8) { clear:left; }
+
+
+.gallery.gallery-columns-8 figure { width:10.2%; }
+.gallery.gallery-columns-8 figure:nth-of-type(8n+8) { margin-right:0; }
+.gallery.gallery-columns-8 figure:nth-of-type(8n+9) { clear:left; }
+
+
+.gallery.gallery-columns-9 figure {width:8.85%;}
+.gallery.gallery-columns-9 figure:nth-of-type(9n+9) { margin-right:0; }
+.gallery.gallery-columns-9 figure:nth-of-type(9n+10) { clear:left; }
+
+@media (max-width:767px) {
+	img.alignright, div.alignright,
+	figure.alignright,
+	img.alignleft,
+	div.alignleft,
+	figure.alignleft,
+	img.wp-post-image.attachment-thumb {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		float:none;
+	}
+
+	.gallery.gallery-columns-4 figure,
+	.gallery.gallery-columns-5 figure,
+	.gallery.gallery-columns-6 figure,
+	.gallery.gallery-columns-7 figure,
+	.gallery.gallery-columns-8 figure,
+	.gallery.gallery-columns-9 figure {
+		width:100%; margin:0 0 1em 0; float:none;
+	}
+}
+
+/* From Twenty Twenty-One */
+figure.wp-caption a:focus img {
+	outline-offset: 2px;
+}
+
+/**
+ * Images
+ */
+img {
+	-moz-box-sizing: border-box;
+	     box-sizing: border-box;
+}
+ 
+.entry-content img,
+.thumbnail  {
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 30%);
+    border-radius: 3px;
+    box-sizing: border-box;
+    filter: var(--image-default-filter);
+}
+
+/**
+ * Responsive Video Aspect Ratios
+ * @link https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-support/#responsive-embedded-content
+ * @link https://codepen.io/joen/pen/pOwoGV
+ * @link https://themeskills.com/make-embedded-youtube-videos-responsive-wordpress/
+ */
+
+.youtube-responsive-container {
+	position:relative;
+	padding-bottom:56.25%;
+	padding-top:30px;
+	height:0;
+	overflow:hidden;
+}
+
+.youtube-responsive-container iframe, 
+.youtube-responsive-container object,
+.youtube-responsive-container embed {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}

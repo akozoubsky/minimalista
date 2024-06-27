@@ -1,0 +1,708 @@
+/*!
+Theme Name: minimalista
+Theme URI: http://underscores.me/
+Author: Underscores.me
+Author URI: http://underscores.me/
+Description: Description
+Version: 1.0.0
+Tested up to: 5.4
+Requires PHP: 5.6
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: minimalista
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned.
+
+minimalista is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
+*/
+
+/* ==============================
+ * Variáveis de CSS:
+ * ============================== */
+
+:root {
+    /* Cores principais */
+    --bs-primary: #7a52a8;
+    /* Cor principal personalizada */
+    --bs-secondary: #2596BE;
+    /* Cor secundária personalizada */
+    --bs-success: #198754;
+    /* Cor de sucesso */
+    --bs-info: #0dcaf0;
+    /* Cor de informação */
+    --bs-warning: #ffc107;
+    /* Cor de aviso */
+    --bs-danger: #dc3545;
+    /* Cor de perigo */
+    --bs-light: #f8f9fa;
+    /* Cor clara */
+    --bs-dark: #343a40;
+    /* Cor escura */
+
+    --bs-white: #ffffff;
+    /* Cor branca */
+
+    /* Cores personalizadas para o tema */
+    --main-bg-color: #f0f0f0;
+    /* Cor de fundo principal */
+    --main-text-color: #000000;
+    /* Cor do texto principal */
+    --link-color: #7a52a8;
+    /* Usando a cor principal para links */
+    --header-footer-bg-color: #ffffff;
+    /* Cor de fundo do cabeçalho e rodapé */
+
+    /* Cores dos botões */
+    --button-color: #7a52a8;
+    /* Usando a cor principal para botões */
+    --button-hover-color: #5e3d8b;
+    /* Nova variável para a cor do botão no hover */
+
+    /* Cor da borda e sombra */
+    --border-shadow-color: rgba(0, 0, 0, 0.1);
+    /* Cor da sombra da borda */
+
+    /* Cor para texto desativado/mudo */
+    --text-muted-color: #6c757d;
+    /* Cor do texto mudo */
+}
+
+/* Candiadato a eliminacao definitiva
+html {
+    -ms-overflow-x: hidden;
+    overflow-x: hidden;
+}
+
+body {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+.container-fluid, .row, .col-lg-8, .col-lg-4 {
+    box-sizing: border-box;
+} /*
+
+/* ==============================
+ * Menu Principal 
+ * ============================== */
+
+/* Estilização personalizada para a navbar */
+.navbar-custom {
+    background-color: var(--bs-primary);
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-nav .nav-link {
+    color: var(--bs-white);
+}
+
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-nav .nav-link:hover {
+    color: var(--bs-white);
+}
+
+/* Estilo para ajustar o tamanho do logotipo */
+.custom-logo-link img {
+    max-width: 80px;
+    height: auto;
+    margin-right: 1rem;
+    /* 1rem já está correto */
+}
+
+/* Título do site */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+/* Menu de navegação */
+.navbar-nav .nav-link {
+    color: var(--main-text-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* ==============================
+ * Area de conteudo principal
+ * ============================== */
+
+/* Card da sidebar */
+.widget-area .card {
+    border: none;
+    /* box-shadow: 0 4px 8px var(--border-shadow-color); */
+}
+
+/* Conteúdo principal */
+.site-main {
+    /* margin-top: 20px; */
+    /*
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    */
+}
+
+/* ==============================
+ * Rodape 
+ * ============================== */
+
+/* Estilização do footer */
+.footer {
+    background: var(--header-footer-bg-color);
+    text-align: center;
+    padding: 10px 0;
+    /* 10px não é uma margem, então mantemos */
+}
+
+/* ==============================
+ * Cabeçalhos (<h1> a <h6>)
+ * ============================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--main-text-color);
+    margin-bottom: 0.625rem;
+    /* 10px -> 0.625rem */
+}
+
+/* Espaçamento Vertical (Vertical Spacing) */
+h1:last-child,
+h2:last-child,
+h3:last-child,
+h4:last-child,
+h5:last-child,
+h6:last-child {
+    margin-bottom: 0;
+}
+
+/* Espaçamento Vertical (Vertical Spacing) */
+h1+p,
+h2+p,
+h3+p,
+h4+p,
+h5+p,
+h6+p {
+    margin-top: 1.25rem;
+    /* 20px -> 1.25rem */
+}
+
+/* ==============================
+ * Parágrafos
+ * ============================== */
+
+p {
+    color: var(--main-text-color);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    /* 20px -> 1.25rem */
+}
+
+/* Espaçamento Vertical (Vertical Spacing) - Remove a margem inferior do último parágrafo de um contêiner */
+p:last-child {
+    margin-bottom: 0;
+}
+
+/* Espaçamento Vertical (Vertical Spacing) - Remove a margem inferior de parágrafos dentro de cards */
+.card p {
+    margin-bottom: 0;
+}
+
+/* ==============================
+ * Listas
+ * ============================== */
+
+ul,
+ol {
+    margin-top: 0;
+    /* Espaçamento Vertical (Vertical Spacing)  */
+    margin-bottom: 1.25rem;
+    /* 20px -> 1.25rem */
+    padding-left: 2.5rem;
+    /* 40px -> 2.5rem */
+}
+
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+    /* Espaçamento Vertical (Vertical Spacing)  */
+}
+
+li {
+    margin-bottom: 0.625rem;
+    /* 10px -> 0.625rem */
+}
+
+li:last-child {
+    margin-bottom: 0;
+    /* Espaçamento Vertical (Vertical Spacing)  */
+}
+
+/* ==============================
+ * Blocos de citacao
+ * ============================== */
+
+blockquote {
+    margin: 1.25rem 0;
+    /* 20px -> 1.25rem */
+    padding: 0.625rem 1.25rem;
+    /* 10px 20px -> 0.625rem 1.25rem */
+    background-color: var(--bs-light);
+    border-left: 5px solid var(--bs-primary);
+}
+
+blockquote:last-child {
+    margin-bottom: 0;
+    /* Espaçamento Vertical (Vertical Spacing)  */
+}
+
+/* ==============================
+ * Tabelas
+ * ============================== */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.25rem;
+    /* 20px -> 1.25rem */
+}
+
+th,
+td {
+    padding: 0.625rem;
+    /* 10px -> 0.625rem */
+    border: 1px solid var(--border-shadow-color);
+}
+
+table:last-child {
+    margin-bottom: 0;
+    /* Espaçamento Vertical (Vertical Spacing)  */
+}
+
+/* ==============================
+ * Widgets
+ * ============================== */
+
+.widget {
+    margin-bottom: 1.25rem;
+    /* 20px -> 1.25rem */
+}
+
+.widget ul {
+    list-style: none;
+    padding-left: 0;
+    text-align: left;
+}
+
+/* ==============================
+ * Navegação
+ * ============================== */
+
+/* Navegação entre posts */
+.nav-subtitle {
+    display: block;
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+.nav-title {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--link-color);
+}
+
+.nav-title:hover {
+    text-decoration: underline;
+}
+
+/* ==============================
+ * Botões e Formulários
+ * ============================== */
+
+/* Botões (<button>) */
+.btn {
+    border: none;
+    color: #fff;
+    padding: 0.625rem 1.25rem; /* 10px 20px -> 0.625rem 1.25rem */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 1.25rem; /* 20px -> 1.25rem */
+}
+
+/* Botão Primary */
+.btn-primary {
+    background-color: var(--bs-primary);
+}
+
+.btn-primary:hover {
+    background-color: darken(var(--bs-primary), 10%);
+}
+
+/* Botão Secondary */
+.btn-secondary {
+    background-color: var(--bs-secondary);
+}
+
+.btn-secondary:hover {
+    background-color: darken(var(--bs-secondary), 10%);
+}
+
+/* Botão Success */
+.btn-success {
+    background-color: var(--bs-success);
+}
+
+.btn-success:hover {
+    background-color: darken(var(--bs-success), 10%);
+}
+
+/* Botão Danger */
+.btn-danger {
+    background-color: var(--bs-danger);
+}
+
+.btn-danger:hover {
+    background-color: darken(var(--bs-danger), 10%);
+}
+
+/* Botão Warning */
+.btn-warning {
+    background-color: var(--bs-warning);
+    color: #000; /* Texto preto para melhor contraste */
+}
+
+.btn-warning:hover {
+    background-color: darken(var(--bs-warning), 10%);
+}
+
+/* Botão Info */
+.btn-info {
+    background-color: var(--bs-info);
+}
+
+.btn-info:hover {
+    background-color: darken(var(--bs-info), 10%);
+}
+
+/* Botão Light */
+.btn-light {
+    background-color: var(--bs-light);
+    color: #000; /* Texto preto para melhor contraste */
+}
+
+.btn-light:hover {
+    background-color: darken(var(--bs-light), 10%);
+}
+
+/* Botão Dark */
+.btn-dark {
+    background-color: var(--bs-dark);
+}
+
+.btn-dark:hover {
+    background-color: darken(var(--bs-dark), 10%);
+}
+
+/* Botão Link */
+.btn-link {
+    background-color: transparent;
+    color: var(--link-color);
+    text-decoration: underline;
+}
+
+.btn-link:hover {
+    color: darken(var(--link-color), 10%);
+}
+
+button:last-child,
+.btn:last-child {
+    margin-bottom: 0;
+    /* Espaçamento Vertical (Vertical Spacing) */
+}
+
+/* Campos de formulário (<input>, <textarea>, <label>) */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 0.625rem;
+    /* 10px -> 0.625rem */
+    border: 1px solid var(--border-shadow-color);
+    border-radius: 4px;
+    margin-bottom: 0.625rem;
+    /* 10px -> 0.625rem */
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    border-color: var(--link-color);
+    outline: none;
+}
+
+label {
+    margin-bottom: 0.3125rem;
+    /* 5px -> 0.3125rem */
+}
+
+/* Espaçamento Vertical (Vertical Spacing) */
+input[type="text"]:last-child,
+input[type="email"]:last-child,
+input[type="password"]:last-child,
+textarea:last-child {
+    margin-bottom: 0;
+}
+
+/* ==============================
+ * Widget de Pesquisa
+ * ============================== */
+
+/* Estilo para o widget de pesquisa na barra lateral */
+.widget_search {
+    margin-bottom: 1.25rem;
+    /* 20px -> 1.25rem */
+}
+
+.widget_search .search-form {
+    display: inline-block;
+    flex-direction: column;
+}
+
+.widget_search .search-field {
+    padding: 0.625rem;
+    /* 10px -> 0.625rem */
+    border: 1px solid var(--border-shadow-color);
+    border-radius: 4px;
+    margin-bottom: 0.625rem;
+    /* 10px -> 0.625rem */
+    transition: border-color 0.3s ease;
+}
+
+.widget_search .search-field:focus {
+    border-color: var(--link-color);
+    outline: none;
+}
+
+.widget_search .search-submit {
+    background-color: var(--button-color);
+    border: 1px solid var(--button-hover-color);
+    color: #fff;
+    padding: 0.625rem 1.25rem;
+    /* 10px 20px -> 0.625rem 1.25rem */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.widget_search .search-submit:hover {
+    background-color: var(--button-hover-color);
+    /* Ajuste para um tom mais escuro da cor principal */
+}
+
+/* ==============================
+ * Links
+ * ============================== */
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ==============================
+ * Blog
+ * ============================== */
+
+/* Adicionar margem inferior entre artigos, exceto o último */
+article:not(:last-child) {
+    margin-bottom: 1.875rem;
+    /* 30px -> 1.875rem */
+    /* Ajuste este valor conforme necessário */
+}
+
+.entry-header,
+.page-header,
+.entry-meta,
+.entry-content {
+    margin-bottom: 0.625rem;
+    /* 10px -> 0.625rem */
+}
+
+.posted-on,
+.byline,
+.cat-links,
+.comments-link,
+.edit-link {
+    margin-left: 0;
+    margin-right: 0.25rem;
+}
+
+/* ==============================
+ * Imagens
+ * ============================== */
+
+img {
+    margin-bottom: 1.25rem;
+    /* 20px -> 1.25rem */
+}
+
+/* Espaçamento Vertical (Vertical Spacing) */
+img:last-child {
+    margin-bottom: 0;
+}
+
+/* ==============================
+ * Plugins 
+ * ============================== */
+
+/* Contact Form 7 */
+.contact-form-label {
+    font-weight: bold;
+}
+
+.contact-form-field {
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+/* Estilizando o botão de envio do Contact Form 7 */
+.wpcf7-submit {
+    background-color: var(--button-color);
+    border: none;
+    color: #fff;
+    padding: 0.625rem 1.25rem;
+    /* 10px 20px -> 0.625rem 1.25rem */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 1.25rem;
+    /* 20px -> 1.25rem */
+}
+
+.wpcf7-submit:hover {
+    background-color: var(--button-hover-color);
+}
+
+/* Estilo adicional para garantir que o botão corresponda ao design do site */
+.wpcf7-submit:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(122, 82, 168, 0.25);
+    /* Ajuste a cor conforme necessário */
+}
+
+/* Estilo para a mensagem de retorno do Contact Form 7 */
+.wpcf7 form .wpcf7-response-output {
+    margin: 2rem 0 1rem; /* 2em 0.5em 1em -> 2rem 0.5rem 1rem */
+    padding: 0.2rem 1rem; /* 0.2em 1em -> 0.2rem 1rem */
+    border: 1px solid var(--border-shadow-color); /* Adicionando uma borda */
+    background-color: var(--bs-light); /* Usando a cor clara definida nas variáveis */
+    color: var(--main-text-color); /* Cor do texto principal */
+    border-radius: 4px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px var(--border-shadow-color); /* Adicionando sombra */
+}
+
+
+/* ==============================
+ * Widget Minimalista_Social_Widget 
+ * ============================== */
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.social-link i {
+    margin-right: 10px;
+}
+
+.social-link svg {
+    margin-right: 10px;
+}
+
+.social-link.facebook {
+    color: #3b5998;
+}
+
+.social-link.twitter {
+    color: #1da1f2;
+}
+
+.social-link.instagram {
+    color: #e1306c;
+}
+
+/* Adicione mais estilos para outras redes sociais conforme necessário */
+
+
+/* ==============================
+ * Outros 
+ * ============================== */
+
+.screen-reader-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.text-muted {
+    color: var(--text-muted-color) !important;
+}
+
+/* Espaçamento Vertical (Vertical Spacing) - Remove a margem inferior dos elementos com a classe .no-margin */
+.no-margin {
+    margin-bottom: 0;
+}
+
+/* ==============================
+ * Responsividade
+ * ============================== */
+
+/**
+ * Bootstrap Breakpoints
+ * https: //getbootstrap.com/docs/5.3/layout/breakpoints/
+ */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {}
