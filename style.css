@@ -95,7 +95,7 @@ body {
 }
 
 .navbar-brand {
-	margin-right: var(--custom-navbar-brand-margin-end);
+	margin-right: 0; /* misterio mas eh 0 que faz o logo alinha corretamente a esquerda */
 	padding-bottom: var(--custom-navbar-brand-padding-y);
 	padding-top: var(--custom-navbar-brand-padding-y);
     font-weight: bold;
@@ -106,14 +106,10 @@ body {
     margin-right: 1rem; 
 }
 
-
-/* Titulo do site */
-/*
-.navbar-brand {
-    display: flex;
-    align-items: center;
+/* Titulo do site (texto) */
+.site-title {
+    margin-right: 1rem;
 }
-*/
 
 /* Menu de navegacao */
 .navbar-nav .nav-link {
@@ -176,6 +172,47 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
 h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
     margin-top: 1.25rem; /* 20px -> 1.25rem */
 }
+
+/* ==============================
+ * Cabecalho personalizado
+ * ============================== */
+
+/* Custom header styles */
+.custom-header {
+    width: 100%; /* Default to 100% for fluid containers */
+    height: auto; /* Maintain aspect ratio */
+}
+
+@media (min-width: 576px) {
+    .custom-header {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .custom-header {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .custom-header {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .custom-header {
+        max-width: 1140px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .custom-header {
+        max-width: 1320px;
+    }
+}
+
 
 /* ==============================
  * Paragrafos

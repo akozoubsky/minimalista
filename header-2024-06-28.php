@@ -29,8 +29,8 @@
 				$logo_width = get_theme_mod( 'minimalista_logo_width', 100 );
 				echo '<style>.custom-logo { max-width: ' . esc_attr( $logo_width ) . 'px; height: auto; }</style>';
 				the_custom_logo();
-			} else { ?>
-				<span class="site-title"><?php echo esc_html( get_bloginfo( 'name' ) ) ?></span><?php ;
+			} else {
+				echo esc_html( get_bloginfo( 'name' ) );
 			}
 			?>
 		</a>		
@@ -51,17 +51,7 @@
 				) );
 			?>
 		</div>
-
-
 	</div>
 </nav>
-
-<?php if ( get_header_image() ) : ?>
-	<div class="container">
-		<div class="custom-header">
-			<img src="<?php header_image(); ?>" width="<?php echo esc_attr( get_custom_header()->width ); ?>" height="<?php echo esc_attr( get_custom_header()->height ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
-		</div>
-	</div>
-<?php endif; ?>
 
 <div id="content" class="site-content">

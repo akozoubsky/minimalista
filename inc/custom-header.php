@@ -24,8 +24,8 @@ function minimalista_custom_header_setup() {
 			array(
 				'default-image'      => '',
 				'default-text-color' => '000000',
-				'width'              => 1000,
-				'height'             => 250,
+				'width'              => 1920, // Ajustado para 1920px para monitores de alta resolução
+				'height'             => 300,  // Ajustado conforme necessário
 				'flex-height'        => true,
 				'wp-head-callback'   => 'minimalista_header_style',
 			)
@@ -61,7 +61,10 @@ if ( ! function_exists( 'minimalista_header_style' ) ) :
 			.site-title,
 			.site-description {
 				position: absolute;
-				clip: rect(1px, 1px, 1px, 1px);
+				clip: rect(1px, 1px, 1px, 1px); /* Visually hide text but keep it accessible to screen readers */
+				clip-path: inset(50%); /* Modern method to visually hide text but keep it accessible to screen readers */
+				white-space: nowrap; /* Prevent text from wrapping */
+				overflow: hidden; /* Ensure no overflow is visible */
 				}
 			<?php
 			// If the user has set a custom color for the text use that.
