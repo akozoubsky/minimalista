@@ -238,22 +238,22 @@ p:last-child {
  * Listas
  * ============================== */
 
- .content-area ul, .content-area ol {
+ .site-content ul, .site-content ol {
     margin-top: 0; /* Espacamento Vertical (Vertical Spacing)  */
     margin-bottom: 1.25rem; /* 20px -> 1.25rem */
     padding-left: 2.5rem; /* 40px -> 2.5rem */
 }
 
-.content-area ul:last-child, .content-area ol:last-child {
+.site-content ul:last-child, .site-content ol:last-child {
     margin-bottom: 0; /* Espacamento Vertical (Vertical Spacing)  */
 }
 
 /* Estilos gerais para listas fora do menu de navegação */
-.content-area ul li {
+.site-content ul li {
     margin-bottom: 0.625rem; /* 10px -> 0.625rem */
 }
 
-.content-area ul li:last-child {
+.site-content ul li:last-child {
     margin-bottom: 0; /* Espacamento Vertical (Vertical Spacing)  */
 }
 
@@ -524,6 +524,10 @@ a:hover {
 
 a.btn {
     text-decoration: none;
+}
+
+main a, a.btn, input {
+    font-weight: bold;
 }
 
 /* ==============================
