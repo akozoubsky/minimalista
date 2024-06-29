@@ -555,7 +555,7 @@ article:not(:last-child) {
 }
 
 /* nao exibir data e autor da publicacao em <article> da categoria projetos */
-.category-projetos .entry-meta {
+.category-projetos .entry-meta, .category-projetos .entry-footer {
     display: none;
 }
 
