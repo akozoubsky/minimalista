@@ -32,6 +32,8 @@ get_header(); ?>
 				endwhile; // End of the loop.
 				?>
 
+				<hr>
+
 				<?php
 				$projetos_query = new WP_Query(array(
 					'category_name' => 'projetos', // Slug da categoria
