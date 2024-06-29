@@ -23,7 +23,7 @@
 			<div class="entry-meta">
 				<?php
 				//minimalista_posted_on();
-				display_post_metadata_primary();
+				minimalista_display_post_metadata_primary();
 				//minimalista_posted_by();
 				?>
 			</div><!-- .entry-meta -->
@@ -61,6 +61,6 @@
 
 	<footer class="entry-footer">
 		<?php //minimalista_entry_footer(); ?>
-		<?php display_post_metadata_secondary(); ?>
+		<?php minimalista_display_post_metadata_secondary(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

@@ -17,7 +17,7 @@
 		<div class="entry-meta">
 			<?php
 			minimalista_posted_on();
-			minimalista_posted_by();
+			//minimalista_posted_by(); // Comentado para evitar exibição duplicada do autor
 			?>
 		</div><!-- .entry-meta -->
 		<?php endif; ?>

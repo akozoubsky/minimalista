@@ -7,33 +7,88 @@
  * @package minimalista
  */
 
- if ( ! function_exists( 'minimalista_posted_on' ) ) :
-	/**
-	 * Prints HTML with meta information for the current post-date/time.
-	 */
-	function minimalista_posted_on() {
-		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
-		}
+if ( ! function_exists( 'minimalista_posted_on' ) ) :
+    /**
+     * Prints HTML with meta information for the current post-date/time.
+     */
+    function minimalista_posted_on() {
+        // Get the date and time of publication and last modification
+        $published_date = get_the_date();
+        $modified_date = get_the_modified_date();
 
-		$time_string = sprintf(
-			$time_string,
-			esc_attr( get_the_date( DATE_W3C ) ),
-			esc_html( get_the_date() ),
-			esc_attr( get_the_modified_date( DATE_W3C ) ),
-			esc_html( get_the_modified_date() )
-		);
+        $published_date_link = get_the_date( 'Y-m-d' );
+        $modified_date_link = get_the_modified_date( 'Y-m-d' );
 
-		$posted_on = sprintf(
-			/* translators: %s: post date. */
-			esc_html_x( 'Posted on %s', 'post date', 'minimalista' ),
-			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-		);
+        $published_link = get_day_link( substr( $published_date_link, 0, 4 ), substr( $published_date_link, 5, 2 ), substr( $published_date_link, 8, 2 ) );
+        $modified_link = get_day_link( substr( $modified_date_link, 0, 4 ), substr( $modified_date_link, 5, 2 ), substr( $modified_date_link, 8, 2 ) );
 
-		echo '<span class="posted-on">' . $posted_on . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+        // Get the authors of the publication and last modification
+        $published_author_id = get_the_author_meta( 'ID' );
+        $modified_author_id = get_post_meta( get_the_ID(), '_edit_last', true );
 
-	}
+        // Get the author names
+        $published_author_name = get_the_author_meta( 'display_name', $published_author_id );
+        $modified_author_name = get_the_author_meta( 'display_name', $modified_author_id );
+
+        // Time string for the publication date
+        $time_string_published = sprintf(
+            '<time class="entry-date published" datetime="%1$s">%2$s</time>',
+            esc_attr( get_the_date( DATE_W3C ) ),
+            esc_html( $published_date )
+        );
+
+        // Time string for the modified date
+        $time_string_modified = '';
+        if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+            $time_string_modified = sprintf(
+                '<time class="updated" datetime="%1$s">%2$s</time>',
+                esc_attr( get_the_modified_date( DATE_W3C ) ),
+                esc_html( $modified_date )
+            );
+        }
+
+        // Create the final string with the link to the post for the publication date
+        $posted_on = sprintf(
+            /* translators: %s: post date. */
+            esc_html_x( 'Publicado em %s', 'post date', 'minimalista' ),
+            '<a href="' . esc_url( $published_link ) . '" rel="bookmark">' . $time_string_published . '</a>'
+        );
+
+        // Create the final string with the link to the post for the modified date
+        $updated_on = '';
+        if ( $time_string_modified ) {
+            $updated_on = sprintf(
+                /* translators: %s: modified date. */
+                esc_html_x( 'Atualizado em %s', 'modified date', 'minimalista' ),
+                '<a href="' . esc_url( $modified_link ) . '" rel="bookmark">' . $time_string_modified . '</a>'
+            );
+        }
+
+        // Display the author information
+        $author_info = sprintf(
+            /* translators: %s: post author. */
+            esc_html_x( 'por %s', 'post author', 'minimalista' ),
+            '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( $published_author_id ) ) . '">' . esc_html( $published_author_name ) . '</a></span>'
+        );
+
+        // Display the modified author information if different from the original author
+        $modified_author_info = '';
+        if ( $published_author_id !== $modified_author_id && $modified_author_name ) {
+            $modified_author_info = sprintf(
+                /* translators: %s: modified author. */
+                esc_html_x( 'por %s', 'modified author', 'minimalista' ),
+                '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( $modified_author_id ) ) . '">' . esc_html( $modified_author_name ) . '</a></span>'
+            );
+        }
+
+        // Print the final HTML with improved structure and elimination of unnecessary information
+        echo '<div class="posted-info">';
+        echo '<div class="posted-on">' . $posted_on . ' ' . $author_info . '</div>';
+        if ( $time_string_modified && $modified_author_info ) {
+            echo '<div class="updated-on">' . $updated_on . ' ' . $modified_author_info . '</div>';
+        }
+        echo '</div>';
+    }
 endif;
 
 if ( ! function_exists( 'minimalista_posted_by' ) ) :
@@ -187,7 +242,7 @@ function minimalista_generate_icon_html($icon_class, $additional_classes = '') {
  *
  * @param string $additional_class Classe adicional a ser adicionada à tag <div>.
  */
-function display_post_metadata_primary($additional_classes = '')
+function minimalista_display_post_metadata_primary($additional_classes = '')
 {
     // Validating and sanitizing parameters
     $additional_classes = implode(' ', array_map('sanitize_html_class', explode(' ', $additional_classes)));
@@ -220,7 +275,7 @@ function display_post_metadata_primary($additional_classes = '')
  * Utilizes Bootstrap 5 and FontAwesome for styling.
  * @TODO: audio and video duration
  */
-function display_post_metadata_secondary($additional_classes = '')
+function minimalista_display_post_metadata_secondary($additional_classes = '')
 {
     // Validating and sanitizing parameters
     $additional_classes = implode(' ', array_map('sanitize_html_class', explode(' ', $additional_classes)));
