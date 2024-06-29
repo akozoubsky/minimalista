@@ -440,6 +440,7 @@ table:last-child {
 /* Campos de formulario (<input>, <textarea>, <label>) */
 input[type="text"],
 input[type="email"],
+input[type="tel"],
 input[type="password"],
 textarea {
     width: 100%;
@@ -452,6 +453,7 @@ textarea {
 
 input[type="text"]:focus,
 input[type="email"]:focus,
+input[type="tel"]:focus,
 input[type="password"]:focus,
 textarea:focus {
     border-color: var(--custom-link-color);
