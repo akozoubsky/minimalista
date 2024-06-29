@@ -98,7 +98,7 @@ body {
 	margin-right: 0; /* misterio mas eh 0 que faz o logo alinha corretamente a esquerda */
 	padding-bottom: var(--custom-navbar-brand-padding-y);
 	padding-top: var(--custom-navbar-brand-padding-y);
-    font-weight: bold;
+    font-weight: 600;
 }
 
 /* Estilo para ajustar o logotipo */
@@ -325,7 +325,7 @@ table:last-child {
 .nav-title {
     display: inline-block;
     font-size: 1.25rem;
-    font-weight: bold;
+    font-weight: 600;
     color: var(--custom-link-color);
 }
 
@@ -340,6 +340,10 @@ table:last-child {
 /* ==============================
  * Botoes e Formularios
  * ============================== */
+
+ a.btn, input[type="submit"]  {
+    font-weight: 600;
+}
 
 /* Botoes (<button>) */
 .btn {
@@ -526,9 +530,10 @@ a.btn {
     text-decoration: none;
 }
 
-main a, a.btn, input[type="submit"]  {
-    font-weight: bold;
+main a {
+    font-weight: 500;
 }
+
 
 /* ==============================
  * Blog
@@ -547,6 +552,11 @@ article:not(:last-child) {
 .posted-on, .byline, .cat-links, .comments-link, .edit-link {
     margin-left: 0;
     margin-right: 0.25rem;
+}
+
+/* nao exibir data e autor da publicacao em <article> da categoria projetos */
+.category-projetos .entry-meta {
+    display: none;
 }
 
 /* ==============================
@@ -568,7 +578,7 @@ img:last-child {
 
  /* Contact Form 7 */
 .contact-form-label { 
-	font-weight: bold;
+	font-weight: 600;
 }
 
 .contact-form-field {
@@ -627,7 +637,7 @@ img:last-child {
     margin-bottom: 10px;
     text-decoration: none;
     color: #333;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .social-link i {

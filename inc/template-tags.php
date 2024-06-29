@@ -82,7 +82,7 @@ if ( ! function_exists( 'minimalista_posted_on' ) ) :
         }
 
         // Print the final HTML with improved structure and elimination of unnecessary information
-        echo '<div class="posted-info">';
+        echo '<div class="post-metadata">';
         echo '<div class="posted-on">' . $posted_on . ' ' . $author_info . '</div>';
         if ( $time_string_modified && $modified_author_info ) {
             echo '<div class="updated-on">' . $updated_on . ' ' . $modified_author_info . '</div>';

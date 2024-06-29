@@ -32,8 +32,6 @@ get_header(); ?>
 				endwhile; // End of the loop.
 				?>
 
-				<hr>
-
 				<?php
 				// Exibe os projetos
 				$projetos_query = new WP_Query(array(
@@ -49,7 +47,7 @@ get_header(); ?>
 						 * If you want to override this in a child theme, then include a file
 						 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
 						 */
-						get_template_part( 'template-parts/content', get_post_type() );	
+						get_template_part( 'template-parts/content', 'projetos-excerpt' );	
 					endwhile;
 
 					the_posts_navigation();
