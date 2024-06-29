@@ -34,7 +34,7 @@ function minimalista_scripts() {
 
     //wp_enqueue_script( 'minimalista-script', trailingslashit(get_template_directory_uri()) . '/js/minimalista.js', array(), _S_VERSION, true );
 
-	wp_enqueue_style( 'minimalista-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style( 'minimalista-style', get_stylesheet_uri(), array('minimalista-bootstrap','minimalista-fontawesome'), _S_VERSION );
 	wp_style_add_data( 'minimalista-style', 'rtl', 'replace' );
 
 	//wp_enqueue_script( 'minimalista-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
