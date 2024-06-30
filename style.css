@@ -572,6 +572,10 @@ img:last-child {
     margin-bottom: 0;
 }
 
+.post-thumbnail {
+    margin-bottom: 1.25rem; /* 20px -> 1.25rem */
+}
+
 /* ==============================
  * Formulario de contato customizado do tema
  * ============================== */
