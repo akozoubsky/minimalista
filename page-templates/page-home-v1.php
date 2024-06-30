@@ -47,7 +47,50 @@ get_header(); ?>
 						 * If you want to override this in a child theme, then include a file
 						 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
 						 */
-						get_template_part( 'template-parts/content', 'projetos-excerpt' );	
+						// get_template_part( 'template-parts/content', 'projetos-excerpt' );
+						?>
+
+						<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+							<header class="entry-header">
+								<?php
+								the_title( '<h3 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' );
+
+								if ( 'post' === get_post_type() ) :
+									?>
+									<div class="entry-meta">
+										<?php
+										//minimalista_posted_on();
+										minimalista_display_post_metadata_primary();
+										//minimalista_posted_by();
+										?>
+									</div><!-- .entry-meta -->
+								<?php endif; ?>
+							</header><!-- .entry-header -->
+
+							<?php minimalista_post_thumbnail(); ?>
+
+							<div class="entry-content">
+								<?php the_excerpt(); ?>
+
+								<?php
+								wp_link_pages(
+									array(
+										'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'minimalista' ),
+										'after'  => '</div>',
+									)
+								);
+								
+								?>
+							</div><!-- .entry-content -->
+
+							<footer class="entry-footer">
+								<?php //minimalista_entry_footer(); ?>
+								<?php minimalista_display_post_metadata_secondary(); ?>
+							</footer><!-- .entry-footer -->
+						</article><!-- #post-<?php the_ID(); ?> -->
+
+
+					<?php
 					endwhile;
 
 					the_posts_navigation();
