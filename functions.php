@@ -178,6 +178,17 @@ add_action('pre_get_posts', 'minimalista_exclude_category_from_blog');
 add_action('admin_post_nopriv_custom_send_contact_form', 'custom_handle_contact_form_submission');
 add_action('admin_post_custom_send_contact_form', 'custom_handle_contact_form_submission');
 
+function add_noindex_to_success_and_error_pages() {
+    if (is_page('mensagem-enviada-com-sucesso') || is_page('problema-ao-enviar-sua-mensagem')) {
+        echo '<meta name="robots" content="noindex, nofollow">';
+    }
+}
+add_action('wp_head', 'add_noindex_to_success_and_error_pages');
+
+// ===========================================
+// END - FORMULARIO DE CONTATO
+// ===========================================
+
 // ==========================
 // Gutenberg / Blocks - Keep this code at the end of the functions.php file
 // ==========================
