@@ -498,7 +498,8 @@ input[type="text"]:last-child, input[type="email"]:last-child, input[type="passw
     outline: none;
 }
 
-.search-submit {
+/* TODO: aplicar a todos <inputs> e botoes */
+.search-submit, .comment-form .submit {
     background-color: var(--custom-button-color);
     border: 1px solid var(--custom-button-hover-color);
     color: #fff;
@@ -508,7 +509,7 @@ input[type="text"]:last-child, input[type="email"]:last-child, input[type="passw
     transition: background-color 0.3s ease;
 }
 
-.search-submit:hover {
+.search-submit:hover, .comment-form .submit:hover {
     background-color: var(--custom-button-hover-color);
     /* Ajuste para um tom mais escuro da cor principal */
 }
