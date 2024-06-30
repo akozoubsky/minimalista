@@ -28,6 +28,7 @@
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
+		<?php display_custom_header_image() ?>
 	</header><!-- .entry-header -->
 
 	<?php minimalista_post_thumbnail(); ?>

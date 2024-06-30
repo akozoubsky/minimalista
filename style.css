@@ -182,7 +182,7 @@ h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
     width: 100%; /* Default to 100% for fluid containers */
     height: auto; /* Maintain aspect ratio */
 }
-
+/*
 @media (min-width: 576px) {
     .custom-header {
         max-width: 540px;
@@ -212,7 +212,7 @@ h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
         max-width: 1320px;
     }
 }
-
+*/
 
 /* ==============================
  * Paragrafos

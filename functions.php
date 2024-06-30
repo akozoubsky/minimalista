@@ -71,6 +71,11 @@ require get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
 require get_template_directory() . '/inc/functions-images.php';
 
 /**
+ * Functions related to metaboxes.
+ */
+require get_template_directory() . '/inc/METABOX.php';
+
+/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
@@ -91,106 +96,6 @@ add_filter('rest_authentication_errors', function($result) {
     }
     return $result;
 });
-
-// ===========================================
-// Metabox - WPAUTOP
-// ===========================================
-
-/**
- * Adds a meta box to the WordPress post editing screen to allow users to disable automatic paragraph formatting (wpautop).
- * This feature gives users, especially those inserting custom HTML, more control over post formatting.
- * The meta box includes a checkbox for users to toggle the wpautop feature for individual posts.
- */
-function minimalista_wpautop_control_meta_box()
-{
-    add_meta_box(
-        'wpautop_control',                                              // ID do metabox
-        __('Desativar parágrafo automático', 'light-cms-bootstrap'),    // Título do metabox
-        'minimalista_wpautop_control_callback',                                     // Callback para renderizar o conteúdo do metabox
-        ['post', 'page'],                                               // Telas onde o metabox será exibido (posts e páginas)
-        'side',                                                         // Contexto (lateral)
-        'default'                                                       // Prioridade
-    );
-}
-
-/**
- * Callback function for the meta box.
- *
- * @param WP_Post $post The post object.
- */
-function minimalista_wpautop_control_callback($post)
-{
-    // Nonce field for security
-    wp_nonce_field(basename(__FILE__), 'wpautop_nonce');
-
-    $value = get_post_meta($post->ID, '_disable_wpautop', true);
-    echo '<label>';
-    echo '<input type="checkbox" name="disable_wpautop" value="1" ' . checked($value, '1', false) . '>';
-    echo ' ' . __('Desabilitar wpautop', 'light-cms-bootstrap');
-    echo '</label>';
-}
-
-add_action('add_meta_boxes', 'minimalista_wpautop_control_meta_box');
-
-/**
- * Save the meta box content.
- *
- * @param int $post_id The ID of the post being saved.
- */
-function save_minimalista_wpautop_control_meta_box($post_id)
-{
-    // Verify nonce
-    if (!isset($_POST['wpautop_nonce']) || !wp_verify_nonce($_POST['wpautop_nonce'], basename(__FILE__))) {
-        return;
-    }
-
-    // Prevent autosave
-    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-        return;
-    }
-
-    // Check user's permissions
-    if (!current_user_can('edit_post', $post_id)) {
-        return;
-    }
-
-    // Update the meta field
-    if (isset($_POST['disable_wpautop'])) {
-        update_post_meta($post_id, '_disable_wpautop', '1');
-    } else {
-        delete_post_meta($post_id, '_disable_wpautop');
-    }
-}
-
-add_action('save_post', 'save_minimalista_wpautop_control_meta_box');
-
-/**
- * Disable wpautop if the custom field is checked.
- *
- * @param string $content Content of the post.
- * @return string Modified content.
- */
-function minimalista_disable_wpautop_conditionally($content)
-{
-    if (is_singular()) {
-        global $post;
-        if (get_post_meta($post->ID, '_disable_wpautop', true) === '1') {
-            remove_filter('the_content', 'wpautop');
-        }
-    }
-
-    return $content;
-}
-
-add_filter('the_content', 'minimalista_disable_wpautop_conditionally', 0);
-
-// ===========================================
-// END Metabox - WPAUTOP
-// ===========================================
-
-// ===========================================
-// END METABOXES
-// ===========================================
 
 /**
  * Modificar a consulta principal do WordPress para evitar que os posts na categoria "Projetos" apareçam nas listagens do blog
@@ -272,4 +177,70 @@ add_action('pre_get_posts', 'minimalista_exclude_category_from_blog');
 }
 add_action('admin_post_nopriv_custom_send_contact_form', 'custom_handle_contact_form_submission');
 add_action('admin_post_custom_send_contact_form', 'custom_handle_contact_form_submission');
+
+// ==========================
+// Gutenberg / Blocks - Keep this code at the end of the functions.php file
+// ==========================
+
+/**
+ * The init hook is fired after WordPress has finished loading, but before any headers are sent.
+ * This means that your function will be called very early in the page loading process, which is important to ensure that any actions
+ * and filters you are removing are effectively disabled before they have a chance to be executed.
+ */
+
+ function theme_remove_gutenberg()
+ {
+ 
+     /* Classic Editor */
+ 
+     // Gutenberg 5.3+
+     remove_action('wp_enqueue_scripts', 'gutenberg_register_scripts_and_styles');
+     remove_action('admin_enqueue_scripts', 'gutenberg_register_scripts_and_styles');
+     remove_action('admin_notices', 'gutenberg_wordpress_version_notice');
+     remove_action('rest_api_init', 'gutenberg_register_rest_widget_updater_routes');
+     remove_action('admin_print_styles', 'gutenberg_block_editor_admin_print_styles');
+     remove_action('admin_print_scripts', 'gutenberg_block_editor_admin_print_scripts');
+     remove_action('admin_print_footer_scripts', 'gutenberg_block_editor_admin_print_footer_scripts');
+     remove_action('admin_footer', 'gutenberg_block_editor_admin_footer');
+     remove_action('admin_enqueue_scripts', 'gutenberg_widgets_init');
+     remove_action('admin_notices', 'gutenberg_build_files_notice');
+ 
+     remove_filter('load_script_translation_file', 'gutenberg_override_translation_file');
+     remove_filter('block_editor_settings', 'gutenberg_extend_block_editor_styles');
+     remove_filter('default_content', 'gutenberg_default_demo_content');
+     remove_filter('default_title', 'gutenberg_default_demo_title');
+     remove_filter('block_editor_settings', 'gutenberg_legacy_widget_settings');
+     remove_filter('rest_request_after_callbacks', 'gutenberg_filter_oembed_result');
+ 
+     // Previously used, compat for older Gutenberg versions.
+     remove_filter('wp_refresh_nonces', 'gutenberg_add_rest_nonce_to_heartbeat_response_headers');
+     remove_filter('get_edit_post_link', 'gutenberg_revisions_link_to_editor');
+     remove_filter('wp_prepare_revision_for_js', 'gutenberg_revisions_restore');
+ 
+     remove_action('rest_api_init', 'gutenberg_register_rest_routes');
+     remove_action('rest_api_init', 'gutenberg_add_taxonomy_visibility_field');
+     remove_filter('registered_post_type', 'gutenberg_register_post_prepare_functions');
+ 
+     remove_action('do_meta_boxes', 'gutenberg_meta_box_save');
+     remove_action('submitpost_box', 'gutenberg_intercept_meta_box_render');
+     remove_action('submitpage_box', 'gutenberg_intercept_meta_box_render');
+     remove_action('edit_page_form', 'gutenberg_intercept_meta_box_render');
+     remove_action('edit_form_advanced', 'gutenberg_intercept_meta_box_render');
+     remove_filter('redirect_post_location', 'gutenberg_meta_box_save_redirect');
+     remove_filter('filter_gutenberg_meta_boxes', 'gutenberg_filter_meta_boxes');
+ 
+     remove_filter('body_class', 'gutenberg_add_responsive_body_class');
+     remove_filter('admin_url', 'gutenberg_modify_add_new_button_url'); // old
+     remove_action('admin_enqueue_scripts', 'gutenberg_check_if_classic_needs_warning_about_blocks');
+     remove_filter('register_post_type_args', 'gutenberg_filter_post_type_labels');
+ 
+     /* Classic Widgets */
+ 
+     // Disables the block editor from managing widgets in the Gutenberg plugin.
+     add_filter('gutenberg_use_widgets_block_editor', '__return_false');
+     // Disables the block editor from managing widgets.
+     add_filter('use_widgets_block_editor', '__return_false');
+ }
+ // Enganche esta função ao hook 'init'
+ add_action('init', 'theme_remove_gutenberg');
 ?>

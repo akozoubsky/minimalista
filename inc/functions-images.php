@@ -95,3 +95,29 @@ add_filter('intermediate_image_sizes', 'remove_default_image_sizes');
 add_action('init', 'remove_default_large_image_sizes');
 add_action('after_setup_theme', 'modify_default_image_sizes');
 add_action('after_setup_theme', 'add_custom_image_sizes');
+
+function minimalista_calculate_image_sizes_attr($sizes, $size)
+{
+    $width = $size[0];
+
+    // Define breakpoints do Bootstrap 5 e tamanhos de imagem personalizados
+    if ($width <= 576) {
+        $sizes = '(max-width: 576px) 100vw, 576px';
+    } elseif ($width > 576 && $width <= 768) {
+        $sizes = '(max-width: 768px) 100vw, 768px';
+    } elseif ($width > 768 && $width <= 992) {
+        $sizes = '(max-width: 992px) 100vw, 992px';
+    } elseif ($width > 992 && $width <= 1200) {
+        $sizes = '(max-width: 1200px) 100vw, 1200px';
+    } elseif ($width > 1200 && $width <= 1400) {
+        // breakpoint para 'landscape-xx-large'
+        $sizes = '(max-width: 1400px) 100vw, 1400px'; 
+    } elseif ($width > 1400 && $width <= 1920) {
+            $sizes = '(max-width: 1920px) 100vw, 1920px';
+    } else {
+        $sizes = '100vw';
+    }
+
+    return $sizes;
+}
+add_filter('wp_calculate_image_sizes', 'minimalista_calculate_image_sizes_attr', 10, 2);
