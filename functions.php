@@ -73,7 +73,7 @@ require get_template_directory() . '/inc/functions-images.php';
 /**
  * Functions related to metaboxes.
  */
-require get_template_directory() . '/inc/METABOX.php';
+require get_template_directory() . '/inc/metabox.php';
 
 /**
  * Load Jetpack compatibility file.
