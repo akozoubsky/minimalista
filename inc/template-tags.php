@@ -250,7 +250,7 @@ function minimalista_display_post_metadata_primary($additional_classes = '')
     // Get the post format
     $post_format = get_post_format() ?: 'standard';
 
-    $div_classes = 'post-metadata post-metadata-primary post-meta d-flex flex-wrap align-items-center text-muted';
+    $div_classes = 'post-metadata post-metadata-primary post-meta d-flex flex-wrap align-items-center';
 
     // Concatena a classe adicional se ela for válida
     if ($additional_classes) {
@@ -283,7 +283,7 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
     // Get the post format
     $post_format = get_post_format() ?: 'standard';
 
-    $div_classes = 'post-metadata post-metadata-secondary post-meta d-flex flex-wrap align-items-center text-muted';
+    $div_classes = 'post-metadata post-metadata-secondary post-meta d-flex flex-wrap align-items-center';
 
     // Concatena a classe adicional se ela for válida
     if ($additional_classes) {
