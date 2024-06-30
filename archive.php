@@ -12,7 +12,7 @@ get_header();
 
 <div class="container">
 
-	<div class="row"><!--  gx-5 gy-5 adicionam espaçamento horizontal e vertical entre as colunas, respectivamente -->
+	<div class="row">
 
 		<div class="col-lg-8">
 
