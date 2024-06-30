@@ -204,4 +204,72 @@ function minimalista_exclude_category_from_blog($query) {
         $query->set('cat', '-' . get_cat_ID('Projetos')); // Exclui a categoria com o slug 'Projetos'
     }
 }
-add_action('pre_get_posts', 'minimalista_exclude_category_from_blog');?>
+add_action('pre_get_posts', 'minimalista_exclude_category_from_blog');
+
+// ===========================================
+// FORMULARIO DE CONTATO
+// ===========================================
+
+/**
+ * Funcao de manipulacao do formulario de contato.
+ * 
+ * Este codigo ir processar o formulrio e enviar o email usando SMTP.
+ * 
+ * Passos:
+ * 1. Configure o WP Mail SMTP para envio de emails.
+ * 2. Crie um template de página com o formulário de contato HTML.
+ * 3. Crie a página de contato e selecione o template.
+ * 4. Cria as páginas de confirmação e Erro.
+ * 5. Adicione o manipulador de formulário no functions.php. Use nomes únicos para funcoes e hooks para evitar conflitos.
+ * 6. Crie páginas de confirmação e erro para redirecionamento após o envio do formulário.
+ * 7. Teste Isoladamente: Desative outros plugins de formulário e teste seu formulário personalizado (Contact Form 7 e WPForms).
+ * 8. Reative e Teste: Reative os plugins e teste novamente para garantir compatibilidade.
+ * 9. Habilite Depuração: Use o modo de depuração do WordPress para identificar quaisquer conflitos ou erros.
+ * 10. Verificar o Arquivo de Log wp-content/debug.log e o log do servidor /var/log/apache2/error.log.
+ */
+
+ function custom_handle_contact_form_submission() {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        // Verifique o nonce
+        if (!isset($_POST['custom_contact_form_nonce_field']) || !wp_verify_nonce($_POST['custom_contact_form_nonce_field'], 'custom_contact_form_nonce')) {
+            wp_die('Erro na verificação do formulário.');
+        }
+
+        // Sanitizar e processar os dados do formulário
+        $name = sanitize_text_field($_POST['name']);
+        $email = sanitize_email($_POST['email']);
+        $telefone_fixo = sanitize_text_field($_POST['telefone_fixo']);
+        $celular = sanitize_text_field($_POST['celular']);
+        $assunto = sanitize_text_field($_POST['assunto']);
+        $message = sanitize_textarea_field($_POST['message']);
+
+        // Configurações do email
+        $to = 'contato@servirnomundo.org'; // Seu endereço de email
+        $subject = 'Nova mensagem do formulário de contato';
+        $headers = array('Content-Type: text/html; charset=UTF-8', 'From: ' . $name . ' <' . $email . '>');
+
+        $body = "
+            <h2>Nova mensagem do formulário de contato</h2>
+            <p><strong>Nome:</strong> $name</p>
+            <p><strong>Email:</strong> $email</p>
+            <p><strong>Telefone Fixo:</strong> $telefone_fixo</p>
+            <p><strong>Celular:</strong> $celular</p>
+            <p><strong>Assunto:</strong> $assunto</p>
+            <p><strong>Mensagem:</strong></p>
+            <p>$message</p>
+        ";
+
+        // Enviar email
+        if (wp_mail($to, $subject, $body, $headers)) {
+            wp_redirect(home_url('/mensagem-enviada-com-sucesso'));
+            exit;
+        } else {
+            wp_redirect(home_url('/problema-ao-enviar-sua-mensagem'));
+            exit;
+        }
+    }
+}
+add_action('admin_post_nopriv_custom_send_contact_form', 'custom_handle_contact_form_submission');
+add_action('admin_post_custom_send_contact_form', 'custom_handle_contact_form_submission');
+?>

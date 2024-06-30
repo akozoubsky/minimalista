@@ -573,6 +573,23 @@ img:last-child {
 }
 
 /* ==============================
+ * Formulario de contato customizado do tema
+ * ============================== */
+
+.contact-form {
+    margin-top: 20px;
+}
+
+.contact-form .form-group {
+    margin-bottom: 15px;
+}
+
+.contact-form label {
+    font-weight: bold;
+}
+
+
+/* ==============================
  * Plugins 
  * ============================== */
 
