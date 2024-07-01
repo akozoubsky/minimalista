@@ -20,7 +20,7 @@
 </head>
 <body <?php body_class(); ?>>
 		
-<nav class="navbar navbar-expand-lg navbar-custom">
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
 	<div class="container">
 
 		<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
