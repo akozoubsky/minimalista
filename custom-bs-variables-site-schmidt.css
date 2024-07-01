@@ -1,0 +1,168 @@
+:root {
+    /* Cores principais */
+    --bs-blue: #1a1a72;
+    --bs-indigo: #6574cd;
+    --bs-purple: #6f2da8;
+    --bs-pink: #ffc0cb;
+    --bs-red: #990000;
+    --bs-orange: #bf5700;
+    --bs-yellow: #ffd700;
+    --bs-green: #1e7d1e;
+    --bs-teal: #005f6a;
+    --bs-cyan: #30d5c8;
+    --bs-black: #000;
+    --bs-white: #fff;
+    --bs-gray: #6c757d;
+    --bs-gray-dark: #343a40;
+    --bs-gray-100: #f8f9fa;
+    --bs-gray-200: #e9ecef;
+    --bs-gray-300: #dee2e6;
+    --bs-gray-400: #ced4da;
+    --bs-gray-500: #adb5bd;
+    --bs-gray-600: #6c757d;
+    --bs-gray-700: #495057;
+    --bs-gray-800: #343a40;
+    --bs-gray-900: #212529;
+    
+    /* Cores primária e secundária */
+    --bs-primary: #1a1a72;
+    --bs-secondary: #d4af37;
+    
+    /* Cores de sucesso, informação, aviso, perigo, claro e escuro */
+    --bs-success: #1e7d1e;
+    --bs-info: #30d5c8;
+    --bs-warning: #ffd700;
+    --bs-danger: #990000;
+    --bs-light: #e9ecef;
+    --bs-dark: #212529;
+
+    /* RGB valores */
+    --bs-primary-rgb: 26, 26, 114;
+    --bs-secondary-rgb: 212, 175, 55;
+    --bs-success-rgb: 30, 125, 30;
+    --bs-info-rgb: 48, 213, 200;
+    --bs-warning-rgb: 255, 215, 0;
+    --bs-danger-rgb: 153, 0, 0;
+    --bs-light-rgb: 233, 236, 239;
+    --bs-dark-rgb: 33, 37, 41;
+
+    /* Enfases de texto */
+    --bs-primary-text-emphasis: #0f0f54;
+    --bs-secondary-text-emphasis: #8f7926;
+    --bs-success-text-emphasis: #0c320c;
+    --bs-info-text-emphasis: #135550;
+    --bs-warning-text-emphasis: #665600;
+    --bs-danger-text-emphasis: #3d0000;
+    --bs-light-text-emphasis: #495057;
+    --bs-dark-text-emphasis: #495057;
+
+    /* Cores de fundo sutis */
+    --bs-primary-bg-subtle: #e0e4f8;
+    --bs-secondary-bg-subtle: #f5ecd6;
+    --bs-success-bg-subtle: #d2e5d2;
+    --bs-info-bg-subtle: #d6f7f4;
+    --bs-warning-bg-subtle: #fff7cc;
+    --bs-danger-bg-subtle: #ebcccc;
+    --bs-light-bg-subtle: #fcfcfd;
+    --bs-dark-bg-subtle: #ced4da;
+
+    /* Cores de borda sutis */
+    --bs-primary-border-subtle: #b3bee3;
+    --bs-secondary-border-subtle: #e5d0a8;
+    --bs-success-border-subtle: #a5cba5;
+    --bs-info-border-subtle: #aceee9;
+    --bs-warning-border-subtle: #ffef99;
+    --bs-danger-border-subtle: #d69999;
+    --bs-light-border-subtle: #e9ecef;
+    --bs-dark-border-subtle: #adb5bd;
+
+    /* RGB valores para preto e branco */
+    --bs-white-rgb: 255, 255, 255;
+    --bs-black-rgb: 0, 0, 0;
+
+    /* Fontes */
+     /*
+    --bs-font-sans-serif: "Roboto Flex, Noto Sans Display", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+     */
+
+    /* Gradientes */
+    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+
+    /* Estilos de corpo */
+    --bs-body-font-family: var(--bs-font-sans-serif);
+    --bs-body-font-size: 1.125rem;
+    --bs-body-font-weight: 400;
+    --bs-body-line-height: 1.5;
+    --bs-body-color: #000000;
+    --bs-body-color-rgb: 33, 37, 41;
+    --bs-body-bg: #fff;
+    --bs-body-bg-rgb: 255, 255, 255;
+
+    /* Cores de ênfase */
+    --bs-emphasis-color: #000;
+    --bs-emphasis-color-rgb: 0, 0, 0;
+    --bs-secondary-color: rgba(33, 37, 41, 0.75);
+    --bs-secondary-color-rgb: 33, 37, 41;
+    --bs-secondary-bg: #e9ecef;
+    --bs-secondary-bg-rgb: 233, 236, 239;
+    --bs-tertiary-color: rgba(33, 37, 41, 0.5);
+    --bs-tertiary-color-rgb: 33, 37, 41;
+    --bs-tertiary-bg: #f8f9fa;
+    --bs-tertiary-bg-rgb: 248, 249, 250;
+
+    /* Estilos de links */
+    --bs-link-color: #1a1a72;
+    --bs-link-color-rgb: 26, 26, 114;
+    --bs-link-decoration: underline;
+    --bs-link-hover-color: #111149;
+    --bs-link-hover-color-rgb: 20, 20, 89;
+
+    /* Estilos de código */
+    --bs-code-color: #ffc0cb;
+
+    /* Cores de destaque */
+    --bs-highlight-color: #212529;
+    --bs-highlight-bg: #fff7cc;
+
+    /* Estilos de borda */
+    --bs-border-width: 1px;
+    --bs-border-style: solid;
+    --bs-border-color: #dee2e6;
+    --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
+
+    /* Raio de borda */
+    --bs-border-radius: 0.375rem;
+    --bs-border-radius-sm: 0.25rem;
+    --bs-border-radius-lg: 0.5rem;
+    --bs-border-radius-xl: 1rem;
+    --bs-border-radius-xxl: 2rem;
+    --bs-border-radius-2xl: var(--bs-border-radius-xxl);
+    --bs-border-radius-pill: 50rem;
+
+    /* Sombra */
+    --bs-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    --bs-box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+    --bs-box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+
+    /* Anel de foco */
+    --bs-focus-ring-width: 0.25rem;
+    --bs-focus-ring-opacity: 0.25;
+    --bs-focus-ring-color: rgba(26, 26, 114, 0.25);
+
+    /* Formulários */
+    --bs-form-valid-color: #1e7d1e;
+    --bs-form-valid-border-color: #1e7d1e;
+    --bs-form-invalid-color: #990000;
+    --bs-form-invalid-border-color: #990000;
+}
+
+.navbar-brand {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+
+.category-links .entry-meta {
+    display: none;
+}
