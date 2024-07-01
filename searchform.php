@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The searchform.php template.
  *
@@ -16,11 +15,10 @@
 ?>
 
 <form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>" onsubmit="return validateSearch()">
-    <label>
-        <span class="screen-reader-text"><?php echo _x( 'Pesquisar por:', 'label', 'minimalista' ); ?></span>
-        <input type="search" id="s" class="search-field" placeholder="<?php echo esc_attr_x( 'Pesquisar &hellip;', 'placeholder', 'minimalista' ); ?>" value="<?php echo get_search_query(); ?>" name="s" />
-    </label>
-    <input type="submit" class="search-submit" value="<?php echo esc_attr_x( 'Pesquisar', 'submit button', 'minimalista' ); ?>" />
+    <div class="input-group">
+        <input type="search" id="s" class="form-control search-field" placeholder="<?php echo esc_attr_x( 'Pesquisar &hellip;', 'placeholder', 'minimalista' ); ?>" value="<?php echo get_search_query(); ?>" name="s" aria-label="<?php echo _x( 'Pesquisar por:', 'label', 'minimalista' ); ?>" />
+        <button type="submit" class="btn btn-secondary search-submit"><?php echo esc_attr_x( 'Pesquisar', 'submit button', 'minimalista' ); ?></button>
+    </div>
 </form>
 
 <script>
