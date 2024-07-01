@@ -27,78 +27,158 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
  * ============================== */
 
  :root {
-    /* Cores principais */
-    --custom-primary: #7a52a8; /* Cor principal personalizada */
-    --custom-secondary: #2596BE; /* Cor secundaria personalizada */
-    --custom-success: #198754; /* Cor de sucesso */
-    --custom-info: #0dcaf0; /* Cor de informacao */
-    --custom-warning: #ffc107; /* Cor de aviso */
-    --custom-danger: #dc3545; /* Cor de perigo */
-    --custom-light: #f8f9fa; /* Cor clara */
-    --custom-dark: #343a40; /* Cor escura */
-    
-    --custom-white: #ffffff; /* Cor branca */
+    /* Botões */
+    --bs-btn-primary-bg: var(--bs-primary);
+    --bs-btn-primary-border: var(--bs-primary);
+    --bs-btn-primary-color: var(--bs-white);
+    --bs-btn-primary-hover-bg: #111149; /* Sombreado mais escuro do azul */
+    --bs-btn-primary-hover-border: #141459;
 
-    /* Cores personalizadas para o tema */
-    --custom-main-bg-color: #f0f0f0; /* Cor de fundo principal */
-    --custom-main-text-color: #000000; /* Cor do texto principal */
-    --custom-link-color: #7a52a8; /* Usando a cor principal para links */
-    --custom-header-footer-bg-color: #ffffff; /* Cor de fundo do cabecalho e rodape */
+    --bs-btn-secondary-bg: var(--bs-secondary);
+    --bs-btn-secondary-border: var(--bs-secondary);
+    --bs-btn-secondary-color: var(--bs-white);
+    --bs-btn-secondary-hover-bg: #b3952d; /* Sombreado mais escuro do dourado */
+    --bs-btn-secondary-hover-border: #b3952d;
 
-    /* Cores dos botoes */
-    --custom-button-color: #7a52a8; /* Usando a cor principal para botoes */
-    --custom-button-hover-color: #5e3d8b; /* Nova variavel para a cor do botao no hover */
+    --bs-link-opacity: 1;
 
-    /* Cor da borda e sombra */
-    --custom-border-shadow-color: rgba(0, 0, 0, 0.1); /* Cor da sombra da borda */
-
-    /* Cor para texto desativado/mudo */
-    --custom-text-muted-color: #6c757d; /* Cor do texto mudo */
-
+    --custom-nav-link-color: var(--bs-white);
+    --custom-nav-link-hover-color: #d4af37; /* Cor dourada para o hover */
     --custom-navbar-brand-padding-y: 3rem;
     --custom-navbar-brand-margin-end: 1rem;
     --custom-navbar-nav-link-padding-x: 1rem;
 }
 
-/* Candidato a eliminacao definitiva
-html {
-    -ms-overflow-x: hidden;
-    overflow-x: hidden;
+/* ########################################################
+ *              REAPLICAR VARIAVEIS DO BOOTSTRAP
+ * ######################################################## */
+
+/* Classe para aplicar a cor primária como fundo */
+.bg-primary {
+    background-color: var(--bs-primary) !important;
 }
 
-body {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
+/* ==============================
+ * Toogler (hamburger)
+ * ============================== */
+
+.navbar.bg-primary .navbar-toggler {
+    border-color: var(--bs-white); /* Cor da borda do botão hamburger */
+  }
+ 
+  .navbar.bg-primary .navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: 0 0 0 var(--bs-navbar-toggler-focus-width) rgba(255, 255, 255, 0.2);
   }
 
-.container-fluid, .row, .col-lg-8, .col-lg-4 {
-    box-sizing: border-box;
-} /*
+.navbar.bg-primary .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* Cor branca para o ícone */
+}
+
+/* ########################################################
+ *                        ELEMENTOS HTML
+ * ######################################################## */
 
 /* ==============================
+ * Cabecalhos (<h1> a <h6>)
+ * ============================== */
+
+ h1, h2, h3, h4, h5, h6 {
+    /* color: var(--custom-main-text-color); */
+    margin-bottom: 0.625rem; /* 10px -> 0.625rem */
+}
+
+/* Espacamento Vertical (Vertical Spacing) */
+h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child {
+    margin-bottom: 0;
+}
+
+/* Espacamento Vertical (Vertical Spacing) */
+h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
+    margin-top: 1.25rem; /* 20px -> 1.25rem */
+}
+
+/* ==============================
+ * Paragrafos
+ * ============================== */
+
+p {
+    /* color: var(--custom-main-text-color); */
+    line-height: 1.6;
+    margin-bottom: 1.25rem; /* 20px -> 1.25rem */
+}
+
+/* Espacamento Vertical (Vertical Spacing) - Remove a margem inferior do ultimo paragrafo de um container */
+p:last-child {
+    margin-bottom: 0;
+}
+
+/* ==============================
+ * Blocos de citacao
+ * ============================== */
+
+ blockquote {
+    margin: 1.25rem 0; /* 20px -> 1.25rem */
+    padding: 0.625rem 1.25rem; /* 10px 20px -> 0.625rem 1.25rem */
+    /* background-color: var(--custom-light); */
+   /*  border-left: 5px solid var(--custom-primary); */
+	border-left: 5px solid;
+}
+
+blockquote:last-child {
+    margin-bottom: 0; /* Espacamento Vertical (Vertical Spacing)  */
+}
+
+/* ==============================
+ * Tabelas
+ * ============================== */
+
+ table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.25rem; /* 20px -> 1.25rem */
+}
+
+th, td {
+    padding: 0.625rem; /* 10px -> 0.625rem */
+    /* border: 1px solid var(--custom-border-shadow-color); */
+	border: 1px solid;
+}
+
+table:last-child {
+    margin-bottom: 0; /* Espacamento Vertical (Vertical Spacing)  */
+}
+
+
+/* Espacamento Vertical (Vertical Spacing) - Remove a margem inferior de paragrafos dentro de cards */
+.card p {
+    margin-bottom: 0;
+}
+
+/* ########################################################
+ *                        CONTEUDO DO SITE
+ * ######################################################## */
+
+ /* ==============================
  * Menu Principal 
  * ============================== */
 
-/* Estilizacao personalizada para a navbar */
-.navbar-custom {
-    background-color: var(--custom-primary);
-}
-
-.navbar-custom .navbar-brand,
-.navbar-custom .navbar-nav .nav-link {
-    color: var(--custom-white);
-}
-
-.navbar-custom .navbar-brand:hover,
-.navbar-custom .navbar-nav .nav-link:hover {
-    color: var(--custom-white);
-}
-
 .navbar-brand {
-	margin-right: 0; /* misterio mas eh 0 que faz o logo alinha corretamente a esquerda */
+    color: var(--custom-nav-link-color) !important;
+    /* color: var(--custom-nav-link-hover-color); */
+    font-size: var(--bs-navbar-brand-font-size);
+    white-space: nowrap;
+    text-decoration: none;
+    margin-right: 0; /* misterio mas eh 0 que faz o logo alinha corretamente a esquerda */
 	padding-bottom: var(--custom-navbar-brand-padding-y);
 	padding-top: var(--custom-navbar-brand-padding-y);
     font-weight: 600;
+}
+.navbar-brand:hover {
+    color: var(--custom-nav-link-color) !important;
+    /* color: var(--custom-nav-link-hover-color); */
+    text-decoration: none;
 }
 
 /* Estilo para ajustar o logotipo */
@@ -114,9 +194,12 @@ body {
 /* Menu de navegacao */
 .navbar-nav .nav-link {
     font-size: 1.25rem;
-    color: var(--custom-main-text-color);
+    color: var(--custom-nav-link-color) !important; 
     font-weight: 600;
     text-decoration: none;
+}
+.navbar-nav .nav-link:hover {
+    color: var(--custom-nav-link-hover-color) !important;
 }
 
 /* ==============================
@@ -130,108 +213,6 @@ body {
 
 /* Conteudo principal */
 .site-main {
-    /* margin-top: 20px; */
-    /*
-    background-color: var(--custom-main-bg-color);
-    color: var(--custom-main-text-color);
-    */
-}
-
-/* Card da sidebar */
-.widget-area .card {
-    border: none;
-    /* box-shadow: 0 4px 8px var(--custom-border-shadow-color); */
-}
-
-/* ==============================
- * Rodape 
- * ============================== */
-
-/* Estilizacao do footer */
-.footer {
-    background: var(--custom-header-footer-bg-color);
-    text-align: center;
-    padding: 10px 0; /* 10px nao e uma margem, entao mantemos */
-}
-
-/* ==============================
- * Cabecalhos (<h1> a <h6>)
- * ============================== */
-
- h1, h2, h3, h4, h5, h6 {
-    color: var(--custom-main-text-color);
-    margin-bottom: 0.625rem; /* 10px -> 0.625rem */
-}
-
-/* Espacamento Vertical (Vertical Spacing) */
-h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child {
-    margin-bottom: 0;
-}
-
-/* Espacamento Vertical (Vertical Spacing) */
-h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
-    margin-top: 1.25rem; /* 20px -> 1.25rem */
-}
-
-/* ==============================
- * Cabecalho personalizado
- * ============================== */
-
-/* Custom header styles */
-.custom-header {
-    width: 100%; /* Default to 100% for fluid containers */
-    height: auto; /* Maintain aspect ratio */
-}
-/*
-@media (min-width: 576px) {
-    .custom-header {
-        max-width: 540px;
-    }
-}
-
-@media (min-width: 768px) {
-    .custom-header {
-        max-width: 720px;
-    }
-}
-
-@media (min-width: 992px) {
-    .custom-header {
-        max-width: 960px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .custom-header {
-        max-width: 1140px;
-    }
-}
-
-@media (min-width: 1400px) {
-    .custom-header {
-        max-width: 1320px;
-    }
-}
-*/
-
-/* ==============================
- * Paragrafos
- * ============================== */
-
-p {
-    color: var(--custom-main-text-color);
-    line-height: 1.6;
-    margin-bottom: 1.25rem; /* 20px -> 1.25rem */
-}
-
-/* Espacamento Vertical (Vertical Spacing) - Remove a margem inferior do ultimo paragrafo de um container */
-p:last-child {
-    margin-bottom: 0;
-}
-
-/* Espacamento Vertical (Vertical Spacing) - Remove a margem inferior de paragrafos dentro de cards */
-.card p {
-    margin-bottom: 0;
 }
 
 /* ==============================
@@ -262,283 +243,24 @@ p:last-child {
     margin-bottom: 0; /* Remove qualquer margem adicional */
 }
 
-
 /* ==============================
- * Blocos de citacao
+ * Rodape 
  * ============================== */
 
- blockquote {
-    margin: 1.25rem 0; /* 20px -> 1.25rem */
-    padding: 0.625rem 1.25rem; /* 10px 20px -> 0.625rem 1.25rem */
-    background-color: var(--custom-light);
-    border-left: 5px solid var(--custom-primary);
+/* Estilizacao do footer */
+.footer {
+    /* background: var(--custom-header-footer-bg-color); */
+    text-align: center;
+    padding: 10px 0; /* 10px nao e uma margem, entao mantemos */
 }
 
-blockquote:last-child {
-    margin-bottom: 0; /* Espacamento Vertical (Vertical Spacing)  */
-}
+/* ########################################################
+ *                        BLOG
+ * ######################################################## */
 
-/* ==============================
- * Tabelas
- * ============================== */
-
- table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1.25rem; /* 20px -> 1.25rem */
-}
-
-th, td {
-    padding: 0.625rem; /* 10px -> 0.625rem */
-    border: 1px solid var(--custom-border-shadow-color);
-}
-
-table:last-child {
-    margin-bottom: 0; /* Espacamento Vertical (Vertical Spacing)  */
-}
-
-/* ==============================
- * Widgets
- * ============================== */
-
-.widget {
-    margin-bottom: 1.25rem; /* 20px -> 1.25rem */
-}
-
-.widget ul {
-    list-style: none;
-    padding-left: 0;
-    text-align: left;
-}
-
-/* ==============================
- * Navegacao
- * ============================== */
-
-/* Navegacao entre posts */
-.nav-subtitle {
-    display: inline-block;
-    font-size: 1.25rem;
-    color: var(--custom-text-muted-color);
-}
-
-.nav-title {
-    display: inline-block;
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--custom-link-color);
-}
-
-.nav-title:hover {
-    text-decoration: underline;
-}
-
-.navigation.post-navigation {
-    margin-bottom: 2.5rem; /* 40px -> 2.5rem */
-}
-
-/* ==============================
- * Botoes e Formularios
- * ============================== */
-
- a.btn, input[type="submit"]  {
-    font-weight: 600;
-}
-
-/* Botoes (<button>) */
-.btn {
-    border: none;
-    color: #fff;
-    padding: 0.625rem 1.25rem; /* 10px 20px -> 0.625rem 1.25rem */
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-bottom: 1.25rem; /* 20px -> 1.25rem */
-}
-
-/* Botao Primary */
-.btn-primary {
-    background-color: var(--custom-primary);
-}
-
-.btn-primary:hover {
-    background-color: var(--custom-button-hover-color); /* Cor de hover especifica */
-}
-
-/* Botao Secondary */
-.btn-secondary {
-    background-color: var(--custom-secondary);
-}
-
-.btn-secondary:hover {
-    background-color: #1c7ea6; /* Cor de hover especifica */
-}
-
-/* Botao Success */
-.btn-success {
-    background-color: var(--custom-success);
-}
-
-.btn-success:hover {
-    background-color: #146c43; /* Cor de hover especifica */
-}
-
-/* Botao Danger */
-.btn-danger {
-    background-color: var(--custom-danger);
-}
-
-.btn-danger:hover {
-    background-color: #b02a37; /* Cor de hover especifica */
-}
-
-/* Botao Warning */
-.btn-warning {
-    background-color: var(--custom-warning);
-    color: #000; /* Texto preto para melhor contraste */
-}
-
-.btn-warning:hover {
-    background-color: #cc9a06; /* Cor de hover especifica */
-}
-
-/* Botao Info */
-.btn-info {
-    background-color: var(--custom-info);
-}
-
-.btn-info:hover {
-    background-color: #0ba0d1; /* Cor de hover especifica */
-}
-
-/* Botao Light */
-.btn-light {
-    background-color: var(--custom-light);
-    color: #000; /* Texto preto para melhor contraste */
-}
-
-.btn-light:hover {
-    background-color: #e2e6ea; /* Cor de hover especifica */
-}
-
-/* Botao Dark */
-.btn-dark {
-    background-color: var(--custom-dark);
-}
-
-.btn-dark:hover {
-    background-color: #23272b; /* Cor de hover especifica */
-}
-
-/* Botao Link */
-.btn-link {
-    background-color: transparent;
-    color: var(--custom-link-color);
-    text-decoration: underline;
-}
-
-.btn-link:hover {
-    color: #5e3d8b; /* Cor de hover especifica */
-}
-
-/* Campos de formulario (<input>, <textarea>, <label>) */
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="password"],
-textarea {
-    width: 100%;
-    padding: 0.625rem; /* 10px -> 0.625rem */
-    border: 1px solid var(--custom-border-shadow-color);
-    border-radius: 4px;
-    margin-bottom: 0.625rem; /* 10px -> 0.625rem */
-    transition: border-color 0.3s ease;
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="tel"]:focus,
-input[type="password"]:focus,
-textarea:focus {
-    border-color: var(--custom-link-color);
-    outline: none;
-}
-
-label {
-    margin-bottom: 0.3125rem; /* 5px -> 0.3125rem */
-}
-
-/* Espacamento Vertical (Vertical Spacing) */
-input[type="text"]:last-child, input[type="email"]:last-child, input[type="password"]:last-child, textarea:last-child {
-    margin-bottom: 0; 
-}
-
-/* ==============================
- * Formulario de Pesquisa
- * ============================== */
-
-/* Estilo para o widget de pesquisa na barra lateral ou no corpo da pagina */
-
-.search-form {
-    display: inline-block;
-    flex-direction: column;
-
-}
-
-.search-field {
-    padding: 0.625rem; /* 10px -> 0.625rem */
-    border: 1px solid var(--custom-border-shadow-color);
-    border-radius: 4px;
-    margin-bottom: 0.625rem; /* 10px -> 0.625rem */
-    transition: border-color 0.3s ease;
-}
-
- .search-field:focus {
-    border-color: var(--custom-link-color);
-    outline: none;
-}
-
-/* TODO: aplicar a todos <inputs> e botoes */
-.search-submit, .comment-form .submit {
-    background-color: var(--custom-button-color);
-    border: 1px solid var(--custom-button-hover-color);
-    color: #fff;
-    padding: 0.625rem 1.25rem; /* 10px 20px -> 0.625rem 1.25rem */
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.search-submit:hover, .comment-form .submit:hover {
-    background-color: var(--custom-button-hover-color);
-    /* Ajuste para um tom mais escuro da cor principal */
-}
-
-/* ==============================
- * Links
- * ============================== */
-
-a {
-    color: var(--custom-link-color);
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-a.btn {
-    text-decoration: none;
-}
-
-a {
-    font-weight: 500;
-}
-
-
-/* ==============================
- * Blog
- * ============================== */
+ /* ==============================
+  * Artigos e metadados
+  * ============================== */
 
 /* Adicionar margem inferior entre artigos, exceto o ultimo */
 article:not(:last-child) {
@@ -561,8 +283,195 @@ article:not(:last-child) {
 }
 
 /* ==============================
- * Imagens
+ * Navegacao do blog
  * ============================== */
+
+/* Navegacao entre posts */
+.nav-subtitle {
+    display: inline-block;
+    font-size: 1.25rem;
+    /* color: var(--custom-text-muted-color); */
+}
+
+.nav-title {
+    display: inline-block;
+    font-size: 1.25rem;
+    font-weight: 600;
+    /* color: var(--custom-link-color); */
+}
+
+.nav-title:hover {
+    text-decoration: underline;
+}
+
+.navigation.post-navigation {
+    margin-bottom: 2.5rem; /* 40px -> 2.5rem */
+}
+
+/* ==============================
+ * Widgets
+ * ============================== */
+
+ .widget {
+    margin-bottom: 1.25rem; /* 20px -> 1.25rem */
+}
+
+.widget ul {
+    list-style: none;
+    padding-left: 0;
+    text-align: left;
+}
+
+/* Card da sidebar */
+.widget-area .card {
+    border: none;
+}
+
+/* ########################################################
+ *                FORMULARIOS, BOTOES E LINKS
+ * ######################################################## */
+
+/* ==============================
+ * Botoes e Inputs
+ * ============================== */
+
+a.btn, input[type="submit"]  {
+    font-weight: 500;
+}
+
+.btn:focus, .form-control:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem var(--bs-focus-ring-color);
+}
+
+label {
+    margin-bottom: 0.3125rem; /* 5px -> 0.3125rem */
+}
+
+/* Espacamento Vertical (Vertical Spacing) */
+input[type="text"]:last-child, input[type="email"]:last-child, input[type="password"]:last-child, textarea:last-child {
+    margin-bottom: 0; 
+}
+
+
+/* Botao Primary */
+.btn-primary {
+    background-color: var(--bs-btn-primary-bg) !important;
+    border-color: var(--bs-btn-primary-border) !important;
+    color: var(--bs-btn-primary-color) !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--bs-btn-primary-hover-bg) !important;
+    border-color: var(--bs-btn-primary-hover-border) !important;
+}
+
+/* Botao Secondary */
+.btn-secondary {
+    background-color: var(--bs-btn-secondary-bg) !important;
+    border-color: var(--bs-btn-secondary-border) !important;
+    color: var(--bs-btn-secondary-color) !important;
+}
+
+.btn-secondary:hover {
+    background-color: var(--bs-btn-secondary-hover-bg) !important;
+    border-color: var(--bs-btn-secondary-hover-border) !important;
+}
+
+/* TODO: DEFINIR AS CORES DESTES OUTROS BOTOES */
+
+/* Botao Success */
+.btn-success {
+   /*  background-color: var(--custom-success); */
+}
+
+.btn-success:hover {
+    /* background-color: #146c43; /* /* Cor de hover especifica */
+}
+
+/* Botao Danger */
+.btn-danger {
+    /* background-color: var(--custom-danger); */
+}
+
+.btn-danger:hover {
+    /* background-color: #b02a37; */ /* Cor de hover especifica */
+}
+
+/* Botao Warning */
+.btn-warning {
+    /* background-color: var(--custom-warning); */
+    /* color: #000; */ /* Texto preto para melhor contraste */
+}
+
+.btn-warning:hover {
+    /* background-color: #cc9a06; */ /* Cor de hover especifica */
+}
+
+/* Botao Info */
+.btn-info {
+    /* background-color: var(--custom-info); */
+}
+
+.btn-info:hover {
+    /* background-color: #0ba0d1; */ /* Cor de hover especifica */
+}
+
+/* Botao Light */
+.btn-light {
+    /* background-color: var(--custom-light); */
+    /* color: #000; */ /* Texto preto para melhor contraste */
+}
+
+.btn-light:hover {
+    /* background-color: #e2e6ea; */ /* Cor de hover especifica */
+}
+
+/* Botao Dark */
+.btn-dark {
+    /* background-color: var(--custom-dark); */
+}
+
+.btn-dark:hover {
+    /* background-color: #23272b; */ /* Cor de hover especifica */
+}
+
+/* Botao Link */
+.btn-link {
+    /* background-color: transparent;
+    color: var(--custom-link-color); */
+    text-decoration: underline;
+}
+
+.btn-link:hover {
+   /*  color: #5e3d8b; */ /* Cor de hover especifica */
+}
+
+/* ==============================
+ * Links
+ * ============================== */
+
+ a {
+    /*  color: var(--custom-link-color); */
+     text-decoration: none;
+ }
+ 
+ a:hover {
+     text-decoration: underline;
+ }
+ 
+ a.btn {
+     text-decoration: none;
+ }
+ 
+ a {
+     font-weight: 500;
+ }
+
+/* ########################################################
+ *                          IMAGENS
+ * ######################################################## */
+
 
 img {
     margin-bottom: 1.25rem; /* 20px -> 1.25rem */
@@ -577,9 +486,9 @@ img:last-child {
     margin-bottom: 1.25rem; /* 20px -> 1.25rem */
 }
 
-/* ==============================
- * Formulario de contato customizado do tema
- * ============================== */
+/* ########################################################
+ *               FORMULARIO DE CONTATO DO TEMA
+ * ######################################################## */
 
 .contact-form {
     margin-top: 20px;
@@ -593,56 +502,23 @@ img:last-child {
     font-weight: bold;
 }
 
+/* ########################################################
+ *                      CUSTOMIZER
+ * ######################################################## */
 
 /* ==============================
- * Plugins 
+ * Cabecalho personalizado
  * ============================== */
 
- /* Contact Form 7 */
-.contact-form-label { 
-	font-weight: 600;
+/* Custom header styles */
+.custom-header {
+    width: 100%; /* Default to 100% for fluid containers */
+    height: auto; /* Maintain aspect ratio */
 }
 
-.contact-form-field {
-    overflow: hidden;
-    margin-bottom: 1rem;
-}
-
-/* Estilizando o botao de envio do Contact Form 7 */
-.wpcf7-submit {
-    background-color: var(--custom-button-color);
-    border: none;
-    color: #fff;
-    padding: 0.625rem 1.25rem;
-    /* 10px 20px -> 0.625rem 1.25rem */
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-bottom: 1.25rem;  /* 20px -> 1.25rem */
-}
-
-.wpcf7-submit:hover {
-    background-color: var(--custom-button-hover-color);
-}
-
-/* Estilo adicional para garantir que o botao corresponda ao design do site */
-.wpcf7-submit:focus {
-    outline: none;
-    box-shadow: 0 0 0 0.2rem rgba(122, 82, 168, 0.25);
-    /* Ajuste a cor conforme necessario */
-}
-
-/* Estilo para a mensagem de retorno do Contact Form 7 */
-.wpcf7 form .wpcf7-response-output {
-    margin: 2rem 0 1rem; /* 2em 0.5em 1em -> 2rem 0.5rem 1rem */
-    padding: 0.2rem 1rem; /* 0.2em 1em -> 0.2rem 1rem */
-    border: 1px solid var(--custom-border-shadow-color); /* Adicionando uma borda */
-    background-color: var(--custom-light); /* Usando a cor clara definida nas variaveis */
-    color: var(--custom-main-text-color); /* Cor do texto principal */
-    border-radius: 4px; /* Bordas arredondadas */
-    box-shadow: 0 4px 8px var(--custom-border-shadow-color); /* Adicionando sombra */
-}
-
+/* ########################################################
+ *                      PLUGINS
+ * ######################################################## */
 
 /* ==============================
  * Widget Minimalista_Social_Widget 
@@ -682,8 +558,43 @@ img:last-child {
     color: #e1306c;
 }
 
-/* Adicione mais estilos para outras redes sociais conforme necessario */
+/* ########################################################
+ *                      MIDIA
+ * ######################################################## */
 
+ /* ==============================
+ * Galeria do Wordpress
+ * ============================== */
+
+ /* TODO: ate descobri @ */
+.gallery figcaption {
+    display: none;
+}
+
+/* ==============================
+ * Playlists do Wordpress
+ * ============================== */
+
+.wp-playlist {
+    line-height: 1.8 !important;
+ }
+
+ .wp-playlist-current-item {
+    /* margin-bottom: 10px; */
+    height: auto !important;
+  }
+
+.wp-playlist,
+.wp-playlist-caption,
+.wp-playlist-item-title,
+.wp-playlist-item-artist,
+.wp-playlist-item-length {
+    font-size: var(--bs-body-font-size) !important;
+ }
+
+.wp-playlist-item-artist {
+    text-transform: none !important;
+}
 
 /* ==============================
  * Outros 
@@ -693,6 +604,10 @@ img:last-child {
  .entry-header, .widget-title {
     margin-bottom: 1.25rem;  /* 20px -> 1.25rem */
  }
+
+ /* ########################################################
+  *                      LEITORES DE TELA
+  * ######################################################## */
 
  .screen-reader-text {
     position: absolute;
@@ -705,18 +620,31 @@ img:last-child {
     border: 0;
 }
 
- .text-muted {
-    color: var(--custom-text-muted-color) !important;
-}
+/* ########################################################
+ *                      UTILITARIOS
+ * ######################################################## */
 
 /* Espacamento Vertical (Vertical Spacing) - Remove a margem inferior dos elementos com a classe .no-margin */
 .no-margin {
     margin-bottom: 0;
 }
 
-/* ==============================
- * Responsividade
- * ============================== */
+/* TODO: TESTES */
+
+.alert-primary {
+    background-color: rgba(var(--bs-primary-rgb), 0.1);
+    color: var(--bs-primary);
+}
+
+.alert-secondary {
+    background-color: rgba(var(--bs-secondary-rgb), 0.1);
+    color: var(--bs-secondary);
+}
+
+
+/* ########################################################
+ *                      MEDIA QUERIES
+ * ######################################################## */
 
 /**
  * Bootstrap Breakpoints
