@@ -27,6 +27,15 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
  * ============================== */
 
  :root {
+
+    --minimalista-horizontal-spacing: 1rem; /* Espaçamento horizontal */
+    --minimalista-vertical-spacing: 1rem; /* Espaçamento vertical */
+    --minimalista-nav-link-color: var(--bs-white);
+    --minimalista-nav-link-hover-color: #d4af37; /* Cor dourada para o hover */
+    --minimalista-navbar-brand-padding-y: 3rem;
+    --minimalista-navbar-brand-margin-end: 1rem;
+    --minimalista-navbar-nav-link-padding-x: 1rem;
+
     /* Botões */
     --bs-btn-primary-bg: var(--bs-primary);
     --bs-btn-primary-border: var(--bs-primary);
@@ -41,12 +50,6 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     --bs-btn-secondary-hover-border: #b3952d;
 
     --bs-link-opacity: 1;
-
-    --custom-nav-link-color: var(--bs-white);
-    --custom-nav-link-hover-color: #d4af37; /* Cor dourada para o hover */
-    --custom-navbar-brand-padding-y: 3rem;
-    --custom-navbar-brand-margin-end: 1rem;
-    --custom-navbar-nav-link-padding-x: 1rem;
 }
 
 /* ########################################################
@@ -85,8 +88,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
  * ============================== */
 
  h1, h2, h3, h4, h5, h6 {
-    /* color: var(--custom-main-text-color); */
-    margin-bottom: 0.625rem; /* 10px -> 0.625rem */
+    margin-bottom: calc(1.25 * var(--minimalista-vertical-spacing));
 }
 
 /* Espacamento Vertical (Vertical Spacing) */
@@ -96,7 +98,7 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
 
 /* Espacamento Vertical (Vertical Spacing) */
 h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
-    margin-top: 1.25rem; /* 20px -> 1.25rem */
+    margin-bottom: calc(1.25 * var(--minimalista-vertical-spacing));
 }
 
 /* ==============================
@@ -104,14 +106,20 @@ h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
  * ============================== */
 
 p {
-    /* color: var(--custom-main-text-color); */
-    line-height: 1.6;
-    margin-bottom: 1.25rem; /* 20px -> 1.25rem */
+    margin-bottom: calc(1.25 * var(--minimalista-vertical-spacing));
 }
 
 /* Espacamento Vertical (Vertical Spacing) - Remove a margem inferior do ultimo paragrafo de um container */
 p:last-child {
     margin-bottom: 0;
+}
+
+/* ==============================
+ * Listas
+ * ============================== */
+
+ul li, ol li {
+    margin-bottom: calc(0.5 * var(--minimalista-vertical-spacing)); /* Espaçamento entre os itens da lista para legibilidade */
 }
 
 /* ==============================
@@ -121,8 +129,6 @@ p:last-child {
  blockquote {
     margin: 1.25rem 0; /* 20px -> 1.25rem */
     padding: 0.625rem 1.25rem; /* 10px 20px -> 0.625rem 1.25rem */
-    /* background-color: var(--custom-light); */
-   /*  border-left: 5px solid var(--custom-primary); */
 	border-left: 5px solid;
 }
 
@@ -137,12 +143,11 @@ blockquote:last-child {
  table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 1.25rem; /* 20px -> 1.25rem */
+    margin-bottom: calc(1.25 * var(--minimalista-vertical-spacing));
 }
 
 th, td {
     padding: 0.625rem; /* 10px -> 0.625rem */
-    /* border: 1px solid var(--custom-border-shadow-color); */
 	border: 1px solid;
 }
 
@@ -165,41 +170,39 @@ table:last-child {
  * ============================== */
 
 .navbar-brand {
-    color: var(--custom-nav-link-color) !important;
-    /* color: var(--custom-nav-link-hover-color); */
+    color: var(--minimalista-nav-link-color) !important;
     font-size: var(--bs-navbar-brand-font-size);
     white-space: nowrap;
     text-decoration: none;
-    margin-right: 0; /* misterio mas eh 0 que faz o logo alinha corretamente a esquerda */
-	padding-bottom: var(--custom-navbar-brand-padding-y);
-	padding-top: var(--custom-navbar-brand-padding-y);
+    margin-right: 0; /* misterio mas eh 0 que faz o logo alinhar corretamente a esquerda */
+	padding-bottom: var(--minimalista-navbar-brand-padding-y);
+	padding-top: var(--minimalista-navbar-brand-padding-y);
     font-weight: 600;
 }
 .navbar-brand:hover {
-    color: var(--custom-nav-link-color) !important;
-    /* color: var(--custom-nav-link-hover-color); */
+    color: var(--minimalista-nav-link-color) !important;
     text-decoration: none;
 }
 
 /* Estilo para ajustar o logotipo */
 .custom-logo-link img {
-    margin-right: 1rem; 
+    margin-right: calc(1 * var(--minimalista-horizontal-spacing));
 }
 
 /* Titulo do site (texto) */
 .site-title {
-    margin-right: 1rem;
+    margin-right: calc(1 * var(--minimalista-horizontal-spacing));
 }
 
 /* Menu de navegacao */
 .navbar-nav .nav-link {
     font-size: 1.25rem;
-    color: var(--custom-nav-link-color) !important; 
+    color: var(--minimalista-nav-link-color) !important; 
     font-weight: 600;
     text-decoration: none;
 }
 .navbar-nav .nav-link:hover {
-    color: var(--custom-nav-link-hover-color) !important;
+    color: var(--minimalista-nav-link-hover-color) !important;
 }
 
 /* ==============================
@@ -207,40 +210,75 @@ table:last-child {
  * ============================== */
 
  .site-content {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: calc(2 * var(--minimalista-vertical-spacing));
+    margin-bottom: calc(2 * var(--minimalista-vertical-spacing));
  }
 
 /* Conteudo principal */
 .site-main {
 }
 
+.site-main h2 {
+    color: var(--bs-primary);
+}
+
 /* ==============================
  * Listas
  * ============================== */
 
- .site-content ul, .site-content ol {
-    margin-top: 0; /* Espacamento Vertical (Vertical Spacing)  */
-    margin-bottom: 1.25rem; /* 20px -> 1.25rem */
-    padding-left: 2.5rem; /* 40px -> 2.5rem */
+.site-content ul, .site-content ol {
+    margin-top: 0;
 }
 
 .site-content ul:last-child, .site-content ol:last-child {
     margin-bottom: 0; /* Espacamento Vertical (Vertical Spacing)  */
 }
 
-/* Estilos gerais para listas fora do menu de navegação */
-.site-content ul li {
-    margin-bottom: 0.625rem; /* 10px -> 0.625rem */
-}
-
 .site-content ul li:last-child {
     margin-bottom: 0; /* Espacamento Vertical (Vertical Spacing)  */
 }
 
-/* Menu de navegação não será afetado */
+/* Menu de navegação nao sera afetado */
 .navbar-nav li {
     margin-bottom: 0; /* Remove qualquer margem adicional */
+}
+
+/* ==============================
+ * Listas customizadas
+ * ============================== */
+
+/* Estilo personalizado para listas */
+
+.minimalista-custom-list-section {
+    margin-bottom: calc(2 * var(--minimalista-vertical-spacing));
+}
+    .minimalista-custom-list-section:last-child {
+        margin-bottom: 0;
+    }
+
+ul.minimalista-custom-list {
+    list-style-type: none !important; /* Remove marcadores de lista, se necessário */
+    padding-left: 0 !important; /* Remove padding padrão */
+    margin-left: 0 !important; /* Garantir que não haja margem adicional */
+}
+  
+ul.minimalista-custom-list li {
+    padding-left: calc(1 * var(--minimalista-horizontal-spacing)) !important; /* O espaço entre o marcador e o texto */
+    position: relative !important;
+}
+
+ul.minimalista-custom-list li::before {
+    content: "•" !important; /* Adiciona um marcador customizado */
+    position: absolute !important;
+    left: 0 !important; /* Posiciona o marcador à esquerda do item */
+    color: var(--bs-primary) !important; /* Cor do marcador */
+    font-size: 1.2rem !important; /* Tamanho do marcador */
+    top: 50% !important; /* Centraliza verticalmente */
+    transform: translateY(-50%) !important; /* Ajuste de centralização vertical */
+}
+
+ul.minimalista-custom-list ul li:last-child {
+    margin-bottom: 0; /* Espacamento Vertical (Vertical Spacing)  */
 }
 
 /* ==============================
@@ -249,7 +287,6 @@ table:last-child {
 
 /* Estilizacao do footer */
 .footer {
-    /* background: var(--custom-header-footer-bg-color); */
     text-align: center;
     padding: 10px 0; /* 10px nao e uma margem, entao mantemos */
 }
@@ -264,17 +301,21 @@ table:last-child {
 
 /* Adicionar margem inferior entre artigos, exceto o ultimo */
 article:not(:last-child) {
-    margin-bottom: 1.875rem; /* 30px -> 1.875rem */
-    /* Ajuste este valor conforme necessario */
+    margin-bottom: 1.5rem; /* 30px -> 1.875rem */
 }
 
-.entry-header, .page-header, .entry-meta, .entry-content {
-    margin-bottom: 0.625rem; /* 10px -> 0.625rem */
+ /* Espacamento Vertical (Vertical Spacing) */
+ .entry-header, .page-header, .widget-title {
+    margin-bottom: calc(1.25 * var(--minimalista-vertical-spacing));
+ }
+
+.entry-meta, .entry-content, .entry-footer {
+    margin-bottom: 0.5rem; /* 10px -> 0.625rem */
 }
 
 .posted-on, .byline, .cat-links, .comments-link, .edit-link {
     margin-left: 0;
-    margin-right: 0.25rem;
+    margin-right: calc(0.25 * var(--minimalista-horizontal-spacing));
 }
 
 /* nao exibir data e autor da publicacao em <article> da categoria projetos */
@@ -290,14 +331,12 @@ article:not(:last-child) {
 .nav-subtitle {
     display: inline-block;
     font-size: 1.25rem;
-    /* color: var(--custom-text-muted-color); */
 }
 
 .nav-title {
     display: inline-block;
     font-size: 1.25rem;
     font-weight: 600;
-    /* color: var(--custom-link-color); */
 }
 
 .nav-title:hover {
@@ -305,16 +344,19 @@ article:not(:last-child) {
 }
 
 .navigation.post-navigation {
-    margin-bottom: 2.5rem; /* 40px -> 2.5rem */
+    margin-bottom: calc(2 * var(--minimalista-vertical-spacing));
 }
 
 /* ==============================
  * Widgets
  * ============================== */
 
- .widget {
-    margin-bottom: 1.25rem; /* 20px -> 1.25rem */
+.widget {
+    margin-bottom: calc(2 * var(--minimalista-vertical-spacing));
 }
+    .widget:last-child {
+        margin-bottom: 0;
+    }
 
 .widget ul {
     list-style: none;
@@ -345,7 +387,7 @@ a.btn, input[type="submit"]  {
 }
 
 label {
-    margin-bottom: 0.3125rem; /* 5px -> 0.3125rem */
+    margin-bottom: calc(0.5 * var(--minimalista-vertical-spacing));
 }
 
 /* Espacamento Vertical (Vertical Spacing) */
@@ -382,7 +424,7 @@ input[type="text"]:last-child, input[type="email"]:last-child, input[type="passw
 
 /* Botao Success */
 .btn-success {
-   /*  background-color: var(--custom-success); */
+   /*  background-color: var(--minimalista-success); */
 }
 
 .btn-success:hover {
@@ -391,7 +433,7 @@ input[type="text"]:last-child, input[type="email"]:last-child, input[type="passw
 
 /* Botao Danger */
 .btn-danger {
-    /* background-color: var(--custom-danger); */
+    /* background-color: var(--minimalista-danger); */
 }
 
 .btn-danger:hover {
@@ -400,7 +442,7 @@ input[type="text"]:last-child, input[type="email"]:last-child, input[type="passw
 
 /* Botao Warning */
 .btn-warning {
-    /* background-color: var(--custom-warning); */
+    /* background-color: var(--minimalista-warning); */
     /* color: #000; */ /* Texto preto para melhor contraste */
 }
 
@@ -410,7 +452,7 @@ input[type="text"]:last-child, input[type="email"]:last-child, input[type="passw
 
 /* Botao Info */
 .btn-info {
-    /* background-color: var(--custom-info); */
+    /* background-color: var(--minimalista-info); */
 }
 
 .btn-info:hover {
@@ -419,7 +461,7 @@ input[type="text"]:last-child, input[type="email"]:last-child, input[type="passw
 
 /* Botao Light */
 .btn-light {
-    /* background-color: var(--custom-light); */
+    /* background-color: var(--minimalista-light); */
     /* color: #000; */ /* Texto preto para melhor contraste */
 }
 
@@ -429,7 +471,7 @@ input[type="text"]:last-child, input[type="email"]:last-child, input[type="passw
 
 /* Botao Dark */
 .btn-dark {
-    /* background-color: var(--custom-dark); */
+    /* background-color: var(--minimalista-dark); */
 }
 
 .btn-dark:hover {
@@ -438,8 +480,6 @@ input[type="text"]:last-child, input[type="email"]:last-child, input[type="passw
 
 /* Botao Link */
 .btn-link {
-    /* background-color: transparent;
-    color: var(--custom-link-color); */
     text-decoration: underline;
 }
 
@@ -452,7 +492,6 @@ input[type="text"]:last-child, input[type="email"]:last-child, input[type="passw
  * ============================== */
 
  a {
-    /*  color: var(--custom-link-color); */
      text-decoration: none;
  }
  
@@ -474,7 +513,7 @@ input[type="text"]:last-child, input[type="email"]:last-child, input[type="passw
 
 
 img {
-    margin-bottom: 1.25rem; /* 20px -> 1.25rem */
+    margin-bottom: calc(1.25 * var(--minimalista-vertical-spacing));
 }
 
 /* Espacamento Vertical (Vertical Spacing) */
@@ -483,7 +522,7 @@ img:last-child {
 }
 
 .post-thumbnail {
-    margin-bottom: 1.25rem; /* 20px -> 1.25rem */
+    margin-bottom: calc(1.25 * var(--minimalista-vertical-spacing));
 }
 
 /* ########################################################
@@ -491,15 +530,15 @@ img:last-child {
  * ######################################################## */
 
 .contact-form {
-    margin-top: 20px;
+    margin-top: calc(1.25 * var(--minimalista-vertical-spacing));
 }
 
 .contact-form .form-group {
-    margin-bottom: 15px;
+    margin-bottom: calc(1 * var(--minimalista-vertical-spacing));
 }
 
 .contact-form label {
-    font-weight: bold;
+    font-weight: 500;
 }
 
 /* ########################################################
@@ -532,18 +571,18 @@ img:last-child {
 .social-link {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: calc(1 * var(--minimalista-vertical-spacing));
     text-decoration: none;
     color: #333;
     font-weight: 600;
 }
 
 .social-link i {
-    margin-right: 10px;
+    margin-right: calc(1 * var(--minimalista-horizontal-spacing));
 }
 
 .social-link svg {
-    margin-right: 10px;
+    margin-right: calc(1 * var(--minimalista-horizontal-spacing));
 }
 
 .social-link.facebook {
@@ -566,6 +605,10 @@ img:last-child {
  * Galeria do Wordpress
  * ============================== */
 
+p + .gallery {
+    margin-top: calc(1.5 * var(--minimalista-vertical-spacing));
+}
+
  /* TODO: ate descobri @ */
 .gallery figcaption {
     display: none;
@@ -580,7 +623,7 @@ img:last-child {
  }
 
  .wp-playlist-current-item {
-    /* margin-bottom: 10px; */
+    /* margin-bottom: calc(1 * var(--minimalista-vertical-spacing)); */
     height: auto !important;
   }
 
@@ -599,11 +642,6 @@ img:last-child {
 /* ==============================
  * Outros 
  * ============================== */
-
- /* Espacamento Vertical (Vertical Spacing) */
- .entry-header, .widget-title {
-    margin-bottom: 1.25rem;  /* 20px -> 1.25rem */
- }
 
  /* ########################################################
   *                      LEITORES DE TELA
@@ -663,8 +701,8 @@ img:last-child {
 @media (min-width: 992px) {
 
 	.navbar-expand-lg .navbar-nav .nav-link {
-		padding-left: var(--custom-navbar-nav-link-padding-x);
-		padding-right: var(--custom-navbar-nav-link-padding-x);
+		padding-left: var(--minimalista-navbar-nav-link-padding-x);
+		padding-right: var(--minimalista-navbar-nav-link-padding-x);
 	}
 
 }
