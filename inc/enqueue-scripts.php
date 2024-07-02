@@ -30,7 +30,7 @@ function minimalista_scripts() {
      *
      * @link https://clicknathan.com/web-design/css-for-all-available-wordpress-gallery-columns/
      */
-    wp_enqueue_style('image-and-gallery', trailingslashit(get_template_directory_uri()) . "css/style-image-and-gallery.css", array(), _S_VERSION);
+    //wp_enqueue_style('image-and-gallery', trailingslashit(get_template_directory_uri()) . "css/style-image-and-gallery.css", array(), _S_VERSION);
 
     //wp_enqueue_script( 'minimalista-script', trailingslashit(get_template_directory_uri()) . '/js/minimalista.js', array(), _S_VERSION, true );
 
@@ -45,6 +45,20 @@ function minimalista_scripts() {
 	
 }
 add_action( 'wp_enqueue_scripts', 'minimalista_scripts' );
+
+/**
+ * DeSandro Masonry
+ * @link https://masonry.desandro.com/
+ */
+function minimalista_enqueue_masonry_script() {
+    // Enqueue Masonry.js
+    //wp_enqueue_script( 'masonry-js', 'https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js', array('jquery'), '4.2.2', true );
+    wp_enqueue_script( 'masonry-js', trailingslashit(get_template_directory_uri()) . "assets/masonry-desandro/masonry.pkgd2.min.js", array('jquery'), '4.2.2', true );
+    // Enqueue custom JavaScript for initializing Masonry
+    wp_enqueue_script( 'minimalista-masonry', get_template_directory_uri() . '/js/minimalista-masonry.js', array('masonry-js'), '1.0.0', true );
+}
+add_action( 'wp_enqueue_scripts', 'minimalista_enqueue_masonry_script' );
+
 
 /**
  * Dequeue Block Styles

@@ -218,7 +218,7 @@ table:last-child {
 .site-main {
 }
 
-.site-main h2 {
+.site-main h2:not(.entry-title) {
     color: var(--bs-primary);
 }
 
@@ -713,4 +713,117 @@ p + .gallery {
 
 /* XX-Large devices (larger desktops, 1400px and up) */
 @media (min-width: 1400px) {
+}
+
+figure.gallery-item {
+    margin-bottom: 0; /* desfazer estilo do Bootstrap */
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Estilos para 0 coluna */
+.gallery.gallery-columns-0 {
+    margin: -0.1rem;
+}
+
+.gallery-columns-0 .gallery-item {
+    margin: 0.1rem;
+}
+
+.gallery-columns-0 .gallery-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Estilos para 1 coluna */
+.gallery.gallery-columns-1 {
+    margin: -0.5rem;
+}
+
+.gallery-columns-1 .gallery-item {
+    width: calc(100% - 1rem);
+    margin: 0.5rem;
+}
+
+.gallery-columns-1 .gallery-item img {
+    width: 100%;
+    height: auto;
+}
+
+/* Estilos para 2 colunas */
+.gallery.gallery-columns-2 {
+    margin: -0.5rem;
+}
+
+.gallery-columns-2 .gallery-item {
+    width: calc(50% - 1rem);
+    margin: 0.5rem;
+}
+
+.gallery-columns-2 .gallery-item img {
+    width: 100%;
+    height: auto;
+}
+
+/* Estilos para 3 colunas */
+.gallery.gallery-columns-3 {
+    margin: -0.5rem;
+}
+
+.gallery-columns-3 .gallery-item {
+    width: calc(33.333% - 1rem);
+    margin: 0.5rem;
+}
+
+.gallery-columns-3 .gallery-item img {
+    width: 100%;
+    height: auto;
+}
+
+/* Estilos para 4 colunas */
+.gallery.gallery-columns-4 {
+    margin: -0.5rem;
+}
+
+.gallery-columns-4 .gallery-item {
+    width: calc(25% - 1rem);
+    margin: 0.5rem;
+}
+
+.gallery-columns-4 .gallery-item img {
+    width: 100%;
+    height: auto;
+}
+
+/* Estilos para 5 colunas */
+.gallery.gallery-columns-5 {
+    margin: -0.5rem;
+}
+
+.gallery-columns-5 .gallery-item {
+    width: calc(20% - 1rem);
+    margin: 0.5rem;
+}
+
+.gallery-columns-5 .gallery-item img {
+    width: 100%;
+    height: auto;
+}
+
+/* Estilos para 6 colunas */
+.gallery.gallery-columns-6 {
+    margin: -0.5rem;
+}
+
+.gallery-columns-6 .gallery-item {
+    width: calc(16.666% - 1rem);
+    margin: 0.5rem;
+}
+
+.gallery-columns-6 .gallery-item img {
+    width: 100%;
+    height: auto;
 }

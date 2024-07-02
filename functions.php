@@ -76,6 +76,11 @@ require get_template_directory() . '/inc/functions-images.php';
 require get_template_directory() . '/inc/metabox.php';
 
 /**
+ * Functions related to shorcodes.
+ */
+//require get_template_directory() . '/inc/shortcodes.php';
+
+/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
