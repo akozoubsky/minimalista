@@ -364,6 +364,11 @@ article:not(:last-child) {
     text-align: left;
 }
 
+/* aumentar a margem inferior para melhor leitura e cliques */
+.widget li {
+    margin-bottom: calc(1 * var(--minimalista-vertical-spacing));
+}
+
 /* Card da sidebar */
 .widget-area .card {
     border: none;
