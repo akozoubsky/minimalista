@@ -614,108 +614,11 @@ p + .gallery {
     display: none;
 }
 
-/* ==============================
- * Playlists do Wordpress
+ /* ==============================
+ * Galeria do Wordpress ulizando Masonry
  * ============================== */
 
-.wp-playlist {
-    line-height: 1.8 !important;
- }
-
- .wp-playlist-current-item {
-    /* margin-bottom: calc(1 * var(--minimalista-vertical-spacing)); */
-    height: auto !important;
-  }
-
-.wp-playlist,
-.wp-playlist-caption,
-.wp-playlist-item-title,
-.wp-playlist-item-artist,
-.wp-playlist-item-length {
-    font-size: var(--bs-body-font-size) !important;
- }
-
-.wp-playlist-item-artist {
-    text-transform: none !important;
-}
-
-/* ==============================
- * Outros 
- * ============================== */
-
- /* ########################################################
-  *                      LEITORES DE TELA
-  * ######################################################## */
-
- .screen-reader-text {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-}
-
-/* ########################################################
- *                      UTILITARIOS
- * ######################################################## */
-
-/* Espacamento Vertical (Vertical Spacing) - Remove a margem inferior dos elementos com a classe .no-margin */
-.no-margin {
-    margin-bottom: 0;
-}
-
-/* TODO: TESTES */
-
-.alert-primary {
-    background-color: rgba(var(--bs-primary-rgb), 0.1);
-    color: var(--bs-primary);
-}
-
-.alert-secondary {
-    background-color: rgba(var(--bs-secondary-rgb), 0.1);
-    color: var(--bs-secondary);
-}
-
-
-/* ########################################################
- *                      MEDIA QUERIES
- * ######################################################## */
-
-/**
- * Bootstrap Breakpoints
- * https: //getbootstrap.com/docs/5.3/layout/breakpoints/
- */
-
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
-}
-
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-}
-
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-
-	.navbar-expand-lg .navbar-nav .nav-link {
-		padding-left: var(--minimalista-navbar-nav-link-padding-x);
-		padding-right: var(--minimalista-navbar-nav-link-padding-x);
-	}
-
-}
-
-/* X-Large devices (large desktops, 1200px and up) */
-@media  (min-width: 1200px) {
-}
-
-/* XX-Large devices (larger desktops, 1400px and up) */
-@media (min-width: 1400px) {
-}
-
-figure.gallery-item {
+ figure.gallery-item {
     margin-bottom: 0; /* desfazer estilo do Bootstrap */
 }
 
@@ -826,4 +729,105 @@ figure.gallery-item {
 .gallery-columns-6 .gallery-item img {
     width: 100%;
     height: auto;
+}
+
+/* ==============================
+ * Playlists do Wordpress
+ * ============================== */
+
+.wp-playlist {
+    line-height: 1.8 !important;
+ }
+
+ .wp-playlist-current-item {
+    /* margin-bottom: calc(1 * var(--minimalista-vertical-spacing)); */
+    height: auto !important;
+  }
+
+.wp-playlist,
+.wp-playlist-caption,
+.wp-playlist-item-title,
+.wp-playlist-item-artist,
+.wp-playlist-item-length {
+    font-size: var(--bs-body-font-size) !important;
+ }
+
+.wp-playlist-item-artist {
+    text-transform: none !important;
+}
+
+/* ==============================
+ * Outros 
+ * ============================== */
+
+ /* ########################################################
+  *                      LEITORES DE TELA
+  * ######################################################## */
+
+ .screen-reader-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* ########################################################
+ *                      UTILITARIOS
+ * ######################################################## */
+
+/* Espacamento Vertical (Vertical Spacing) - Remove a margem inferior dos elementos com a classe .no-margin */
+.no-margin {
+    margin-bottom: 0;
+}
+
+/* TODO: TESTES */
+
+.alert-primary {
+    background-color: rgba(var(--bs-primary-rgb), 0.1);
+    color: var(--bs-primary);
+}
+
+.alert-secondary {
+    background-color: rgba(var(--bs-secondary-rgb), 0.1);
+    color: var(--bs-secondary);
+}
+
+
+/* ########################################################
+ *                      MEDIA QUERIES
+ * ######################################################## */
+
+/**
+ * Bootstrap Breakpoints
+ * https: //getbootstrap.com/docs/5.3/layout/breakpoints/
+ */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+	.navbar-expand-lg .navbar-nav .nav-link {
+		padding-left: var(--minimalista-navbar-nav-link-padding-x);
+		padding-right: var(--minimalista-navbar-nav-link-padding-x);
+	}
+
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media  (min-width: 1200px) {
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
 }
