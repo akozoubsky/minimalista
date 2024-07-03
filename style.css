@@ -450,7 +450,7 @@ article:not(:last-child) {
 }
 
 /* ==============================
- * Comments form
+ * Comments form (comentarios)
  * ============================== */
 
  ol.comment-list {
@@ -502,6 +502,7 @@ article:not(:last-child) {
     box-sizing: border-box;
     display: block;
     width: 100%;
+    margin-bottom: calc(1 * var(--minimalista-vertical-spacing));
   }
   
   /* Esta classe é aplicada aos comentários que são feitos pelo autor do post. */
@@ -518,6 +519,10 @@ article:not(:last-child) {
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
+
+ .comment-form-cookies-consent {
+    margin-top: calc(1 * var(--minimalista-vertical-spacing));
+ }
   
 /* ==============================
  * Outros
@@ -546,6 +551,7 @@ a.btn, input[type="submit"]  {
 }
 
 label {
+    font-weight: 500;
     margin-bottom: calc(0.5 * var(--minimalista-vertical-spacing));
 }
 

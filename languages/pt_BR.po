@@ -230,3 +230,20 @@ msgstr "Atualizado em %s"
 msgctxt "modified author"
 msgid "by %s"
 msgstr "por %s"
+
+
+msgid "Name"
+msgstr "Nome"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "Website"
+msgstr "Site"
+
+msgid "Comment"
+msgstr "Comentário"
+
+msgid "Comments"
+msgstr "Comentários"
+

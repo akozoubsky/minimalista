@@ -825,8 +825,77 @@ endif;
 // Comments
 // ==========================
 
-function validate_comment_form($args = array())
-{
+/* 
+ * Esta funcao eh chamada em comments.php
+ * Customiza a exibição dos comentários. Exibe o autor do comentário, a data e hora, o conteúdo e o link para resposta.
+ */
+   function minimalista_bootstrap_comment_callback($comment, $args, $depth)
+   {
+       $GLOBALS['comment'] = $comment; // Define o comentário global para uso em tags de template.
+       $tag = ('div' === $args['style']) ? 'div' : 'li';
+       ?>
+       <<?php echo $tag; ?> id="comment-<?php comment_ID(); ?>" <?php comment_class($args['has_children'] ? 'parent' : '', null, null, false); ?>>
+           <div class="card mb-3">
+               <div class="card-body bg-secondary-subtle">
+                   <div class="row g-2">
+                       <div class="col-md-1">
+                           <?php if ($args['avatar_size'] != 0) echo get_avatar($comment, $args['avatar_size']); ?>
+                       </div>
+                       <div class="col-md-11">
+                           <h5 class="card-title">
+                               <?php printf(__('%s <span class="says">says:</span>'), get_comment_author_link()); ?>
+                           </h5>
+                           <h6 class="card-subtitle mb-2 text-muted">
+                               <a href="<?php echo htmlspecialchars(get_comment_link($comment->comment_ID)); ?>">
+                                   <?php printf(__('%1$s at %2$s'), get_comment_date(),  get_comment_time()); ?>
+                               </a>
+                           </h6>
+   
+                           <?php if ($comment->comment_approved == '0') : ?>
+                               <em class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.'); ?></em><br />
+                           <?php endif; ?>
+   
+                           <div class="comment-metadata">
+                               <a href="<?php echo htmlspecialchars(get_comment_link($comment->comment_ID)); ?>">
+                                   <?php edit_comment_link(__('Edit'), '<span class="edit-link">', '</span>'); ?>
+                               </a>
+                           </div>
+                       </div><!--.col -->
+                   </div><!-- .row -->
+   
+                   <div class="comment-content mt-3">
+                       <?php comment_text(); ?>
+                   </div>
+   
+                   <div class="reply">
+                       <?php comment_reply_link(array_merge($args, array('depth' => $depth, 'max_depth' => $args['max_depth']))); ?>
+                   </div>
+               </div>
+           </div>
+       <?php
+       // Não feche a tag $tag aqui, o WordPress fará isso por nós
+   }
+
+/*
+ * Captura a saída do formulário de comentário, substitui novalidate por data-toggle="validator" e exibe o formulário modificado.
+ * 
+ */
+function minimalista_validate_comment_form($args = array()) {
+    // Adiciona classes Bootstrap aos campos do formulário de comentário
+    $args = wp_parse_args($args, array(
+        'fields' => array(
+            'author' => '<div class="form-group"><label for="author">' . __('Name', 'minimalista') . ' <span class="required">*</span></label> ' .
+                        '<input id="author" name="author" type="text" class="form-control" value="' . esc_attr(isset($commenter['comment_author']) ? $commenter['comment_author'] : '') . '" size="30" /></div>',
+            'email'  => '<div class="form-group"><label for="email">' . __('Email', 'minimalista') . ' <span class="required">*</span></label> ' .
+                        '<input id="email" name="email" type="text" class="form-control" value="' . esc_attr(isset($commenter['comment_author_email']) ? $commenter['comment_author_email'] : '') . '" size="30" /></div>',
+            'url'    => '<div class="form-group"><label for="url">' . __('Website', 'minimalista') . '</label> ' .
+                        '<input id="url" name="url" type="text" class="form-control" value="' . esc_attr(isset($commenter['comment_author_url']) ? $commenter['comment_author_url'] : '') . '" size="30" /></div>',
+        ),
+        'comment_field' => '<div class="form-group"><label for="comment">' . __('Comment', 'minimalista') . ' <span class="required">*</span></label> ' .
+                           '<textarea id="comment" name="comment" class="form-control" rows="8" required></textarea></div>',
+        'class_submit' => 'btn btn-primary', // Classe Bootstrap para o botão de envio
+    ));
+
     // Start output buffering to capture the form HTML
     ob_start();
 
@@ -840,49 +909,16 @@ function validate_comment_form($args = array())
     echo $form_html;
 }
 
-function bootstrap_comment_callback($comment, $args, $depth)
-{
-    $GLOBALS['comment'] = $comment; // Define o comentário global para uso em tags de template.
-    $tag = ('div' === $args['style']) ? 'div' : 'li';
-?>
-    <<?php echo $tag; ?> id="comment-<?php comment_ID(); ?>" <?php comment_class($args['has_children'] ? 'parent' : '', null, null, false); ?>>
-        <div class="card mb-3">
-            <div class="card-body bg-secondary-subtle">
-                <div class="row g-2">
-                    <div class="col-md-1">
-                        <?php if ($args['avatar_size'] != 0) echo get_avatar($comment, $args['avatar_size']); ?>
-                    </div>
-                    <div class="col-md-11">
-                        <h5 class="card-title">
-                            <?php printf(__('%s <span class="says">says:</span>'), get_comment_author_link()); ?>
-                        </h5>
-                        <h6 class="card-subtitle mb-2 text-muted">
-                            <a href="<?php echo htmlspecialchars(get_comment_link($comment->comment_ID)); ?>">
-                                <?php printf(__('%1$s at %2$s'), get_comment_date(),  get_comment_time()); ?>
-                            </a>
-                        </h6>
 
-                        <?php if ($comment->comment_approved == '0') : ?>
-                            <em class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.'); ?></em><br />
-                        <?php endif; ?>
+/* 
+ * Este filtro permite que você modifique os argumentos padrão passados para a função comment_form.
+ * Adiciona as classes btn e btn-primary ao botão de envio do formulário de comentário, aplicando os estilos do Bootstrap ao botão.
+ * Nao serah necessario porque alteramos o 
+ */
+function minimalista_comment_form_defaults($defaults) {
+    // Adiciona classes Bootstrap ao botão de envio do formulário de comentário
+    $defaults['class_submit'] = 'btn btn-primary';
 
-                        <div class="comment-metadata">
-                            <a href="<?php echo htmlspecialchars(get_comment_link($comment->comment_ID)); ?>">
-                                <?php edit_comment_link(__('Edit'), '<span class="edit-link">', '</span>'); ?>
-                            </a>
-                        </div>
-                    </div><!--.col -->
-                </div><!-- .row -->
-
-                <div class="comment-content mt-3">
-                    <?php comment_text(); ?>
-                </div>
-
-                <div class="reply">
-                    <?php comment_reply_link(array_merge($args, array('depth' => $depth, 'max_depth' => $args['max_depth']))); ?>
-                </div>
-            </div>
-        </div>
-    <?php
+    return $defaults;
 }
-// Não feche a tag $tag aqui, o WordPress fará isso por nós
+//add_filter('comment_form_defaults', 'minimalista_comment_form_defaults');
