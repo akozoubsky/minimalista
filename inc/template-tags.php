@@ -2,10 +2,25 @@
 /**
  * Custom template tags for this theme
  *
+ * Esse arquivo geralmente é usado para definir funções personalizadas que são usadas dentro dos templates do seu tema para exibir conteúdo específico.
+ * Essas funções geralmente retornam ou imprimem HTML diretamente e são frequentemente chamadas
+ * dentro de arquivos de template como single.php, page.php, archive.php, etc.
+ * 
  * Eventually, some of the functionality here could be replaced by core features.
  *
  * @package minimalista
  */
+
+ if ( ! function_exists( 'wp_body_open' ) ) :
+	/**
+	 * Shim for sites older than 5.2.
+	 *
+	 * @link https://core.trac.wordpress.org/ticket/12563
+	 */
+	function wp_body_open() {
+		do_action( 'wp_body_open' );
+	}
+endif;
 
 if ( ! function_exists( 'minimalista_posted_on' ) ) :
     /**
@@ -208,16 +223,226 @@ if ( ! function_exists( 'minimalista_post_thumbnail' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'wp_body_open' ) ) :
-	/**
-	 * Shim for sites older than 5.2.
-	 *
-	 * @link https://core.trac.wordpress.org/ticket/12563
-	 */
-	function wp_body_open() {
-		do_action( 'wp_body_open' );
-	}
-endif;
+/**
+ * Displays the post title based on metabox selection, with optional link.
+ * Incorporates semantic HTML, schema.org microdata, accessibility features, custom CSS classes,
+ * alt attribute for images in the title, control over the rel attribute in links,
+ * and general HTML wrappers around the title.
+ *
+ * @param string $tag Optional. The HTML tag to use for the title. Default 'h1'.
+ * @param string $class Optional. Additional CSS classes for the title tag. Default empty.
+ * @param bool $link Optional. Whether to display the title as a link. Default false.
+ * @param string $html_before Optional. HTML to be added before the title. Default empty.
+ * @param string $html_after Optional. HTML to be added after the title. Default empty.
+ * @param bool $echo Optional. Whether to echo the title or return it. Default true (echo).
+ * @param int|null $post_id Optional. Post ID. Default null for the current post in the loop.
+ * @param string $rel Optional. The rel attribute for the link. Default empty.
+ * @param string $alt_text Optional. Alternative text for an image in the title. Default empty.
+ * @return string|void The post title.
+ *
+ * Example Usage:
+ *
+ * Inside the Loop:
+ * 
+ * if (have_posts()) {
+ *     while (have_posts()) {
+ *         the_post();
+ *         minimalista_display_post_title('h2', 'my-custom-class', true, '<div class="title-wrapper">', '</div>');
+ *     }
+ * }
+ *
+ * 
+ * Outside the Loop:
+ * 
+ * // Displaying a specific post title outside the loop
+ * minimalista_display_post_title('h3', 'my-custom-class', false, '', '', false, 42); // 42 is an example post ID
+ * 
+ * 
+ * Filter:
+ * 
+ * add_filter('minimalista_display_post_title_output', 'add_icon_to_title', 10, 2);
+ * 
+ * function add_icon_to_title($title_html, $post_id) {
+ *    // Verifica se é um post específico ou adiciona lógica condicional
+ *    $icon_html = '<span class="my-icon-class"></span>';
+ *    return $icon_html . $title_html;
+ * } 
+ * 
+ */
+function minimalista_display_post_title($tag = 'h1', $class = '', $link = false, $html_before = '', $html_after = '', $echo = true, $post_id = null, $rel = '', $alt_text = '')
+{
+
+    // Validar tag HTML
+    $allowed_tags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div']; // Tags permitidas
+    if (!in_array($tag, $allowed_tags)) {
+        $tag = 'h1'; // Define um valor padrão se a tag não for permitida
+    }
+
+    // Escapamento de strings
+    $class = esc_attr($class);
+    $rel = esc_attr($rel);
+    $alt_text = esc_attr($alt_text);
+    $html_before = wp_kses_post($html_before); // Permite HTML seguro
+    $html_after = wp_kses_post($html_after);   // Permite HTML seguro
+
+    // Se $post_id for fornecido, ele é convertido para inteiro usando intval(). Se não for fornecido, get_the_ID() é usado para obter o ID do post atual
+    $post_id = $post_id ? intval($post_id) : get_the_ID();
+
+    // Obtém a configuração do metabox para exibir ou ocultar o título.
+    $show_title = get_post_meta($post_id, '_title_display', true);
+
+    // Verifica se o título deve ser exibido.
+    if ($show_title !== 'no') {
+        // Obtém o título do post.
+        $title_text = get_the_title($post_id);
+        $permalink = get_permalink($post_id);
+        $class_attr = $class ? ' class="' . esc_attr($class) . '"' : '';
+        $rel_attr = $rel ? ' rel="' . esc_attr($rel) . '"' : '';
+
+        // Se a opção de link está ativa, envolve o título com um link para o post.
+        if ($link) {
+            $title = '<a href="' . esc_url($permalink) . '"' . $rel_attr . ' itemprop="url">' . esc_html($title_text) . '</a>';
+        } else {
+            $title = esc_html($title_text);
+        }
+
+        // Adiciona um alt text se fornecido e se o título contiver uma imagem
+        if ($alt_text && strpos($title, '<img') !== false) {
+            $title = str_replace('<img', '<img alt="' . esc_attr($alt_text) . '"', $title);
+        }
+
+        // Monta o título com o HTML antes e depois, conforme especificado.
+        $title_html = $html_before . "<$tag $class_attr itemprop='headline'>" . $title . "</$tag>" . $html_after;
+
+        // Aplicação do filtro para personalização adicional
+        $title_html = apply_filters('minimalista_display_post_title_output', $title_html, $post_id);
+
+        // Exibe ou retorna o título, baseado na opção $echo.
+        if ($echo) {
+            echo $title_html;
+        } else {
+            return $title_html;
+        }
+    }
+}
+
+/**
+ * Determine the format of the featured image.
+ * 
+ * @param int $post_id Post ID.
+ * @return string Format of the image (square, landscape, portrait).
+ */
+function minimalista_get_featured_image_format($post_id = null)
+{
+    // Se $post_id for fornecido, ele é convertido para inteiro usando intval(). Se não for fornecido, get_the_ID() é usado para obter o ID do post atual
+    $post_id = $post_id ? intval($post_id) : get_the_ID();
+
+    $image_id = get_post_thumbnail_id($post_id);
+    if (!$image_id) {
+        return ''; // No featured image.
+    }
+
+    $image_data = wp_get_attachment_metadata($image_id);
+    if (!$image_data) {
+        return ''; // No image data found.
+    }
+
+    $width = $image_data['width'];
+    $height = $image_data['height'];
+
+    if ($width > $height) {
+        return 'landscape';
+    } elseif ($width < $height) {
+        return 'portrait';
+    } else {
+        return 'square';
+    }
+}
+
+/**
+ * Exibe a miniatura (thumbnail) do post, com opções de personalização.
+ *
+ * @param string $size Tamanho da imagem (thumbnail, medium, large, full ou customizado).
+ * @param string $class Classe CSS adicional para a tag da imagem.
+ * @param bool $link Optional. Whether to display the image as a link. Default false.
+ * @param bool $echo Optional. Whether to echo the image or return the image. Default true (echo).
+ * @param string $html_before Optional. HTML to be added before the image. Default empty.
+ * @param string $html_after Optional. HTML to be added after the image. Default empty.
+ * @param int|null $post_id Optional. Post ID. Default null for the current post in the loop.
+ * @param string $rel Optional. The rel attribute for the link. Default empty.
+ * @param string $alt_text Optional. Alternative text for an image in the title. Default empty.
+ */
+function minimalista_display_post_thumbnail($size = 'thumbnail', $class = '', $link = false, $echo = true, $html_before = '', $html_after = '', $post_id = null, $rel = '', $alt_text = '')
+{
+    // Escapamento e validação de strings
+    $class = esc_attr($class);
+    $rel = esc_attr($rel);
+    $alt_text = esc_attr($alt_text);
+    $html_before = wp_kses_post($html_before); // Permite HTML seguro
+    $html_after = wp_kses_post($html_after);   // Permite HTML seguro
+
+    // Sanitização de múltiplas classes CSS
+    $classes_array = explode(' ', $class);
+    $sanitized_classes = array_map('sanitize_html_class', $classes_array);
+
+    // Se $post_id for fornecido, ele é convertido para inteiro usando intval(). Se não for fornecido, get_the_ID() é usado para obter o ID do post atual
+    $post_id = $post_id ? intval($post_id) : get_the_ID();
+
+    // Define o texto alternativo padrão para o título do post, se não fornecido
+    if (empty($alt_text)) {
+        $alt_text = get_the_title($post_id);
+    }
+
+    // Obtém o ID do attachment da imagem destacada
+    $thumbnail_id = get_post_thumbnail_id($post_id);
+
+    // Obtém as dimensões da imagem
+    $image_info = wp_get_attachment_image_src($thumbnail_id, $size);
+    if ($image_info) {
+        $width = $image_info[1];
+        $height = $image_info[2];
+
+        // Determina o formato da imagem
+        if ($width == $height) {
+            $image_format = 'square';
+        } elseif ($width > $height) {
+            $image_format = 'landscape';
+        } else {
+            $image_format = 'portrait';
+        }
+    } else {
+        $image_format = 'unknown';
+    }
+
+    // Constrói as classes fixas e combina com as classes fornecidas, evitando duplicatas
+    $fixed_classes = "thumbnail img-fluid attachment-{$size} img-id-{$thumbnail_id} format-{$image_format}";
+    $final_classes = implode(' ', array_unique(array_merge(explode(' ', $fixed_classes), $sanitized_classes)));
+
+    // Verifica se o post tem uma imagem destacada
+    if (has_post_thumbnail($post_id)) {
+        // Recupera a imagem destacada
+        $thumbnail_html = get_the_post_thumbnail($post_id, $size, array('class' => $final_classes, 'alt' => $alt_text));
+
+        // Monta a imagem com link, se necessário
+        if ($link) {
+            $permalink = get_permalink($post_id);
+            $rel_attribute = $rel ? ' rel="' . $rel . '"' : '';
+            $thumbnail_html = '<a href="' . esc_url($permalink) . '"' . $rel_attribute . '>' . $thumbnail_html . '</a>';
+        }
+
+        // Prepara o HTML final
+        $output = $html_before . $thumbnail_html . $html_after;
+
+        // Exibe ou retorna o HTML
+        if ($echo) {
+            echo $output;
+        } else {
+            return $output;
+        }
+    }
+    // Nenhuma ação se o post não tiver imagem destacada
+}
+
 
 /**
  * Generate HTML for FontAwesome icons
@@ -410,3 +635,254 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
 
     echo '</div>';  // Close the "post-metadata" container
 }
+
+/**
+ * Displays the post excerpt with additional customization options.
+ * 
+ * @param string $excerpt_classes Additional classes for the excerpt div.
+ * @param string $html_before HTML content to be displayed before the excerpt.
+ * @param string $html_after HTML content to be displayed after the excerpt.
+ * @param int $length_limit Maximum length of the excerpt in words.
+ * @param bool $show_more Indicates whether to show the custom 'more' text.
+ * @param string $more_text Custom 'more' text. Default 'Read more'.
+ * @return void
+ */
+function minimalista_display_post_excerpt($excerpt_classes = '', $html_before = '', $html_after = '', $length_limit = 55, $show_more = false, $more_text = 'Leia mais')
+{
+    // Validating and sanitizing parameters
+
+    // Tratar o saneamento de varias classes
+    $excerpt_classes_att = explode(' ', $excerpt_classes);
+    $sanitized_excerpt_classes = array_map('sanitize_html_class', $excerpt_classes_att);
+    $sanitized_excerpt_classes_string = implode(' ', $sanitized_excerpt_classes);
+
+    $html_before = wp_kses_post($html_before);
+    $html_after = wp_kses_post($html_after);
+    $length_limit = intval($length_limit);
+    $more_text = sanitize_text_field($more_text);
+
+    // Custom excerpt length function
+    add_filter('excerpt_length', function ($length) use ($length_limit) {
+        return $length_limit;
+    }, 999);
+
+    // Custom 'more' text for the excerpt
+    if ($show_more) {
+        add_filter('excerpt_more', function () use ($more_text) {
+            return ' <a class="read-more" href="' . get_permalink() . '">' . __($more_text, 'light-cms-bootstrap') . '</a>';
+        });
+    }
+
+    // Buffering the output
+    ob_start();
+    the_excerpt();
+    $excerpt_output = ob_get_clean();
+
+    // Checking if the excerpt exists
+    if (trim($excerpt_output) === '') {
+        return; // Return nothing if no excerpt
+    }
+
+    // Displaying the excerpt with additional HTML and classes
+    echo $html_before;
+    //echo '<div class="entry-excerpt entry-description ' . $sanitized_excerpt_classes_string . '" itemprop="description" itemscope itemtype="http://schema.org/ArticleBody">';
+    //echo '<div class="entry-excerpt entry-description ' . $sanitized_excerpt_classes_string . '" itemprop="articleBody">';
+    echo '<div class="entry-excerpt entry-description ' . $sanitized_excerpt_classes_string . '" itemprop="description">';
+    echo $excerpt_output;
+    echo '</div>';
+    echo $html_after;
+}
+
+/**
+ * Generate pagination links for a custom query.
+ *
+ * This function utilizes WordPress's paginate_links() function to create
+ * a set of numerical pagination links based on the provided custom query.
+ * The pagination links are styled using Bootstrap's pagination component.
+ *
+ * @param WP_Query $wp_query The custom query for which to generate pagination links.
+ *
+ * @return void Outputs the pagination links directly to the page.
+ * 
+ * @link https://getbootstrap.com/docs/5.3/components/pagination/
+ */
+function minimalista_custom_pagination($wp_query)
+{
+    // Call the paginate_links() function to generate an array of pagination links
+    // Set the base for the pagination links, replace a large number with the placeholder '%#%'
+    // to allow the function to generate the correct URL structure for each page link
+    $pages = paginate_links(array(
+        'base' => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
+        'format' => '?paged=%#%',  // Define the format for the pagination query, '%#%' is replaced by the page number
+        'current' => max(1, get_query_var('paged')),  // Get the current page number, ensure it's at least 1
+        'total' => $wp_query->max_num_pages,  // Get the total number of pages from the provided query
+        'type' => 'array',  // Specify that the function should return an array of page links
+        'show_all' => false,  // Do not show links to all pages, only show a subset of links
+        'end_size' => 2,  // Show links to the first and last 2 pages
+        'mid_size' => 1,  // Show links to the current page, and 1 page on either side
+        'prev_next' => true,  // Show links to the previous and next pages
+        // 'prev_text' => __('&laquo; Anterior'),  // Set the text for the 'previous page' link
+        // 'next_text' => __('Próximo &raquo;'),  // Set the text for the 'next page' link
+        'prev_text' => '<i class="fas fa-angle-left"></i>' . __(' Anterior'), // Set the text for the 'previous page' link
+        'next_text' =>  __(' Próximo ') . '<i class="fas fa-angle-right"></i>', // Set the text for the 'next page' link
+        'add_args' => false,  // Do not add any additional query args to the URLs
+        'add_fragment' => '',  // Do not append any fragments to the URLs
+    ));
+
+    // Check if the paginate_links() function returned an array of page links
+    if (is_array($pages)) {
+        echo '<nav aria-label="Custom Page Navigation">';
+        echo '<ul class="pagination">';
+        foreach ($pages as $page) {
+            // Check if the page link is for the current page
+            if (strpos($page, 'current') !== false) {
+                // If it's the current page, add .active class and aria-current attribute
+                echo '<li class="page-item active" aria-current="page">' . str_replace('page-numbers', 'page-link', $page) . '</li>';
+            } else {
+                // If it's not the current page, output the page link without .active class and aria-current attribute
+                echo '<li class="page-item">' . str_replace('page-numbers', 'page-link', $page) . '</li>';
+            }
+        }
+        echo '</ul>';
+        echo '</nav>';
+    }
+}
+
+/**
+ * Displays a list of popular articles.
+ *
+ * This function queries for the most popular articles based on a custom
+ * meta field for post views count. It generates and outputs an unordered
+ * list of the titles of the popular articles, each linking to the respective post.
+ *
+ * @since 1.0.0
+ *
+ * @return void Outputs HTML with the list of popular articles or a message if none are found.
+ */
+if ( ! function_exists( 'minimalista_display_popular_articles' ) ) :
+
+    function minimalista_display_popular_articles($number_of_posts = 12, $section_title = '', $title_tag = 'h3', $additional_section_classes = '', $additional_item_classes = '', $page_for_posts_link_text = '', $page_for_posts_link_classes = '', $page_for_posts_link_html_before = '', $page_for_posts_link_html_after = '')
+    {
+        // Validate and sanitize parameters
+        $number_of_posts = intval($number_of_posts);
+        $section_title = sanitize_text_field($section_title);
+        $title_tag = in_array($title_tag, ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']) ? $title_tag : 'h3';
+        $additional_section_classes = implode(' ', array_map('sanitize_html_class', explode(' ', $additional_section_classes)));
+        $additional_item_classes = implode(' ', array_map('sanitize_html_class', explode(' ', $additional_item_classes)));
+        $page_for_posts_link_text = sanitize_text_field(__($page_for_posts_link_text, 'light-cms-bootstrap'));
+        $page_for_posts_link_classes = implode(' ', array_map('sanitize_html_class', explode(' ', $page_for_posts_link_classes)));
+        $page_for_posts_link_html_before = wp_kses_post($page_for_posts_link_html_before);
+        $page_for_posts_link_html_after = wp_kses_post($page_for_posts_link_html_after);
+
+        // Query for popular posts
+        $args = array(
+            'posts_per_page' => $number_of_posts,
+            'orderby' => 'comment_count', // Or another criterion for popularity
+            'order' => 'DESC'
+        );
+        $popular_posts = new WP_Query($args);
+
+        if ($popular_posts->have_posts()) {
+            // Start section
+            echo '<section id="display-popular-articles" class="display-popular-articles ' . esc_attr($additional_section_classes) . '">';
+
+            // Display section title if provided
+            if (!empty($section_title)) {
+                echo "<{$title_tag}>" . esc_html($section_title) . "</{$title_tag}>";
+            }
+
+            // Display posts
+            if ($popular_posts->have_posts()) {
+                echo '<ul id="display-popular-articles-list" class="list-unstyled d-flex flex-column flex-wrap">';
+                while ($popular_posts->have_posts()) {
+                    $popular_posts->the_post();
+                    echo '<li class="display-popular-articles-list-item  text-break ' . esc_attr($additional_item_classes) . '">';
+                    echo '<a href="' . esc_url(get_permalink()) . '">' . esc_html(get_the_title()) . '</a>';
+                    echo '</li>';
+                }
+                echo '</ul>';
+            } else {
+                echo '<p>Nenhum post popular encontrado.</p>';
+            }
+
+            // Link to the page for posts
+            // Verifica se o texto do link está definido e não é vazio antes de exibir o link
+            if (!empty($page_for_posts_link_text)) {
+                echo $page_for_posts_link_html_before;
+                echo '<a href="' . esc_url(get_permalink(get_option('page_for_posts'))) . '" class="all-topics-link ' . esc_attr($page_for_posts_link_classes) . '">' . esc_html($page_for_posts_link_text) . '</a>';
+                echo $page_for_posts_link_html_after;
+            }
+
+            // End section
+            echo '</section>';
+        }
+        // Reset post data
+        wp_reset_postdata();
+    }
+endif;
+
+// ==========================
+// Comments
+// ==========================
+
+function validate_comment_form($args = array())
+{
+    // Start output buffering to capture the form HTML
+    ob_start();
+
+    // Call the comment_form() function with the provided arguments
+    comment_form($args);
+
+    // Capture the buffered HTML and replace 'novalidate' with 'data-toggle="validator"'
+    $form_html = str_replace('novalidate', 'data-toggle="validator"', ob_get_clean());
+
+    // Echo the modified form HTML
+    echo $form_html;
+}
+
+function bootstrap_comment_callback($comment, $args, $depth)
+{
+    $GLOBALS['comment'] = $comment; // Define o comentário global para uso em tags de template.
+    $tag = ('div' === $args['style']) ? 'div' : 'li';
+?>
+    <<?php echo $tag; ?> id="comment-<?php comment_ID(); ?>" <?php comment_class($args['has_children'] ? 'parent' : '', null, null, false); ?>>
+        <div class="card mb-3">
+            <div class="card-body bg-secondary-subtle">
+                <div class="row g-2">
+                    <div class="col-md-1">
+                        <?php if ($args['avatar_size'] != 0) echo get_avatar($comment, $args['avatar_size']); ?>
+                    </div>
+                    <div class="col-md-11">
+                        <h5 class="card-title">
+                            <?php printf(__('%s <span class="says">says:</span>'), get_comment_author_link()); ?>
+                        </h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <a href="<?php echo htmlspecialchars(get_comment_link($comment->comment_ID)); ?>">
+                                <?php printf(__('%1$s at %2$s'), get_comment_date(),  get_comment_time()); ?>
+                            </a>
+                        </h6>
+
+                        <?php if ($comment->comment_approved == '0') : ?>
+                            <em class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.'); ?></em><br />
+                        <?php endif; ?>
+
+                        <div class="comment-metadata">
+                            <a href="<?php echo htmlspecialchars(get_comment_link($comment->comment_ID)); ?>">
+                                <?php edit_comment_link(__('Edit'), '<span class="edit-link">', '</span>'); ?>
+                            </a>
+                        </div>
+                    </div><!--.col -->
+                </div><!-- .row -->
+
+                <div class="comment-content mt-3">
+                    <?php comment_text(); ?>
+                </div>
+
+                <div class="reply">
+                    <?php comment_reply_link(array_merge($args, array('depth' => $depth, 'max_depth' => $args['max_depth']))); ?>
+                </div>
+            </div>
+        </div>
+    <?php
+}
+// Não feche a tag $tag aqui, o WordPress fará isso por nós

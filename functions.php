@@ -6,13 +6,14 @@
  *
  * @package minimalista
  */
+
+// Prevent direct access to the file
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
 	define( '_S_VERSION', '1.0.0' );
-}
-
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
 }
 
 /**
@@ -51,6 +52,11 @@ require get_template_directory() . '/inc/custom-header.php';
 require get_template_directory() . '/inc/template-tags.php';
 
 /**
+ * Custom template taxonomies tags for this theme.
+ */
+require get_template_directory() . '/inc/template-taxonomies.php';
+
+/**
  * Functions which enhance the theme by hooking into WordPress.
  */
 require get_template_directory() . '/inc/template-functions.php';
@@ -78,7 +84,7 @@ require get_template_directory() . '/inc/metabox.php';
 /**
  * Functions related to shorcodes.
  */
-//require get_template_directory() . '/inc/shortcodes.php';
+require get_template_directory() . '/inc/shortcodes.php';
 
 /**
  * Load Jetpack compatibility file.

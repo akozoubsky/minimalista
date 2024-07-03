@@ -221,7 +221,7 @@ function get_custom_header_image_url($post_id = null)
  *
  * @param int|null $post_id Optional. Post ID. Default is null which means current post in the loop.
  */
-function display_custom_header_image($post_id = null)
+function minimalista_display_custom_header_image($post_id = null)
 {
     // Se $post_id for fornecido, ele é convertido para inteiro usando intval(). Se não for fornecido, get_the_ID() é usado para obter o ID do post atual
     $post_id = $post_id ? intval($post_id) : get_the_ID();

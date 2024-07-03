@@ -12,6 +12,12 @@
  * @version 1.0.0
  * @author Alexandre Kozoubsky
  */
+
+// Prevent direct access to the file
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
 ?>
 
 <form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>" onsubmit="return validateSearch()">

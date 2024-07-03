@@ -7,6 +7,11 @@
  * @package minimalista
  */
 
+// Prevent direct access to the file
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
 get_header();
 ?>
 
@@ -26,12 +31,12 @@ get_header();
 					<div class="page-content">
 						<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'minimalista' ); ?></p>
 
-							<?php
-							get_search_form();
+							<div class="mt-5 mb-5">
+							<?php get_search_form(); ?>
+							</div>
 
-							the_widget( 'WP_Widget_Recent_Posts' );
-							?>
-
+							<?php the_widget( 'WP_Widget_Recent_Posts' ); ?>
+							
 							<div class="widget widget_categories">
 								<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'minimalista' ); ?></h2>
 								<ul>

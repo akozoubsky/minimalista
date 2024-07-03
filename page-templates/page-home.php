@@ -1,14 +1,19 @@
 <?php
 /**
- * Template Name: Página de Projetos V.1
+ * Template Name: Home
  *
- * The template for displaying Projects.
+ * The template for displaying the home page.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  * @link https://github.com/oceanwp/oceanwp/blob/master/page.php
  *
  * @package minimalista
  */
+
+// Prevent direct access to the file
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
 
 get_header(); ?>
 
@@ -19,7 +24,7 @@ get_header(); ?>
 
 				<?php
 				while (have_posts()) :
-					// Exibe o conteúdo da página.
+					// Exibe o conteúdo da página."
 					the_post();
 
 					get_template_part('template-parts/content', 'page');
@@ -33,10 +38,11 @@ get_header(); ?>
 				?>
 
 				<?php
+				// Exibe os projetos
 				$projetos_query = new WP_Query(array(
 					'category_name' => 'projetos', // Slug da categoria
 					'post_status'   => 'publish',
-					'posts_per_page'=> 10,
+					'posts_per_page' => 10,
 				));
 
 				if ($projetos_query->have_posts()) :
@@ -46,14 +52,14 @@ get_header(); ?>
 						 * If you want to override this in a child theme, then include a file
 						 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
 						 */
-						//get_template_part( 'template-parts/content', 'projetos' );
+						// get_template_part( 'template-parts/content', 'projetos-excerpt' );
 						?>
 
 						<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 							<header class="entry-header">
 								<?php
-								the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-						
+								the_title( '<h3 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' );
+
 								if ( 'post' === get_post_type() ) :
 									?>
 									<div class="entry-meta">
@@ -65,12 +71,12 @@ get_header(); ?>
 									</div><!-- .entry-meta -->
 								<?php endif; ?>
 							</header><!-- .entry-header -->
-						
+
 							<?php minimalista_post_thumbnail(); ?>
-						
+
 							<div class="entry-content">
-								<?php the_content(); ?>
-						
+								<?php the_excerpt(); ?>
+
 								<?php
 								wp_link_pages(
 									array(
@@ -81,12 +87,13 @@ get_header(); ?>
 								
 								?>
 							</div><!-- .entry-content -->
-						
+
 							<footer class="entry-footer">
 								<?php //minimalista_entry_footer(); ?>
 								<?php minimalista_display_post_metadata_secondary(); ?>
 							</footer><!-- .entry-footer -->
 						</article><!-- #post-<?php the_ID(); ?> -->
+
 
 					<?php
 					endwhile;

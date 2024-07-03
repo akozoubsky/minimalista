@@ -1,9 +1,10 @@
 /*!
 Theme Name: minimalista
-Theme URI: http://underscores.me/
-Author: Underscores.me
-Author URI: http://underscores.me/
-Description: Description
+Theme URI: https://github.com/akozoubsky/minimalista
+Author: Alexandre Kozoubsky
+Author URI: https://github.com/akozoubsky
+Copyright: 2024, Alexandre Kozoubsky
+Description: Minimalista is a clean, elegant, and fully customizable WordPress theme based on the Underscores starter theme. Ideal for bloggers, small businesses, and personal websites, Minimalista offers a responsive design, customizable colors, and various layout options to create a unique and professional online presence.
 Version: 1.0.0
 Tested up to: 5.4
 Requires PHP: 5.6
@@ -20,10 +21,33 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
+
+@link https: //getbootstrap.com/docs/5.3/
+@link https://getbootstrap.com/docs/5.3/utilities/background/
+@link https://getbootstrap.com/docs/5.3/utilities/text/
+@link https://getbootstrap.com/docs/5.3/utilities/colors/
+@link https://getbootstrap.com/docs/5.3/components/buttons/
+@link https://getbootstrap.com/docs/5.3/customize/css-variables/
+@link https://getbootstrap.com/docs/5.3/customize/color/
 */
 
+/* ########################################################
+ *              DEFINICOES DE FONTE
+ * ######################################################## */
+@font-face {
+    font-family: 'Roboto Flex';
+    src: url('fonts/RobotoFlex-VariableFont_GRAD,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.ttf') format('truetype');
+    font-weight: 100 1000;
+    font-stretch: 50% 200%;
+    font-style: normal;
+}
+
+/* ########################################################
+ *              VARIÁVEIS E CONFIGURAÇÕES GLOBAIS
+ * ######################################################## */
+
 /* ==============================
- * Variaveis de CSS:
+ * Variaveis CSS
  * ============================== */
 
  :root {
@@ -32,7 +56,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     --minimalista-vertical-spacing: 1rem; /* Espaçamento vertical */
     --minimalista-nav-link-color: var(--bs-white);
     --minimalista-nav-link-hover-color: #d4af37; /* Cor dourada para o hover */
-    --minimalista-navbar-brand-padding-y: 3rem;
+    --minimalista-navbar-brand-padding-y: 1rem;
     --minimalista-navbar-brand-margin-end: 1rem;
     --minimalista-navbar-nav-link-padding-x: 1rem;
 
@@ -50,6 +74,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     --bs-btn-secondary-hover-border: #b3952d;
 
     --bs-link-opacity: 1;
+    --bs-code-color: #1A728D;
 }
 
 /* ########################################################
@@ -82,6 +107,28 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 /* ########################################################
  *                        ELEMENTOS HTML
  * ######################################################## */
+
+html, body {
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;	
+}
+
+/* ==============================
+ * Tipografia
+ * ============================== */
+
+body {
+    font-family: "Roboto Flex", "Noto Sans Display", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Roboto Flex", "Noto Sans Display", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
 
 /* ==============================
  * Cabecalhos (<h1> a <h6>)
@@ -161,6 +208,14 @@ table:last-child {
     margin-bottom: 0;
 }
 
+/* ==============================
+ * Divisores
+ * ============================== */
+
+hr {
+    margin: calc(2 * var(--minimalista-vertical-spacing)) 0;
+}
+
 /* ########################################################
  *                        CONTEUDO DO SITE
  * ######################################################## */
@@ -186,11 +241,14 @@ table:last-child {
 
 /* Estilo para ajustar o logotipo */
 .custom-logo-link img {
+    display: inline-block;
     margin-right: calc(1 * var(--minimalista-horizontal-spacing));
+    margin-bottom: 0;
 }
 
 /* Titulo do site (texto) */
 .site-title {
+    display: inline;
     margin-right: calc(1 * var(--minimalista-horizontal-spacing));
 }
 
@@ -292,12 +350,21 @@ ul.minimalista-custom-list ul li:last-child {
 }
 
 /* ########################################################
- *                        BLOG
+ *                        BLOG / POSTAGENS
  * ######################################################## */
 
- /* ==============================
-  * Artigos e metadados
-  * ============================== */
+ /**
+ * Header Image
+ */
+.post-header-image img {
+    width: 100%; /* Default to 100% for fluid containers */
+    height: auto; /* Maintain aspect ratio */    
+    overflow: hidden;
+}
+
+/* ==============================
+ * Artigos e metadados
+ * ============================== */
 
 /* Adicionar margem inferior entre artigos, exceto o ultimo */
 article:not(:last-child) {
@@ -308,6 +375,14 @@ article:not(:last-child) {
  .entry-header, .page-header, .widget-title {
     margin-bottom: calc(1.25 * var(--minimalista-vertical-spacing));
  }
+
+/**
+ * Metadata
+ */
+.post-metadata-primary,
+.post-metadata-secondary {
+    font-size: 1rem;
+} 
 
 .entry-meta, .entry-content, .entry-footer {
     margin-bottom: 0.5rem; /* 10px -> 0.625rem */
@@ -373,6 +448,85 @@ article:not(:last-child) {
 .widget-area .card {
     border: none;
 }
+
+/* ==============================
+ * Comments form
+ * ============================== */
+
+ ol.comment-list {
+    padding-left: 0;
+   }
+  
+   .comment-list, ol.children {
+    list-style: none;
+  }
+  
+    .comment-list li {
+      clear: both;
+    }
+  
+    article.comment-body {
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+    }
+  
+      .comment-meta {
+        /* (footer) */
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+  
+        .comment-meta .comment-author {
+          margin-bottom: 1rem;
+        }
+  
+          .comment-meta .comment-author img,
+          .comment-list .avatar {
+            margin-right: 1rem;
+            /* @TODO rounded */
+            border-radius: 1rem;
+          }
+  
+        .comment-meta .comment-metadata {
+          /* date */
+          margin-bottom: 1rem;
+        }
+    
+      .comment-content {
+        margin-bottom: 1rem;
+      }
+  
+      .reply {}
+  
+  textarea#comment {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+  }
+  
+  /* Esta classe é aplicada aos comentários que são feitos pelo autor do post. */
+  .bypostauthor {
+    background-color: #f8f9fa; /* Cor de fundo cinza claro do Bootstrap */
+    border: 1px solid #dee2e6; /* Borda cinza do Bootstrap */
+    padding: 2rem 2rem;
+  }
+  
+  #cancel-comment-reply-link {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+/* ==============================
+ * Outros
+ * ============================== */
+/* 
+.continue-reading {
+    display: none;
+}
+*/
 
 /* ########################################################
  *                FORMULARIOS, BOTOES E LINKS
@@ -516,19 +670,106 @@ input[type="text"]:last-child, input[type="email"]:last-child, input[type="passw
  *                          IMAGENS
  * ######################################################## */
 
-
-img {
+ img {
+    max-width: 100%;
+    height: auto;
     margin-bottom: calc(1.25 * var(--minimalista-vertical-spacing));
 }
 
-/* Espacamento Vertical (Vertical Spacing) */
-img:last-child {
-    margin-bottom: 0;
+.post-thumbnail img, .thumbnail {
+    margin-bottom: calc(1.25 * var(--minimalista-vertical-spacing)) !important;
+    border: 1px solid var(--bs-border-color);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.post-thumbnail {
-    margin-bottom: calc(1.25 * var(--minimalista-vertical-spacing));
+figure {
+    max-width: 100%;
 }
+
+/* ==============================================================================================================
+ * Image sizes generated by the theme. This ensures that the image covers the designated area without distorting.
+ * ============================================================================================================== */
+
+.landscape-small,
+.landscape-medium,
+.landscape-large {
+  aspect-ratio: 16 / 9;
+}
+
+.fashion-small,
+.fashion-medium,
+.fashion-large {
+  aspect-ratio: 4 / 5;
+}
+
+.portrait-small,
+.portrait-medium,
+.portrait-large {
+  aspect-ratio: 3 / 4;
+}
+
+.profile-icon-rectangular-small,
+.profile-icon-rectangular-medium,
+.profile-icon-rectangular-large {
+  aspect-ratio: 3 / 4
+}
+
+.profile-icon-square-small,
+.profile-icon-square-medium,
+.profile-icon-square-large {
+  aspect-ratio: 1 / 1
+}
+
+/* ==============================
+ * Videos
+ * ============================== */
+ 
+/* adjust CSS properties to ensure the video is responsive and fits the container size */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* Proporção 16:9 */
+    height: 0; /* The height is set to 0 to ensure that all vertical space is created by padding-bottom. */
+    overflow: hidden;
+}
+
+	.video-wrapper iframe,
+	.video-wrapper object,
+	.video-wrapper embed {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+/* ==============================
+ * Ícones
+ * ============================== */
+
+/**
+ * Icons - FontAwesome
+ */
+ .fas:hover,
+ .fab:hover {
+      transform: scale(1.1); /* Aumenta o tamanho do ícone em 10% */
+      transition: transform 0.3s ease-in-out; /* Animação suave */
+ }
+  
+ /**
+  * Icons - Material
+  */
+ .material-icons {
+    vertical-align: -0.125em;
+    font-size: 1.125rem;
+    line-height: 1.5;
+ }
+  
+ .material-symbols-outlined {
+    vertical-align: -0.20em;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    font-size: 1rem;
+ }
 
 /* ########################################################
  *               FORMULARIO DE CONTATO DO TEMA
@@ -557,7 +798,8 @@ img:last-child {
 /* Custom header styles */
 .custom-header {
     width: 100%; /* Default to 100% for fluid containers */
-    height: auto; /* Maintain aspect ratio */
+    height: auto; /* Maintain aspect ratio */    
+    overflow: hidden;
 }
 
 /* ########################################################
@@ -606,7 +848,7 @@ img:last-child {
  *                      MIDIA
  * ######################################################## */
 
- /* ==============================
+/* ==============================
  * Galeria do Wordpress
  * ============================== */
 
@@ -614,16 +856,16 @@ p + .gallery {
     margin-top: calc(1.5 * var(--minimalista-vertical-spacing));
 }
 
- /* TODO: ate descobri @ */
+/* TODO: ate descobri @ */
 .gallery figcaption {
     display: none;
 }
 
- /* ==============================
+/* ====================================
  * Galeria do Wordpress ulizando Masonry
- * ============================== */
+ * ===================================== */
 
- figure.gallery-item {
+figure.gallery-item {
     margin-bottom: 0; /* desfazer estilo do Bootstrap */
 }
 
@@ -761,28 +1003,155 @@ p + .gallery {
     text-transform: none !important;
 }
 
-/* ==============================
- * Outros 
- * ============================== */
+/* ########################################################
+ *             WORDPRESS - CLASSES DE ALINHAMENTO
+ * ######################################################## */
 
- /* ########################################################
-  *                      LEITORES DE TELA
-  * ######################################################## */
+ /* @link https://wpthemetestdata.wordpress.com/ */
 
- .screen-reader-text {
-    position: absolute;
-    width: 1px;
+.alignleft {
+    float: left;
+    margin-right: 1rem;
+}
+@media only screen and (min-width: 768px) {
+    .alignleft {
+        margin-right: calc(2 * 1rem);
+    }
+}
+.alignright {
+    float: right;
+    margin-left: 1rem;
+}
+@media only screen and (min-width: 768px) {
+    .alignright {
+        margin-left: calc(2 * 1rem);
+    }
+}
+.aligncenter {
+    clear: both;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ########################################################
+ *                      LEITORES DE TELA
+ * ######################################################## */
+
+/*
+ * A classe CSS .screen-reader-text é gerada pelo WordPress e deve ser estilizada no CSS do seu tema.
+ * Essa classe é utilizada para fornecer conteúdo textual que será lido apenas por leitores de tela,
+ * tornando o site mais acessível para usuários com deficiências visuais.
+ * Esse é um código bastante padrão e geralmente seguro para usar. Ele oculta o texto para usuários que não estão usando leitores de tela, 
+ * mas torna o texto visível e legível quando focado (por exemplo, através de navegação por teclado).
+ */
+ 
+/* Estilos para .screen-reader-text usando as melhores práticas para acessibilidade */
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
     height: 1px;
     margin: -1px;
-    padding: 0;
     overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
+    padding: 0;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important;
 }
+
+/* Estilos adicionais para foco, para tornar o elemento visível quando focado (por exemplo, usando um teclado) */
+.screen-reader-text:focus {
+    background-color: #eee;
+    clip: auto !important;
+    clip-path: none;
+    color: #444;
+    display: block;
+    font-size: 1em;
+    font-weight: 700;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000; /* acima de tudo */
+}
+
+/* =========================================
+ * Bootstrap
+ * @link https: //getbootstrap.com/docs/5.3/
+ * ========================================= */
+
+/**
+ * Bootstrap Cards
+ * https://getbootstrap.com/docs/5.3/components/card/
+ */
+
+/* quando a imagem estiver no corpo do cartão, aplicar a mesma margem inferior 
+de card-title para manter a consistência do espaçamento */
+.card-body img {
+    margin-bottom: var(--bs-card-title-spacer-y);
+  }
+  
+/**
+* Bootstrap Pagination
+* https://getbootstrap.com/docs/5.3/components/pagination/
+*/
+
+/* Itens da Lista de Paginação
+* Adiciona uma margem à direita para espaço entre itens
+*/
+/*
+.pagination .page-item {
+        margin-right: var(--bs-pagination-padding-x, 0.5rem); 
+}
+*/
+/* Links de Paginação
+* Adiciona padding para um tamanho de click/touch maior
+*/
+/*
+.pagination .page-link {
+padding: var(--bs-pagination-padding-y, 0.5rem) var(--bs-pagination-padding-x, 0.75rem);
+}
+*/
 
 /* ########################################################
  *                      UTILITARIOS
  * ######################################################## */
+
+/* ==============================================
+ * Ajustes de Layout / Comportamentos Específicos
+ * ============================================== */
+
+/* Empty elements */
+p:empty,
+h2.widget-title:empty,
+h3.widget-title:empty,
+.entry-title:empty,
+.blog-entry-title:empty {
+  margin: 0;
+  padding: 0;
+  display: none;
+}
+
+p:last-child,
+ol:last-child,
+ul:last-child,
+dl:last-child {
+  margin-bottom: 0;
+}
+
+/* ==============================
+ * Helpers/Utilities
+ * ============================== */
+
+/* Remover marcadores e preenchimento esquerdo das listas */
+ul.no-bullet {
+    list-style: none;
+    padding-left: 0;
+  }
 
 /* Espacamento Vertical (Vertical Spacing) - Remove a margem inferior dos elementos com a classe .no-margin */
 .no-margin {

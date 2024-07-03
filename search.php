@@ -7,6 +7,11 @@
  * @package minimalista
  */
 
+ // Prevent direct access to the file
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
 get_header();
 ?>
 

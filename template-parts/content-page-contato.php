@@ -12,7 +12,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-		<?php display_custom_header_image() ?>
+		<?php minimalista_display_custom_header_image() ?>
 	</header><!-- .entry-header -->
 
 	<?php minimalista_post_thumbnail(); ?>
