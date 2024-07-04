@@ -19,6 +19,8 @@ if (post_password_required()) {
 
 <div id="comments" class="comments-area">
 
+    <hr>
+
     <?php
     // You can start editing here -- including this comment!
     if (have_comments()) : ?>
@@ -59,7 +61,12 @@ if (post_password_required()) {
             ?>
         </ol><!-- .comment-list -->
 
-        <?php the_comments_pagination(); ?>
+        <?php
+        //the_comments_pagination();
+        // Call the custom comments pagination function
+        minimalista_comments_pagination();
+        ?>
+        
 
     <?php endif; // Check for have_comments(). ?>
 

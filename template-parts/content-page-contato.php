@@ -10,16 +10,17 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+
+	<header class="page-header">
+		<?php minimalista_display_post_title('h1', 'page-title'); ?>
 		<?php minimalista_display_custom_header_image() ?>
-	</header><!-- .entry-header -->
+	</header><!-- .page-header -->
 
 	<?php minimalista_post_thumbnail(); ?>
 
 	<div class="entry-content">
 		<?php
-		the_content();
+		minimalista_display_post_content();
 
 		wp_link_pages(
 			array(

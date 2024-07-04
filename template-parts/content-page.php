@@ -10,8 +10,9 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
 	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+		<?php minimalista_display_post_title('h1', 'page-title'); ?>
 		<?php minimalista_display_custom_header_image() ?>
 	</header><!-- .entry-header -->
 
@@ -19,7 +20,7 @@
 
 	<div class="entry-content">
 		<?php
-		the_content();
+		minimalista_display_post_content();
 
 		wp_link_pages(
 			array(
@@ -52,4 +53,5 @@
 			?>
 		</footer><!-- .entry-footer -->
 	<?php endif; ?>
+
 </article><!-- #post-<?php the_ID(); ?> -->

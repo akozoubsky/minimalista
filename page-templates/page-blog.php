@@ -33,7 +33,7 @@ get_header();  // Include the header.php file
             <main id="main" class="blog-main" itemscope itemtype="http://schema.org/Blog">
                 
                 <header class="page-header">
-                    <?php minimalista_display_post_title('h1', 'entry-title mb-1'); ?>
+                    <?php minimalista_display_post_title('h1', 'entry-title'); ?>
                     <?php minimalista_display_custom_header_image() ?>
                 </header>
 
@@ -60,7 +60,7 @@ get_header();  // Include the header.php file
                         $show_excerpt = true;
                         $title_tag = 'h2';
                 ?>
-                        <article id="post-<?php the_ID(); ?>" <?php post_class("blog-posting mb-5"); ?> itemscope itemtype="http://schema.org/BlogPosting">
+                        <article id="post-<?php the_ID(); ?>" <?php post_class("blog-posting"); ?> itemscope itemtype="http://schema.org/BlogPosting">
 
                             <?php
 
@@ -175,7 +175,7 @@ get_header();  // Include the header.php file
                     <?php
                     }
 
-                    minimalista_custom_pagination($blog_query);  // Call the pagination function here
+                    minimalista_custom_query_pagination($blog_query);  // Call the pagination function here
 
                     wp_reset_postdata();  // Restore the original post data
                 } else {

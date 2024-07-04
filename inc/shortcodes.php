@@ -152,14 +152,14 @@ add_shortcode('latest_posts_bs_card', 'latest_posts_bs_card_shortcode');
  * 
  * Example Usage
  * Page:
- * [custom_posts_listing show_thumbnail="true" image_size="full" image_classes="" title_tag='h2' article_class="mb-5" html_after='']
+ * [minimalista_custom_posts_listing show_thumbnail="true" image_size="full" image_classes="" title_tag='h2' article_class="mb-5" html_after='']
  * Sidebar:
- * [custom_posts_listing image_size="medium" image_classes="" show_excerpt="false" article_class="mb-3" html_after="<hr>"]
+ * [minimalista_custom_posts_listing image_size="medium" image_classes="" show_excerpt="false" article_class="mb-3" html_after="<hr>"]
  * Simple lista:
- * [custom_posts_listing show_thumbnail='false' image_size="medium" image_classes="" title_tag="p" show_excerpt="false" article_class="my-2"]
+ * [minimalista_custom_posts_listing show_thumbnail='false' image_size="medium" image_classes="" title_tag="p" show_excerpt="false" article_class="my-2"]
  * 
  */
-function custom_posts_listing_shortcode($atts)
+function minimalista_custom_posts_listing_shortcode($atts)
 {
     // Default attributes
     $atts = shortcode_atts([
@@ -176,9 +176,9 @@ function custom_posts_listing_shortcode($atts)
         'show_metadata'   => false, // Option to show/hide post metadata
         'show_excerpt'    => true, // Option to show/hide excerpt
         'show_blog_link'  => false, // Option to show/hide blog link
-        'blog_link_text'  => __('View All Posts', 'light-cms-bootstrap'), // Translatable link text
+        'blog_link_text'  => __('View All Posts', 'minimalista'), // Translatable link text
         'blog_page_url'   => get_permalink(get_option('page_for_posts'))
-    ], $atts, 'custom_posts_listing');
+    ], $atts, 'minimalista_custom_posts_listing');
 
 
     // Validar e sanear os atributos
@@ -384,4 +384,4 @@ function custom_posts_listing_shortcode($atts)
 }
 
 // Register the shortcode.
-add_shortcode('custom_posts_listing', 'custom_posts_listing_shortcode');
+add_shortcode('minimalista_custom_posts_listing', 'minimalista_custom_posts_listing_shortcode');

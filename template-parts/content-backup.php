@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying posts projetos
+ * Template part for displaying posts
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -23,8 +23,8 @@
 			<div class="entry-meta">
 				<?php
 				//minimalista_posted_on();
-				minimalista_display_post_metadata_primary();
 				//minimalista_posted_by();
+				minimalista_display_post_metadata_primary();
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
@@ -35,7 +35,11 @@
 
 	<div class="entry-content">
 		<?php
-		the_content(
+		/*
+		 * A função the_excerpt() exibe o resumo do post. Dentro dela, o wp_kses() está sanitizando o texto que será exibido como o link "Continue reading".
+		 * Neste caso, apenas a tag <span> com o atributo class é permitida.
+		 */
+		the_excerpt(
 			sprintf(
 				wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers */

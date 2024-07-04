@@ -46,7 +46,7 @@ get_header();
 
 					endwhile;
 
-					the_posts_navigation();
+					minimalista_the_post_navigation();
 
 				else :
 

@@ -30,9 +30,11 @@ get_header(); ?>
 					get_template_part('template-parts/content', 'page');
 
 					// If comments are open or we have at least one comment, load up the comment template.
+					/* Nao permitir comentarios em paginas
 					if (comments_open() || get_comments_number()) :
 						comments_template();
 					endif;
+					*/
 
 				endwhile; // End of the loop.
 				?>
@@ -55,17 +57,16 @@ get_header(); ?>
 						?>
 
 						<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
 							<header class="entry-header">
 								<?php
-								the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+								minimalista_display_post_title('h2','entry-title', 'true');
 						
 								if ( 'post' === get_post_type() ) :
 									?>
 									<div class="entry-meta">
 										<?php
-										//minimalista_posted_on();
 										minimalista_display_post_metadata_primary();
-										//minimalista_posted_by();
 										?>
 									</div><!-- .entry-meta -->
 								<?php endif; ?>
@@ -74,7 +75,7 @@ get_header(); ?>
 							<?php minimalista_post_thumbnail(); ?>
 						
 							<div class="entry-content">
-								<?php the_content(); ?>
+								<?php minimalista_display_post_content(); ?>
 						
 								<?php
 								wp_link_pages(
@@ -91,12 +92,13 @@ get_header(); ?>
 								<?php //minimalista_entry_footer(); ?>
 								<?php minimalista_display_post_metadata_secondary(); ?>
 							</footer><!-- .entry-footer -->
+
 						</article><!-- #post-<?php the_ID(); ?> -->
 
 					<?php
 					endwhile;
 
-					the_posts_navigation();
+					minimalista_custom_query_pagination($projetos_query);
 
 				else :
 					// get_template_part( 'template-parts/content', 'none' );

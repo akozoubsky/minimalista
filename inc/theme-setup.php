@@ -97,6 +97,9 @@ function minimalista_setup() {
 	// Add support for responsive embedded content.
 	add_theme_support( 'responsive-embeds' );
 
+	// Habilitar a caixa de resumo para paginas
+	add_post_type_support( 'page', 'excerpt' );
+
 	// Remove support for editor styles.
 	remove_theme_support( 'editor-styles' );
 

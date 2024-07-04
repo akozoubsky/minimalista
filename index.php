@@ -33,9 +33,21 @@ get_header();
 
 					if ( is_home() && ! is_front_page() ) :
 						?>
-						<header>
-							<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+						<header class="page-header">
+							<?php minimalista_display_post_title('h1', 'page-title'); ?>
 						</header>
+						<?php if (is_home() && get_option('page_for_posts')): // Verifica se a página atual é a página inicial e se há uma "Página para posts" definida.?>
+							<?php
+							/* 
+								* Quando você define uma página específica para exibir seus posts, essa página geralmente não tem conteúdo próprio,
+								* pois seu propósito é listar os posts do blog.
+								* No entanto, você pode adicionar um resumo ou descrição a essa página para fornecer um contexto adicional ou uma introdução.
+								* Se a verificação for verdadeira, exibe o resumo da "Página para posts" dentro de um parágrafo com a classe page-description.
+								* add_post_type_support( 'page', 'excerpt' );
+								*/
+							?>
+							<p class="page-description"><?php echo get_the_excerpt(get_option('page_for_posts')); ?></p>
+						<?php endif; ?>
 						<?php
 					endif;
 
@@ -52,7 +64,7 @@ get_header();
 
 					endwhile;
 
-					the_posts_navigation();
+					minimalista_the_post_navigation();
 
 				else :
 

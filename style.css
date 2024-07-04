@@ -134,8 +134,8 @@ h6 {
  * Cabecalhos (<h1> a <h6>)
  * ============================== */
 
- h1, h2, h3, h4, h5, h6 {
-    margin-bottom: calc(1.25 * var(--minimalista-vertical-spacing));
+ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+    margin-bottom: calc(0.25 * var(--minimalista-vertical-spacing));
 }
 
 /* Espacamento Vertical (Vertical Spacing) */
@@ -276,8 +276,9 @@ hr {
 .site-main {
 }
 
+/* Alterar a cor de H2 sem atingir os links */
 .site-main h2:not(.entry-title) {
-    color: var(--bs-primary);
+    color: var(--bs-secondary);
 }
 
 /* ==============================
@@ -353,6 +354,17 @@ ul.minimalista-custom-list ul li:last-child {
  *                        BLOG / POSTAGENS
  * ######################################################## */
 
+/* 
+ * Quando você define uma página específica para exibir seus posts, essa página geralmente não tem conteúdo próprio,
+ * pois seu propósito é listar os posts do blog.
+ * No entanto, você pode adicionar um resumo ou descrição a essa página para fornecer um contexto adicional ou uma introdução.
+ * Se a verificação for verdadeira, exibe o resumo da "Página para posts" dentro de um parágrafo com a classe page-description.
+ * add_post_type_support( 'page', 'excerpt' );
+ */
+ .page-description {
+
+ }
+
  /**
  * Header Image
  */
@@ -367,13 +379,18 @@ ul.minimalista-custom-list ul li:last-child {
  * ============================== */
 
 /* Adicionar margem inferior entre artigos, exceto o ultimo */
+article:not(:last-of-type),
 article:not(:last-child) {
-    margin-bottom: 1.5rem; /* 30px -> 1.875rem */
+    margin-bottom: 3rem;
 }
 
  /* Espacamento Vertical (Vertical Spacing) */
- .entry-header, .page-header, .widget-title {
-    margin-bottom: calc(1.25 * var(--minimalista-vertical-spacing));
+ main .entry-header, .widget-title {
+    margin-bottom: calc(1 * var(--minimalista-vertical-spacing));
+ }
+
+.page-header {
+    margin-bottom: calc(1.5 * var(--minimalista-vertical-spacing));
  }
 
 /**
@@ -386,6 +403,10 @@ article:not(:last-child) {
 
 .entry-meta, .entry-content, .entry-footer {
     margin-bottom: 0.5rem; /* 10px -> 0.625rem */
+}
+
+.entry-footer {
+    margin-top: calc(1.25 * var(--minimalista-vertical-spacing));
 }
 
 .posted-on, .byline, .cat-links, .comments-link, .edit-link {
@@ -401,6 +422,12 @@ article:not(:last-child) {
 /* ==============================
  * Navegacao do blog
  * ============================== */
+
+ .post-navigation,
+ .comment-navigation {
+    margin-top: calc(2 * var(--minimalista-vertical-spacing));
+    margin-bottom: calc(2 * var(--minimalista-vertical-spacing));
+ }
 
 /* Navegacao entre posts */
 .nav-subtitle {
@@ -427,7 +454,7 @@ article:not(:last-child) {
  * ============================== */
 
 .widget {
-    margin-bottom: calc(2 * var(--minimalista-vertical-spacing));
+    margin-bottom: calc(3 * var(--minimalista-vertical-spacing));
 }
     .widget:last-child {
         margin-bottom: 0;
@@ -452,6 +479,10 @@ article:not(:last-child) {
 /* ==============================
  * Comments form (comentarios)
  * ============================== */
+
+ .comments-title {
+    margin-bottom: calc(2 * var(--minimalista-vertical-spacing));
+ }
 
  ol.comment-list {
     padding-left: 0;

@@ -10,15 +10,13 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
 	<header class="entry-header">
-		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+		<?php minimalista_display_post_title('h2','entry-title', 'true'); ?>
 
 		<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
-			<?php
-			minimalista_posted_on();
-			//minimalista_posted_by(); // Comentado para evitar exibição duplicada do autor
-			?>
+			<?php minimalista_display_post_metadata_primary(); ?>
 		</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
@@ -26,10 +24,11 @@
 	<?php minimalista_post_thumbnail(); ?>
 
 	<div class="entry-summary">
-		<?php the_excerpt(); ?>
+		<?php minimalista_display_post_excerpt(); ?>
 	</div><!-- .entry-summary -->
 
 	<footer class="entry-footer">
 		<?php minimalista_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
+	
 </article><!-- #post-<?php the_ID(); ?> -->

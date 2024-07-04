@@ -35,7 +35,7 @@ function minimalista_display_categories($section_title = '', $title_tag = 'h3', 
     $title_tag = in_array($title_tag, ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']) ? $title_tag : 'h3';
     $additional_section_classes = implode(' ', array_map('sanitize_html_class', explode(' ', $additional_section_classes)));
     $additional_item_classes = implode(' ', array_map('sanitize_html_class', explode(' ', $additional_item_classes)));
-    $page_for_posts_link_text = sanitize_text_field(__($page_for_posts_link_text, 'light-cms-bootstrap'));
+    $page_for_posts_link_text = sanitize_text_field(__($page_for_posts_link_text, 'minimalista'));
     $page_for_posts_link_classes = implode(' ', array_map('sanitize_html_class', explode(' ', $page_for_posts_link_classes)));
     $page_for_posts_link_html_before = wp_kses_post($page_for_posts_link_html_before);
     $page_for_posts_link_html_after = wp_kses_post($page_for_posts_link_html_after);
@@ -56,7 +56,8 @@ function minimalista_display_categories($section_title = '', $title_tag = 'h3', 
     // Display section title if provided
     if (!empty($section_title)) {
         
-        echo "<{$title_tag}>" . esc_html($section_title) . "</{$title_tag}>";
+       // echo "<{$title_tag}>" . esc_html($section_title) . "</{$title_tag}>";
+       echo "<{$title_tag}" . " class='widget-title'" . ">" . esc_html($section_title) . "</{$title_tag}>";
     }
 
     // Recursive function to display categories and their subcategories

@@ -33,7 +33,7 @@ get_header();  // Include the header.php file
             <main id="main" class="blog-main" itemscope itemtype="http://schema.org/Blog">
 
                 <header class="page-header">
-                    <?php minimalista_display_post_title('h1', 'entry-title mb-1'); ?>
+                    <?php minimalista_display_post_title('h1', 'entry-title'); ?>
                     <?php minimalista_display_custom_header_image() ?>
                 </header>
 
@@ -63,13 +63,13 @@ get_header();  // Include the header.php file
                 ?>
                         <div class="col-sm-6">
 
-                            <article id="post-<?php the_ID(); ?>" <?php post_class('card mb-4'); ?> itemscope itemtype="http://schema.org/BlogPosting">
+                            <article id="post-<?php the_ID(); ?>" <?php post_class('card'); ?> itemscope itemtype="http://schema.org/BlogPosting">
 
                                 <div class="card-body"> <!-- Start of card body -->
 
                                     <header class="entry-header">
                                         <!-- Post Title -->
-                                        <?php minimalista_display_post_title('card-title mb-1', $title_tag, 'true'); ?>
+                                        <?php minimalista_display_post_title('card-title', $title_tag, 'true'); ?>
                                         <?php minimalista_display_post_metadata_primary("mb-3"); ?>
                                     </header>
 
@@ -97,7 +97,7 @@ get_header();  // Include the header.php file
 
                     echo '</div>'; // End of row container for the posts
 
-                    minimalista_custom_pagination($blog_query);  // Call the pagination function here
+                    minimalista_custom_query_pagination($blog_query);  // Call the pagination function here
 
                     wp_reset_postdata();  // Restore the original post data
 

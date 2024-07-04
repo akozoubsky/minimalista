@@ -484,10 +484,46 @@ function minimalista_display_post_metadata_primary($additional_classes = '')
 
     // Open Bootstrap 5 "post-metadata" container
     echo '<div class="' . $div_classes . '">';
+
     // Standard Metadata for posts
     // Date and Author
     echo '<time class="post-date me-4 text-break" itemprop="datePublished">' . minimalista_generate_icon_html("fa-calendar", "me-2") . get_the_date() . '</time>';
     echo '<span class="post-author me-4 text-break" itemprop="author">' . minimalista_generate_icon_html("fa-user", "me-2") . get_the_author() . '</span>';
+
+    // Format-specific Metadata
+    switch ($post_format) {
+        case 'aside':
+            echo '<span class="post-format post-format-aside me-4 text-break">' . minimalista_generate_icon_html("fa-pencil-alt", "me-2") . __('Aside', 'minimalista') . '</span>';
+            break;
+        case 'gallery':
+            echo '<span class="post-format post-format-gallery me-4 text-break">' . minimalista_generate_icon_html("fa-images", "me-2") . __('Gallery', 'minimalista') . '</span>';
+            break;
+        case 'link':
+            echo '<span class="post-format post-format-link me-4 text-break">' . minimalista_generate_icon_html("fa-link", "me-2") . __('Link', 'minimalista') . '</span>';
+            break;
+        case 'image':
+            echo '<span class="post-format post-format-image me-4 text-break">' . minimalista_generate_icon_html("fa-camera", "me-2") . __('Image', 'minimalista') . '</span>';
+            break;
+        case 'quote':
+            echo '<span class="post-format post-format-quote me-4 text-break">' . minimalista_generate_icon_html("fa-quote-left", "me-2") . __('Quote', 'minimalista') . '</span>';
+            break;
+        case 'status':
+            echo '<span class="post-format post-format-status me-4 text-break">' . minimalista_generate_icon_html("fa-comment", "me-2") . __('Status', 'minimalista') . '</span>';
+            break;
+        case 'video':
+            echo '<span class="post-format post-format-video me-4 text-break">' . minimalista_generate_icon_html("fa-video", "me-2") . __('Video', 'minimalista') . '</span>';
+            break;
+        case 'audio':
+            echo '<span class="post-format post-format-audio me-4 text-break">' . minimalista_generate_icon_html("fa-music", "me-2") . __('Audio', 'minimalista') . '</span>';
+            break;
+        case 'chat':
+            echo '<span class="post-format post-format-chat me-4 text-break">' . minimalista_generate_icon_html("fa-comments", "me-2") . __('Chat', 'minimalista') . '</span>';
+            break;
+        default:
+            // Standard post format doesn't need an icon
+            break;
+    }
+
     echo '</div>';  // Close the "post-metadata" container
 }
 
@@ -567,7 +603,7 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
             $word_count = str_word_count(strip_tags(get_the_content()));
             $post_time = get_the_time('g:i a');
 
-            echo '<span class="aside-word-count me-3"><i class="fas fa-pencil-alt"></i> ' . sprintf(_n('%s palavra', '%s palavras', $word_count, 'light-cms-bootstrap'), $word_count) . '</span>';
+            echo '<span class="aside-word-count me-3"><i class="fas fa-pencil-alt"></i> ' . sprintf(_n('%s palavra', '%s palavras', $word_count, 'minimalista'), $word_count) . '</span>';
             echo '<span class="aside-post-time me-3"><i class="fas fa-clock"></i> ' . esc_html($post_time) . '</span>';
             break;
         case 'gallery':
@@ -575,9 +611,9 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
             $gallery_images = get_post_meta(get_the_ID(), 'gallery_images', true);
             if (!empty($gallery_images) && is_array($gallery_images)) {
                 $num_images = count($gallery_images);
-                echo '<span class="gallery-count me-3"><i class="fas fa-images"></i> ' . sprintf(_n('%s imagem', '%s imagens', $num_images, 'light-cms-bootstrap'), $num_images) . '</span>';
+                echo '<span class="gallery-count me-3"><i class="fas fa-images"></i> ' . sprintf(_n('%s imagem', '%s imagens', $num_images, 'minimalista'), $num_images) . '</span>';
             } else {
-                echo '<span class="gallery-empty me-3">' . __('Sem imagens na galeria', 'light-cms-bootstrap') . '</span>';
+                echo '<span class="gallery-empty me-3">' . __('Sem imagens na galeria', 'minimalista') . '</span>';
             }
             break;
         case 'link':
@@ -587,7 +623,7 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
             // O título e o domínio do link são exibidos, com um ícone apropriado e um link clicável.
             $main_link = get_post_meta(get_the_ID(), 'main_link', true);
             if (!empty($main_link)) {
-                $link_title = get_post_meta(get_the_ID(), 'link_title', true) ?: __('Link Externo', 'light-cms-bootstrap');
+                $link_title = get_post_meta(get_the_ID(), 'link_title', true) ?: __('Link Externo', 'minimalista');
                 $link_domain = parse_url($main_link, PHP_URL_HOST);
                 echo '<span class="post-main-link me-3"><i class="fas fa-external-link-alt"></i> <a href="' . esc_url($main_link) . '" target="_blank" rel="noopener noreferrer">' . esc_html($link_title) . ' (' . esc_html($link_domain) . ')</a></span>';
             }
@@ -611,10 +647,10 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
             $chat_line_count = get_post_meta(get_the_ID(), 'chat_line_count', true);
 
             if (!empty($chat_participants)) {
-                echo '<span class="chat-participants me-3"><i class="fas fa-users"></i> ' . sprintf(_n('%s participante', '%s participantes', $chat_participants, 'light-cms-bootstrap'), $chat_participants) . '</span>';
+                echo '<span class="chat-participants me-3"><i class="fas fa-users"></i> ' . sprintf(_n('%s participante', '%s participantes', $chat_participants, 'minimalista'), $chat_participants) . '</span>';
             }
             if (!empty($chat_line_count)) {
-                echo '<span class="chat-line-count me-3"><i class="fas fa-comment-dots"></i> ' . sprintf(_n('%s linha', '%s linhas', $chat_line_count, 'light-cms-bootstrap'), $chat_line_count) . '</span>';
+                echo '<span class="chat-line-count me-3"><i class="fas fa-comment-dots"></i> ' . sprintf(_n('%s linha', '%s linhas', $chat_line_count, 'minimalista'), $chat_line_count) . '</span>';
             }
             break;
         default:
@@ -669,7 +705,7 @@ function minimalista_display_post_excerpt($excerpt_classes = '', $html_before = 
     // Custom 'more' text for the excerpt
     if ($show_more) {
         add_filter('excerpt_more', function () use ($more_text) {
-            return ' <a class="read-more" href="' . get_permalink() . '">' . __($more_text, 'light-cms-bootstrap') . '</a>';
+            return ' <a class="read-more" href="' . get_permalink() . '">' . __($more_text, 'minimalista') . '</a>';
         });
     }
 
@@ -694,58 +730,55 @@ function minimalista_display_post_excerpt($excerpt_classes = '', $html_before = 
 }
 
 /**
- * Generate pagination links for a custom query.
- *
- * This function utilizes WordPress's paginate_links() function to create
- * a set of numerical pagination links based on the provided custom query.
- * The pagination links are styled using Bootstrap's pagination component.
- *
- * @param WP_Query $wp_query The custom query for which to generate pagination links.
- *
- * @return void Outputs the pagination links directly to the page.
+ * Displays the post content with additional customization options.
  * 
- * @link https://getbootstrap.com/docs/5.3/components/pagination/
+ * @param string $content_class Additional classes for the content div.
+ * @param string $html_before HTML content to be displayed before the content.
+ * @param string $html_after HTML content to be displayed after the content.
+ * @param int $length_limit Maximum length of the content in words.
+ * @param bool $show_more Indicates whether to show the custom 'more' text.
+ * @param string $more_text Custom 'more' text. Default 'Read more'.
+ * @return void
  */
-function minimalista_custom_pagination($wp_query)
+function minimalista_display_post_content($content_class = '', $html_before = '', $html_after = '', $length_limit = 55, $show_more = false, $more_text = 'Leia mais')
 {
-    // Call the paginate_links() function to generate an array of pagination links
-    // Set the base for the pagination links, replace a large number with the placeholder '%#%'
-    // to allow the function to generate the correct URL structure for each page link
-    $pages = paginate_links(array(
-        'base' => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
-        'format' => '?paged=%#%',  // Define the format for the pagination query, '%#%' is replaced by the page number
-        'current' => max(1, get_query_var('paged')),  // Get the current page number, ensure it's at least 1
-        'total' => $wp_query->max_num_pages,  // Get the total number of pages from the provided query
-        'type' => 'array',  // Specify that the function should return an array of page links
-        'show_all' => false,  // Do not show links to all pages, only show a subset of links
-        'end_size' => 2,  // Show links to the first and last 2 pages
-        'mid_size' => 1,  // Show links to the current page, and 1 page on either side
-        'prev_next' => true,  // Show links to the previous and next pages
-        // 'prev_text' => __('&laquo; Anterior'),  // Set the text for the 'previous page' link
-        // 'next_text' => __('Próximo &raquo;'),  // Set the text for the 'next page' link
-        'prev_text' => '<i class="fas fa-angle-left"></i>' . __(' Anterior'), // Set the text for the 'previous page' link
-        'next_text' =>  __(' Próximo ') . '<i class="fas fa-angle-right"></i>', // Set the text for the 'next page' link
-        'add_args' => false,  // Do not add any additional query args to the URLs
-        'add_fragment' => '',  // Do not append any fragments to the URLs
-    ));
+    // Validating and sanitizing parameters
+    $content_class = sanitize_html_class($content_class);
+    $html_before = wp_kses_post($html_before);
+    $html_after = wp_kses_post($html_after);
+    $length_limit = intval($length_limit);
+    $more_text = sanitize_text_field($more_text);
 
-    // Check if the paginate_links() function returned an array of page links
-    if (is_array($pages)) {
-        echo '<nav aria-label="Custom Page Navigation">';
-        echo '<ul class="pagination">';
-        foreach ($pages as $page) {
-            // Check if the page link is for the current page
-            if (strpos($page, 'current') !== false) {
-                // If it's the current page, add .active class and aria-current attribute
-                echo '<li class="page-item active" aria-current="page">' . str_replace('page-numbers', 'page-link', $page) . '</li>';
-            } else {
-                // If it's not the current page, output the page link without .active class and aria-current attribute
-                echo '<li class="page-item">' . str_replace('page-numbers', 'page-link', $page) . '</li>';
-            }
-        }
-        echo '</ul>';
-        echo '</nav>';
+    // Custom content length function
+    add_filter('content_length', function ($length) use ($length_limit) {
+        return $length_limit;
+    }, 999);
+
+    // Custom 'more' text for the content
+    if ($show_more) {
+        add_filter('content_more', function () use ($more_text) {
+            return ' <a class="read-more" href="' . get_permalink() . '">' . __($more_text, 'light-cms-bootstrap') . '</a>';
+        });
     }
+
+    // Buffering the output
+    ob_start();
+    the_content();
+    $content_output = ob_get_clean();
+
+    // Checking if the content exists
+    if (trim($content_output) === '') {
+        return; // Return nothing if no content
+    }
+
+    // Displaying the content with additional HTML and classes
+    echo $html_before;
+    //<div class="page-content" itemprop="mainEntityOfPage" itemscope itemtype="http://schema.org/WebPageElement">
+    echo '<div class="entry-content ' . $content_class . '" itemprop="articleBody">';
+    //echo '<div class="entry-content ' . $content_class . '" itemprop="mainEntityOfPage">';
+    echo $content_output;
+    echo '</div>';
+    echo $html_after;
 }
 
 /**
@@ -769,7 +802,7 @@ if ( ! function_exists( 'minimalista_display_popular_articles' ) ) :
         $title_tag = in_array($title_tag, ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']) ? $title_tag : 'h3';
         $additional_section_classes = implode(' ', array_map('sanitize_html_class', explode(' ', $additional_section_classes)));
         $additional_item_classes = implode(' ', array_map('sanitize_html_class', explode(' ', $additional_item_classes)));
-        $page_for_posts_link_text = sanitize_text_field(__($page_for_posts_link_text, 'light-cms-bootstrap'));
+        $page_for_posts_link_text = sanitize_text_field(__($page_for_posts_link_text, 'minimalista'));
         $page_for_posts_link_classes = implode(' ', array_map('sanitize_html_class', explode(' ', $page_for_posts_link_classes)));
         $page_for_posts_link_html_before = wp_kses_post($page_for_posts_link_html_before);
         $page_for_posts_link_html_after = wp_kses_post($page_for_posts_link_html_after);
@@ -788,7 +821,8 @@ if ( ! function_exists( 'minimalista_display_popular_articles' ) ) :
 
             // Display section title if provided
             if (!empty($section_title)) {
-                echo "<{$title_tag}>" . esc_html($section_title) . "</{$title_tag}>";
+                // echo "<{$title_tag}>" . esc_html($section_title) . "</{$title_tag}>";
+                echo "<{$title_tag}" . " class='widget-title'" . ">" . esc_html($section_title) . "</{$title_tag}>";
             }
 
             // Display posts
@@ -821,9 +855,9 @@ if ( ! function_exists( 'minimalista_display_popular_articles' ) ) :
     }
 endif;
 
-// ==========================
-// Comments
-// ==========================
+/* ########################################################
+ *                   Comments / Comentarios
+ * ######################################################## */
 
 /* 
  * Esta funcao eh chamada em comments.php
@@ -922,3 +956,204 @@ function minimalista_comment_form_defaults($defaults) {
     return $defaults;
 }
 //add_filter('comment_form_defaults', 'minimalista_comment_form_defaults');
+
+
+/* ########################################################
+ *                   Pagination / Paginacao
+ * ######################################################## */
+
+/**
+ * Custom Post Navigation
+ *
+ * Esta função gera botões de navegação para posts mais antigos e mais recentes,
+ * utilizando classes do Bootstrap 5 e ícones do FontAwesome 6 para estilização.
+ * Os botões são exibidos apenas quando há posts na direção correspondente.
+ * 
+ * @uses ob_start(), ob_get_clean() Para capturar a saída das funções de navegação do WordPress.
+ * @uses previous_posts_link(), next_posts_link() Para gerar os links de navegação.
+ * 
+ * @return void
+ */
+function minimalista_the_post_navigation()
+{
+    // Buffering para capturar a saída das funções de navegação de posts
+    ob_start();
+    previous_posts_link('Posts Mais Recentes');
+    $previous_posts_link = ob_get_clean();
+
+    ob_start();
+    next_posts_link('Posts Mais Antigos');
+    $next_posts_link = ob_get_clean();
+
+    // Adicionando classes Bootstrap aos links (btn btn-secondary para estilização de botão)
+    $previous_posts_link = str_replace('<a href=', '<a class="btn btn-primary" href=', $previous_posts_link);
+    $next_posts_link = str_replace('<a href=', '<a class="btn btn-primary" href=', $next_posts_link);
+
+    // Inserindo ícones FontAwesome dentro dos botões
+    if ($previous_posts_link) {
+        $previous_posts_link = str_replace('Posts Mais Recentes', '<i class="fas fa-arrow-left me-2"></i>Mais recentes', $previous_posts_link);
+    }
+
+    if ($next_posts_link) {
+        $next_posts_link = str_replace('Posts Mais Antigos', 'Mais antigos<i class="fas fa-arrow-right ms-2"></i>', $next_posts_link);
+    }
+
+    // Início da Navegação de Posts (d-flex e justify-content-between para alinhamento)
+    echo '<div class="post-navigation d-flex justify-content-between mt-5 mb-5">';
+
+    // Exibe o botão "Posts mais recentes" apenas se houver posts mais recentes
+    if ($previous_posts_link) {
+        echo $previous_posts_link;
+    }
+
+    // Exibe o botão "Posts mais antigos" apenas se houver posts mais antigos
+    if ($next_posts_link) {
+        echo $next_posts_link;
+    }
+
+    echo '</div>';  // Fim da Navegação de Posts
+}
+
+/**
+ * Custom Single Post Navigation
+ *
+ * Esta função gera botões de navegação para a postagem anterior e a próxima postagem,
+ * dentro da mesma categoria, utilizando classes do Bootstrap 5 e ícones do FontAwesome 6.
+ * Os botões são exibidos apenas quando há posts na direção correspondente.
+ * 
+ * @uses ob_start(), ob_get_clean() Para capturar a saída das funções de navegação do WordPress.
+ * @uses previous_post_link(), next_post_link() Para gerar os links de navegação.
+ * 
+ * @return void
+ */
+function minimalista_single_post_navigation()
+{
+    ob_start();
+    //  cria um link para o post mais recente (em relação ao post atual)
+    previous_post_link('%link', 'Anterior (mais recente)');
+    $previous_post_link = ob_get_clean();
+
+    ob_start();
+    // cria um link para o post mais antigo (em relação ao post atual).
+    next_post_link('%link', 'Próximo (mais antigo)');
+    $next_post_link = ob_get_clean();
+
+    $previous_post_link = str_replace('<a href=', '<a class="btn btn-primary me-3" href=', $previous_post_link);
+    $next_post_link = str_replace('<a href=', '<a class="btn btn-primary ms-3" href=', $next_post_link);
+
+    $previous_post_link = str_replace('Post Anterior', '<i class="fas fa-arrow-left me-2"></i>Post Anterior', $previous_post_link);
+    $next_post_link = str_replace('Próximo Post', 'Próximo Post<i class="fas fa-arrow-right ms-2"></i>', $next_post_link);
+
+    if ($previous_post_link || $next_post_link) {
+        echo '<div class="post-navigation d-flex justify-content-between">';
+        if ($previous_post_link) {
+            echo $previous_post_link;
+        }
+        if ($next_post_link) {
+            echo $next_post_link;
+        }
+        echo '</div>';
+    }
+}
+
+/**
+ * Generate pagination links for a custom query.
+ *
+ * This function utilizes WordPress's paginate_links() function to create
+ * a set of numerical pagination links based on the provided custom query.
+ * The pagination links are styled using Bootstrap's pagination component.
+ *
+ * @param WP_Query $wp_query The custom query for which to generate pagination links.
+ *
+ * @return void Outputs the pagination links directly to the page.
+ * 
+ * @link https://getbootstrap.com/docs/5.3/components/pagination/
+ */
+function minimalista_custom_query_pagination($wp_query)
+{
+    // Call the paginate_links() function to generate an array of pagination links
+    // Set the base for the pagination links, replace a large number with the placeholder '%#%'
+    // to allow the function to generate the correct URL structure for each page link
+    $pages = paginate_links(array(
+        'base' => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
+        'format' => '?paged=%#%',  // Define the format for the pagination query, '%#%' is replaced by the page number
+        'current' => max(1, get_query_var('paged')),  // Get the current page number, ensure it's at least 1
+        'total' => $wp_query->max_num_pages,  // Get the total number of pages from the provided query
+        'type' => 'array',  // Specify that the function should return an array of page links
+        'show_all' => false,  // Do not show links to all pages, only show a subset of links
+        'end_size' => 2,  // Show links to the first and last 2 pages
+        'mid_size' => 1,  // Show links to the current page, and 1 page on either side
+        'prev_next' => true,  // Show links to the previous and next pages
+        // 'prev_text' => __('&laquo; Anterior'),  // Set the text for the 'previous page' link
+        // 'next_text' => __('Próximo &raquo;'),  // Set the text for the 'next page' link
+        'prev_text' => '<i class="fas fa-angle-left"></i>' . __(' Anterior'), // Set the text for the 'previous page' link
+        'next_text' =>  __(' Próximo ') . '<i class="fas fa-angle-right"></i>', // Set the text for the 'next page' link
+        'add_args' => false,  // Do not add any additional query args to the URLs
+        'add_fragment' => '',  // Do not append any fragments to the URLs
+    ));
+
+    // Check if the paginate_links() function returned an array of page links
+    if (is_array($pages)) {
+        echo '<nav class="post-navigation" aria-label="Custom Page Navigation">';
+        echo '<ul class="pagination">';
+        foreach ($pages as $page) {
+            // Check if the page link is for the current page
+            if (strpos($page, 'current') !== false) {
+                // If it's the current page, add .active class and aria-current attribute
+                echo '<li class="page-item active" aria-current="page">' . str_replace('page-numbers', 'page-link', $page) . '</li>';
+            } else {
+                // If it's not the current page, output the page link without .active class and aria-current attribute
+                echo '<li class="page-item">' . str_replace('page-numbers', 'page-link', $page) . '</li>';
+            }
+        }
+        echo '</ul>';
+        echo '</nav>';
+    }
+}
+
+/**
+ * Custom Comments Pagination
+ *
+ * Esta função gera links de paginação para comentários utilizando as classes do Bootstrap 5.
+ *
+ * @return void
+ */
+function minimalista_comments_pagination() {
+    // Obter a página atual e o número total de páginas de comentários
+    $current_page = get_query_var('cpage') ? intval(get_query_var('cpage')) : 1;
+    $total_pages = get_comment_pages_count();
+
+    // Somente exibir paginação se houver mais de uma página de comentários
+    if ($total_pages > 1) {
+        $pagination_args = array(
+            'base'         => add_query_arg('cpage', '%#%'),
+            'format'       => '',
+            'current'      => $current_page,
+            'total'        => $total_pages,
+            'prev_text'    => '<i class="fas fa-angle-left"></i> ' . __('Anterior', 'minimalista'),
+            'next_text'    => __('Próximo', 'minimalista') . ' <i class="fas fa-angle-right"></i>',
+            'type'         => 'array',
+            'add_args'     => false,
+            'add_fragment' => '#comments',  // Adicionar um fragmento para pular para os comentários
+        );
+
+        // Gerar links de paginação
+        $page_links = paginate_links($pagination_args);
+
+        if (is_array($page_links)) {
+            echo '<nav class="comment-navigation" aria-label="Comment Page Navigation">';
+            echo '<ul class="pagination">';
+
+            foreach ($page_links as $link) {
+                if (strpos($link, 'current') !== false) {
+                    echo '<li class="page-item active" aria-current="page">' . str_replace('page-numbers', 'page-link', $link) . '</li>';
+                } else {
+                    echo '<li class="page-item">' . str_replace('page-numbers', 'page-link', $link) . '</li>';
+                }
+            }
+
+            echo '</ul>';
+            echo '</nav>';
+        }
+    }
+}
