@@ -21,13 +21,7 @@
 	<div class="entry-content">
 		<?php
 		minimalista_display_post_content();
-
-		wp_link_pages(
-			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'minimalista' ),
-				'after'  => '</div>',
-			)
-		);
+		minimalista_link_pages();
 		?>
 	</div><!-- .entry-content -->
 

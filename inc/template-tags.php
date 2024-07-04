@@ -1157,3 +1157,27 @@ function minimalista_comments_pagination() {
         }
     }
 }
+
+/**
+ * Custom pagination for paginated posts.
+ *
+ * This function generates pagination links for paginated posts using Bootstrap 5 classes.
+ *
+ * @return void Outputs the pagination links directly to the page.
+ */
+function minimalista_link_pages() {
+    $args = array(
+        'before'           => '<nav aria-label="Page navigation example"><ul class="pagination">',
+        'after'            => '</ul></nav>',
+        'link_before'      => '<li class="page-item"><span class="page-link">',
+        'link_after'       => '</span></li>',
+        'next_or_number'   => 'number',
+        'separator'        => '',
+        'nextpagelink'     => __( 'Next page', 'minimalista' ),
+        'previouspagelink' => __( 'Previous page', 'minimalista' ),
+        'pagelink'         => '%',
+        'echo'             => 1
+    );
+
+    wp_link_pages( $args );
+}

@@ -75,16 +75,9 @@ get_header(); ?>
 							<?php minimalista_post_thumbnail(); ?>
 						
 							<div class="entry-content">
-								<?php minimalista_display_post_content(); ?>
-						
 								<?php
-								wp_link_pages(
-									array(
-										'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'minimalista' ),
-										'after'  => '</div>',
-									)
-								);
-								
+								minimalista_display_post_content();
+								minimalista_link_pages();
 								?>
 							</div><!-- .entry-content -->
 						
