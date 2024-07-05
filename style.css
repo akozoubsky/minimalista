@@ -55,36 +55,60 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     --minimalista-horizontal-spacing: 1rem; /* Espaçamento horizontal */
     --minimalista-vertical-spacing: 1rem; /* Espaçamento vertical */
     --minimalista-nav-link-color: var(--bs-white);
-    --minimalista-nav-link-hover-color: #d4af37; /* Cor dourada para o hover */
+    /* --minimalista-nav-link-hover-color: #d4af37; */ /* Cor dourada para o hover */
+    --minimalista-nav-link-hover-color: var(--bs-white);
     --minimalista-navbar-brand-padding-y: 1rem;
     --minimalista-navbar-brand-margin-end: 1rem;
     --minimalista-navbar-nav-link-padding-x: 1rem;
 
-    /* Botões */
-    --bs-btn-primary-bg: var(--bs-primary);
-    --bs-btn-primary-border: var(--bs-primary);
-    --bs-btn-primary-color: var(--bs-white);
-    --bs-btn-primary-hover-bg: #111149; /* Sombreado mais escuro do azul */
-    --bs-btn-primary-hover-border: #141459;
 
-    --bs-btn-secondary-bg: var(--bs-secondary);
-    --bs-btn-secondary-border: var(--bs-secondary);
-    --bs-btn-secondary-color: var(--bs-white);
-    --bs-btn-secondary-hover-bg: #b3952d; /* Sombreado mais escuro do dourado */
-    --bs-btn-secondary-hover-border: #b3952d;
 
     --bs-link-opacity: 1;
-    --bs-code-color: #1A728D;
+    /* --bs-code-color: #1A728D; */
 }
 
 /* ########################################################
- *              REAPLICAR VARIAVEIS DO BOOTSTRAP
+ *    REAPLICAR CLASSES DO BOOTSTRAPCOM COM AS VARIAVEIS
  * ######################################################## */
 
 /* Classe para aplicar a cor primária como fundo */
 .bg-primary {
     background-color: var(--bs-primary) !important;
 }
+
+.dropdown-menu {
+    --bs-dropdown-zindex: 1000;
+    --bs-dropdown-min-width: 10rem;
+    --bs-dropdown-padding-x: 0;
+    --bs-dropdown-padding-y: 0.5rem;
+    --bs-dropdown-spacer: 0.125rem;
+    --bs-dropdown-font-size: 1.125rem;
+    --bs-dropdown-color: #ffffff;
+    --bs-dropdown-bg: var(--bs-primary);
+    --bs-dropdown-border-color: var(--bs-link-hover-color);
+    --bs-dropdown-border-radius: var(--bs-border-radius);
+    --bs-dropdown-border-width: var(--bs-border-width);
+    --bs-dropdown-inner-border-radius: calc(var(--bs-border-radius) - var(--bs-border-width));  
+    --bs-dropdown-divider-bg: var(--bs-primary-border-subtle);
+    --bs-dropdown-divider-margin-y: 0.5rem;
+    --bs-dropdown-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    --bs-dropdown-link-color: #ffffff;
+    --bs-dropdown-link-hover-color: #ffffff;
+    --bs-dropdown-link-hover-bg: var(--bs-link-hover-color);
+    --bs-dropdown-link-active-color: #ffffff;
+    --bs-dropdown-link-active-bg: var(--bs-link-hover-color);
+    --bs-dropdown-link-disabled-color: #6c757d;
+    --bs-dropdown-item-padding-x: 1rem;
+    --bs-dropdown-item-padding-y: 0.25rem;
+    --bs-dropdown-header-color: var(--bs-primary-border-subtle);
+    --bs-dropdown-header-padding-x: 1rem;
+    --bs-dropdown-header-padding-y: 0.5rem;
+    font-size: var(--bs-dropdown-font-size);
+    color: var(--bs-dropdown-color);
+    background-color: var(--bs-dropdown-bg);
+    background-clip: padding-box;
+    border: var(--bs-dropdown-border-width) solid var(--bs-dropdown-border-color);
+   }
 
 /* ==============================
  * Toogler (hamburger)
@@ -135,7 +159,7 @@ h6 {
  * ============================== */
 
  h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
-    margin-bottom: calc(0.25 * var(--minimalista-vertical-spacing));
+    margin-bottom: calc(0.5 * var(--minimalista-vertical-spacing));
 }
 
 /* Espacamento Vertical (Vertical Spacing) */
@@ -166,7 +190,7 @@ p:last-child {
  * ============================== */
 
 ul li, ol li {
-    margin-bottom: calc(0.5 * var(--minimalista-vertical-spacing)); /* Espaçamento entre os itens da lista para legibilidade */
+    margin-bottom: calc(1 * var(--minimalista-vertical-spacing)); /* Espaçamento entre os itens da lista para legibilidade */
 }
 
 /* ==============================
@@ -254,7 +278,7 @@ hr {
 
 /* Menu de navegacao */
 .navbar-nav .nav-link {
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: var(--minimalista-nav-link-color) !important; 
     font-weight: 600;
     text-decoration: none;
@@ -390,7 +414,7 @@ article:not(:last-child) {
  }
 
 .page-header {
-    margin-bottom: calc(1.5 * var(--minimalista-vertical-spacing));
+    margin-bottom: calc(1 * var(--minimalista-vertical-spacing));
  }
 
 /**
@@ -398,15 +422,15 @@ article:not(:last-child) {
  */
 .post-metadata-primary,
 .post-metadata-secondary {
-    font-size: 1rem;
+    font-size: 0.85rem;
 } 
 
 .entry-meta, .entry-content, .entry-footer {
-    margin-bottom: 0.5rem; /* 10px -> 0.625rem */
+    margin-bottom: calc(0.5 * var(--minimalista-vertical-spacing));
 }
 
 .entry-footer {
-    margin-top: calc(1.25 * var(--minimalista-vertical-spacing));
+    margin-top: calc(0.5 * var(--minimalista-vertical-spacing));
 }
 
 .posted-on, .byline, .cat-links, .comments-link, .edit-link {
@@ -591,29 +615,32 @@ input[type="text"]:last-child, input[type="email"]:last-child, input[type="passw
     margin-bottom: 0; 
 }
 
-
-/* Botao Primary */
 .btn-primary {
-    background-color: var(--bs-btn-primary-bg) !important;
-    border-color: var(--bs-btn-primary-border) !important;
-    color: var(--bs-btn-primary-color) !important;
+    color: var(--bs-white);
+    background-color: var(--bs-primary);
+    border: none;
+    transition: background-color 0.3s ease, filter 0.3s ease;
 }
 
 .btn-primary:hover {
-    background-color: var(--bs-btn-primary-hover-bg) !important;
-    border-color: var(--bs-btn-primary-hover-border) !important;
+    color: var(--bs-white);
+    background-color: var(--bs-primary);
+    /* border: 1px solid var(--bs-primary); */
+   filter: brightness(85%);/ /* Escurece a cor em 15% */
 }
 
-/* Botao Secondary */
 .btn-secondary {
-    background-color: var(--bs-btn-secondary-bg) !important;
-    border-color: var(--bs-btn-secondary-border) !important;
-    color: var(--bs-btn-secondary-color) !important;
+    color: var(--bs-white);
+    background-color: var(--bs-secondary);
+    border: none;
+    transition: background-color 0.3s ease, filter 0.3s ease;
 }
 
 .btn-secondary:hover {
-    background-color: var(--bs-btn-secondary-hover-bg) !important;
-    border-color: var(--bs-btn-secondary-hover-border) !important;
+    color: var(--bs-white);
+    background-color: var(--bs-secondary);    
+    /* border: 1px solid var(--bs-secondary); */
+    filter: brightness(85%); /* Escurece a cor em 15% */
 }
 
 /* TODO: DEFINIR AS CORES DESTES OUTROS BOTOES */
@@ -688,19 +715,24 @@ input[type="text"]:last-child, input[type="email"]:last-child, input[type="passw
  * ============================== */
 
  a {
-     text-decoration: none;
+    cursor: pointer;
+    text-underline-offset: 5px;
+    text-decoration: none;
+    overflow-wrap: break-word;
+    text-decoration-skip-ink: none;
  }
  
  a:hover {
-     text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration: var(--bs-link-decoration);
  }
  
  a.btn {
-     text-decoration: none;
+    text-decoration: none;
  }
  
  a {
-     font-weight: 500;
+    font-weight: 500;
  }
 
 /* ########################################################
@@ -1242,3 +1274,34 @@ ul.no-bullet {
 /* XX-Large devices (larger desktops, 1400px and up) */
 @media (min-width: 1400px) {
 }
+
+/**
+ * Responsive typography
+ * (576px = 36em)
+ * (768px = 48em)
+ * (992px = 62em) 
+ * (1200px = 75em)
+ * (1920px = 120em)
+ *
+ * @link https://getbootstrap.com/docs/4.1/content/typography/#responsive-typography
+ * @link https://websemantics.uk/tools/responsive-font-calculator/
+ */
+
+/* 16px @ 576px increasing to 20px @ 1400px */
+@media (min-width: 576px) {
+    :root {
+      font-size: calc(1rem + (20 - 16) * ((100vw - 576px) / (1400 - 576)));
+      /* Note: The calc base value (1rem) MUST be stated in REM to maintain accessibility */
+      /* Where: calc = min_font_size_in_rem + (max_font_size - min_font_size) * ((100vw - min_viewport_including_px_unit) / (max_viewport - min_viewport)) */
+      /* Define o tamanho da fonte usando a função calc(). A fórmula calcula o tamanho da fonte como uma interpolação linear entre 16px e 20px à medida que a largura da janela aumenta de 576px a 1400px. */
+
+      /* Safari resize fix */
+      min-height: 0vw;
+    }
+  }
+  /* Prevent scaling beyond this breakpoint */
+  @media (min-width: 1400px) {
+    :root {
+      font-size: 20px;
+    }
+  }

@@ -52,7 +52,7 @@ if (!defined('ABSPATH')) {
 					'menu_class'     => 'navbar-nav me-auto mb-2 mb-lg-0',
 					'fallback_cb'    => '__return_false',
 					'depth'          => 2,
-					'walker'         => new WP_Bootstrap_Navwalker(),
+					'walker'         => new Bootstrap_Nav_Walker(),
 				) );
 			?>
 		</div>

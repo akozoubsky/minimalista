@@ -16,12 +16,12 @@ function minimalista_scripts() {
 	
     //wp_enqueue_style('bootstrap5', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css');
     /* include the compiled Bootstrap CSS file */
-    wp_enqueue_style('minimalista-bootstrap', trailingslashit(get_template_directory_uri()) . "assets/bootstrap/css/bootstrap.min.css", array(), '5.3.2');
+    wp_enqueue_style('minimalista-bootstrap', trailingslashit(get_template_directory_uri()) . "assets/bootstrap/css/bootstrap.min.css", array(), '5.3.3');
 	
     // @link https://fontawesome.com/download
     wp_enqueue_style('minimalista-fontawesome', trailingslashit(get_template_directory_uri()) . "assets/font-awesome/css/all.min.css", array(), '6.4.2');
 	
-    wp_enqueue_script('minimalista-bootstrap', trailingslashit(get_template_directory_uri()) . "assets/bootstrap/js/bootstrap.bundle.min.js", false, '5.3.2');
+    wp_enqueue_script('minimalista-bootstrap', trailingslashit(get_template_directory_uri()) . "assets/bootstrap/js/bootstrap.bundle.min.js", false, '5.3.3');
 
     wp_enqueue_script('minimalista-fontawesome', trailingslashit(get_template_directory_uri()) . "assets/font-awesome/js/all.min.js", true, '6.4.2');
 

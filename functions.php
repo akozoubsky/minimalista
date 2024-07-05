@@ -69,7 +69,8 @@ require get_template_directory() . '/inc/customizer.php';
 /**
  * Bootstrap Nav Walker.
  */
-require get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
+//require get_template_directory() . '/classes/class-wp-bootstrap-navwalker.php';
+require_once get_template_directory() . '/classes/Bootstrap_Nav_Walker.php';
 
 /**
  * Functions related to images.
