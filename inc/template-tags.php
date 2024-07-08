@@ -757,7 +757,7 @@ function minimalista_display_post_content($content_class = '', $html_before = ''
     // Custom 'more' text for the content
     if ($show_more) {
         add_filter('content_more', function () use ($more_text) {
-            return ' <a class="read-more" href="' . get_permalink() . '">' . __($more_text, 'light-cms-bootstrap') . '</a>';
+            return ' <a class="read-more" href="' . get_permalink() . '">' . __($more_text, 'minimalista') . '</a>';
         });
     }
 

@@ -378,9 +378,9 @@ if ( ! class_exists( 'WP_Bootstrap_5_Navwalker' ) ) :
 			$class            = $args['menu_class'] ? ' class="menu-fallback-menu ' . esc_attr( $args['menu_class'] ) . '"' : ' class="menu-fallback-menu"';
 			$id               = $args['menu_id'] ? ' id="' . esc_attr( $args['menu_id'] ) . '"' : '';
 			$fallback_output .= '<ul' . $id . $class . '>';
-			//$fallback_output .= '<li class="nav-item"><a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '" class="nav-link" title="' . esc_attr__( 'Add a menu', 'light-cms-bootstrap' ) . '">' . esc_html__( 'Add a menu', 'light-cms-bootstrap' ) . '</a></li>';
+			//$fallback_output .= '<li class="nav-item"><a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '" class="nav-link" title="' . esc_attr__( 'Add a menu', 'minimalista' ) . '">' . esc_html__( 'Add a menu', 'minimalista' ) . '</a></li>';
 			// Code has been updated for Bootstrap 5
-			$fallback_output .= '<li class="nav-link"><a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '" class="nav-link" title="' . esc_attr__( 'Add a menu', 'light-cms-bootstrap' ) . '">' . esc_html__( 'Add a menu', 'light-cms-bootstrap' ) . '</a></li>';
+			$fallback_output .= '<li class="nav-link"><a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '" class="nav-link" title="' . esc_attr__( 'Add a menu', 'minimalista' ) . '">' . esc_html__( 'Add a menu', 'minimalista' ) . '</a></li>';
 			$fallback_output .= '</ul>';
 			
 
