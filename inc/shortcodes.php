@@ -48,7 +48,7 @@ function latest_posts_bs_card_shortcode($atts)
 
                         <article id="post-<?php the_ID(); ?>" <?php post_class('blog-posting col-12 col-sm-12 col-lg-12'); ?> itemscope itemtype="http://schema.org/BlogPosting" aria-label="Leia mais sobre <?php the_title(); ?>">
 
-                            <div class="card mb-3">
+                            <div class="card">
 
                                 <div class="row g-0">
 
@@ -62,8 +62,8 @@ function latest_posts_bs_card_shortcode($atts)
                                     <div class="<?php echo has_post_thumbnail() ? 'col-8' : 'col-12'; ?>">
                                         <div class="card-body">
                                             <a class="" href="<?php the_permalink(); ?>" rel="related">
-                                                <h4 class="card-title fs-5 mb-0" itemprop="headline"><?php the_title(); ?></h4>
-                                                <time class="card-text mb-0 text-muted" itemprop="datePublished" datetime="<?php echo get_the_date('c'); ?>">
+                                                <h4 class="card-title" itemprop="headline"><?php the_title(); ?></h4>
+                                                <time class="card-text" itemprop="datePublished" datetime="<?php echo get_the_date('c'); ?>">
                                                     <small><span class="text-muted"><?php echo get_the_date(); ?></span></small>
                                                 </time>
                                             </a>
@@ -76,17 +76,17 @@ function latest_posts_bs_card_shortcode($atts)
 
                         </article>
 
-                        <article id="post-<?php the_ID(); ?>" <?php post_class("blog-posting mb-3"); ?> itemscope itemtype="http://schema.org/BlogPosting">
+                        <article id="post-<?php the_ID(); ?>" <?php post_class("blog-posting"); ?> itemscope itemtype="http://schema.org/BlogPosting">
 
-                            <header class="entry-header mb-3">
-                                <?php minimalista_display_post_title('h2', 'entry-title mb-1', true); ?>
+                            <header class="entry-header">
+                                <?php minimalista_display_post_title('h2', 'entry-title', true); ?>
                                 <?php minimalista_display_post_metadata_primary(); ?>
                             </header>
 
                             <?php if (has_post_thumbnail()) :
                             ?>
                                 <div class="">
-                                    <?php minimalista_display_post_thumbnail($atts['image_size'], "thumbnail img-fluid mb-3", true); ?>
+                                    <?php minimalista_display_post_thumbnail($atts['image_size'], "thumbnail img-fluid", true); ?>
                                 </div>
                             <?php endif; ?>
 

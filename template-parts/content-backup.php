@@ -31,7 +31,7 @@
 		<?php minimalista_display_custom_header_image() ?>
 	</header><!-- .entry-header -->
 
-	<?php minimalista_post_thumbnail(); ?>
+	<?php minimalista_display_post_thumbnail("custom-thumbnail"); ?>
 
 	<div class="entry-content">
 		<?php

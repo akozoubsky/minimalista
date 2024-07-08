@@ -39,7 +39,11 @@ function minimalista_setup() {
 		*
 		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		*/
-	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
+
+	add_theme_support('custom-header');
+	add_post_type_support('post', 'custom-header');
+	add_post_type_support('page', 'custom-header');
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(

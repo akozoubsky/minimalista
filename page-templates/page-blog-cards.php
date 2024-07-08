@@ -70,7 +70,7 @@ get_header();  // Include the header.php file
                                     <header class="entry-header">
                                         <!-- Post Title -->
                                         <?php minimalista_display_post_title('card-title', $title_tag, 'true'); ?>
-                                        <?php minimalista_display_post_metadata_primary("mb-3"); ?>
+                                        <?php minimalista_display_post_metadata_primary(""); ?>
                                     </header>
 
                                     <?php
@@ -80,10 +80,10 @@ get_header();  // Include the header.php file
 
                                     <?php
                                     if ($show_excerpt)
-                                        minimalista_display_post_excerpt('card-text mt-3');
+                                        minimalista_display_post_excerpt('card-text');
                                     ?>
 
-                                    <a href="<?php the_permalink(); ?>" class="continue-reading icon-link gap-1 icon-link-hover mt-2">Continue lendo<i class="fas fa-angle-right"></i></a>
+                                    <a href="<?php the_permalink(); ?>" class="continue-reading icon-link gap-1 icon-link-hover">Continue lendo<i class="fas fa-angle-right"></i></a>
 
                                 </div><!-- ./ card-body -->
 
@@ -108,13 +108,10 @@ get_header();  // Include the header.php file
 
             </main><!-- /.blog-main -->
 
-        </div>
+        </div><!-- ./col -->
 
-        <!-- Sidebar Column -->
-        <aside id="secondary" class="widget-area sidebar-right col-lg-4 mt-5 mt-lg-3 ps-lg-5">
-            <?php minimalista_display_categories('Tópicos', '', 'widget', 'my-1', 'Ir para o Blog', 'fw-bold', '', '') ?>
-            <?php minimalista_display_popular_articles(0, 'Artigos Populares', '', 'widget', 'my-1'); ?> 
-        </aside><!-- #secondary -->
+		<!-- Right Sidebar Column -->
+		<?php get_sidebar(); // Include the sidebar.php file ?>
 
     </div><!-- /.row -->
 

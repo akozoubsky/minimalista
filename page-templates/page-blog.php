@@ -108,7 +108,7 @@ get_header();  // Include the header.php file
                                         echo '</div><!-- .col-8 -->';
                                         echo '</div><!-- ./row -->';
                                     } else {
-                                        echo '<header class="entry-header mb-3">';
+                                        echo '<header class="entry-header">';
                                         minimalista_display_post_title($title_tag, '', true);
                                         minimalista_display_post_metadata_primary();
                                         echo '</header><!-- ./header -->';
@@ -144,7 +144,7 @@ get_header();  // Include the header.php file
                                         echo '</div><!-- .col-8 -->';
                                         echo '</div><!-- ./row -->';
                                     } else {
-                                        echo '<header class="entry-header mb-3">';
+                                        echo '<header class="entry-header">';
                                         minimalista_display_post_title($title_tag, '', true);
                                         minimalista_display_post_metadata_primary();
                                         echo '</header><!-- ./header -->';
@@ -187,11 +187,8 @@ get_header();  // Include the header.php file
 
         </div><!-- ./col- -->
 
-        <!-- Sidebar Column -->
-        <aside id="secondary" class="widget-area sidebar-right col-lg-4 mt-5 mt-lg-3 ps-lg-5">
-            <?php minimalista_display_categories('Tópicos', '', 'widget', 'my-1', 'Ir para o Blog', 'fw-bold', '', '') ?>
-            <?php minimalista_display_popular_articles(0, 'Artigos Populares', '', 'widget', 'my-1'); ?> 
-        </aside><!-- #secondary -->
+		<!-- Right Sidebar Column -->
+		<?php get_sidebar(); // Include the sidebar.php file ?>
 
     </div><!-- /.row -->
 

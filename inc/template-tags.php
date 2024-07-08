@@ -182,14 +182,14 @@ if ( ! function_exists( 'minimalista_entry_footer' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'minimalista_post_thumbnail' ) ) :
+if ( ! function_exists( 'minimalista_display_post_thumbnail_old' ) ) :
 	/**
 	 * Displays an optional post thumbnail.
 	 *
 	 * Wraps the post thumbnail in an anchor element on index views, or a div
 	 * element when on single views.
 	 */
-	function minimalista_post_thumbnail() {
+	function minimalista_display_post_thumbnail_old() {
 		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
 			return;
 		}
@@ -487,37 +487,37 @@ function minimalista_display_post_metadata_primary($additional_classes = '')
 
     // Standard Metadata for posts
     // Date and Author
-    echo '<time class="post-date me-4 text-break" itemprop="datePublished">' . minimalista_generate_icon_html("fa-calendar", "me-2") . get_the_date() . '</time>';
-    echo '<span class="post-author me-4 text-break" itemprop="author">' . minimalista_generate_icon_html("fa-user", "me-2") . get_the_author() . '</span>';
+    echo '<time class="post-date text-break" itemprop="datePublished">' . minimalista_generate_icon_html("fa-calendar", "me-2") . get_the_date() . '</time>';
+    echo '<span class="post-author text-break" itemprop="author">' . minimalista_generate_icon_html("fa-user", "me-2") . get_the_author() . '</span>';
 
     // Format-specific Metadata
     switch ($post_format) {
         case 'aside':
-            echo '<span class="post-format post-format-aside me-4 text-break">' . minimalista_generate_icon_html("fa-pencil-alt", "me-2") . __('Aside', 'minimalista') . '</span>';
+            echo '<span class="post-format post-format-aside text-break">' . minimalista_generate_icon_html("fa-pencil-alt", "me-2") . __('Aside', 'minimalista') . '</span>';
             break;
         case 'gallery':
-            echo '<span class="post-format post-format-gallery me-4 text-break">' . minimalista_generate_icon_html("fa-images", "me-2") . __('Gallery', 'minimalista') . '</span>';
+            echo '<span class="post-format post-format-gallery text-break">' . minimalista_generate_icon_html("fa-images", "me-2") . __('Gallery', 'minimalista') . '</span>';
             break;
         case 'link':
-            echo '<span class="post-format post-format-link me-4 text-break">' . minimalista_generate_icon_html("fa-link", "me-2") . __('Link', 'minimalista') . '</span>';
+            echo '<span class="post-format post-format-link text-break">' . minimalista_generate_icon_html("fa-link", "me-2") . __('Link', 'minimalista') . '</span>';
             break;
         case 'image':
-            echo '<span class="post-format post-format-image me-4 text-break">' . minimalista_generate_icon_html("fa-camera", "me-2") . __('Image', 'minimalista') . '</span>';
+            echo '<span class="post-format post-format-image text-break">' . minimalista_generate_icon_html("fa-camera", "me-2") . __('Image', 'minimalista') . '</span>';
             break;
         case 'quote':
-            echo '<span class="post-format post-format-quote me-4 text-break">' . minimalista_generate_icon_html("fa-quote-left", "me-2") . __('Quote', 'minimalista') . '</span>';
+            echo '<span class="post-format post-format-quote text-break">' . minimalista_generate_icon_html("fa-quote-left", "me-2") . __('Quote', 'minimalista') . '</span>';
             break;
         case 'status':
-            echo '<span class="post-format post-format-status me-4 text-break">' . minimalista_generate_icon_html("fa-comment", "me-2") . __('Status', 'minimalista') . '</span>';
+            echo '<span class="post-format post-format-status text-break">' . minimalista_generate_icon_html("fa-comment", "me-2") . __('Status', 'minimalista') . '</span>';
             break;
         case 'video':
-            echo '<span class="post-format post-format-video me-4 text-break">' . minimalista_generate_icon_html("fa-video", "me-2") . __('Video', 'minimalista') . '</span>';
+            echo '<span class="post-format post-format-video text-break">' . minimalista_generate_icon_html("fa-video", "me-2") . __('Video', 'minimalista') . '</span>';
             break;
         case 'audio':
-            echo '<span class="post-format post-format-audio me-4 text-break">' . minimalista_generate_icon_html("fa-music", "me-2") . __('Audio', 'minimalista') . '</span>';
+            echo '<span class="post-format post-format-audio text-break">' . minimalista_generate_icon_html("fa-music", "me-2") . __('Audio', 'minimalista') . '</span>';
             break;
         case 'chat':
-            echo '<span class="post-format post-format-chat me-4 text-break">' . minimalista_generate_icon_html("fa-comments", "me-2") . __('Chat', 'minimalista') . '</span>';
+            echo '<span class="post-format post-format-chat text-break">' . minimalista_generate_icon_html("fa-comments", "me-2") . __('Chat', 'minimalista') . '</span>';
             break;
         default:
             // Standard post format doesn't need an icon
@@ -564,7 +564,7 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
             );
             if (!empty($audio_duration)) {
                 // Garantir que o valor seja um formato de duração aceitável ou convertê-lo
-                echo '<span class="audio-duration me-3"><i class="fas fa-headphones"></i> ' . esc_html($audio_duration) . '</span>';
+                echo '<span class="audio-duration"><i class="fas fa-headphones"></i> ' . esc_html($audio_duration) . '</span>';
             }
             break;
         case 'video':
@@ -572,7 +572,7 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
             $video_duration = get_post_meta(get_the_ID(), 'video_duration', true);
             if (!empty($video_duration)) {
                 // Assegura que o valor seja um formato de duração aceitável ou convertê-lo
-                echo '<span class="video-duration me-3"><i class="fas fa-video"></i> ' . esc_html($video_duration) . '</span>';
+                echo '<span class="video-duration"><i class="fas fa-video"></i> ' . esc_html($video_duration) . '</span>';
             }
             break;
         case 'quote':
@@ -581,7 +581,7 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
             $quote_author = get_post_meta(get_the_ID(), 'quote_author', true);
             if (!empty($quote_author)) {
                 // Assegura que o valor seja seguro para exibição
-                echo '<span class="quote-author me-3"><i class="fas fa-quote-left"></i> ' . esc_html($quote_author) . '</span>';
+                echo '<span class="quote-author"><i class="fas fa-quote-left"></i> ' . esc_html($quote_author) . '</span>';
             }
             break;
         case 'status':
@@ -595,7 +595,7 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
             ];
 
             if (!empty($status_mood) && isset($emojis[$status_mood])) {
-                echo '<span class="status-mood me-3"><i class="fas fa-smile"></i> ' . esc_html($emojis[$status_mood]) . ' ' . ucfirst($status_mood) . '</span>';
+                echo '<span class="status-mood"><i class="fas fa-smile"></i> ' . esc_html($emojis[$status_mood]) . ' ' . ucfirst($status_mood) . '</span>';
             }
             break;
         case 'aside':
@@ -603,17 +603,17 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
             $word_count = str_word_count(strip_tags(get_the_content()));
             $post_time = get_the_time('g:i a');
 
-            echo '<span class="aside-word-count me-3"><i class="fas fa-pencil-alt"></i> ' . sprintf(_n('%s palavra', '%s palavras', $word_count, 'minimalista'), $word_count) . '</span>';
-            echo '<span class="aside-post-time me-3"><i class="fas fa-clock"></i> ' . esc_html($post_time) . '</span>';
+            echo '<span class="aside-word-count"><i class="fas fa-pencil-alt"></i> ' . sprintf(_n('%s palavra', '%s palavras', $word_count, 'minimalista'), $word_count) . '</span>';
+            echo '<span class="aside-post-time"><i class="fas fa-clock"></i> ' . esc_html($post_time) . '</span>';
             break;
         case 'gallery':
             // Metadata specific to gallery posts
             $gallery_images = get_post_meta(get_the_ID(), 'gallery_images', true);
             if (!empty($gallery_images) && is_array($gallery_images)) {
                 $num_images = count($gallery_images);
-                echo '<span class="gallery-count me-3"><i class="fas fa-images"></i> ' . sprintf(_n('%s imagem', '%s imagens', $num_images, 'minimalista'), $num_images) . '</span>';
+                echo '<span class="gallery-count"><i class="fas fa-images"></i> ' . sprintf(_n('%s imagem', '%s imagens', $num_images, 'minimalista'), $num_images) . '</span>';
             } else {
-                echo '<span class="gallery-empty me-3">' . __('Sem imagens na galeria', 'minimalista') . '</span>';
+                echo '<span class="gallery-empty">' . __('Sem imagens na galeria', 'minimalista') . '</span>';
             }
             break;
         case 'link':
@@ -625,7 +625,7 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
             if (!empty($main_link)) {
                 $link_title = get_post_meta(get_the_ID(), 'link_title', true) ?: __('Link Externo', 'minimalista');
                 $link_domain = parse_url($main_link, PHP_URL_HOST);
-                echo '<span class="post-main-link me-3"><i class="fas fa-external-link-alt"></i> <a href="' . esc_url($main_link) . '" target="_blank" rel="noopener noreferrer">' . esc_html($link_title) . ' (' . esc_html($link_domain) . ')</a></span>';
+                echo '<span class="post-main-link"><i class="fas fa-external-link-alt"></i> <a href="' . esc_url($main_link) . '" target="_blank" rel="noopener noreferrer">' . esc_html($link_title) . ' (' . esc_html($link_domain) . ')</a></span>';
             }
             break;
         case 'image':
@@ -635,10 +635,10 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
             $image_description = get_post_meta(get_the_ID(), 'image_description', true);
 
             if (!empty($image_dimensions)) {
-                echo '<span class="image-dimensions me-3"><i class="fas fa-ruler-combined"></i> ' . esc_html($image_dimensions) . '</span>';
+                echo '<span class="image-dimensions"><i class="fas fa-ruler-combined"></i> ' . esc_html($image_dimensions) . '</span>';
             }
             if (!empty($image_description)) {
-                echo '<span class="image-description me-3"><i class="fas fa-info-circle"></i> ' . esc_html($image_description) . '</span>';
+                echo '<span class="image-description"><i class="fas fa-info-circle"></i> ' . esc_html($image_description) . '</span>';
             }
             break;
         case 'chat':
@@ -647,10 +647,10 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
             $chat_line_count = get_post_meta(get_the_ID(), 'chat_line_count', true);
 
             if (!empty($chat_participants)) {
-                echo '<span class="chat-participants me-3"><i class="fas fa-users"></i> ' . sprintf(_n('%s participante', '%s participantes', $chat_participants, 'minimalista'), $chat_participants) . '</span>';
+                echo '<span class="chat-participants"><i class="fas fa-users"></i> ' . sprintf(_n('%s participante', '%s participantes', $chat_participants, 'minimalista'), $chat_participants) . '</span>';
             }
             if (!empty($chat_line_count)) {
-                echo '<span class="chat-line-count me-3"><i class="fas fa-comment-dots"></i> ' . sprintf(_n('%s linha', '%s linhas', $chat_line_count, 'minimalista'), $chat_line_count) . '</span>';
+                echo '<span class="chat-line-count"><i class="fas fa-comment-dots"></i> ' . sprintf(_n('%s linha', '%s linhas', $chat_line_count, 'minimalista'), $chat_line_count) . '</span>';
             }
             break;
         default:
@@ -659,12 +659,12 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
 
             // Verifica se existem categorias
             if (has_category()) {
-                echo '<span class="post-categories me-3" itemprop="articleSection">' . minimalista_generate_icon_html("fa-folder", "me-2") . get_the_category_list(', ') . '</span>';
+                echo '<span class="post-categories" itemprop="articleSection">' . minimalista_generate_icon_html("fa-folder", "me-2") . get_the_category_list(', ') . '</span>';
             }
 
             // Verifica se existem tags
             if (has_tag()) {
-                echo '<span class="post-tags me-3" itemprop="keywords">' . minimalista_generate_icon_html("fa-tags", "me-2") . get_the_tag_list('', ', ') . '</span>';
+                echo '<span class="post-tags" itemprop="keywords">' . minimalista_generate_icon_html("fa-tags", "me-2") . get_the_tag_list('', ', ') . '</span>';
             }
             break;
     }
@@ -869,7 +869,7 @@ endif;
        $tag = ('div' === $args['style']) ? 'div' : 'li';
        ?>
        <<?php echo $tag; ?> id="comment-<?php comment_ID(); ?>" <?php comment_class($args['has_children'] ? 'parent' : '', null, null, false); ?>>
-           <div class="card mb-3">
+           <div class="card">
                <div class="card-body bg-secondary-subtle">
                    <div class="row g-2">
                        <div class="col-md-1">
@@ -879,7 +879,7 @@ endif;
                            <h5 class="card-title">
                                <?php printf(__('%s <span class="says">says:</span>'), get_comment_author_link()); ?>
                            </h5>
-                           <h6 class="card-subtitle mb-2 text-muted">
+                           <h6 class="card-subtitle">
                                <a href="<?php echo htmlspecialchars(get_comment_link($comment->comment_ID)); ?>">
                                    <?php printf(__('%1$s at %2$s'), get_comment_date(),  get_comment_time()); ?>
                                </a>
@@ -897,7 +897,7 @@ endif;
                        </div><!--.col -->
                    </div><!-- .row -->
    
-                   <div class="comment-content mt-3">
+                   <div class="comment-content">
                        <?php comment_text(); ?>
                    </div>
    
@@ -999,7 +999,7 @@ function minimalista_the_post_navigation()
     }
 
     // Início da Navegação de Posts (d-flex e justify-content-between para alinhamento)
-    echo '<div class="post-navigation d-flex justify-content-between mt-5 mb-5">';
+    echo '<div class="post-navigation d-flex justify-content-between">';
 
     // Exibe o botão "Posts mais recentes" apenas se houver posts mais recentes
     if ($previous_posts_link) {
@@ -1038,7 +1038,7 @@ function minimalista_single_post_navigation()
     next_post_link('%link', 'Próximo (mais antigo)');
     $next_post_link = ob_get_clean();
 
-    $previous_post_link = str_replace('<a href=', '<a class="btn btn-primary me-3" href=', $previous_post_link);
+    $previous_post_link = str_replace('<a href=', '<a class="btn btn-primary" href=', $previous_post_link);
     $next_post_link = str_replace('<a href=', '<a class="btn btn-primary ms-3" href=', $next_post_link);
 
     $previous_post_link = str_replace('Post Anterior', '<i class="fas fa-arrow-left me-2"></i>Post Anterior', $previous_post_link);

@@ -22,7 +22,7 @@ get_header();
 
 <div class="container">
 
-	<div class="row"><!--  mx-0 gx-5 gy-5 adicionam espaçamento horizontal e vertical entre as colunas, respectivamente -->
+	<div class="row">
 	
 		<div class="col-lg-8">
 		
@@ -34,9 +34,8 @@ get_header();
 					if ( is_home() && ! is_front_page() ) :
 						?>
 						<header class="page-header">
-							<?php minimalista_display_post_title('h1', 'page-title'); ?>
-						</header>
-						<?php if (is_home() && get_option('page_for_posts')): // Verifica se a página atual é a página inicial e se há uma "Página para posts" definida.?>
+							<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+							<?php if (is_home() && get_option('page_for_posts')): // Verifica se a página atual é a página inicial e se há uma "Página para posts" definida.?>
 							<?php
 							/* 
 								* Quando você define uma página específica para exibir seus posts, essa página geralmente não tem conteúdo próprio,
@@ -47,9 +46,10 @@ get_header();
 								*/
 							?>
 							<p class="page-description"><?php echo get_the_excerpt(get_option('page_for_posts')); ?></p>
-						<?php endif; ?>
+						<?php endif; ?>							
+						</header>
 						<?php
-					endif;
+					endif;					
 
 					/* Start the Loop */
 					while ( have_posts() ) :
@@ -75,14 +75,14 @@ get_header();
 
 			</main><!-- #main -->
 			
-		</div>
+		</div><!-- ./col -->
 		
 		<!-- Right Sidebar Column -->
 		<?php get_sidebar(); // Include the sidebar.php file ?>
 		
-	</div>
+	</div><!-- /.row -->
 
-</div>
+</div><!-- /.container -->
 
 <?php
 get_footer();

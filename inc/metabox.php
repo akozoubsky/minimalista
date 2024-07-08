@@ -231,7 +231,7 @@ function minimalista_display_custom_header_image($post_id = null)
         // Se nenhum post_id foi fornecido, assume-se que está no loop
         $alt_text = $post_id ? get_the_title($post_id) : get_the_title();
 
-        echo '<div class="post-header-image mt-2 mb-2">';
+        echo '<div class="post-header-image">';
         echo '<img src="' . esc_url($image_url) . '" alt="' . esc_attr($alt_text) . '" itemprop="primaryImageOfPage">';
         echo '</div>';
     }

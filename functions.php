@@ -35,9 +35,6 @@ add_action( 'after_setup_theme', 'minimalista_content_width', 0 );
 // Include theme setup functions.
 require get_template_directory() . '/inc/theme-setup.php';
 
-// Include enqueue scripts functions.
-require get_template_directory() . '/inc/enqueue-scripts.php';
-
 // Include widgets functions.
 require get_template_directory() . '/inc/widgets.php';
 
@@ -93,6 +90,9 @@ require get_template_directory() . '/inc/shortcodes.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+// Include enqueue scripts functions.
+require get_template_directory() . '/inc/enqueue-scripts.php';
 
 // ===========================================
 // Funcoes relativas a segurança do site

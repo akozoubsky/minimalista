@@ -61,7 +61,7 @@ get_header(); ?>
 
 							<header class="entry-header">
 								<?php
-								the_title( '<h3 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' );
+								minimalista_display_post_title('h3', 'entry-title');
 
 								if ( 'post' === get_post_type() ) :
 									?>
@@ -73,7 +73,7 @@ get_header(); ?>
 								<?php endif; ?>
 							</header><!-- .entry-header -->
 
-							<?php minimalista_post_thumbnail(); ?>
+							<?php minimalista_display_post_thumbnail("custom-thumbnail"); ?>
 
 							<div class="entry-content">
 								<?php

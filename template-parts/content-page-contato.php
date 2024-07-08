@@ -12,11 +12,11 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<header class="page-header">
+		<?php minimalista_display_custom_header_image(); ?>
 		<?php minimalista_display_post_title('h1', 'page-title'); ?>
-		<?php minimalista_display_custom_header_image() ?>
 	</header><!-- .page-header -->
 
-	<?php minimalista_post_thumbnail(); ?>
+	<?php minimalista_display_post_thumbnail("custom-thumbnail"); ?>
 
 	<div class="entry-content">
 		<?php

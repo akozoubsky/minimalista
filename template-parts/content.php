@@ -14,6 +14,7 @@
     <header class="entry-header">
         <?php
         if ( is_singular() ) {
+            minimalista_display_custom_header_image();
 			minimalista_display_post_title('h1','entry-title', '');
 		} else {
 			minimalista_display_post_title('h2','entry-title', 'true');
@@ -27,18 +28,16 @@
         <?php endif; ?>
     </header><!-- .entry-header -->
 
-	<?php minimalista_post_thumbnail(); ?>
+	<?php minimalista_display_post_thumbnail("custom-thumbnail"); ?>
 
-    <div class="entry-content">
-        <?php
-        if ( is_singular() ) {
-			minimalista_display_post_content();
-        } else {
-			minimalista_display_post_excerpt();
-        }
-        minimalista_link_pages();
-        ?>
-    </div><!-- .entry-content -->
+    <?php
+    if ( is_singular() ) {
+        minimalista_display_post_content();
+    } else {
+        minimalista_display_post_excerpt();
+    }
+    minimalista_link_pages();
+    ?>
 
     <footer class="entry-footer">
         <?php minimalista_display_post_metadata_secondary(); ?>

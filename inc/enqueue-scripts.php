@@ -7,24 +7,33 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-function minimalista_scripts() {
-	// função WordPress para registrar e enfileirar estilos. Ela toma cinco parâmetros: identificador único para o estilo, URL do arquivo de estilo, um array de dependências, versão e meios para os quais o estilo foi definido (como 'all', 'screen', 'print', etc.).	
+function minimalista_enqueue_styles_and_scripts() {
+
+    // Registrar e enfileirar estilos
+	// Função WordPress para registrar e enfileirar estilos. Ela toma cinco parâmetros: identificador único para o estilo, URL do arquivo de estilo, um array de dependências, versão e meios para os quais o estilo foi definido (como 'all', 'screen', 'print', etc.).	
 
     // Remove font awesome style from plugins.
     wp_deregister_style('font-awesome');
     wp_deregister_style('fontawesome');
+    wp_deregister_style('bootstrap');
+    wp_deregister_style('masonry');
+  
+    if (!is_admin()) {
+        wp_deregister_script('jquery');
+        wp_deregister_script('jquery-migrate');
+    }
+
+    /* ########################################################
+     *            REGISTRAR E ENFILEIRAR ESTILOS
+     * ######################################################## */
 	
     //wp_enqueue_style('bootstrap5', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css');
     /* include the compiled Bootstrap CSS file */
-    wp_enqueue_style('minimalista-bootstrap', trailingslashit(get_template_directory_uri()) . "assets/bootstrap/css/bootstrap.min.css", array(), '5.3.3');
+    wp_enqueue_style('minimalista-bootstrap', trailingslashit(get_template_directory_uri()) . "assets/bootstrap-5.3.2-dist/css/bootstrap.min.css", array(), '5.3.2');
 	
     // @link https://fontawesome.com/download
     wp_enqueue_style('minimalista-fontawesome', trailingslashit(get_template_directory_uri()) . "assets/font-awesome/css/all.min.css", array(), '6.4.2');
-	
-    wp_enqueue_script('minimalista-bootstrap', trailingslashit(get_template_directory_uri()) . "assets/bootstrap/js/bootstrap.bundle.min.js", false, '5.3.3');
-
-    wp_enqueue_script('minimalista-fontawesome', trailingslashit(get_template_directory_uri()) . "assets/font-awesome/js/all.min.js", true, '6.4.2');
-
+    
     /**
      * CSS for Wrapping Text Around Images AND All Available WordPress Gallery Columns
      *
@@ -32,33 +41,46 @@ function minimalista_scripts() {
      */
     //wp_enqueue_style('image-and-gallery', trailingslashit(get_template_directory_uri()) . "css/style-image-and-gallery.css", array(), _S_VERSION);
 
-    //wp_enqueue_script( 'minimalista-script', trailingslashit(get_template_directory_uri()) . '/js/minimalista.js', array(), _S_VERSION, true );
-
+    /**
+     * Estilo do tema
+     */
 	wp_enqueue_style( 'minimalista-style', get_stylesheet_uri(), array('minimalista-bootstrap','minimalista-fontawesome'), _S_VERSION );
-	wp_style_add_data( 'minimalista-style', 'rtl', 'replace' );
+	wp_style_add_data( 'minimalista-style', 'rtl', 'replace' ); 
+    
+    /* ########################################################
+     *              REGISTRAR E ENFILEIRAR SCRIPTS
+     * ######################################################## */
 
-	//wp_enqueue_script( 'minimalista-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+    /*
+     * 
+     * You don’t need jQuery in Bootstrap 5, but it’s still possible to use our components with jQuery.
+     * If Bootstrap detects jQuery in the window object, it’ll add all of our components in jQuery’s plugin system.
+     * 
+     * @link https://getbootstrap.com/docs/5.3/getting-started/javascript/#optionally-using-jquery
+     */
+    wp_enqueue_script('minimalista-bootstrap', trailingslashit(get_template_directory_uri()) . "assets/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js", false, '5.3.2');
+    wp_enqueue_script('minimalista-fontawesome', trailingslashit(get_template_directory_uri()) . "assets/font-awesome/js/all.min.js", true, '6.4.2');
+    /**
+     * DeSandro Masonry
+     * @link https://masonry.desandro.com/
+     */
+    wp_enqueue_script( 'masonry-js', trailingslashit(get_template_directory_uri()) . "assets/masonry-desandro/masonry.pkgd2.min.js", null, '4.2.2', true );
+    
+    /**
+     * Javascript do tema
+     */
+    wp_enqueue_script( 'minimalista-script', trailingslashit(get_template_directory_uri()) . '/js/minimalista.js', array(), _S_VERSION, true );
+    /**
+     * Masonry do tema
+     */
+    wp_enqueue_script( 'minimalista-masonry', get_template_directory_uri() . '/js/minimalista-masonry.js', array('masonry-js'), '1.0.0', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 	
 }
-add_action( 'wp_enqueue_scripts', 'minimalista_scripts' );
-
-/**
- * DeSandro Masonry
- * @link https://masonry.desandro.com/
- */
-function minimalista_enqueue_masonry_script() {
-    // Enqueue Masonry.js
-    //wp_enqueue_script( 'masonry-js', 'https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js', array('jquery'), '4.2.2', true );
-    wp_enqueue_script( 'masonry-js', trailingslashit(get_template_directory_uri()) . "assets/masonry-desandro/masonry.pkgd2.min.js", array('jquery'), '4.2.2', true );
-    // Enqueue custom JavaScript for initializing Masonry
-    wp_enqueue_script( 'minimalista-masonry', get_template_directory_uri() . '/js/minimalista-masonry.js', array('masonry-js'), '1.0.0', true );
-}
-add_action( 'wp_enqueue_scripts', 'minimalista_enqueue_masonry_script' );
-
+add_action( 'wp_enqueue_scripts', 'minimalista_enqueue_styles_and_scripts' );
 
 /**
  * Dequeue Block Styles
@@ -84,13 +106,4 @@ add_action( 'wp_enqueue_scripts', 'dequeue_block_scripts', 100 );
 function enqueue_remove_block_styles_script() {
     wp_enqueue_script('remove-wp-block-styles', get_template_directory_uri() . '/js/remove-wp-block-styles.js', array(), null, true);
 }
-add_action('wp_enqueue_scripts', 'enqueue_remove_block_styles_script');	
-
-// Desabilitar jQuery no Frontend (mantendo no Admin)
-function disable_jquery_on_frontend() {
-    if (!is_admin()) {
-        wp_deregister_script('jquery');
-        wp_deregister_script('jquery-migrate');
-    }
-}
-
+add_action('wp_enqueue_scripts', 'enqueue_remove_block_styles_script');

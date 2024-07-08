@@ -86,16 +86,15 @@ function add_custom_image_sizes()
     // Cabeçalho largo e alto
 	// aspect ratio 20:10
     add_image_size('header-wide-tall', 1920, 384, true);
+    
 }
 
-// ==========================
-// Imagens
-// ==========================
-add_filter('intermediate_image_sizes', 'remove_default_image_sizes');
-add_action('init', 'remove_default_large_image_sizes');
-add_action('after_setup_theme', 'modify_default_image_sizes');
-add_action('after_setup_theme', 'add_custom_image_sizes');
-
+/*
+ * Quando uma imagem é inserida no conteúdo de uma postagem ou página, o WordPress calcula os atributos srcset e sizes para a imagem.
+ * O atributo srcset contém uma lista de URLs de diferentes tamanhos da imagem, enquanto o atributo sizes diz ao navegador quais dessas URLs usar em diferentes larguras de viewport.
+ * A função minimalista_calculate_image_sizes_attr personaliza o valor do atributo sizes, ajudando o navegador a selecionar o tamanho de imagem mais apropriado para a largura atual do viewport.
+ * Isso resulta em um carregamento de imagem mais eficiente e uma melhor experiência do usuário.
+ */
 function minimalista_calculate_image_sizes_attr($sizes, $size)
 {
     $width = $size[0];
@@ -120,4 +119,38 @@ function minimalista_calculate_image_sizes_attr($sizes, $size)
 
     return $sizes;
 }
+
+/**
+ * Add Custom Image Sizes to the Media Uploader
+ * @TODO: Incluir todos os outros tamanhos de imagens acima
+ */
+function minimalista_custom_image_sizes_choose( $sizes ) {
+	return array_merge( $sizes, array(
+		//'thumbnail-retangular' => __( 'Miniatura retangular 15:10' ),
+		//'thumbnail-16-9' => __( 'Miniatura 16:9' ),
+		//'medium-retangular' => __( 'Médio retangular 15:10' ),
+		//'small-16-9' => __( 'Pequeno 16:09' ),
+		//'medium-16-9' => __( 'Médio 16:09' ),
+		//'large-16-9' => __( 'Grande 16:09' ),
+		//'extra-large-16-9' => __( 'Extra grande 16:09' ),
+		//'extra-large' => __( 'Extra grande 1200px largura' ),
+		//'widescreen' => __( 'Widescreen (1920 x 1080' ),
+
+        'landscape-small' => __( 'landscape-small' ),
+        
+	) );
+}
+
+
+
+add_filter('intermediate_image_sizes', 'remove_default_image_sizes');
+add_action('init', 'remove_default_large_image_sizes');
+add_action('after_setup_theme', 'modify_default_image_sizes');
+add_action('after_setup_theme', 'add_custom_image_sizes');
+/* A função é adicionada ao filtro wp_calculate_image_sizes, que é chamado pelo WordPress quando ele está calculando o valor do atributo sizes para uma imagem. */
 add_filter('wp_calculate_image_sizes', 'minimalista_calculate_image_sizes_attr', 10, 2);
+/**
+ * Add Custom Image Sizes to the Media Uploader
+ */
+add_filter( 'image_size_names_choose', 'minimalista_custom_image_sizes_choose' );
+

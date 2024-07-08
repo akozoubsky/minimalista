@@ -66,7 +66,7 @@ get_header();
 
                 else : ?>
 
-                    <header class="page-header mb-4">
+                    <header class="page-header">
                         <h1 class="page-title">
                             <?php esc_html_e( 'Search Results', 'minimalista' ); ?>
                         </h1>
