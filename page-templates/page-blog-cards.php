@@ -30,7 +30,7 @@ get_header();  // Include the header.php file
         <!-- Main Content Column -->
         <div class="col-lg-8 ">
 
-            <main id="main" class="blog-main" itemscope itemtype="http://schema.org/Blog">
+            <main id="primary" class="site-main" itemscope itemtype="http://schema.org/Blog">
 
                 <header class="page-header">
                     <?php minimalista_display_post_title('h1', 'entry-title'); ?>
@@ -103,7 +103,7 @@ get_header();  // Include the header.php file
 
                 } else {
                     ?>
-                    <p><?php _e('Sorry, no posts to display.'); ?></p>
+                    <p><?php _e('Desculpe, não há postagens para exibir.'); ?></p>
                 <?php } ?>
 
             </main><!-- /.blog-main -->

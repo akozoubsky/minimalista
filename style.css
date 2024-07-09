@@ -237,8 +237,65 @@ ul ul, ul ol, ol ul, ol ol {
 }
 
 /* ==============================
+ * Listas customizadas
+ * ============================== */
+
+/* Estilo personalizado para listas */
+
+.minimalista-custom-list-section {
+    margin-bottom: var(--minimalista-vertical-spacing-7);
+}
+    .minimalista-custom-list-section:last-child {
+        margin-bottom: 0;
+    }
+
+ul.minimalista-custom-list {
+    list-style-type: none !important; /* Remove marcadores de lista, se necessário */
+    padding-left: 0 !important; /* Remove padding padrão */
+    margin-left: 0 !important; /* Garantir que não haja margem adicional */
+}
+  
+ul.minimalista-custom-list li {
+    padding-left: var(--minimalista-horizontal-spacing-4) !important; /* O espaço entre o marcador e o texto */
+    position: relative !important;
+}
+
+ul.minimalista-custom-list li::before {
+    content: "•" !important; /* Adiciona um marcador customizado */
+    position: absolute !important;
+    left: 0 !important; /* Posiciona o marcador à esquerda do item */
+    color: var(--bs-primary) !important; /* Cor do marcador */
+    font-size: 1.2rem !important; /* Tamanho do marcador */
+    top: 50% !important; /* Centraliza verticalmente */
+    transform: translateY(-50%) !important; /* Ajuste de centralização vertical */
+}
+
+ul.minimalista-custom-list ul li:last-child {
+    margin-bottom: 0; /* Espacamento Vertical (Vertical Spacing)  */
+}
+
+/* ==============================
  * Blocos de citacao
  * ============================== */
+
+ blockquote, .blockquote {
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    padding: 1rem;
+    font-style: italic;
+}
+
+    blockquote i,
+    blockquote em,
+    blockquote cite,
+    blockquote footer {
+        font-style: normal;
+    }
+
+    blockquote footer, .blockquote-footer {
+        margin-top: 1rem;
+    }
 
 /* ==============================
  * Tabelas
@@ -264,12 +321,6 @@ ul ul, ul ol, ol ul, ol ol {
 /* ==============================
  * Area de conteudo principal
  * ============================== */
-
-/* Alterar a cor de H2 sem atingir os links */
-.site-main h2:not(.entry-title),
-.site-main .h2:not(.entry-title) {
-    color: var(--bs-secondary);
-}
 
 /* ==============================
  * Listas customizadas
@@ -430,6 +481,7 @@ label {
  .wp-caption-text {
     padding: .5rem;
     text-align: center;
+    font-size: 0.875em;
  }
 
  .post-thumbnail img, .thumbnail {
@@ -992,6 +1044,39 @@ figure.gallery-item {
  * https://getbootstrap.com/docs/5.3/components/card/
  */
 
+.card {
+    --bs-card-spacer-y: 1rem;
+    --bs-card-spacer-x: 1rem;
+    --bs-card-title-spacer-y: 0.5rem;
+    --bs-card-title-color: ;
+    --bs-card-subtitle-color: ;
+    --bs-card-border-width: var(--bs-border-width);
+    --bs-card-border-color: var(--bs-border-color); /* customizado */
+    --bs-card-border-radius: var(--bs-border-radius);
+    --bs-card-box-shadow: ;
+    --bs-card-inner-border-radius: calc(var(--bs-border-radius) - (var(--bs-border-width)));
+    --bs-card-cap-padding-y: 0.5rem;
+    --bs-card-cap-padding-x: 1rem;
+    --bs-card-cap-bg: rgba(var(--bs-body-color-rgb), 0.03);
+    --bs-card-cap-color: ;
+    --bs-card-height: ;
+    --bs-card-color: ;
+    --bs-card-bg: var(--bs-body-bg);
+    --bs-card-img-overlay-padding: 1rem;
+    --bs-card-group-margin: 0.75rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: var(--bs-card-height);
+    color: var(--bs-body-color);
+    word-wrap: break-word;
+    background-color: var(--bs-card-bg);
+    background-clip: border-box;
+    border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+    border-radius: var(--bs-card-border-radius);
+}
+
 /* quando a imagem estiver no corpo do cartão, aplicar a mesma margem inferior 
 de card-title para manter a consistência do espaçamento */
 
@@ -1029,10 +1114,11 @@ ul li, ol li  {
     }
 
 /* TODO: VERIFICAR */
+/*
 h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
-    margin-bottom:  var(--minimalista-vertical-spacing-5); /* 1.25rem */
+    margin-bottom:  var(--minimalista-vertical-spacing-5);
 }
-
+*/
 hr {
     margin-top: var(--minimalista-vertical-spacing-7); /* 2rem */
     margin-bottom: var(--minimalista-vertical-spacing-7); /* 2rem */
@@ -1125,9 +1211,12 @@ p + .gallery {
     padding: var(--minimalista-vertical-spacing-2) var(--minimalista-horizontal-spacing-3);  /* 0.5rem 0.75rem */
 }
 
-.card p {
-    margin-bottom: var(--minimalista-vertical-spacing-0); /* 0rem */
+/* TODO: TESTAR */
+/*
+.card :last-child {
+    margin-bottom: var(--minimalista-vertical-spacing-0);
 }
+*/
 
 .form-group {
     margin-bottom: var(--minimalista-vertical-spacing-4); /* 1rem */

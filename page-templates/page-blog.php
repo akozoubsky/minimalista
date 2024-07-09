@@ -30,13 +30,19 @@ get_header();  // Include the header.php file
         <!-- Main Content Column -->
         <div class="col-lg-8 ">
 
-            <main id="main" class="blog-main" itemscope itemtype="http://schema.org/Blog">
+            <main id="primary" class="site-main" itemscope itemtype="http://schema.org/Blog">
                 
                 <header class="page-header">
                     <?php minimalista_display_post_title('h1', 'entry-title'); ?>
                     <?php minimalista_display_custom_header_image() ?>
-                </header>
+                </header><!-- .entry-header -->
 
+                <div class="entry-content">
+                    <?php
+                    minimalista_display_post_content();
+                    minimalista_link_pages();
+                    ?>
+                </div><!-- .entry-content -->
                 <?php
 
                 // Setting up the custom query to display blog posts
@@ -178,9 +184,10 @@ get_header();  // Include the header.php file
                     minimalista_custom_query_pagination($blog_query);  // Call the pagination function here
 
                     wp_reset_postdata();  // Restore the original post data
+
                 } else {
                     ?>
-                    <p><?php _e('Sorry, no posts to display.'); ?></p>
+                    <p><?php _e('Desculpe, não há postagens para exibir.'); ?></p>
                 <?php } ?>
                 
             </main><!-- /.blog-main -->

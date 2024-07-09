@@ -18,10 +18,12 @@ function minimalista_enqueue_styles_and_scripts() {
     wp_deregister_style('bootstrap');
     wp_deregister_style('masonry');
   
+    /*
     if (!is_admin()) {
         wp_deregister_script('jquery');
         wp_deregister_script('jquery-migrate');
     }
+    */
 
     /* ########################################################
      *            REGISTRAR E ENFILEIRAR ESTILOS
