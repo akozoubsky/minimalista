@@ -86,7 +86,7 @@ get_header();  // Include the header.php file
                                     }
                                     // Conditional display the excerpt
                                     if ($show_excerpt) {
-                                        minimalista_display_post_excerpt();
+                                        minimalista_display_post_content();
                                     }
 
                                     break;
@@ -109,7 +109,7 @@ get_header();  // Include the header.php file
                                         echo '</header><!-- ./header -->';
                                         // Conditional display the excerpt
                                         if ($show_excerpt) {
-                                            minimalista_display_post_excerpt();
+                                            minimalista_display_post_content();
                                         }
                                         echo '</div><!-- .col-8 -->';
                                         echo '</div><!-- ./row -->';
@@ -120,7 +120,7 @@ get_header();  // Include the header.php file
                                         echo '</header><!-- ./header -->';
                                         // Conditional display the excerpt
                                         if ($show_excerpt) {
-                                            minimalista_display_post_excerpt();
+                                            minimalista_display_post_content();
                                         }
                                     }
 
@@ -145,7 +145,7 @@ get_header();  // Include the header.php file
                                         echo '</header><!-- ./header -->';
                                         // Conditional display the excerpt
                                         if ($show_excerpt) {
-                                            minimalista_display_post_excerpt();
+                                            minimalista_display_post_content();
                                         }
                                         echo '</div><!-- .col-8 -->';
                                         echo '</div><!-- ./row -->';
@@ -156,7 +156,7 @@ get_header();  // Include the header.php file
                                         echo '</header><!-- ./header -->';
                                         // Conditional display the excerpt
                                         if ($show_excerpt) {
-                                            minimalista_display_post_excerpt();
+                                            minimalista_display_post_content();
                                         }
                                     }
 
@@ -170,7 +170,7 @@ get_header();  // Include the header.php file
                                     echo '</header><!-- ./header -->';
                                     // Conditional display the excerpt
                                     if ($show_excerpt) {
-                                        minimalista_display_post_excerpt();
+                                        minimalista_display_post_content();
                                     }
                             }
 
