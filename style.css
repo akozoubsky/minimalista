@@ -736,7 +736,7 @@ figure.gallery-item {
 
 /* Estilos para 4 colunas */
 .gallery.gallery-columns-4 {
-    margin: -0.5rem;
+    /* @TODO: VERIFICAR SE EH MESMO DESNECESSARIO margin: -0.5rem; */
 }
 
 .gallery-columns-4 .gallery-item {
@@ -751,7 +751,7 @@ figure.gallery-item {
 
 /* Estilos para 5 colunas */
 .gallery.gallery-columns-5 {
-    margin: -0.5rem;
+    /* @TODO: VERIFICAR SE EH MESMO DESNECESSARIO margin: -0.5rem; */
 }
 
 .gallery-columns-5 .gallery-item {
@@ -766,7 +766,7 @@ figure.gallery-item {
 
 /* Estilos para 6 colunas */
 .gallery.gallery-columns-6 {
-    margin: -0.5rem;
+    /* @TODO: VERIFICAR SE EH MESMO DESNECESSARIO margin: -0.5rem; */
 }
 
 .gallery-columns-6 .gallery-item {
@@ -1198,10 +1198,6 @@ article,
 
 .social-link svg {
     margin-right: calc(1 * var(--minimalista-horizontal-spacing-4)); /* 1rem */
-}
-
-p + .gallery {
-    margin-top: calc(1.5 * var(--minimalista-vertical-spacing-4)); /* 1rem */
 }
 
 .post-thumbnail img, .thumbnail, .post-header-image {
