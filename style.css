@@ -133,8 +133,8 @@ p:last-of-type,
 ul li:last-child,
 ol li:last-child,
 dl > *:last-child, /* garantir que o último item de qualquer tipo (seja dt ou dd) dentro de uma lista de definição seja estilizado */
-table:last-child,
-blockquote:last-child
+table :last-child,
+blockquote :last-child
 {
   margin-bottom: 0;
 }
@@ -285,8 +285,10 @@ ul.minimalista-custom-list ul li:last-child {
     margin-bottom: 1rem;
     margin-left: 2rem;
     margin-right: 2rem;
-    padding: 1rem;
+    padding: 2rem;
     font-style: italic;
+    background-color: var(--bs-light);
+    border-radius: 5px
 }
 
     blockquote i,
@@ -844,17 +846,6 @@ figure.gallery-item {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     overflow: hidden;
 }
-
-.format-quote-content .entry-content {
-    /* background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)); */
-    background-color: var(--bs-light);
-
-}
-
-.format-quote-content .entry-content p:last-child {
-    margin-bottom: 0;
-}
-
 
 /* ########################################################
  *                      LEITORES DE TELA
