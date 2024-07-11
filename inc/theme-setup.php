@@ -107,6 +107,18 @@ function minimalista_setup() {
 	// Remove support for editor styles.
 	remove_theme_support( 'editor-styles' );
 
+	add_theme_support( 'post-formats', array(
+        'aside',
+        'gallery',
+        'link',
+        'image',
+        'quote',
+        'status',
+        'video',
+        'audio',
+        'chat'
+    ) );
+
 	/**
 	 * WordPress comes with a number of block patterns built-in, themes can opt-out of the bundled patterns and provide their own set using the following code
 	 *
