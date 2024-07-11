@@ -139,6 +139,7 @@ blockquote :last-child
   margin-bottom: 0;
 }
 
+/* Imagens e Videos */
 img,
 figure,
 picture {
@@ -146,6 +147,12 @@ picture {
     height: auto;
     display: block;
 }
+
+iframe {
+    max-width: 100%;
+}
+
+
 
 /* Make sure textareas without a rows attribute are not tiny */
 textarea:not([rows]) {
