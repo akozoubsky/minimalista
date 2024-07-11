@@ -9,7 +9,7 @@
  * @author Alexandre Kozoubsky
  */
 ?>
-<div class="format-aside">
+<div class="format-aside-content">
     <?php minimalista_display_post_content(); ?>
 </div>
 

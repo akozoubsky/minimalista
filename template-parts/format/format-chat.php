@@ -14,7 +14,7 @@
 
 ?>
 
-<div class="chat-container">
+<div class="format-chat-content">
 
 	<!-- Chat Icon -->
 	<div class="chat-icon">
@@ -22,7 +22,7 @@
 	</div>
 
 	<!-- Chat Content -->
-	<div class="chat-content">
+	<div class="">
 		<?php
 		// Fetch the content and split it into an array of lines
 		$chat_lines = explode("\n", get_the_content());

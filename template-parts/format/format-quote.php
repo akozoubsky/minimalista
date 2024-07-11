@@ -13,9 +13,7 @@
 ?>
 
 <!-- Content for quote format. Usually a single quote possibly with citation -->
-<div class="format-quote">
-    <blockquote>
-        <?php minimalista_display_post_content(); ?>
-    </blockquote>
+<div class="format-quote-content">
+    <?php minimalista_display_post_content(); ?>
 </div>
 

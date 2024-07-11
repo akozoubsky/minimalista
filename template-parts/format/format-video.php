@@ -14,7 +14,7 @@
 ?>
 
 <!-- Content for video format. Usually contains a single video or video playlist. -->
-<div class="format-video">
+<div class="format-video-content">
     <?php
     // Retrieve and display the video content.
     $content = apply_filters('the_content', get_the_content());

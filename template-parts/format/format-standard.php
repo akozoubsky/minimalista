@@ -1,7 +1,7 @@
 <!-- content-standard.php -->
 
 <!-- Início do Post no formato padrão -->
-<div class="format-standard">
+<div class="format-standard-content">
     <!-- Conteúdo do Post -->
     <?php
     if ( is_singular() ) {

@@ -13,7 +13,7 @@
 // Validate that the post object exists and post format is 'audio'
 if ( is_object( $post ) && has_post_format( 'audio', $post->ID ) ) : ?>
 
-    <div class="format-audio">
+    <div class="format-audio-content">
         
         <!-- Display the audio content -->
         <div class="audio-content">

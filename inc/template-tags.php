@@ -106,6 +106,50 @@ if ( ! function_exists( 'minimalista_posted_on' ) ) :
     }
 endif;
 
+/**
+ * Display the time since a post was published in a human-readable format.
+ *
+ * This function calculates the time that has elapsed since a post was published and displays it
+ * in a human-readable format, such as "2 hours ago" or "3 days ago" or "1 year ago".
+ */
+function minimalista_display_time_since_posted()
+{
+    // Get the UNIX timestamp for the current time and the post's published time
+    $current_time = current_time('timestamp');
+    $post_time = get_the_time('U');
+
+    // Calculate the time difference in seconds
+    $time_difference = $current_time - $post_time;
+
+    // Define time periods in seconds
+    $minute = 60;
+    $hour = $minute * 60;
+    $day = $hour * 24;
+    $week = $day * 7;
+    $year = $day * 365.25;  // Account for leap years
+
+    // Determine the appropriate time unit and value
+    if ($time_difference < $hour) {
+        $time_value = round($time_difference / $minute);
+        $time_unit = _n('minute', 'minutes', $time_value, 'light-cms-bootstrap');
+    } elseif ($time_difference < $day) {
+        $time_value = round($time_difference / $hour);
+        $time_unit = _n('hour', 'hours', $time_value, 'light-cms-bootstrap');
+    } elseif ($time_difference < $week) {
+        $time_value = round($time_difference / $day);
+        $time_unit = _n('day', 'days', $time_value, 'light-cms-bootstrap');
+    } elseif ($time_difference < $year) {
+        $time_value = round($time_difference / $week);
+        $time_unit = _n('week', 'weeks', $time_value, 'light-cms-bootstrap');
+    } else {
+        $time_value = round($time_difference / $year);
+        $time_unit = _n('year', 'years', $time_value, 'light-cms-bootstrap');
+    }
+
+    // Display the time since posted
+    echo sprintf(_n('%s ' . $time_unit . ' ago', '%s ' . $time_unit . ' ago', $time_value, 'light-cms-bootstrap'), $time_value);
+}
+
 if ( ! function_exists( 'minimalista_posted_by' ) ) :
 	/**
 	 * Prints HTML with meta information for the current author.
@@ -653,20 +697,19 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
                 echo '<span class="chat-line-count"><i class="fas fa-comment-dots"></i> ' . sprintf(_n('%s linha', '%s linhas', $chat_line_count, 'minimalista'), $chat_line_count) . '</span>';
             }
             break;
-        default:
-            // Metadata for standard and other custom formats
-            // Categories and tags
+    }
 
-            // Verifica se existem categorias
-            if (has_category()) {
-                echo '<span class="post-categories" itemprop="articleSection">' . minimalista_generate_icon_html("fa-folder", "me-2") . get_the_category_list(', ') . '</span>';
-            }
+    // Metadata all formats
+    // Categories and tags
 
-            // Verifica se existem tags
-            if (has_tag()) {
-                echo '<span class="post-tags" itemprop="keywords">' . minimalista_generate_icon_html("fa-tags", "me-2") . get_the_tag_list('', ', ') . '</span>';
-            }
-            break;
+    // Verifica se existem categorias
+    if (has_category()) {
+        echo '<span class="post-categories" itemprop="articleSection">' . minimalista_generate_icon_html("fa-folder", "me-2") . get_the_category_list(', ') . '</span>';
+    }
+
+    // Verifica se existem tags
+    if (has_tag()) {
+        echo '<span class="post-tags" itemprop="keywords">' . minimalista_generate_icon_html("fa-tags", "me-2") . get_the_tag_list('', ', ') . '</span>';
     }
 
     echo '</div>';  // Close the "post-metadata" container
@@ -1180,4 +1223,32 @@ function minimalista_link_pages() {
     );
 
     wp_link_pages( $args );
+}
+
+/* ########################################################
+ *                            Avatar
+ * ######################################################## */
+
+/**
+ * Display a custom avatar for the post author.
+ *
+ * This function displays a custom avatar based on a given URL or falls back to the Gravatar avatar.
+ *
+ * @param string $custom_avatar_url The URL of the custom avatar. Default is an empty string.
+ * @param int $size The size of the avatar in pixels. Default is 40.
+ * @param string $additional_classes Additional CSS classes for the avatar. Default is an empty string.
+ */
+function minimalista_display_author_avatar($custom_avatar_url = '', $size = 40, $additional_classes = '')
+{
+    $class_str = 'border rounded-circle ' . $additional_classes;
+
+    // If a custom avatar URL is provided, use it
+    if (!empty($custom_avatar_url)) {
+        echo '<img src="' . esc_url($custom_avatar_url) . '" class="' . esc_attr($class_str) . '" alt="Avatar" style="height: ' . esc_attr($size) . 'px" />';
+    } else {
+        // Otherwise, fallback to the Gravatar avatar
+        $author_id = get_the_author_meta('ID');
+        $avatar = get_avatar($author_id, $size, '', 'Avatar', ['class' => $class_str]);
+        echo $avatar;
+    }
 }

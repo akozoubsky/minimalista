@@ -11,7 +11,7 @@
 ?>
 
 <!-- Content for gallery format. Post will likely contain a gallery shortcode and will have image attachments. -->
-<div class="format-gallery">
+<div class="format-gallery-content">
     <?php minimalista_display_post_content(); ?>
 </div>
 

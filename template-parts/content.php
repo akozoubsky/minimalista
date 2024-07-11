@@ -20,12 +20,12 @@
 			minimalista_display_post_title('h2','entry-title', 'true');
 		}
 
-        if ( 'post' === get_post_type() ) :
-            ?>
+        //if ( 'post' === get_post_type() ) :  ?>
+           
             <div class="entry-meta">
                 <?php minimalista_display_post_metadata_primary(); ?>
             </div><!-- .entry-meta -->
-        <?php endif; ?>
+        <?php // endif; ?>
     </header><!-- .entry-header -->
 
 	<?php minimalista_display_post_thumbnail("custom-thumbnail"); ?>

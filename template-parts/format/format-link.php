@@ -12,7 +12,7 @@
  */
 ?>
 
-<div class="format-link">
+<div class="format-link-content">
     <?php minimalista_display_post_content(); ?>
 </div>
 
