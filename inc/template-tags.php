@@ -1006,11 +1006,16 @@ function minimalista_comment_form_defaults($defaults) {
  * ######################################################## */
 
 /**
- * Custom Post Navigation
+ * Custom Post Page Navigation
  *
  * Esta função gera botões de navegação para posts mais antigos e mais recentes,
  * utilizando classes do Bootstrap 5 e ícones do FontAwesome 6 para estilização.
  * Os botões são exibidos apenas quando há posts na direção correspondente.
+ * 
+ * Because post queries are usually sorted in reverse chronological order,
+ * next_posts_link() usually points to older entries (toward the end of the set)
+ * and previous_posts_link() usually points to newer entries (toward the beginning of the set).
+ * (@link https://developer.wordpress.org/reference/functions/previous_posts_link/)
  * 
  * @uses ob_start(), ob_get_clean() Para capturar a saída das funções de navegação do WordPress.
  * @uses previous_posts_link(), next_posts_link() Para gerar os links de navegação.
@@ -1021,11 +1026,11 @@ function minimalista_the_post_navigation()
 {
     // Buffering para capturar a saída das funções de navegação de posts
     ob_start();
-    previous_posts_link('Posts Mais Recentes');
+    previous_posts_link('Mais Recentes');
     $previous_posts_link = ob_get_clean();
 
     ob_start();
-    next_posts_link('Posts Mais Antigos');
+    next_posts_link('Mais Antigos');
     $next_posts_link = ob_get_clean();
 
     // Adicionando classes Bootstrap aos links (btn btn-secondary para estilização de botão)
@@ -1034,11 +1039,11 @@ function minimalista_the_post_navigation()
 
     // Inserindo ícones FontAwesome dentro dos botões
     if ($previous_posts_link) {
-        $previous_posts_link = str_replace('Posts Mais Recentes', '<i class="fas fa-arrow-left me-2"></i>Mais recentes', $previous_posts_link);
+        $previous_posts_link = str_replace('Mais Recentes', '<i class="fas fa-arrow-left me-2"></i>Mais recentes', $previous_posts_link);
     }
 
     if ($next_posts_link) {
-        $next_posts_link = str_replace('Posts Mais Antigos', 'Mais antigos<i class="fas fa-arrow-right ms-2"></i>', $next_posts_link);
+        $next_posts_link = str_replace('Mais Antigos', 'Mais antigos<i class="fas fa-arrow-right ms-2"></i>', $next_posts_link);
     }
 
     // Início da Navegação de Posts (d-flex e justify-content-between para alinhamento)
@@ -1064,6 +1069,10 @@ function minimalista_the_post_navigation()
  * dentro da mesma categoria, utilizando classes do Bootstrap 5 e ícones do FontAwesome 6.
  * Os botões são exibidos apenas quando há posts na direção correspondente.
  * 
+ * Used on single post permalink pages, this template tag displays a link to the previous post
+ * which exists in chronological order from the current post. This tag must be used in The Loop.
+ * (@link https://developer.wordpress.org/reference/functions/previous_post_link/)
+ * 
  * @uses ob_start(), ob_get_clean() Para capturar a saída das funções de navegação do WordPress.
  * @uses previous_post_link(), next_post_link() Para gerar os links de navegação.
  * 
@@ -1072,28 +1081,36 @@ function minimalista_the_post_navigation()
 function minimalista_single_post_navigation()
 {
     ob_start();
-    //  cria um link para o post mais recente (em relação ao post atual)
-    previous_post_link('%link', 'Anterior (mais recente)');
+    // Gera um link para o post mais recente em relação ao post atual (o próximo post em ordem cronológica)
+    previous_post_link('%link', 'Mais antigo');
     $previous_post_link = ob_get_clean();
 
     ob_start();
-    // cria um link para o post mais antigo (em relação ao post atual).
-    next_post_link('%link', 'Próximo (mais antigo)');
+    // Gera um link para o post mais antigo em relação ao post atual (o post anterior em ordem cronológica).
+    next_post_link('%link', 'Mais recente');
     $next_post_link = ob_get_clean();
 
+    // Adicionando classes Bootstrap aos links (btn btn-secondary para estilização de botão)
     $previous_post_link = str_replace('<a href=', '<a class="btn btn-primary" href=', $previous_post_link);
-    $next_post_link = str_replace('<a href=', '<a class="btn btn-primary ms-3" href=', $next_post_link);
+    $next_post_link = str_replace('<a href=', '<a class="btn btn-primary" href=', $next_post_link);
 
-    $previous_post_link = str_replace('Post Anterior', '<i class="fas fa-arrow-left me-2"></i>Post Anterior', $previous_post_link);
-    $next_post_link = str_replace('Próximo Post', 'Próximo Post<i class="fas fa-arrow-right ms-2"></i>', $next_post_link);
+    // Inserindo ícones FontAwesome dentro dos botões
+    if ($previous_post_link) {
+        //$previous_post_link = str_replace('Mais antigo', '<i class="fas fa-arrow-left me-2"></i>Mais antigo', $previous_post_link);
+        $previous_post_link = str_replace('Mais antigo', 'Mais antigo<i class="fas fa-arrow-right ms-2"></i>', $previous_post_link);
+    }
+    if ($next_post_link) {
+        //$next_post_link = str_replace('Mais recente', 'Mais recente<i class="fas fa-arrow-right ms-2"></i>', $next_post_link);
+        $next_post_link = str_replace('Mais recente', '<i class="fas fa-arrow-left me-2"></i>Mais recente', $next_post_link);
+    }
 
     if ($previous_post_link || $next_post_link) {
         echo '<div class="post-navigation d-flex justify-content-between">';
-        if ($previous_post_link) {
-            echo $previous_post_link;
-        }
         if ($next_post_link) {
             echo $next_post_link;
+        }
+        if ($previous_post_link) {
+            echo $previous_post_link;
         }
         echo '</div>';
     }
