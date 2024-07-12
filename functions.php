@@ -85,6 +85,11 @@ require get_template_directory() . '/inc/metabox.php';
 require get_template_directory() . '/inc/shortcodes.php';
 
 /**
+ * Display Posts Shortcode Plugin.
+ */
+require_once get_template_directory() . '/inc/display-posts-plugin/functions.php';
+
+/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
