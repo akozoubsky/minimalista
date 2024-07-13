@@ -83,6 +83,12 @@ get_header();  // Include the header.php file
                                         minimalista_display_post_excerpt('card-text');
                                     ?>
 
+                                    <?php
+                                    echo '<footer class="entry-footer">';
+                                    minimalista_display_post_metadata_secondary('');
+                                    echo '</footer><!-- ./footer -->';   
+                                    ?>
+                                    
                                     <a href="<?php the_permalink(); ?>" class="continue-reading icon-link gap-1 icon-link-hover">Continue lendo<i class="fas fa-angle-right"></i></a>
 
                                 </div><!-- ./ card-body -->
