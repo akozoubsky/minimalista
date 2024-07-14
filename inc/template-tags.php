@@ -1282,6 +1282,6 @@ add_filter( 'excerpt_more', 'minimalista_excerpt_more' );
 
 // Função adicional para ajustar o comprimento do excerpt, se necessário
 function minimalista_excerpt_length( $length ) {
-    return 55; // Define o número de palavras no excerpt
+    return 20; // Define o número de palavras no excerpt
 }
 add_filter( 'excerpt_length', 'minimalista_excerpt_length', 999 );

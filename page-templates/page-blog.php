@@ -90,8 +90,16 @@ get_header();  // Include the header.php file
 
                                     // Conditional display the excerpt
                                     if ($show_excerpt) {
-                                        minimalista_display_post_excerpt();
+                                        //minimalista_display_post_excerpt();
                                     }
+
+                                    $post_format = get_post_format() ?: 'standard';
+                                    // Load specific template part based on the post format
+                                    set_query_var('template_part_name', 'format-' . $post_format);
+                                    get_template_part('template-parts/format/format', $post_format);
+                                    minimalista_link_pages();
+       
+
                                     echo '<footer class="entry-footer">';
                                     minimalista_display_post_metadata_secondary('');
                                     echo '</footer><!-- ./footer -->';

@@ -126,12 +126,14 @@ h3.widget-title:empty,
 }
 
 /* Espacamento Vertical (Vertical Spacing) - Remove a margem inferior */
+/*
 dl,
 ol,
 ul {
     margin-top: 0;
     margin-bottom: 0;
 }
+*/
 
 /* Espacamento Vertical (Vertical Spacing) - Remove a margem inferior do ultimo elemento de um container */
 /*
@@ -172,9 +174,9 @@ textarea:not([rows]) {
 /* ==============================
  * Tipografia
  * ============================== */
-
+/*
 body {
-    font-family: 'Roboto Flex', 'Noto Sans Display', system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif;
+    font-family: 'Roboto Flex', 'Noto Sans Display', system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', "Segoe UI Symbol', 'Noto Color Emoji';
 }
 
 h1,
@@ -183,8 +185,9 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Roboto Flex', 'Noto Sans Display', system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif;
+    font-family: 'Roboto Flex', 'Noto Sans Display', system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', "Segoe UI Symbol', 'Noto Color Emoji';
 }
+*/
 
 /* ==============================
  * Cabecalhos (<h1> a <h6>)

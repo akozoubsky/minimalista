@@ -89,9 +89,6 @@ get_header(); ?>
                                     if ($show_excerpt) {
                                         minimalista_display_post_excerpt();
                                     }
-                                    echo '<footer class="entry-footer">';
-                                    minimalista_display_post_metadata_secondary('');
-                                    echo '</footer><!-- ./footer -->';
 
                                     ?>
 

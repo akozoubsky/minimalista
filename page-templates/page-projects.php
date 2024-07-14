@@ -72,11 +72,11 @@ get_header(); ?>
 								<?php endif; ?>
 							</header><!-- .entry-header -->
 						
-							<?php minimalista_display_post_thumbnail("custom-thumbnail"); ?>
+							<?php minimalista_display_post_thumbnail('thumbnail','thumbnail alignleft', 'true'); ?>
 						
 							<div class="entry-content">
 								<?php
-								minimalista_display_post_content();
+								minimalista_display_post_excerpt();
 								minimalista_link_pages();
 								?>
 							</div><!-- .entry-content -->

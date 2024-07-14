@@ -28,7 +28,7 @@
         </header>
     <?php endif; ?>
                 
-	<?php minimalista_display_post_thumbnail("custom-thumbnail"); ?>
+	<?php minimalista_display_post_thumbnail('thumbnail','thumbnail alignleft'); ?>
 
     <?php 
     $post_format = get_post_format() ?: 'standard';
