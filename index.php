@@ -33,9 +33,10 @@ get_header();
 
 					if ( is_home() && ! is_front_page() ) :
 						?>
-						<header class="page-header">
+
+						<?php if (is_home() && get_option('page_for_posts')): // Verifica se a página atual é a página inicial e se há uma "Página para posts" definida.?>
+							<header class="page-header mb-0">
 							<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-							<?php if (is_home() && get_option('page_for_posts')): // Verifica se a página atual é a página inicial e se há uma "Página para posts" definida.?>
 							<?php
 							/* 
 								* Quando você define uma página específica para exibir seus posts, essa página geralmente não tem conteúdo próprio,
@@ -46,8 +47,9 @@ get_header();
 								*/
 							?>
 							<p class="page-description"><?php echo get_the_excerpt(get_option('page_for_posts')); ?></p>
+							</header>
 						<?php endif; ?>							
-						</header>
+						
 						<?php
 					endif;					
 

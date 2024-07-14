@@ -64,6 +64,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     --minimalista-vertical-spacing-7: 2rem;
     --minimalista-vertical-spacing-8: 2.5rem;
     --minimalista-vertical-spacing-9: 3rem;
+    --minimalista-vertical-spacing-10: 3.5rem;
+    --minimalista-vertical-spacing-11: 4rem;
 
     /* Espaçamento horizontal */
     --minimalista-horizontal-spacing-0: 0rem;
@@ -77,6 +79,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     --minimalista-horizontal-spacing-7: 2rem;
     --minimalista-horizontal-spacing-8: 2.5rem;
     --minimalista-horizontal-spacing-9: 3rem;
+    --minimalista-horizontal-spacing-10: 3.5rem;
+    --minimalista-horizontal-spacing-11: 4rem;
 
 
     --minimalista-nav-link-color: var(--bs-white);
@@ -156,8 +160,6 @@ iframe {
     max-width: 100%;
 }
 
-
-
 /* Make sure textareas without a rows attribute are not tiny */
 textarea:not([rows]) {
     min-height: 10em;
@@ -191,6 +193,10 @@ h6 {
 /* ==============================
  * Paragrafos
  * ============================== */
+
+p {
+    max-width: 40em;
+}
 
 /* ==============================
  * Listas
@@ -393,6 +399,12 @@ blockquote footer,
  * Artigos e metadados
  * ============================== */
 
+ article {
+    display: block; /* Garantir que o <article> seja um bloco */
+    clear: both; /* Evitar que elementos flutuantes invadam a área */
+    box-sizing: border-box; /* Incluir padding e borda na largura total e altura */
+ }
+
 /**
  * Metadata
  */
@@ -418,12 +430,6 @@ blockquote footer,
 /* ==============================
  * Outros
  * ============================== */
-
-/* nao exibir data e autor da publicacao em <article> da categoria projetos */
-.category-projetos .entry-meta,
-.category-projetos .entry-footer {
-    display: none;
-}
 
 /* ########################################################
  *                FORMULARIOS, BOTOES E LINKS
@@ -520,9 +526,10 @@ a.btn {
  * ######################################################## */
 
 .wp-caption-text {
-    padding: .5rem;
+    padding: 1rem;
     text-align: center;
     font-size: 0.875em;
+    color: #666;
 }
 
 .post-thumbnail img,
@@ -531,13 +538,21 @@ a.btn {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.page-template-page-blog article .thumbnail,
+.page-template-page-home article .thumbnail {
+    max-width: 30%;
+}
+
 .avatar-40 {
     height: 40px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .avatar-80 {
     height: 80px;
-    align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* ==============================================================================================================
@@ -1202,10 +1217,17 @@ hr {
     /* 2rem */
 }
 
+/* @TODO */
+
 article,
 .comment-list {
-    margin-bottom: var(--minimalista-vertical-spacing-9);
-    /* 3rem */
+    margin-bottom: var(--minimalista-vertical-spacing-7);
+    /* border: 1px solid #0056b3; */
+    overflow: hidden;
+    /* Keeping an floated image inside the div with CSS
+     * set the overflow property of the containing div to hidden.
+     * @link https://stackoverflow.com/questions/369448/keeping-an-floated-image-inside-the-div-with-css
+     */
 }
 
 .pagination {
@@ -1215,10 +1237,12 @@ article,
     /* 1rem */
 }
 
-.entry-header,
 .widget-title,
 .page-header {
-    /* acrescentar mais um ponto */
+    margin-bottom: var(--minimalista-vertical-spacing-4);
+}
+
+.entry-meta {
     margin-bottom: var(--minimalista-vertical-spacing-4);
     /* 1rem */
 }
@@ -1234,7 +1258,7 @@ article,
     /* 1rem */
 }
 
-.footer {
+footer.footer {
     padding-top: var(--minimalista-vertical-spacing-4);
     /* 1rem */
     padding-bottom: var(--minimalista-vertical-spacing-4);
@@ -1579,6 +1603,10 @@ ul.no-bullet {
  */
 
 /* Small devices (landscape phones, 576px and up) */
+
+/* conter o tamanho da imagem de thumbnail em alguns viewports */
+@media (max-width: 1200px) {}
+
 @media (min-width: 576px) {}
 
 /* Medium devices (tablets, 768px and up) */
