@@ -541,8 +541,15 @@ a.btn {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/*
 .page-template-page-blog article .thumbnail,
 .page-template-page-home article .thumbnail {
+    max-width: 30%;
+}
+*/
+
+/* importante para a imagem nao invadir a area de texto do post */
+article img.thumbnail.alignleft {
     max-width: 30%;
 }
 
