@@ -11,6 +11,29 @@
  * @package minimalista
  */
 
+ /**
+ * Add even or odd class to posts. Usefull with CSS.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function minimalista_set_attr_post( $attr ) {
+    global $evenodd_post;
+    ++$evenodd_post;
+
+    // Verifica se a chave 'class' existe no array $attr, se não, a inicializa como uma string vazia
+    if (!isset($attr['class'])) {
+        $attr['class'] = '';
+    }
+
+    // Adiciona 'odd' ou 'even' à classe
+    $attr['class'] .= ( $evenodd_post % 2 ) ? 'odd' : 'even';
+    
+    return $attr;
+}
+add_filter( 'post_class', 'minimalista_set_attr_post' );
+
  if ( ! function_exists( 'wp_body_open' ) ) :
 	/**
 	 * Shim for sites older than 5.2.
