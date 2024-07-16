@@ -46,7 +46,7 @@ get_header(); ?>
 				$args = array(
 					'post_type' => 'post',
 					//'category_name' => 'blog', // Slug da categoria
-					'paged' => $paged
+					'paged' => $paged,
 				);
 
 				$blog_query = new WP_Query($args);
@@ -90,6 +90,9 @@ get_header(); ?>
                                         minimalista_display_post_excerpt();
                                     }
 
+                                    echo '<footer class="entry-footer">';
+                                    minimalista_display_post_metadata_secondary();
+                                    echo '</footer><!-- .entry-footer -->';
                                     ?>
 
                                 </article><!-- /.blog-post -->
