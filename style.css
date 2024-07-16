@@ -176,20 +176,57 @@ textarea:not([rows]) {
 /* ==============================
  * Tipografia
  * ============================== */
+
 /*
 body {
+    
     font-family: 'Roboto Flex', 'Noto Sans Display', system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', "Segoe UI Symbol', 'Noto Color Emoji';
+    font-optical-sizing: auto;
+    font-variation-settings: 'wght' 400, 'wdth' 100;
 }
-
+*/
+/*
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
+    
     font-family: 'Roboto Flex', 'Noto Sans Display', system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', "Segoe UI Symbol', 'Noto Color Emoji';
+    font-optical-sizing: auto;
+    font-variation-settings: 'wght' 700, 'wdth' 100;
 }
 */
+
+/* Epilogue
+ * <uniquifier>: Use a unique and descriptive class name
+ * <weight>: Use a value from 100 to 900
+ */
+
+/* Classe para fonte Epilogue normal com peso 400 */
+.epilogue-regular {
+    font-family: "Epilogue", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Classe para fonte Epilogue negrito com peso 700 */
+.epilogue-bold {
+    font-family: "Epilogue", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Classe para fonte Epilogue itálico com peso 400 */
+.epilogue-italic {
+    font-family: "Epilogue", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: italic;
+}
 
 /* ==============================
  * Cabecalhos (<h1> a <h6>)
@@ -204,14 +241,21 @@ p {
 }
 */
 
-body label, body blockquote, body dl, body dt, body figcaption, body li, body p, body textarea {
-	line-height: calc(1.5rem + .2vw);
-	word-break: break-word;
+body label,
+body blockquote,
+body dl,
+body dt,
+body figcaption,
+body li,
+body p,
+body textarea {
+    line-height: calc(1.5rem + .2vw);
+    word-break: break-word;
 }
 
 /* @TODO: verificar a cor */
 strong {
-	color: var(--bs-secondary);
+    color: var(--bs-secondary);
 }
 
 /* ==============================
@@ -415,11 +459,14 @@ blockquote footer,
  * Artigos e metadados
  * ============================== */
 
- article {
-    display: block; /* Garantir que o <article> seja um bloco */
-    clear: both; /* Evitar que elementos flutuantes invadam a área */
-    box-sizing: border-box; /* Incluir padding e borda na largura total e altura */
- }
+article {
+    display: block;
+    /* Garantir que o <article> seja um bloco */
+    clear: both;
+    /* Evitar que elementos flutuantes invadam a área */
+    box-sizing: border-box;
+    /* Incluir padding e borda na largura total e altura */
+}
 
 /**
  * Metadata
@@ -1500,7 +1547,12 @@ footer.footer {
 }
 
 /* paragrafos e listas*/
-#cmplz-document p, .editor-styles-wrapper .cmplz-unlinked-mode p, #cmplz-document li, .editor-styles-wrapper .cmplz-unlinked-mode li, #cmplz-document td, .editor-styles-wrapper .cmplz-unlinked-mode td {
+#cmplz-document p,
+.editor-styles-wrapper .cmplz-unlinked-mode p,
+#cmplz-document li,
+.editor-styles-wrapper .cmplz-unlinked-mode li,
+#cmplz-document td,
+.editor-styles-wrapper .cmplz-unlinked-mode td {
     margin-top: var(--bs-paragraph-margin-top, 0);
     margin-bottom: var(--bs-paragraph-margin-bottom, 1rem);
     color: var(--bs-body-color, #212529);
@@ -1619,10 +1671,10 @@ ul.no-bullet {
 
 /* TODO: acertar o pading e radius */
 .highlight {
-	background-color: var(--minimalista-accent-color);
-	color: var(--bs-white);
-	padding: 5px 10px;
-	border-radius: 5px;
+    background-color: var(--minimalista-accent-color);
+    color: var(--bs-white);
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 /* ########################################################
