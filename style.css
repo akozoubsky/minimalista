@@ -91,6 +91,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     --minimalista-navbar-brand-margin-end: 1rem;
     --minimalista-navbar-nav-link-padding-x: 1rem;
 
+    --minimalista-accent-color: #a98c2c;
+
     --bs-link-opacity: 1;
     --bs-bg-opacity: 1;
 }
@@ -196,9 +198,20 @@ h6 {
 /* ==============================
  * Paragrafos
  * ============================== */
-
+/*
 p {
     max-width: 40em;
+}
+*/
+
+body label, body blockquote, body dl, body dt, body figcaption, body li, body p, body textarea {
+	line-height: calc(1.5rem + .2vw);
+	word-break: break-word;
+}
+
+/* @TODO: verificar a cor */
+strong {
+	color: var(--bs-secondary);
 }
 
 /* ==============================
@@ -513,6 +526,7 @@ a {
     text-decoration: none;
     overflow-wrap: break-word;
     text-decoration-skip-ink: none;
+    font-weight: 600;
 }
 
 a:hover {
@@ -1364,7 +1378,7 @@ footer.footer {
     align-items: center;
     text-decoration: none;
     color: #333;
-    font-weight: 600;
+    font-weight: normal;
 }
 
 .social-link i {}
@@ -1601,6 +1615,14 @@ ul.no-bullet {
     backface-visibility: hidden;
     clear: both;
     content: none;
+}
+
+/* TODO: acertar o pading e radius */
+.highlight {
+	background-color: var(--minimalista-accent-color);
+	color: var(--bs-white);
+	padding: 5px 10px;
+	border-radius: 5px;
 }
 
 /* ########################################################
