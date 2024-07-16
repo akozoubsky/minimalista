@@ -661,7 +661,6 @@ function register_minimalista_bootstrap_image_widget() {
 }
 add_action( 'widgets_init', 'register_minimalista_bootstrap_image_widget' );
 
-<?php
 /**
  * Plugin Name: Custom Bootstrap Gallery Widget
  * Description: Customiza o widget de Galeria do WordPress para usar a marcação de tags do Bootstrap 5.3.
