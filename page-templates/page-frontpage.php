@@ -1,8 +1,13 @@
 <?php
 /**
- * Template Name: Home
+ * Template Name: Front Page
  *
- * The template for displaying the home page.
+ * The template for displaying the front page.
+ * 
+ * Se o seu objetivo é ter uma página inicial estática que exiba uma combinação de conteúdo de página e posts recentes,
+ * e você configurou essa página como a Front Page nas configurações de leitura, então "Front Page" é a escolha apropriada.
+ * Ao usar "Front Page" como o nome do template, você deixa claro que este template é para ser usado como
+ * a página inicial estática do site, conforme configurado em Configurações > Leitura. 
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  * @link https://github.com/oceanwp/oceanwp/blob/master/page.php
@@ -42,11 +47,16 @@ get_header(); ?>
 				<?php /* Exibe os posts do blog, de uma detrminada categoria */
 
 				// Setting up the custom query to display blog posts
-				$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                // $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                //$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                // captura a variável de paginação corretamente tanto para o contexto de query principal quanto para uma query personalizada.
+                $paged = (get_query_var('paged')) ? get_query_var('paged') : (get_query_var('page') ? get_query_var('page') : 1);
+
 				$args = array(
 					'post_type' => 'post',
 					//'category_name' => 'blog', // Slug da categoria
 					'paged' => $paged,
+                    'posts_per_page' => 3, // Limita o número de posts a 3
 				);
 
 				$blog_query = new WP_Query($args);
@@ -104,7 +114,7 @@ get_header(); ?>
                     </div><!-- .row -->
 
                     <?php
-                    minimalista_custom_query_pagination($blog_query);  // Call the pagination function here
+                    //minimalista_custom_query_pagination($blog_query);  // Call the pagination function here
 
                     wp_reset_postdata();  // Restore the original post data
  

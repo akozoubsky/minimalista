@@ -1146,46 +1146,48 @@ function minimalista_single_post_navigation()
  * a set of numerical pagination links based on the provided custom query.
  * The pagination links are styled using Bootstrap's pagination component.
  *
- * @param WP_Query $wp_query The custom query for which to generate pagination links.
+ * @param WP_Query $wp_custom_query The custom query for which to generate pagination links.
  *
  * @return void Outputs the pagination links directly to the page.
  * 
  * @link https://getbootstrap.com/docs/5.3/components/pagination/
  */
-function minimalista_custom_query_pagination($wp_query)
+function minimalista_custom_query_pagination($wp_custom_query)
 {
-    // Call the paginate_links() function to generate an array of pagination links
-    // Set the base for the pagination links, replace a large number with the placeholder '%#%'
-    // to allow the function to generate the correct URL structure for each page link
+    // Determine the current page number.
+    $paged = max(1, get_query_var('paged', 1));
+
+    // Generate the base URL for pagination links.
+    $base_url = str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999)));
+
+    // Call the paginate_links() function to generate an array of pagination links.
     $pages = paginate_links(array(
-        'base' => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
-        'format' => '?paged=%#%',  // Define the format for the pagination query, '%#%' is replaced by the page number
-        'current' => max(1, get_query_var('paged')),  // Get the current page number, ensure it's at least 1
-        'total' => $wp_query->max_num_pages,  // Get the total number of pages from the provided query
-        'type' => 'array',  // Specify that the function should return an array of page links
-        'show_all' => false,  // Do not show links to all pages, only show a subset of links
-        'end_size' => 2,  // Show links to the first and last 2 pages
-        'mid_size' => 1,  // Show links to the current page, and 1 page on either side
-        'prev_next' => true,  // Show links to the previous and next pages
-        // 'prev_text' => __('&laquo; Anterior'),  // Set the text for the 'previous page' link
-        // 'next_text' => __('Próximo &raquo;'),  // Set the text for the 'next page' link
-        'prev_text' => '<i class="fas fa-angle-left"></i>' . __(' Anterior'), // Set the text for the 'previous page' link
-        'next_text' =>  __(' Próximo ') . '<i class="fas fa-angle-right"></i>', // Set the text for the 'next page' link
-        'add_args' => false,  // Do not add any additional query args to the URLs
-        'add_fragment' => '',  // Do not append any fragments to the URLs
+        'base' => $base_url,
+        'format' => '?paged=%#%',  // Define the format for the pagination query, '%#%' is replaced by the page number.
+        'current' => $paged,  // Get the current page number, ensure it's at least 1.
+        'total' => $wp_custom_query->max_num_pages,  // Get the total number of pages from the provided query.
+        'type' => 'array',  // Specify that the function should return an array of page links.
+        'show_all' => false,  // Do not show links to all pages, only show a subset of links.
+        'end_size' => 2,  // Show links to the first and last 2 pages.
+        'mid_size' => 1,  // Show links to the current page, and 1 page on either side.
+        'prev_next' => true,  // Show links to the previous and next pages.
+        'prev_text' => '<i class="fas fa-angle-left"></i>' . __(' Anterior'), // Set the text for the 'previous page' link.
+        'next_text' =>  __(' Próximo ') . '<i class="fas fa-angle-right"></i>', // Set the text for the 'next page' link.
+        'add_args' => false,  // Do not add any additional query args to the URLs.
+        'add_fragment' => '',  // Do not append any fragments to the URLs.
     ));
 
-    // Check if the paginate_links() function returned an array of page links
+    // Check if the paginate_links() function returned an array of page links.
     if (is_array($pages)) {
         echo '<nav class="post-navigation" aria-label="Custom Page Navigation">';
         echo '<ul class="pagination">';
         foreach ($pages as $page) {
-            // Check if the page link is for the current page
+            // Check if the page link is for the current page.
             if (strpos($page, 'current') !== false) {
-                // If it's the current page, add .active class and aria-current attribute
+                // If it's the current page, add .active class and aria-current attribute.
                 echo '<li class="page-item active" aria-current="page">' . str_replace('page-numbers', 'page-link', $page) . '</li>';
             } else {
-                // If it's not the current page, output the page link without .active class and aria-current attribute
+                // If it's not the current page, output the page link without .active class and aria-current attribute.
                 echo '<li class="page-item">' . str_replace('page-numbers', 'page-link', $page) . '</li>';
             }
         }
