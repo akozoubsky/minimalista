@@ -24,7 +24,7 @@ get_header(); ?>
 
 <div class="container">
 	<div class="row">
-		<div class="col-lg-12">
+		<div class="col-lg-8">
 			<main id="primary" class="site-main">
 
 				<?php
@@ -127,7 +127,7 @@ get_header(); ?>
 		</div>
 
 		<!-- Right Sidebar Column -->
-		<?php //get_sidebar(); // Include the sidebar.php file ?>
+		<?php get_sidebar(); // Include the sidebar.php file ?>
 
 	</div>
 </div>
