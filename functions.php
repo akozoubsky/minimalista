@@ -126,7 +126,7 @@ function minimalista_exclude_category_from_blog($query) {
         $query->set('cat', '-' . get_cat_ID('Projetos')); // Exclui a categoria com o slug 'Projetos'
     }
 }
-add_action('pre_get_posts', 'minimalista_exclude_category_from_blog');
+//add_action('pre_get_posts', 'minimalista_exclude_category_from_blog');
 
 // ===========================================
 // FORMULARIO DE CONTATO
