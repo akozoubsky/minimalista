@@ -73,13 +73,10 @@ get_header();  // Include the header.php file
                                 <article id="post-<?php the_ID(); ?>" <?php post_class("blog-posting"); ?> itemscope itemtype="http://schema.org/BlogPosting">
 
                                     <?php
-
                                     // Display title, summary, and image.
                                     echo '<header class="entry-header">';
                                     minimalista_display_post_title($title_tag, '', true);
-                                    echo '<div class="entry-meta">';
                                     minimalista_display_post_metadata_primary('');
-                                    echo '</div><!-- ./entry-meta -->';
                                     echo '</header>';
 
                                     // Conditional display of the thumbnail
@@ -93,17 +90,11 @@ get_header();  // Include the header.php file
                                         $post_format = get_post_format() ?: 'standard';
                                         // Load specific template part based on the post format
                                         set_query_var('template_part_name', 'format-' . $post_format);
-                                        echo '<div class="entry-content">';
                                         get_template_part('template-parts/format/format', $post_format);
                                         minimalista_link_pages();
-                                        echo '</div>';
                                     }
        
-
-                                    echo '<footer class="entry-footer">';
                                     minimalista_display_post_metadata_secondary('');
-                                    echo '</footer><!-- ./footer -->';
-
                                     ?>
 
                                 </article><!-- /.blog-post -->

@@ -87,9 +87,7 @@ get_header();  // Include the header.php file
                                         minimalista_display_post_content();
                                         minimalista_link_pages();
                                     }
-                                    echo '<footer class="entry-footer">';
                                     minimalista_display_post_metadata_secondary('');
-                                    echo '</footer><!-- ./footer -->';
 
                                     break;
 
@@ -114,9 +112,7 @@ get_header();  // Include the header.php file
                                             minimalista_display_post_content();
                                             minimalista_link_pages();
                                         }
-                                        echo '<footer class="entry-footer">';
                                         minimalista_display_post_metadata_secondary('');
-                                        echo '</footer><!-- ./footer -->';                                        
                                         echo '</div><!-- .col-8 -->';
                                         echo '</div><!-- ./row -->';
                                     } else {
@@ -129,9 +125,7 @@ get_header();  // Include the header.php file
                                             minimalista_display_post_content();
                                             minimalista_link_pages();
                                         }
-                                        echo '<footer class="entry-footer">';
                                         minimalista_display_post_metadata_secondary('');
-                                        echo '</footer><!-- ./footer -->';
                                     }
 
                                     break;
@@ -158,9 +152,7 @@ get_header();  // Include the header.php file
                                             minimalista_display_post_content();
                                             minimalista_link_pages();
                                         }
-                                        echo '<footer class="entry-footer">';
                                         minimalista_display_post_metadata_secondary('');
-                                        echo '</footer><!-- ./footer -->';
                                         echo '</div><!-- .col-8 -->';
                                         echo '</div><!-- ./row -->';
                                     } else {
@@ -173,9 +165,7 @@ get_header();  // Include the header.php file
                                             minimalista_display_post_content();
                                             minimalista_link_pages();
                                         }
-                                        echo '<footer class="entry-footer">';
                                         minimalista_display_post_metadata_secondary('');
-                                        echo '</footer><!-- ./footer -->';
                                     }
 
                                     break;
@@ -191,9 +181,7 @@ get_header();  // Include the header.php file
                                         minimalista_display_post_content();
                                         minimalista_link_pages();
                                     }
-                                    echo '<footer class="entry-footer">';
                                     minimalista_display_post_metadata_secondary('');
-                                    echo '</footer><!-- ./footer -->';
                             }
 
                             ?>

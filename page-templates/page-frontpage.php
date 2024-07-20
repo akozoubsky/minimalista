@@ -86,9 +86,8 @@ get_header(); ?>
                                     // Display title, summary, and image.
                                     echo '<header class="entry-header">';
                                     minimalista_display_post_title($title_tag, '', true);
-                                    echo '<div class="entry-meta">';
                                     minimalista_display_post_metadata_primary('');
-                                    echo '</div><!-- ./entry-meta -->';
+                                    echo '</header>';
 
                                     // Conditional display of the thumbnail
                                     if ($show_thumbnail) {
@@ -100,9 +99,7 @@ get_header(); ?>
                                         minimalista_display_post_excerpt();
                                     }
 
-                                    echo '<footer class="entry-footer">';
                                     minimalista_display_post_metadata_secondary();
-                                    echo '</footer><!-- .entry-footer -->';
                                     ?>
 
                                 </article><!-- /.blog-post -->

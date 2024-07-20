@@ -125,8 +125,7 @@ h2.widget-title:empty,
 h3.widget-title:empty,
 .entry-title:empty,
 .blog-entry-title:empty,
-.post-metadata:empty,
-.entry-footer:empty {
+.post-metadata:empty {
     margin: 0;
     padding: 0;
     display: none;
@@ -1381,12 +1380,12 @@ article,
     margin-bottom: var(--minimalista-vertical-spacing-4);
 }
 
-.entry-meta {
+.post-metadata-primary {
     margin-bottom: var(--minimalista-vertical-spacing-4);
     /* 1rem */
 }
 
-.entry-footer {
+.post-metadata-secondary {
     margin-top: var(--minimalista-vertical-spacing-4);
     /* 1rem */
 }
@@ -1475,6 +1474,10 @@ footer.footer {
 .form-group {
     margin-bottom: var(--minimalista-vertical-spacing-4);
     /* 1rem */
+}
+
+.continue-reading {
+    margin-top: var(--minimalista-vertical-spacing-4);
 }
 
 /* ########################################################
