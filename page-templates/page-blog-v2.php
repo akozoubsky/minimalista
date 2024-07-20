@@ -6,7 +6,7 @@
  * It utilizes a custom query to fetch and display the blog posts, and integrates
  * Bootstrap styling to structure and style the content.
  *
- * Template Name: 
+ * Template Name: Blog 2
  *
  * @package WordPress
  * @subpackage Minimalista
