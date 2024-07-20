@@ -33,16 +33,14 @@ get_header();  // Include the header.php file
             <main id="primary" class="site-main" itemscope itemtype="http://schema.org/Blog">
                 
                 <header class="page-header">
-                    <?php minimalista_display_post_title('h1', 'entry-title'); ?>
+                    <?php minimalista_display_post_title('h1', 'page-title'); ?>
                     <?php minimalista_display_custom_header_image() ?>
                 </header><!-- .entry-header -->
 
-                <div class="entry-content">
-                    <?php
-                    minimalista_display_post_content();
-                    minimalista_link_pages();
-                    ?>
-                </div><!-- .entry-content -->
+                <?php
+                minimalista_display_post_content();
+                minimalista_link_pages();
+                ?>
 
                 <?php
                 // Setting up the custom query to display blog posts
@@ -82,6 +80,7 @@ get_header();  // Include the header.php file
                                     echo '<div class="entry-meta">';
                                     minimalista_display_post_metadata_primary('');
                                     echo '</div><!-- ./entry-meta -->';
+                                    echo '</header>';
 
                                     // Conditional display of the thumbnail
                                     if ($show_thumbnail) {
@@ -94,8 +93,10 @@ get_header();  // Include the header.php file
                                         $post_format = get_post_format() ?: 'standard';
                                         // Load specific template part based on the post format
                                         set_query_var('template_part_name', 'format-' . $post_format);
+                                        echo '<div class="entry-content">';
                                         get_template_part('template-parts/format/format', $post_format);
                                         minimalista_link_pages();
+                                        echo '</div>';
                                     }
        
 

@@ -18,12 +18,10 @@
 
 	<?php minimalista_display_post_thumbnail("custom-thumbnail"); ?>
 
-	<div class="entry-content">
-		<?php
-		minimalista_display_post_content();
-		minimalista_link_pages();
-		?>
-	</div><!-- .entry-content -->
+	<?php
+	minimalista_display_post_content();
+	minimalista_link_pages();
+	?>
 
 	<?php if ( get_edit_post_link() ) : ?>
 		<footer class="entry-footer">

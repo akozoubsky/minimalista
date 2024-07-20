@@ -33,7 +33,7 @@ get_header();  // Include the header.php file
             <main id="primary" class="site-main" itemscope itemtype="http://schema.org/Blog">
 
                 <header class="page-header">
-                    <?php minimalista_display_post_title('h1', 'entry-title'); ?>
+                    <?php minimalista_display_post_title('h1', 'page-title'); ?>
                     <?php minimalista_display_custom_header_image() ?>
                 </header>
 

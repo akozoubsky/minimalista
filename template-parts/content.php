@@ -34,10 +34,8 @@
     $post_format = get_post_format() ?: 'standard';
     // Load specific template part based on the post format
     set_query_var('template_part_name', 'format-' . $post_format);
-    echo '<div class="entry-content">';
     get_template_part('template-parts/format/format', $post_format);
     minimalista_link_pages();
-    echo '</div>';
     ?>
 
     <footer class="entry-footer">

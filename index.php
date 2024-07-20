@@ -9,7 +9,10 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package minimalista
+ * @package WordPress
+ * @subpackage minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
  */
 
 // Prevent direct access to the file
@@ -24,6 +27,7 @@ get_header();
 
 	<div class="row">
 	
+        <!-- Main Content Column -->	
 		<div class="col-lg-8">
 		
 			<main id="primary" class="site-main">

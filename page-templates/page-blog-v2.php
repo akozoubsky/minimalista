@@ -33,18 +33,16 @@ get_header();  // Include the header.php file
             <main id="primary" class="site-main" itemscope itemtype="http://schema.org/Blog">
                 
                 <header class="page-header">
-                    <?php minimalista_display_post_title('h1', 'entry-title'); ?>
+                    <?php minimalista_display_post_title('h1', 'page-title'); ?>
                     <?php minimalista_display_custom_header_image() ?>
                 </header><!-- .entry-header -->
 
-                <div class="entry-content">
-                    <?php
-                    minimalista_display_post_content();
-                    minimalista_link_pages();
-                    ?>
-                </div><!-- .entry-content -->
                 <?php
+                minimalista_display_post_content();
+                minimalista_link_pages();
+                ?>
 
+                <?php
                 // Setting up the custom query to display blog posts
                 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                 $args = array(
@@ -87,6 +85,7 @@ get_header();  // Include the header.php file
                                     // Conditional display the excerpt
                                     if ($show_excerpt) {
                                         minimalista_display_post_content();
+                                        minimalista_link_pages();
                                     }
                                     echo '<footer class="entry-footer">';
                                     minimalista_display_post_metadata_secondary('');
@@ -113,6 +112,7 @@ get_header();  // Include the header.php file
                                         // Conditional display the excerpt
                                         if ($show_excerpt) {
                                             minimalista_display_post_content();
+                                            minimalista_link_pages();
                                         }
                                         echo '<footer class="entry-footer">';
                                         minimalista_display_post_metadata_secondary('');
@@ -127,6 +127,7 @@ get_header();  // Include the header.php file
                                         // Conditional display the excerpt
                                         if ($show_excerpt) {
                                             minimalista_display_post_content();
+                                            minimalista_link_pages();
                                         }
                                         echo '<footer class="entry-footer">';
                                         minimalista_display_post_metadata_secondary('');
@@ -155,6 +156,7 @@ get_header();  // Include the header.php file
                                         // Conditional display the excerpt
                                         if ($show_excerpt) {
                                             minimalista_display_post_content();
+                                            minimalista_link_pages();
                                         }
                                         echo '<footer class="entry-footer">';
                                         minimalista_display_post_metadata_secondary('');
@@ -169,6 +171,7 @@ get_header();  // Include the header.php file
                                         // Conditional display the excerpt
                                         if ($show_excerpt) {
                                             minimalista_display_post_content();
+                                            minimalista_link_pages();
                                         }
                                         echo '<footer class="entry-footer">';
                                         minimalista_display_post_metadata_secondary('');
@@ -186,6 +189,7 @@ get_header();  // Include the header.php file
                                     // Conditional display the excerpt
                                     if ($show_excerpt) {
                                         minimalista_display_post_content();
+                                        minimalista_link_pages();
                                     }
                                     echo '<footer class="entry-footer">';
                                     minimalista_display_post_metadata_secondary('');
