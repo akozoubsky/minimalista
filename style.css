@@ -114,6 +114,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 html,
 body {
     word-wrap: break-word;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 /* Empty elements */
@@ -568,7 +571,7 @@ a.btn {
  *                          IMAGENS
  * ######################################################## */
 
-.wp-caption-text {
+figcaption .wp-caption-text {
     padding: 1rem;
     text-align: center;
     font-size: 0.875em;
@@ -587,11 +590,6 @@ a.btn {
     max-width: 30%;
 }
 */
-
-/* importante para a imagem nao invadir a area de texto do post */
-article img.thumbnail.alignleft {
-    max-width: 30%;
-}
 
 .avatar-40 {
     height: 40px;
@@ -884,24 +882,67 @@ figure.gallery-item {
 .alignleft {
     float: left;
     margin-right: 1rem;
+    margin-bottom: 0.5rem;
 }
-
-@media only screen and (min-width: 768px) {
-    .alignleft {
-        margin-right: calc(2 * 1rem);
+    @media only screen and (min-width: 768px) {
+        .alignleft {
+            margin-right: calc(2 * 1rem);
+            margin-bottom: calc(1 * 1rem);
+        }
     }
-}
+
+    .entry-content  .alignleft {
+        float: none;
+        margin-right: auto;
+        margin-left: auto;
+        max-width: 100%;
+        text-align: center;
+        margin-bottom: 1rem;
+        
+    }
+
+    /* importante para a imagem nao invadir a area de texto do post */
+    @media (min-width: 575.98px) {
+        .entry-content  .alignleft {
+            float: left;
+            margin-right: 1rem;
+            margin-bottom: 0.5rem;
+            max-width: 40%;
+        }
+    }
 
 .alignright {
     float: right;
     margin-left: 1rem;
+    margin-bottom: 0.5rem;
 }
 
-@media only screen and (min-width: 768px) {
-    .alignright {
-        margin-left: calc(2 * 1rem);
+    @media only screen and (min-width: 768px) {
+        .alignright {
+            margin-left: calc(2 * 1rem);
+            margin-bottom: calc(1 * 1rem);
+        }
     }
-}
+
+    .entry-content  .alignright {
+        float: none;
+        margin-right: auto;
+        margin-left: auto;
+        max-width: 100%;
+        text-align: center;
+        margin-bottom: 1rem;
+        
+    }
+
+    /* importante para a imagem nao invadir a area de texto do post */
+    @media (min-width: 575.98px) {
+        .entry-content  .alignright {
+            float: right;
+            margin-left: 1rem;
+            margin-bottom: 0.5rem;
+            max-width: 40%;
+        }
+    }
 
 .aligncenter {
     clear: both;
