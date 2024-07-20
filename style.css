@@ -571,8 +571,8 @@ a.btn {
  *                          IMAGENS
  * ######################################################## */
 
-figcaption .wp-caption-text {
-    padding: 1rem;
+figcaption, .wp-caption-text {
+    padding: 1rem 0.5rem;
     text-align: center;
     font-size: 0.875em;
     color: #666;
@@ -591,16 +591,16 @@ figcaption .wp-caption-text {
 }
 */
 
+.avatar {
+    display: inline-block;
+}
+
 .avatar-40 {
     height: 40px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .avatar-80 {
     height: 80px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 /* ==============================================================================================================
@@ -884,18 +884,19 @@ figure.gallery-item {
     margin-right: 1rem;
     margin-bottom: 0.5rem;
 }
-    @media only screen and (min-width: 768px) {
+    @media (min-width: 575.98px) {
         .alignleft {
             margin-right: calc(2 * 1rem);
             margin-bottom: calc(1 * 1rem);
         }
     }
 
-    .entry-content  .alignleft {
+    .entry-content  .alignleft,
+    .img-fluid.alignleft {
         float: none;
         margin-right: auto;
         margin-left: auto;
-        max-width: 100%;
+        width: 100%;
         text-align: center;
         margin-bottom: 1rem;
         
@@ -903,10 +904,12 @@ figure.gallery-item {
 
     /* importante para a imagem nao invadir a area de texto do post */
     @media (min-width: 575.98px) {
-        .entry-content  .alignleft {
+        .entry-content  .alignleft,
+        .img-fluid.alignleft {
             float: left;
-            margin-right: 1rem;
-            margin-bottom: 0.5rem;
+            margin-right: calc(2 * 1rem);
+            margin-bottom: calc(1 * 1rem);
+            width: initial;
             max-width: 40%;
         }
     }
@@ -917,18 +920,19 @@ figure.gallery-item {
     margin-bottom: 0.5rem;
 }
 
-    @media only screen and (min-width: 768px) {
+    @media (min-width: 575.98px) {
         .alignright {
             margin-left: calc(2 * 1rem);
             margin-bottom: calc(1 * 1rem);
         }
     }
 
-    .entry-content  .alignright {
+    .entry-content  .alignright,
+    .img-fluid.alignright {
         float: none;
         margin-right: auto;
         margin-left: auto;
-        max-width: 100%;
+        width: 100%;
         text-align: center;
         margin-bottom: 1rem;
         
@@ -936,10 +940,12 @@ figure.gallery-item {
 
     /* importante para a imagem nao invadir a area de texto do post */
     @media (min-width: 575.98px) {
-        .entry-content  .alignright {
+        .entry-content  .alignright,
+        .img-fluid.alignright {
             float: right;
-            margin-left: 1rem;
-            margin-bottom: 0.5rem;
+            margin-left: calc(2 * 1rem);
+            margin-bottom: calc(1 * 1rem);
+            width: initial;
             max-width: 40%;
         }
     }
@@ -1413,9 +1419,11 @@ footer.footer {
     /* 1rem */
 }
 
+/* images */
 .post-thumbnail img,
 .thumbnail,
-.post-header-image {
+.post-header-image,
+.avatar {
     margin-bottom: var(--minimalista-vertical-spacing-4);
     /* 1rem */
 }
