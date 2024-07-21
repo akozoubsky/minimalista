@@ -70,7 +70,7 @@ if ( ! function_exists( 'minimalista_posted_on' ) ) :
 
         // Time string for the publication date
         $time_string_published = sprintf(
-            '<time class="entry-date published" datetime="%1$s">%2$s</time>',
+            '<time pubdate class="entry-date published" datetime="%1$s">%2$s</time>',
             esc_attr( get_the_date( DATE_W3C ) ),
             esc_html( $published_date )
         );
@@ -229,23 +229,6 @@ if ( ! function_exists( 'minimalista_entry_footer' ) ) :
 			);
 			echo '</span>';
 		}
-
-		edit_post_link(
-			sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Edit <span class="screen-reader-text">%s</span>', 'minimalista' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				wp_kses_post( get_the_title() )
-			),
-			'<span class="edit-link">',
-			'</span>'
-		);
 	}
 endif;
 
@@ -554,7 +537,7 @@ function minimalista_display_post_metadata_primary($additional_classes = '')
 
     // Standard Metadata for posts
     // Date and Author
-    echo '<time class="post-date text-break" itemprop="datePublished">' . minimalista_generate_icon_html("fa-calendar", "me-2") . get_the_date() . '</time>';
+    echo '<time pubdate class="post-date text-break" itemprop="datePublished">' . minimalista_generate_icon_html("fa-calendar", "me-2") . get_the_date() . '</time>';
     echo '<span class="post-author text-break" itemprop="author">' . minimalista_generate_icon_html("fa-user", "me-2") . get_the_author() . '</span>';
 
     // Format-specific Metadata
@@ -617,6 +600,9 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
     if ($additional_classes) {
         $div_classes .= ' ' . $additional_classes;
     }
+
+    // Open footer container
+    echo '<footer class="entry-footer">';
 
     // Open Bootstrap 5 "post-metadata" container
     echo '<div class="' . $div_classes . '">';
@@ -735,8 +721,41 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
         echo '<span class="post-tags" itemprop="keywords">' . minimalista_generate_icon_html("fa-tags", "me-2") . get_the_tag_list('', ', ') . '</span>';
     }
 
-    echo '</div>';  // Close the "post-metadata" container
+    echo '</div><!-- .post-metadata -->';  // Close the "post-metadata" container
+
+    echo '</footer><!-- .entry-footer -->'; // Close the "footer" container
 }
+
+/**
+ * Displays an edit post link if the user has permission to edit the post.
+ *
+ * This function checks if the current user has permission to edit the post,
+ * and if so, displays an edit link with the provided text. The link is wrapped
+ * in a span with a class of "edit-link".
+ *
+ * @return void Outputs the edit post link HTML if the user can edit the post.
+ */
+function minimalista_display_edit_post_link() {
+    if ( get_edit_post_link() ) {
+        edit_post_link(
+            sprintf(
+                wp_kses(
+                    /* translators: %s: Name of current post. Only visible to screen readers */
+                    __( 'Edit <span class="screen-reader-text">%s</span>', 'minimalista' ),
+                    array(
+                        'span' => array(
+                            'class' => array(),
+                        ),
+                    )
+                ),
+                wp_kses_post( get_the_title() )
+            ),
+            '<span class="edit-link">',
+            '</span>'
+        );
+    }
+}
+
 
 /**
  * Displays the post excerpt with additional customization options.
