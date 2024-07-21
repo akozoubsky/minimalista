@@ -1737,11 +1737,6 @@ ul.no-bullet {
 
 .hidden {
     display: none;
-    visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    clear: both;
-    content: none;
 }
 
 /* TODO: acertar o pading e radius */
