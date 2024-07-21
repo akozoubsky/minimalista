@@ -291,3 +291,44 @@ add_action( 'init', function() {
     minimalista_add_htaccess_rules( $extra_rules );
 });
 */
+
+/**
+ * Impede que os usuários usem seu username como display name.
+ *
+ * @param int $user_id ID do usuário.
+ */
+function minimalista_prevent_username_as_display_name($user_id) {
+    $user_info = get_userdata($user_id);
+    $username = $user_info->user_login;
+    $display_name = $user_info->display_name;
+
+    if ($username === $display_name) {
+        // Gera um novo display name seguro
+        $new_display_name = $user_info->first_name . ' ' . $user_info->last_name;
+
+        if (empty(trim($new_display_name))) {
+            $new_display_name = 'User' . $user_id;
+        }
+
+        wp_update_user(array(
+            'ID' => $user_id,
+            'display_name' => $new_display_name
+        ));
+    }
+}
+add_action('user_register', 'minimalista_prevent_username_as_display_name');
+add_action('profile_update', 'minimalista_prevent_username_as_display_name');
+
+/**
+ * Verifica e previne que o usuário use o username como display name no perfil.
+ *
+ * @param WP_Error $errors Objeto de erros do WordPress.
+ * @param bool $update Se é uma atualização de perfil.
+ * @param stdClass $user Dados do usuário.
+ */
+function minimalista_validate_display_name($errors, $update, $user) {
+    if ($update && $user->user_login === $user->display_name) {
+        $errors->add('display_name_error', __('Você não pode usar seu Nome de usuário (username) para ser exibido publicamente (display name). Por favor, escolha outro.', 'minimalista'));
+    }
+}
+add_action('user_profile_update_errors', 'minimalista_validate_display_name', 10, 3);
