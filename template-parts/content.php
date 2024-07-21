@@ -24,7 +24,11 @@
         </header>
     <?php endif; ?>
                 
-	<?php minimalista_display_post_thumbnail('thumbnail', 'thumbnail alignleft', true); ?>
+    <?php if ( is_singular() ) : ?>
+	    <?php minimalista_display_post_thumbnail('thumbnail', 'thumbnail alignleft', false); ?>
+    <?php else : ?>
+        <?php minimalista_display_post_thumbnail('thumbnail', 'thumbnail alignleft', true); ?>
+    <?php endif; ?>
 
     <?php 
     $post_format = get_post_format() ?: 'standard';
@@ -34,8 +38,7 @@
     minimalista_link_pages();
     ?>
 
-    <footer class="entry-footer">
-        <?php minimalista_display_post_metadata_secondary(); ?>
+    <?php minimalista_display_post_metadata_secondary(); ?>
     </footer><!-- .entry-footer -->
 	
 </article><!-- #post-<?php the_ID(); ?> -->
