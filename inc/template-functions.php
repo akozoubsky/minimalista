@@ -144,7 +144,7 @@ function minimalista_add_robots_rule( $disallowed_paths = array() ) {
         '/*README.txt$',
         '/*readme.md$',
         '/*README.md$',
-        '/*favicon.*$' // Matches any file with "favicon" in its name and any extension
+        '/*favicon.*$'
     );
 
     // Merge arrays
