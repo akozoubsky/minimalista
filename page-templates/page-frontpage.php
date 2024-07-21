@@ -23,8 +23,11 @@ if (!defined('ABSPATH')) {
 get_header(); ?>
 
 <div class="container">
+
 	<div class="row">
+
 		<div class="col-lg-8">
+
 			<main id="primary" class="site-main">
 
 				<?php
@@ -82,7 +85,6 @@ get_header(); ?>
                                 <article id="post-<?php the_ID(); ?>" <?php post_class("blog-posting"); ?> itemscope itemtype="http://schema.org/BlogPosting">
 
                                     <?php
-
                                     // Display title, summary, and image.
                                     echo '<header class="entry-header">';
                                     minimalista_display_post_title($title_tag, '', true);
@@ -121,12 +123,14 @@ get_header(); ?>
                 <?php } ?>
 
 			</main><!-- #main -->
+
 		</div>
 
 		<!-- Right Sidebar Column -->
 		<?php get_sidebar(); // Include the sidebar.php file ?>
 
 	</div>
+    
 </div>
 
 <?php
