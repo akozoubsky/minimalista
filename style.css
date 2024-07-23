@@ -193,53 +193,65 @@ body {
  * Cabecalhos (<h1> a <h6>)
  * ============================== */
 
-h1, .h1,
-h2, .h2,
-h3, .h3,
-h4, .h4,
-h5, .h5,
-h6, .h6 {
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
     font-weight: 700;
     font-variation-settings: 'wght' 700, 'wdth' 100;
     font-optical-sizing: auto;
 }
 
-h1, .h1 {
+h1,
+.h1 {
     font-weight: 700;
     font-variation-settings: 'wght' 700, 'wdth' 100;
     line-height: 1.2;
     /* Menor espaçamento para títulos principais */
 }
 
-h2, .h2 {
+h2,
+.h2 {
     font-weight: 600;
     font-variation-settings: 'wght' 600, 'wdth' 100;
     line-height: 1.3;
     /* Um pouco mais espaçado que h1 */
 }
 
-h3, .h3 {
+h3,
+.h3 {
     font-weight: 600;
     font-variation-settings: 'wght' 600, 'wdth' 100;
     line-height: 1.4;
     /* Ajuste proporcional */
 }
 
-h4, .h4 {
+h4,
+.h4 {
     font-weight: 600;
     font-variation-settings: 'wght' 600, 'wdth' 100;
     line-height: 1.5;
     /* Espaçamento maior para clareza */
 }
 
-h5, .h5 {
+h5,
+.h5 {
     font-weight: 500;
     font-variation-settings: 'wght' 500, 'wdth' 100;
     line-height: 1.6;
     /* Espaçamento maior */
 }
 
-h6, .h6 {
+h6,
+.h6 {
     font-weight: 500;
     font-variation-settings: 'wght' 500, 'wdth' 100;
     line-height: 1.7;
@@ -573,7 +585,8 @@ a.btn {
  *                          IMAGENS
  * ######################################################## */
 
-figcaption, .wp-caption-text {
+figcaption,
+.wp-caption-text {
     padding: 1rem 0.5rem;
     text-align: center;
     font-size: 0.875em;
@@ -886,35 +899,37 @@ figure.gallery-item {
     margin-right: 1rem;
     margin-bottom: 0.5rem;
 }
-    @media (min-width: 575.98px) {
-        .alignleft {
-            margin-right: calc(2 * 1rem);
-            margin-bottom: calc(1 * 1rem);
-        }
-    }
 
-    .entry-content  .alignleft,
+@media (min-width: 575.98px) {
+    .alignleft {
+        margin-right: calc(2 * 1rem);
+        margin-bottom: calc(1 * 1rem);
+    }
+}
+
+.entry-content .alignleft,
+.img-fluid.alignleft {
+    float: none;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+
+}
+
+/* importante para a imagem nao invadir a area de texto do post */
+@media (min-width: 575.98px) {
+
+    .entry-content .alignleft,
     .img-fluid.alignleft {
-        float: none;
-        margin-right: auto;
-        margin-left: auto;
-        width: 100%;
-        text-align: center;
-        margin-bottom: 1rem;
-        
+        float: left;
+        margin-right: calc(2 * 1rem);
+        margin-bottom: calc(1 * 1rem);
+        width: initial;
+        max-width: 40%;
     }
-
-    /* importante para a imagem nao invadir a area de texto do post */
-    @media (min-width: 575.98px) {
-        .entry-content  .alignleft,
-        .img-fluid.alignleft {
-            float: left;
-            margin-right: calc(2 * 1rem);
-            margin-bottom: calc(1 * 1rem);
-            width: initial;
-            max-width: 40%;
-        }
-    }
+}
 
 .alignright {
     float: right;
@@ -922,35 +937,36 @@ figure.gallery-item {
     margin-bottom: 0.5rem;
 }
 
-    @media (min-width: 575.98px) {
-        .alignright {
-            margin-left: calc(2 * 1rem);
-            margin-bottom: calc(1 * 1rem);
-        }
+@media (min-width: 575.98px) {
+    .alignright {
+        margin-left: calc(2 * 1rem);
+        margin-bottom: calc(1 * 1rem);
     }
+}
 
-    .entry-content  .alignright,
+.entry-content .alignright,
+.img-fluid.alignright {
+    float: none;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+
+}
+
+/* importante para a imagem nao invadir a area de texto do post */
+@media (min-width: 575.98px) {
+
+    .entry-content .alignright,
     .img-fluid.alignright {
-        float: none;
-        margin-right: auto;
-        margin-left: auto;
-        width: 100%;
-        text-align: center;
-        margin-bottom: 1rem;
-        
+        float: right;
+        margin-left: calc(2 * 1rem);
+        margin-bottom: calc(1 * 1rem);
+        width: initial;
+        max-width: 40%;
     }
-
-    /* importante para a imagem nao invadir a area de texto do post */
-    @media (min-width: 575.98px) {
-        .entry-content  .alignright,
-        .img-fluid.alignright {
-            float: right;
-            margin-left: calc(2 * 1rem);
-            margin-bottom: calc(1 * 1rem);
-            width: initial;
-            max-width: 40%;
-        }
-    }
+}
 
 .aligncenter {
     clear: both;
@@ -1730,6 +1746,55 @@ footer.footer {
 /* ==============================
  * Helpers/Utilities
  * ============================== */
+
+/**
+  * Mastering margin collapsing
+  * https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_model/Mastering_margin_collapsing
+  *
+  */
+
+/* Classes para espaçamentos sem colapso de margem */
+.no-collapse-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem !important;
+}
+
+.no-collapse-1-5 {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem !important;
+}
+
+.no-collapse-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem !important;
+}
+
+.no-collapse-2-5 {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem !important;
+}
+
+.no-collapse-3 {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem !important;
+}
+
+.no-collapse-3-5 {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem !important;
+}
+
+.no-collapse-4 {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem !important;
+}
 
 /* Remover marcadores e preenchimento esquerdo das listas */
 ul.no-bullet {
