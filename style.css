@@ -151,6 +151,8 @@ ol li:last-child,
 dl>*:last-child,
 /* garantir que o último item de qualquer tipo (seja dt ou dd) dentro de uma lista de definição seja estilizado */
 table :last-child,
+blockquote,
+.blockquote,
 blockquote :last-child {
     margin-bottom: 0;
 }
@@ -251,6 +253,7 @@ h6, .h6 {
 p,
 label,
 blockquote,
+.blockquote,
 dl,
 dt,
 figcaption,
@@ -308,7 +311,7 @@ ol ol {
 
 blockquote,
 .blockquote {
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
     margin-left: 2rem;
     margin-right: 2rem;
     padding: 2rem;
@@ -1477,6 +1480,10 @@ footer.footer {
 }
 
 .continue-reading {
+    margin-top: var(--minimalista-vertical-spacing-4);
+}
+
+.edit-link {
     margin-top: var(--minimalista-vertical-spacing-4);
 }
 
