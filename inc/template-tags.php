@@ -731,7 +731,7 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
  *
  * This function checks if the current user has permission to edit the post,
  * and if so, displays an edit link with the provided text. The link is wrapped
- * in a span with a class of "edit-link".
+ * in a div with a class of "edit-link".
  *
  * @return void Outputs the edit post link HTML if the user can edit the post.
  */
@@ -750,8 +750,8 @@ function minimalista_display_edit_post_link() {
                 ),
                 wp_kses_post( get_the_title() )
             ),
-            '<span class="edit-link">',
-            '</span>'
+            '<div class="edit-link">',
+            '</div>'
         );
     }
 }
