@@ -25,7 +25,10 @@ function minimalista_dps_template_part( $output, $original_atts ) {
 }
 add_action( 'display_posts_shortcode_output', 'minimalista_dps_template_part', 10, 2 );
 
-// Adiciona o filtro para capturar o parâmetro image_size dentro dos template-parts
+/** 
+ * O shortcode [display-posts] não está incluindo o parâmetro image_size na consulta
+ * Adiciona o filtro para capturar o parâmetro image_size dentro dos template-parts
+ */
 add_filter('display_posts_shortcode_args', 'dps_custom_image_size_param', 10, 2);
 function dps_custom_image_size_param($args, $atts) {
     if (isset($atts['image_size'])) {
