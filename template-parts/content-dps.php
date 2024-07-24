@@ -1,8 +1,9 @@
 <?php
 /**
- * Template part for displaying posts in a list or a single post
+ * Template part with Display Posts Shortcode for displaying posts in a list or a single post
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ * @link https://displayposts.com/2019/01/04/use-template-parts-to-match-your-themes-styling/
  *
  * @package minimalista
  */
