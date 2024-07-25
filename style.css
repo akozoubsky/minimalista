@@ -1364,12 +1364,12 @@ hr {
     margin-bottom: var(--minimalista-vertical-spacing-9);
     /* 3rem */
 }
-
+/* 
 .widget {
     margin-bottom: var(--minimalista-vertical-spacing-9);
-    /* 2rem */
 }
-
+ */
+ 
 /* @TODO */
 
 article,
@@ -1746,8 +1746,8 @@ footer.footer {
 
 /**
   * Mastering margin collapsing
-  * https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_model/Mastering_margin_collapsing
-  *
+  * @link https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_model/Mastering_margin_collapsing
+  * @link https://demenezes.dev/posts/margin-collapsing-css/
   */
 
 /* Classes para espaçamentos sem colapso de margem */
