@@ -1364,12 +1364,13 @@ hr {
     margin-bottom: var(--minimalista-vertical-spacing-9);
     /* 3rem */
 }
-/* 
+
 .widget {
-    margin-bottom: var(--minimalista-vertical-spacing-9);
+    /* margin-bottom: var(--minimalista-vertical-spacing-9); */
+    /* border: 1px solid transparent; */
 }
- */
- 
+
+
 /* @TODO */
 
 article,
