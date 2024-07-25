@@ -151,8 +151,6 @@ ol li:last-child,
 dl>*:last-child,
 /* garantir que o último item de qualquer tipo (seja dt ou dd) dentro de uma lista de definição seja estilizado */
 table :last-child,
-blockquote,
-.blockquote,
 blockquote :last-child {
     margin-bottom: 0;
 }
@@ -323,7 +321,6 @@ ol ol {
 
 blockquote,
 .blockquote {
-    /* margin-bottom: 1rem; */
     margin-left: 2rem;
     margin-right: 2rem;
     padding: 2rem;
