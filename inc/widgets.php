@@ -1,8 +1,11 @@
 <?php
-
 /**
  * Register widget area.
- *
+ * 
+ * @package minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
+ * 
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 

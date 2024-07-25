@@ -3,6 +3,8 @@
  * minimalista Theme Customizer
  *
  * @package minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
  */
 
 /**

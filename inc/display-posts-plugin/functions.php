@@ -1,7 +1,11 @@
 <?php
 /**
  * Template Parts with Display Posts Shortcode
- * @author Bill Erickson
+ *
+ * @package minimalista
+ * @since 1.0.0
+ * @author Bill Erickson e Alexandre Kozoubsky
+ * 
  * @link https://displayposts.com/  
  * @link https://www.billerickson.net/template-parts-with-display-posts-shortcode
  *
@@ -11,6 +15,7 @@
  *
  * Usage: [display-posts template="dps-widget-bs" wrapper="ul" wrapper_class="list-group" ignore_sticky_posts="true"]
  */
+
 function minimalista_dps_template_part( $output, $original_atts ) {
 
 	// Return early if our "content" attribute is not specified

@@ -7,12 +7,11 @@
  * It is used to display a page when nothing more specific matches a query.
  * E.g., it puts together the home page when no home.php file exists.
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package WordPress
- * @subpackage minimalista
+ * @package minimalista
  * @since 1.0.0
  * @author Alexandre Kozoubsky
+ * 
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  */
 
 // Prevent direct access to the file

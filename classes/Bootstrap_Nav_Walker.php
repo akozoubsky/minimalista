@@ -2,6 +2,10 @@
 /**
  * Classe Bootstrap_Nav_Walker
  * Estende Walker_Nav_Menu para implementar suporte ao estilo Bootstrap para menus do WordPress.
+ * 
+ * @package minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
  */
 class Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 

@@ -2,9 +2,11 @@
 /**
  * Template part for displaying a message that posts cannot be found
  *
+ * @package Minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
+ * 
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package minimalista
  */
 
 ?>

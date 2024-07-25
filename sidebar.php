@@ -1,11 +1,12 @@
 <?php
-
 /**
  * The sidebar containing the main widget area
  *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
  * @package minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
+ * 
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  */
 
 // Prevent direct access to the file

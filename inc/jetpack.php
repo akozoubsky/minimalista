@@ -1,11 +1,15 @@
 <?php
 /**
  * Jetpack Compatibility File
- *
- * @link https://jetpack.com/
+ * Enqueue scripts and styles.
  *
  * @package minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
+ * 
+ * @link https://jetpack.com/
  */
+
 
 /**
  * Jetpack setup function.

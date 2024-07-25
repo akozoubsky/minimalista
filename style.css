@@ -13,6 +13,9 @@ License URI: LICENSE
 Text Domain: minimalista
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 
+@package minimalista
+@since 1.0.0
+
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned.
 
@@ -29,19 +32,6 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 @link https://getbootstrap.com/docs/5.3/components/buttons/
 @link https://getbootstrap.com/docs/5.3/customize/css-variables/
 @link https://getbootstrap.com/docs/5.3/customize/color/
-*/
-
-/* ########################################################
- *              DEFINICOES DE FONTE
- * ######################################################## */
-/*
-@font-face {
-    font-family: "Roboto Flex";
-    src: url("fonts/RobotoFlex-VariableFont_GRAD,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.ttf") format("truetype");
-    font-weight: 100 1000;
-    font-stretch: 50% 200%;
-    font-style: normal;
-}
 */
 
 /* ########################################################
@@ -98,14 +88,6 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     --bs-link-opacity: 1;
     --bs-bg-opacity: 1;
 }
-
-/* ########################################################
- *    REAPLICAR CLASSES DO BOOTSTRAPCOM COM AS VARIAVEIS
- * ######################################################## */
-
-/* ==============================
- * Toogler (hamburger)
- * ============================== */
 
 /* ########################################################
  *                MINIMALISTA THEME REBOOT
@@ -415,9 +397,10 @@ article {
     /* Incluir padding e borda na largura total e altura */
 }
 
-article a {
+article .entry-content a,
+article .entry-excerpt a  {
     text-decoration: underline;
-}
+ }
 
 /**
  * Metadata
@@ -1302,6 +1285,11 @@ de card-title para manter a consistência do espaçamento */
     text-decoration: none;
 }
 
+/* Elemento de grupo de lista */
+/* .list-group-item:hover {
+    border: 1px solid var(--bs-gray);
+} */
+
 /* ########################################################
  *                      MARGENS
  * ######################################################## */
@@ -1331,8 +1319,8 @@ p {
     /* 1rem */
 }
 
-ul li,
-ol li {
+ul li:not(.list-group-item),
+ol li:not(.list-group-item) {
     margin-bottom: var(--minimalista-vertical-spacing-2);
     /* 0.5rem */
 }
@@ -1499,6 +1487,10 @@ footer.footer {
 
 .edit-link {
     margin-top: var(--minimalista-vertical-spacing-4);
+}
+
+table {
+    margin-bottom: var(--minimalista-vertical-spacing-4);
 }
 
 /* ########################################################

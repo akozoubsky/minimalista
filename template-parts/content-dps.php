@@ -2,10 +2,12 @@
 /**
  * Template part with Display Posts Shortcode for displaying posts in a list or a single post
  *
+ * @package Minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
+ * 
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  * @link https://displayposts.com/2019/01/04/use-template-parts-to-match-your-themes-styling/
- *
- * @package minimalista
  */
 
 ?>

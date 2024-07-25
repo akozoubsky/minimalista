@@ -2,9 +2,11 @@
 /**
  * minimalista functions and definitions
  *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
- *
  * @package minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
+ * 
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
  */
 
 // Prevent direct access to the file

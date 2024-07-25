@@ -2,9 +2,11 @@
 /**
  * The template for displaying all single posts
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
- *
  * @package minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
+ * 
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  */
 
 get_header();

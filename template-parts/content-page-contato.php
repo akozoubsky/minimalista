@@ -2,9 +2,11 @@
 /**
  * Template part for displaying page content in page.php
  *
+ * @package Minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
+ * 
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package minimalista
  */
 
 ?>

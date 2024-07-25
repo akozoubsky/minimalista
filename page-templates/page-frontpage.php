@@ -1,18 +1,19 @@
 <?php
 /**
  * Template Name: Front Page
- *
- * The template for displaying the front page.
  * 
  * Se o seu objetivo é ter uma página inicial estática que exiba uma combinação de conteúdo de página e posts recentes,
  * e você configurou essa página como a Front Page nas configurações de leitura, então "Front Page" é a escolha apropriada.
  * Ao usar "Front Page" como o nome do template, você deixa claro que este template é para ser usado como
  * a página inicial estática do site, conforme configurado em Configurações > Leitura. 
- *
+ * The template for displaying the front page.
+ * 
+ * @package Minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
+ * 
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  * @link https://github.com/oceanwp/oceanwp/blob/master/page.php
- *
- * @package minimalista
  */
 
 // Prevent direct access to the file

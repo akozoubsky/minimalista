@@ -5,12 +5,12 @@
  * This template is used whenever the get_search_form() function is called.
  * It's a part of the WordPress search functionality.
  *
+ * @package minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
+ * 
  * @link https://developer.wordpress.org/reference/functions/wp_unique_id/
  * @link https://developer.wordpress.org/reference/functions/get_search_form/
- *
- * @package LightCMSBootstrap
- * @version 1.0.0
- * @author Alexandre Kozoubsky
  */
 
 // Prevent direct access to the file

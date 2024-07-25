@@ -3,6 +3,8 @@
  * Functions which enhance the theme by hooking into WordPress
  *
  * @package minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
  */
 
 /**

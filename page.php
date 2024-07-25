@@ -7,9 +7,11 @@
  * and that other 'pages' on your WordPress site may use a
  * different template.
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
  * @package minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
+ * 
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  */
 
 // Prevent direct access to the file

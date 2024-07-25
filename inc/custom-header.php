@@ -4,11 +4,11 @@
  *
  * You can add an optional custom header image to header.php like so ...
  *
-	<?php the_header_image_tag(); ?>
+ * @package minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
- *
- * @package minimalista
  */
 
 /**

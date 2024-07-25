@@ -1,4 +1,13 @@
 <?php
+/**
+ * Custom_Walker_Simple_Menu
+ *
+ * @package minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
+ */
+
+<?php
 class Custom_Walker_Simple_Menu extends Walker_Nav_Menu {
   public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 

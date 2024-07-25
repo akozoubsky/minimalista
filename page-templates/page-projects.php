@@ -4,10 +4,12 @@
  *
  * The template for displaying Projects.
  *
+ * @package Minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
+ * 
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  * @link https://github.com/oceanwp/oceanwp/blob/master/page.php
- *
- * @package minimalista
  */
 
 // Prevent direct access to the file

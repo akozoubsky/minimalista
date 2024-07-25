@@ -2,9 +2,11 @@
 /**
  * The template for displaying 404 pages (not found)
  *
- * @link https://codex.wordpress.org/Creating_an_Error_404_Page
- *
  * @package minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
+ * 
+ * @link https://codex.wordpress.org/Creating_an_Error_404_Page
  */
 
 // Prevent direct access to the file

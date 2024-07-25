@@ -4,9 +4,11 @@
  * 
  * The template for displaying all pages without sidebar
  * 
+ * @package Minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
+ * 
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package minimalista
  */
 
 // Prevent direct access to the file

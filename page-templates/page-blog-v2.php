@@ -8,10 +8,10 @@
  *
  * Template Name: Blog 2
  *
- * @package WordPress
- * @subpackage Minimalista
+ * @package Minimalista
  * @since 1.0.0
  * @author Alexandre Kozoubsky
+ * 
  * @link https://getbootstrap.com/docs/5.3/examples/blog/
  */
 

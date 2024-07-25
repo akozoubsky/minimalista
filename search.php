@@ -2,9 +2,11 @@
 /**
  * The template for displaying search results pages
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
- *
  * @package minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
+ * 
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  */
 
  // Prevent direct access to the file

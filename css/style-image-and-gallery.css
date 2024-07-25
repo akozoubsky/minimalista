@@ -1,9 +1,11 @@
 /**
- * Wrapping Text Around Images
+ * @package minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
+ *
  * @link https://codex.wordpress.org/Wrapping_Text_Around_Images
- */
-
-/* Imagens responsivas
+ *
+ * Imagens responsivas
  * ajuste automaticamente ao tamanho da tela ou do contêiner em que está inserida.
  * largura máxima da imagem como 100% do contêiner e a altura como automática
  */

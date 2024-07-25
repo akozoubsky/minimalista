@@ -2,10 +2,11 @@
 /**
  * WP Bootstrap Navwalker
  *
- * @package           WP-Bootstrap-Navwalker
- * @version           1.0.0
- * @link              https://github.com/wp-bootstrap/wp-bootstrap-navwalker
- * @license           GPL-2.0+
+ * @link https://github.com/wp-bootstrap/wp-bootstrap-navwalker
+ * 
+ * @package minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

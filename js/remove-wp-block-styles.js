@@ -1,4 +1,12 @@
-document.addEventListener("DOMContentLoaded", function() {
+/**
+ * File remove-wp-block-styles.js
+ *
+ * @package minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
+ */
+
+document.addEventListener("DOMContentLoaded", function () {
     var styles = document.getElementsByTagName('style');
     var regex = /\.wp-block-[a-zA-Z0-9-_]+/g; // Expressão regular para encontrar estilos que começam com "wp-block-"
 

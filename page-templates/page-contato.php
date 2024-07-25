@@ -3,9 +3,12 @@
  * Template Name: Página de Contato V.1
  *
  * The template for sending contact forms.
- *
+ * 
+ * @package Minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
+ * 
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- * @package minimalista
  */
 
 // Prevent direct access to the file

@@ -9,6 +9,8 @@
  * Eventually, some of the functionality here could be replaced by core features.
  *
  * @package minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
  */
 
 // ==============================
