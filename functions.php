@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) {
 }
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
+	define( '_S_VERSION', '1.0.1' );
 }
 
 /**
@@ -85,6 +85,11 @@ require get_template_directory() . '/inc/metabox.php';
 require get_template_directory() . '/inc/shortcodes.php';
 
 /**
+ * Display Posts Shortcode Plugin.
+ */
+require_once get_template_directory() . '/inc/display-posts-plugin/functions.php';
+
+/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
@@ -121,7 +126,7 @@ function minimalista_exclude_category_from_blog($query) {
         $query->set('cat', '-' . get_cat_ID('Projetos')); // Exclui a categoria com o slug 'Projetos'
     }
 }
-add_action('pre_get_posts', 'minimalista_exclude_category_from_blog');
+//add_action('pre_get_posts', 'minimalista_exclude_category_from_blog');
 
 // ===========================================
 // FORMULARIO DE CONTATO

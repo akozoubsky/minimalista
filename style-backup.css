@@ -426,11 +426,11 @@ article:not(:last-child) {
     font-size: 0.85rem;
 } 
 
-.entry-meta, .entry-content, .entry-footer {
+.post-metadata-primary, .entry-content, .post-metadata-secondary {
     margin-bottom: calc(0.5 * var(--minimalista-vertical-spacing));
 }
 
-.entry-footer {
+.post-metadata-secondary {
     margin-top: calc(0.5 * var(--minimalista-vertical-spacing));
 }
 
@@ -440,7 +440,7 @@ article:not(:last-child) {
 }
 
 /* nao exibir data e autor da publicacao em <article> da categoria projetos */
-.category-projetos .entry-meta, .category-projetos .entry-footer {
+.category-projetos .post-metadata-primary, .category-projetos .post-metadata-secondary{
     display: none;
 }
 

@@ -1,18 +1,18 @@
 <?php
 /**
- * Template for displaying blog posts.
+ * Template Name: Front Page
  *
- * This template file is designed for a specific page designated for blog posts.
- * It utilizes a custom query to fetch and display the blog posts, and integrates
- * Bootstrap styling to structure and style the content.
+ * The template for displaying the front page.
+ * 
+ * Se o seu objetivo é ter uma página inicial estática que exiba uma combinação de conteúdo de página e posts recentes,
+ * e você configurou essa página como a Front Page nas configurações de leitura, então "Front Page" é a escolha apropriada.
+ * Ao usar "Front Page" como o nome do template, você deixa claro que este template é para ser usado como
+ * a página inicial estática do site, conforme configurado em Configurações > Leitura. 
  *
- * Template Name: Blog
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ * @link https://github.com/oceanwp/oceanwp/blob/master/page.php
  *
- * @package WordPress
- * @subpackage Minimalista
- * @since 1.0.0
- * @author Alexandre Kozoubsky
- * @link https://getbootstrap.com/docs/5.3/examples/blog/
+ * @package minimalista
  */
 
 // Prevent direct access to the file
@@ -20,39 +20,49 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-get_header();  // Include the header.php file
-?>
+get_header(); ?>
 
 <div class="container">
 
-    <div class="row">
+	<div class="row">
 
-        <!-- Main Content Column -->
-        <div class="col-lg-8 ">
+		<div class="col-lg-8">
 
-            <main id="primary" class="site-main" itemscope itemtype="http://schema.org/Blog">
-                
-                <header class="page-header">
-                    <?php minimalista_display_custom_header_image() ?>
-                    <?php minimalista_display_post_title('h1', 'page-title'); ?>
-                </header><!-- .entry-header -->
+			<main id="primary" class="site-main">
 
-                <?php minimalista_display_post_thumbnail("custom-thumbnail"); ?>
+				<?php
+				while (have_posts()) :
+					// Exibe o conteúdo da página."
+					the_post();
 
-                <?php
-                minimalista_display_post_content();
-                minimalista_link_pages();
-                ?>
+					get_template_part('template-parts/content', 'page');
 
-                <?php
-                // Setting up the custom query to display blog posts
-                $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-                $args = array(
-                    'post_type' => 'post',
-                    'paged' => $paged
-                );
+					// If comments are open or we have at least one comment, load up the comment template.
+					/* Nao permitir comentarios em paginas
+					if (comments_open() || get_comments_number()) :
+						comments_template();
+					endif;
+					*/
 
-                $blog_query = new WP_Query($args);
+				endwhile; // End of the loop.
+				?>
+
+				<?php /* Exibe os posts do blog, de uma detrminada categoria */
+
+				// Setting up the custom query to display blog posts
+                // $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                //$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                // captura a variável de paginação corretamente tanto para o contexto de query principal quanto para uma query personalizada.
+                $paged = (get_query_var('paged')) ? get_query_var('paged') : (get_query_var('page') ? get_query_var('page') : 1);
+
+				$args = array(
+					'post_type' => 'post',
+					//'category_name' => 'blog', // Slug da categoria
+					'paged' => $paged,
+                    'posts_per_page' => 3, // Limita o número de posts a 3
+				);
+
+				$blog_query = new WP_Query($args);
 
                 if ($blog_query->have_posts()) {  ?>
 
@@ -88,15 +98,10 @@ get_header();  // Include the header.php file
 
                                     // Conditional display the excerpt
                                     if ($show_excerpt) {
-                                        //minimalista_display_post_excerpt();
-                                        $post_format = get_post_format() ?: 'standard';
-                                        // Load specific template part based on the post format
-                                        set_query_var('template_part_name', 'format-' . $post_format);
-                                        get_template_part('template-parts/format/format', $post_format);
-                                        minimalista_link_pages();
+                                        minimalista_display_post_excerpt();
                                     }
-       
-                                    minimalista_display_post_metadata_secondary('');
+
+                                    minimalista_display_post_metadata_secondary();
                                     ?>
 
                                 </article><!-- /.blog-post -->
@@ -108,7 +113,7 @@ get_header();  // Include the header.php file
                     </div><!-- .row -->
 
                     <?php
-                    minimalista_custom_query_pagination($blog_query);  // Call the pagination function here
+                    //minimalista_custom_query_pagination($blog_query);  // Call the pagination function here
 
                     wp_reset_postdata();  // Restore the original post data
  
@@ -116,18 +121,18 @@ get_header();  // Include the header.php file
                     ?>
                     <p><?php _e('Desculpe, não há postagens para exibir.'); ?></p>
                 <?php } ?>
-                
-            </main><!-- /.blog-main -->
 
-        </div><!-- ./col- -->
+			</main><!-- #main -->
+
+		</div>
 
 		<!-- Right Sidebar Column -->
 		<?php get_sidebar(); // Include the sidebar.php file ?>
 
-    </div><!-- /.row -->
-
-</div><!-- /.container -->
+	</div>
+    
+</div>
 
 <?php
-get_footer();  // Include the footer.php file
+get_footer();
 ?>

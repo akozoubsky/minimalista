@@ -33,9 +33,11 @@ get_header();  // Include the header.php file
             <main id="primary" class="site-main" itemscope itemtype="http://schema.org/Blog">
 
                 <header class="page-header">
-                    <?php minimalista_display_post_title('h1', 'entry-title'); ?>
                     <?php minimalista_display_custom_header_image() ?>
+                    <?php minimalista_display_post_title('h1', 'page-title'); ?>
                 </header>
+
+                <?php minimalista_display_post_thumbnail("custom-thumbnail"); ?>
 
                 <?php
                 // Setting up the custom query to display blog posts
@@ -83,6 +85,8 @@ get_header();  // Include the header.php file
                                         minimalista_display_post_excerpt('card-text');
                                     ?>
 
+                                    <?php minimalista_display_post_metadata_secondary(''); ?>
+                                    
                                     <a href="<?php the_permalink(); ?>" class="continue-reading icon-link gap-1 icon-link-hover">Continue lendo<i class="fas fa-angle-right"></i></a>
 
                                 </div><!-- ./ card-body -->

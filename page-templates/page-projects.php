@@ -61,30 +61,16 @@ get_header(); ?>
 							<header class="entry-header">
 								<?php
 								minimalista_display_post_title('h2','entry-title', 'true');
-						
-								if ( 'post' === get_post_type() ) :
-									?>
-									<div class="entry-meta">
-										<?php
-										minimalista_display_post_metadata_primary();
-										?>
-									</div><!-- .entry-meta -->
-								<?php endif; ?>
+								minimalista_display_post_metadata_primary();
+								?>
 							</header><!-- .entry-header -->
 						
-							<?php minimalista_display_post_thumbnail("custom-thumbnail"); ?>
-						
-							<div class="entry-content">
-								<?php
-								minimalista_display_post_content();
-								minimalista_link_pages();
-								?>
-							</div><!-- .entry-content -->
-						
-							<footer class="entry-footer">
-								<?php //minimalista_entry_footer(); ?>
-								<?php minimalista_display_post_metadata_secondary(); ?>
-							</footer><!-- .entry-footer -->
+							<?php
+							minimalista_display_post_thumbnail('thumbnail','thumbnail alignleft', true);
+							minimalista_display_post_excerpt();
+							minimalista_link_pages();
+							minimalista_display_post_metadata_secondary();
+							?>
 
 						</article><!-- #post-<?php the_ID(); ?> -->
 

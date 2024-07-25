@@ -9,7 +9,10 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package minimalista
+ * @package WordPress
+ * @subpackage minimalista
+ * @since 1.0.0
+ * @author Alexandre Kozoubsky
  */
 
 // Prevent direct access to the file
@@ -24,6 +27,7 @@ get_header();
 
 	<div class="row">
 	
+        <!-- Main Content Column -->	
 		<div class="col-lg-8">
 		
 			<main id="primary" class="site-main">
@@ -33,9 +37,10 @@ get_header();
 
 					if ( is_home() && ! is_front_page() ) :
 						?>
-						<header class="page-header">
-							<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-							<?php if (is_home() && get_option('page_for_posts')): // Verifica se a página atual é a página inicial e se há uma "Página para posts" definida.?>
+
+						<?php if (is_home() && get_option('page_for_posts')): // Verifica se a página atual é a página inicial e se há uma "Página para posts" definida.?>
+							<header class="page-header">
+							<h1 class="page-title"><?php single_post_title(); ?></h1>
 							<?php
 							/* 
 								* Quando você define uma página específica para exibir seus posts, essa página geralmente não tem conteúdo próprio,
@@ -45,9 +50,10 @@ get_header();
 								* add_post_type_support( 'page', 'excerpt' );
 								*/
 							?>
-							<p class="page-description"><?php echo get_the_excerpt(get_option('page_for_posts')); ?></p>
+							<p class="page-description mt-3"><?php echo get_the_excerpt(get_option('page_for_posts')); ?></p>
+							</header>
 						<?php endif; ?>							
-						</header>
+						
 						<?php
 					endif;					
 

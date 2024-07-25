@@ -71,6 +71,7 @@ get_header(); ?>
 				</form>
 
 			</main><!-- #main -->
+			
 		</div>
 
 		<!-- Right Sidebar Column -->

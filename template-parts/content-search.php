@@ -13,12 +13,7 @@
 
 	<header class="entry-header">
 		<?php minimalista_display_post_title('h2','entry-title', 'true'); ?>
-
-		<?php if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php minimalista_display_post_metadata_primary(); ?>
-		</div><!-- .entry-meta -->
-		<?php endif; ?>
+		<?php minimalista_display_post_metadata_primary(); ?>
 	</header><!-- .entry-header -->
 
 	<?php minimalista_display_post_thumbnail("custom-thumbnail"); ?>

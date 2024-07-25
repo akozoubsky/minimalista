@@ -11,6 +11,29 @@
  * @package minimalista
  */
 
+ /**
+ * Add even or odd class to posts. Usefull with CSS.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function minimalista_set_attr_post( $attr ) {
+    global $evenodd_post;
+    ++$evenodd_post;
+
+    // Verifica se a chave 'class' existe no array $attr, se não, a inicializa como uma string vazia
+    if (!isset($attr['class'])) {
+        $attr['class'] = '';
+    }
+
+    // Adiciona 'odd' ou 'even' à classe
+    $attr['class'] .= ( $evenodd_post % 2 ) ? 'odd' : 'even';
+    
+    return $attr;
+}
+add_filter( 'post_class', 'minimalista_set_attr_post' );
+
  if ( ! function_exists( 'wp_body_open' ) ) :
 	/**
 	 * Shim for sites older than 5.2.
@@ -47,7 +70,7 @@ if ( ! function_exists( 'minimalista_posted_on' ) ) :
 
         // Time string for the publication date
         $time_string_published = sprintf(
-            '<time class="entry-date published" datetime="%1$s">%2$s</time>',
+            '<time pubdate class="entry-date published" datetime="%1$s">%2$s</time>',
             esc_attr( get_the_date( DATE_W3C ) ),
             esc_html( $published_date )
         );
@@ -206,23 +229,6 @@ if ( ! function_exists( 'minimalista_entry_footer' ) ) :
 			);
 			echo '</span>';
 		}
-
-		edit_post_link(
-			sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Edit <span class="screen-reader-text">%s</span>', 'minimalista' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				wp_kses_post( get_the_title() )
-			),
-			'<span class="edit-link">',
-			'</span>'
-		);
 	}
 endif;
 
@@ -531,7 +537,7 @@ function minimalista_display_post_metadata_primary($additional_classes = '')
 
     // Standard Metadata for posts
     // Date and Author
-    echo '<time class="post-date text-break" itemprop="datePublished">' . minimalista_generate_icon_html("fa-calendar", "me-2") . get_the_date() . '</time>';
+    echo '<time pubdate class="post-date text-break" itemprop="datePublished">' . minimalista_generate_icon_html("fa-calendar", "me-2") . get_the_date() . '</time>';
     echo '<span class="post-author text-break" itemprop="author">' . minimalista_generate_icon_html("fa-user", "me-2") . get_the_author() . '</span>';
 
     // Format-specific Metadata
@@ -594,6 +600,9 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
     if ($additional_classes) {
         $div_classes .= ' ' . $additional_classes;
     }
+
+    // Open footer container
+    echo '<footer class="entry-footer">';
 
     // Open Bootstrap 5 "post-metadata" container
     echo '<div class="' . $div_classes . '">';
@@ -712,8 +721,41 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
         echo '<span class="post-tags" itemprop="keywords">' . minimalista_generate_icon_html("fa-tags", "me-2") . get_the_tag_list('', ', ') . '</span>';
     }
 
-    echo '</div>';  // Close the "post-metadata" container
+    echo '</div><!-- .post-metadata -->';  // Close the "post-metadata" container
+
+    echo '</footer><!-- .entry-footer -->'; // Close the "footer" container
 }
+
+/**
+ * Displays an edit post link if the user has permission to edit the post.
+ *
+ * This function checks if the current user has permission to edit the post,
+ * and if so, displays an edit link with the provided text. The link is wrapped
+ * in a div with a class of "edit-link".
+ *
+ * @return void Outputs the edit post link HTML if the user can edit the post.
+ */
+function minimalista_display_edit_post_link() {
+    if ( get_edit_post_link() ) {
+        edit_post_link(
+            sprintf(
+                wp_kses(
+                    /* translators: %s: Name of current post. Only visible to screen readers */
+                    __( 'Edit <span class="screen-reader-text">%s</span>', 'minimalista' ),
+                    array(
+                        'span' => array(
+                            'class' => array(),
+                        ),
+                    )
+                ),
+                wp_kses_post( get_the_title() )
+            ),
+            '<div class="edit-link">',
+            '</div>'
+        );
+    }
+}
+
 
 /**
  * Displays the post excerpt with additional customization options.
@@ -1123,46 +1165,48 @@ function minimalista_single_post_navigation()
  * a set of numerical pagination links based on the provided custom query.
  * The pagination links are styled using Bootstrap's pagination component.
  *
- * @param WP_Query $wp_query The custom query for which to generate pagination links.
+ * @param WP_Query $wp_custom_query The custom query for which to generate pagination links.
  *
  * @return void Outputs the pagination links directly to the page.
  * 
  * @link https://getbootstrap.com/docs/5.3/components/pagination/
  */
-function minimalista_custom_query_pagination($wp_query)
+function minimalista_custom_query_pagination($wp_custom_query)
 {
-    // Call the paginate_links() function to generate an array of pagination links
-    // Set the base for the pagination links, replace a large number with the placeholder '%#%'
-    // to allow the function to generate the correct URL structure for each page link
+    // Determine the current page number.
+    $paged = max(1, get_query_var('paged', 1));
+
+    // Generate the base URL for pagination links.
+    $base_url = str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999)));
+
+    // Call the paginate_links() function to generate an array of pagination links.
     $pages = paginate_links(array(
-        'base' => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
-        'format' => '?paged=%#%',  // Define the format for the pagination query, '%#%' is replaced by the page number
-        'current' => max(1, get_query_var('paged')),  // Get the current page number, ensure it's at least 1
-        'total' => $wp_query->max_num_pages,  // Get the total number of pages from the provided query
-        'type' => 'array',  // Specify that the function should return an array of page links
-        'show_all' => false,  // Do not show links to all pages, only show a subset of links
-        'end_size' => 2,  // Show links to the first and last 2 pages
-        'mid_size' => 1,  // Show links to the current page, and 1 page on either side
-        'prev_next' => true,  // Show links to the previous and next pages
-        // 'prev_text' => __('&laquo; Anterior'),  // Set the text for the 'previous page' link
-        // 'next_text' => __('Próximo &raquo;'),  // Set the text for the 'next page' link
-        'prev_text' => '<i class="fas fa-angle-left"></i>' . __(' Anterior'), // Set the text for the 'previous page' link
-        'next_text' =>  __(' Próximo ') . '<i class="fas fa-angle-right"></i>', // Set the text for the 'next page' link
-        'add_args' => false,  // Do not add any additional query args to the URLs
-        'add_fragment' => '',  // Do not append any fragments to the URLs
+        'base' => $base_url,
+        'format' => '?paged=%#%',  // Define the format for the pagination query, '%#%' is replaced by the page number.
+        'current' => $paged,  // Get the current page number, ensure it's at least 1.
+        'total' => $wp_custom_query->max_num_pages,  // Get the total number of pages from the provided query.
+        'type' => 'array',  // Specify that the function should return an array of page links.
+        'show_all' => false,  // Do not show links to all pages, only show a subset of links.
+        'end_size' => 2,  // Show links to the first and last 2 pages.
+        'mid_size' => 1,  // Show links to the current page, and 1 page on either side.
+        'prev_next' => true,  // Show links to the previous and next pages.
+        'prev_text' => '<i class="fas fa-angle-left"></i>' . __(' Anterior'), // Set the text for the 'previous page' link.
+        'next_text' =>  __(' Próximo ') . '<i class="fas fa-angle-right"></i>', // Set the text for the 'next page' link.
+        'add_args' => false,  // Do not add any additional query args to the URLs.
+        'add_fragment' => '',  // Do not append any fragments to the URLs.
     ));
 
-    // Check if the paginate_links() function returned an array of page links
+    // Check if the paginate_links() function returned an array of page links.
     if (is_array($pages)) {
         echo '<nav class="post-navigation" aria-label="Custom Page Navigation">';
         echo '<ul class="pagination">';
         foreach ($pages as $page) {
-            // Check if the page link is for the current page
+            // Check if the page link is for the current page.
             if (strpos($page, 'current') !== false) {
-                // If it's the current page, add .active class and aria-current attribute
+                // If it's the current page, add .active class and aria-current attribute.
                 echo '<li class="page-item active" aria-current="page">' . str_replace('page-numbers', 'page-link', $page) . '</li>';
             } else {
-                // If it's not the current page, output the page link without .active class and aria-current attribute
+                // If it's not the current page, output the page link without .active class and aria-current attribute.
                 echo '<li class="page-item">' . str_replace('page-numbers', 'page-link', $page) . '</li>';
             }
         }
@@ -1269,3 +1313,19 @@ function minimalista_display_author_avatar($custom_avatar_url = '', $size = 40, 
         echo $avatar;
     }
 }
+
+/* ########################################################
+ *                    Excerpts / Resumos
+ * ######################################################## */
+
+// Substitui o "[...]" no final dos excerpts por "..."
+function minimalista_excerpt_more( $more ) {
+    return '...';
+}
+add_filter( 'excerpt_more', 'minimalista_excerpt_more' );
+
+// Função adicional para ajustar o comprimento do excerpt, se necessário
+function minimalista_excerpt_length( $length ) {
+    return 20; // Define o número de palavras no excerpt
+}
+add_filter( 'excerpt_length', 'minimalista_excerpt_length', 999 );
