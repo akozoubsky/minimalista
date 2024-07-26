@@ -551,7 +551,7 @@ a:hover {
     text-decoration: var(--bs-link-decoration);
 }
 
-a.btn:not(.btn-link) {
+a.btn {
     text-decoration: none;
 }
 
@@ -1011,6 +1011,14 @@ figure.gallery-item {
  *                      BOOTSTRAP 5
  *     @link https: //getbootstrap.com/docs/5.3/
  * ######################################################## */
+
+ /* Botao que age como link */
+ .btn-link {
+    text-underline-offset: 5px;
+    text-decoration: var(--bs-link-decoration);
+    font-weight: 500;
+    font-variation-settings: 'wght' 500;
+ }
 
 /* Classe para aplicar a cor primária como fundo */
 .bg-primary {
