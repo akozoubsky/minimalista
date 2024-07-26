@@ -551,7 +551,7 @@ a:hover {
     text-decoration: var(--bs-link-decoration);
 }
 
-a.btn {
+a.btn:not(.btn-link) {
     text-decoration: none;
 }
 
