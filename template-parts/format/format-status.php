@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template part for displaying posts in the "Status" format.
  *
@@ -14,16 +15,12 @@
 ?>
 
 <div class="format-status-content">
+	<div class="avatar-header">
+		<?php minimalista_display_author_avatar('', 80, 'me-3'); ?>
+		<span class="post-author fw-bold"><?php echo get_the_author() ?></span>
+		<p class="text-muted"><?php minimalista_display_time_since_posted(); ?></p>
+	</div>
 	<div class="">
-		<div class="">
-			<div class="">
-				<?php minimalista_display_author_avatar('',80,'me-3'); ?>
-				<span class="post-author fw-bold"><?php echo get_the_author() ?></span>
-				<p class="text-muted"><?php minimalista_display_time_since_posted(); ?></p>
-			</div>
-			<div class="">
-				<?php minimalista_display_post_content(); ?>
-			</div>
-		</div><!-- -->
+		<?php minimalista_display_post_content(); ?>
 	</div>
 </div>

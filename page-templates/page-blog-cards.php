@@ -58,7 +58,7 @@ get_header();  // Include the header.php file
                         $post_format = get_post_format() ?: 'standard';
                         $image_format = minimalista_get_featured_image_format(get_the_ID());
                         $image_size = 'custom-thumbnail';
-                        $image_classes = 'thumbnail img-fluid';
+                        $image_classes = 'thumbnail img-fluid card-img-top';
                         $show_thumbnail = true;
                         $show_excerpt = true;
                         $title_tag = 'h2';
@@ -67,6 +67,11 @@ get_header();  // Include the header.php file
 
                             <article id="post-<?php the_ID(); ?>" <?php post_class('card'); ?> itemscope itemtype="http://schema.org/BlogPosting">
 
+                                <?php
+                                if ($show_thumbnail)
+                                    minimalista_display_post_thumbnail($image_size, $image_classes, true);
+                                ?>
+
                                 <div class="card-body"> <!-- Start of card body -->
 
                                     <header class="entry-header">
@@ -74,11 +79,6 @@ get_header();  // Include the header.php file
                                         <?php minimalista_display_post_title('card-title', $title_tag, 'true'); ?>
                                         <?php minimalista_display_post_metadata_primary(""); ?>
                                     </header>
-
-                                    <?php
-                                    if ($show_thumbnail)
-                                        minimalista_display_post_thumbnail($image_size, $image_classes, true);
-                                    ?>
 
                                     <?php
                                     if ($show_excerpt)

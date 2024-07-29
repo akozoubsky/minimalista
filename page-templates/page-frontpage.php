@@ -67,51 +67,55 @@ get_header(); ?>
 
                 if ($blog_query->have_posts()) {  ?>
 
-                    <div class="row">
+                    <section id="blog-query" class="blog-query">
 
-                        <?php
-                        while ($blog_query->have_posts()) {
-                            $blog_query->the_post();
-                            $post_format = get_post_format() ?: 'standard';
-                            $image_format = minimalista_get_featured_image_format(get_the_ID());
-                            $image_size = 'thumbnail';
-                            $image_classes = 'alignleft';
-                            $show_thumbnail = true;
-                            $show_excerpt = true;
-                            $title_tag = 'h2';
-                        ?>
+                        <div class="row">
 
-                            <div class="col-12">
+                            <?php
+                            while ($blog_query->have_posts()) {
+                                $blog_query->the_post();
+                                $post_format = get_post_format() ?: 'standard';
+                                $image_format = minimalista_get_featured_image_format(get_the_ID());
+                                $image_size = 'thumbnail';
+                                $image_classes = 'alignleft';
+                                $show_thumbnail = true;
+                                $show_excerpt = true;
+                                $title_tag = 'h2';
+                            ?>
 
-                                <article id="post-<?php the_ID(); ?>" <?php post_class("blog-posting"); ?> itemscope itemtype="http://schema.org/BlogPosting">
+                                <div class="col-12">
 
-                                    <?php
-                                    // Display title, summary, and image.
-                                    echo '<header class="entry-header">';
-                                    minimalista_display_post_title($title_tag, '', true);
-                                    minimalista_display_post_metadata_primary('');
-                                    echo '</header>';
+                                    <article id="post-<?php the_ID(); ?>" <?php post_class("blog-posting"); ?> itemscope itemtype="http://schema.org/BlogPosting">
 
-                                    // Conditional display of the thumbnail
-                                    if ($show_thumbnail) {
-                                        minimalista_display_post_thumbnail($image_size, $image_classes, true);
-                                    }
+                                        <?php
+                                        // Display title, summary, and image.
+                                        echo '<header class="entry-header">';
+                                        minimalista_display_post_title($title_tag, '', true);
+                                        minimalista_display_post_metadata_primary('');
+                                        echo '</header>';
 
-                                    // Conditional display the excerpt
-                                    if ($show_excerpt) {
-                                        minimalista_display_post_excerpt();
-                                    }
+                                        // Conditional display of the thumbnail
+                                        if ($show_thumbnail) {
+                                            minimalista_display_post_thumbnail($image_size, $image_classes, true);
+                                        }
 
-                                    minimalista_display_post_metadata_secondary();
-                                    ?>
+                                        // Conditional display the excerpt
+                                        if ($show_excerpt) {
+                                            minimalista_display_post_excerpt();
+                                        }
 
-                                </article><!-- /.blog-post -->
+                                        minimalista_display_post_metadata_secondary();
+                                        ?>
 
-                            </div><!-- .col -->
+                                    </article><!-- /.blog-post -->
 
-                        <?php } // end while ?>
+                                </div><!-- .col -->
 
-                    </div><!-- .row -->
+                            <?php } // end while ?>
+
+                        </div><!-- .row -->
+
+                    </section><!-- ./blog-query -->
 
                     <?php
                     //minimalista_custom_query_pagination($blog_query);  // Call the pagination function here

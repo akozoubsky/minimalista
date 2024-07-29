@@ -57,18 +57,18 @@ class Minimalista_Social_Widget extends WP_Widget
 ?>
         <div class="social-links">
             <?php if (!empty($instance['facebook'])) : ?>
-                <a href="<?php echo esc_url($instance['facebook']); ?>" target="_blank" class="social-link facebook">
-                    <i class="fab fa-facebook-f"></i> Facebook
+                <a href="<?php echo esc_url($instance['facebook']); ?>" target="_blank" class="social-link facebook me-4">
+                    <i class="fab fa-facebook-f me-2"></i> Facebook
                 </a>
             <?php endif; ?>
             <?php if (!empty($instance['twitter'])) : ?>
-                <a href="<?php echo esc_url($instance['twitter']); ?>" target="_blank" class="social-link twitter">
-                    <i class="fab fa-twitter"></i> Twitter
+                <a href="<?php echo esc_url($instance['twitter']); ?>" target="_blank" class="social-link twitter me-4">
+                    <i class="fab fa-twitter me-2"></i> Twitter/X
                 </a>
             <?php endif; ?>
             <?php if (!empty($instance['instagram'])) : ?>
-                <a href="<?php echo esc_url($instance['instagram']); ?>" target="_blank" class="social-link instagram">
-                    <i class="fab fa-instagram"></i> Instagram
+                <a href="<?php echo esc_url($instance['instagram']); ?>" target="_blank" class="social-link instagram me-4">
+                    <i class="fab fa-instagram me-2"></i> Instagram
                 </a>
             <?php endif; ?>
             <!-- Adicione mais redes sociais conforme necessário -->

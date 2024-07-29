@@ -17,12 +17,12 @@
         <header class="page-header">
             <?php minimalista_display_custom_header_image(); ?>
             <?php minimalista_display_post_title('h1','page-title', ''); ?>
-                <?php minimalista_display_post_metadata_primary(); ?>
+            <?php minimalista_display_post_metadata_primary(); ?>
         </header>
     <?php else : ?>
         <header class="entry-header">
             <?php minimalista_display_post_title('h2','entry-title', 'true'); ?>
-                <?php minimalista_display_post_metadata_primary(); ?>
+            <?php minimalista_display_post_metadata_primary(); ?>
         </header>
     <?php endif; ?>
                 
@@ -41,6 +41,5 @@
     ?>
 
     <?php minimalista_display_post_metadata_secondary(); ?>
-    </footer><!-- .entry-footer -->
 	
 </article><!-- #post-<?php the_ID(); ?> -->

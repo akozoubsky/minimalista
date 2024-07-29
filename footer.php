@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 ?>
 </div><!-- #content .site-content -->
 
-<footer id="colophon" class="footer bg-light">
+<footer id="colophon" class="footer">
 	<div class="container">
 		<span class="text-muted">&copy; <?php echo date('Y'); ?> <?php echo get_bloginfo('name'); ?>. Todos os direitos reservados.</span>
 	</div>

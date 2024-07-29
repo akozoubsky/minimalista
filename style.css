@@ -3,147 +3,97 @@ Theme Name: minimalista
 Theme URI: https://github.com/akozoubsky/minimalista
 Author: Alexandre Kozoubsky
 Author URI: https://alexandrekozoubsky.com.br/
-Copyright: 2024, Alexandre Kozoubsky
 Description: Minimalista is a clean, elegant, and fully customizable WordPress theme based on the Underscores starter theme. Ideal for bloggers, small businesses, and personal websites, Minimalista offers a responsive design, customizable colors, and various layout options to create a unique and professional online presence.
 Version: 1.0.0
-Tested up to: 5.4
-Requires PHP: 5.6
-License: GNU General Public License v2 or later
-License URI: LICENSE
 Text Domain: minimalista
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
-
+License: GNU General Public License v2 or later
+License URI: LICENSE
 @package minimalista
 @since 1.0.0
-
-This theme, like WordPress, is licensed under the GPL.
-Use it to make something cool, have fun, and share what you've learned.
-
-minimalista is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
-Underscores is distributed under the terms of the GNU GPL v2 or later.
-
-Normalizing styles have been helped along thanks to the fine work of
-Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
-
-@link https: //getbootstrap.com/docs/5.3/
-@link https://getbootstrap.com/docs/5.3/utilities/background/
-@link https://getbootstrap.com/docs/5.3/utilities/text/
-@link https://getbootstrap.com/docs/5.3/utilities/colors/
-@link https://getbootstrap.com/docs/5.3/components/buttons/
-@link https://getbootstrap.com/docs/5.3/customize/css-variables/
-@link https://getbootstrap.com/docs/5.3/customize/color/
 */
 
-/* ########################################################
- *              VARIÁVEIS E CONFIGURAÇÕES GLOBAIS
- * ######################################################## */
+/* ========================================================================== */
+/* 1. GLOBAL SETTINGS                                                         */
+/* ========================================================================== */
 
-/* ==============================
- * Variaveis CSS
- * ============================== */
+/* 1.1 Variables and Root Styles
+   ========================================================================== */
 
 :root {
-
-    /* Espaçamento vertical */
-    --minimalista-vertical-spacing-0: 0rem;
-    --minimalista-vertical-spacing-1: 0.25rem;
-    --minimalista-vertical-spacing-2: 0.50rem;
-    --minimalista-vertical-spacing-3: 0.75rem;
-    --minimalista-vertical-spacing-4: 1rem;
-    --minimalista-vertical-spacing-5: 1.25rem;
-    --minimalista-vertical-spacing-5: 1.50rem;
-    --minimalista-vertical-spacing-6: 1.75rem;
-    --minimalista-vertical-spacing-7: 2rem;
-    --minimalista-vertical-spacing-8: 2.5rem;
-    --minimalista-vertical-spacing-9: 3rem;
-    --minimalista-vertical-spacing-10: 3.5rem;
-    --minimalista-vertical-spacing-11: 4rem;
-
-    /* Espaçamento horizontal */
-    --minimalista-horizontal-spacing-0: 0rem;
-    --minimalista-horizontal-spacing-1: 0.25rem;
-    --minimalista-horizontal-spacing-2: 0.50rem;
-    --minimalista-horizontal-spacing-3: 0.75rem;
-    --minimalista-horizontal-spacing-4: 1rem;
-    --minimalista-horizontal-spacing-5: 1.25rem;
-    --minimalista-horizontal-spacing-5: 1.50rem;
-    --minimalista-horizontal-spacing-6: 1.75rem;
-    --minimalista-horizontal-spacing-7: 2rem;
-    --minimalista-horizontal-spacing-8: 2.5rem;
-    --minimalista-horizontal-spacing-9: 3rem;
-    --minimalista-horizontal-spacing-10: 3.5rem;
-    --minimalista-horizontal-spacing-11: 4rem;
-
-
-    --minimalista-nav-link-color: var(--bs-white);
-    /* --minimalista-nav-link-hover-color: #d4af37; */
-    /* Cor dourada para o hover */
-    --minimalista-nav-link-hover-color: var(--bs-white);
-    --minimalista-navbar-brand-padding-y: 1rem;
-    --minimalista-navbar-brand-margin-end: 1rem;
-    --minimalista-navbar-nav-link-padding-x: 1rem;
-
-    --minimalista-accent-color: #a98c2c;
-
-    --bs-link-opacity: 1;
-    --bs-bg-opacity: 1;
+    /* vertical spacing */
+    --minimalista-vertical-spacing-default: 1.25rem;
+    /* horizontal spacing */
+    --minimalista-horizontal-spacing-default: 1.25rem;
 }
 
-/* ########################################################
- *                MINIMALISTA THEME REBOOT
- * ######################################################## */
+/* ========================================================================== */
+/* 2. BASE STYLES                                                             */
+/* ========================================================================== */
 
-html,
-body {
-    word-wrap: break-word;
+/* 2.1 Structural Elements
+   Styles for HTML elements responsible for the structure
+   ========================================================================== */
+
+body,
+html {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-/* Empty elements */
-p:empty,
-h2.widget-title:empty,
-h3.widget-title:empty,
-.entry-title:empty,
-.blog-entry-title:empty,
-.post-metadata:empty {
+/* Main Content Styles */
+.site-main {
+    padding: var(--minimalista-vertical-spacing-default) 0;
+}
+
+section {
+    margin-bottom: calc(3 * var(--minimalista-vertical-spacing-default));
+}
+
+article {
+    margin-bottom: calc(1 * var(--minimalista-vertical-spacing-default));
+}
+
+/* .entry-excerpt, .entry-content {
+    padding: var(--minimalista-vertical-spacing-default) 0;
+} */
+
+/* Sidebar Styles */
+.sidebar {
+    padding: var(--minimalista-vertical-spacing-default) 0;
+}
+
+.sidebar .widget {
+    margin-bottom: calc(2 * var(--minimalista-vertical-spacing-default));
+}
+
+/* Footer Styles */
+footer {
+    padding: calc(var(--minimalista-vertical-spacing-default)) 0;
+}
+
+/* Navigation Styles */
+.navbar {
+    margin-bottom: var(--minimalista-vertical-spacing-default);
+}
+
+.navbar .navbar-nav .nav-link {
+    padding: 10px 15px;
+}
+
+/* header Styles */
+header {
+    padding: var(--minimalista-vertical-spacing-default) 0;
+}
+
+header.page-header {
+    padding-top: 0;
+}
+
+/* @TODO (header?) */
+header .site-title,
+header .custom-logo {
     margin: 0;
-    padding: 0;
-    display: none;
-}
-
-/* Espacamento Vertical (Vertical Spacing) - Remove a margem inferior */
-/*
-dl,
-ol,
-ul {
-    margin-top: 0;
-    margin-bottom: 0;
-}
-*/
-
-/* Espacamento Vertical (Vertical Spacing) - Remove a margem inferior do ultimo elemento de um container */
-/*
-p:last-child,
-p:last-of-type,
-*/
-ul li:last-child,
-ol li:last-child,
-dl>*:last-child,
-/* garantir que o último item de qualquer tipo (seja dt ou dd) dentro de uma lista de definição seja estilizado */
-table :last-child,
-blockquote :last-child {
-    margin-bottom: 0;
-}
-
-/* Imagens e Videos */
-img,
-figure,
-picture {
-    max-width: 100%;
-    height: auto;
-    display: block;
 }
 
 iframe {
@@ -155,45 +105,55 @@ textarea:not([rows]) {
     min-height: 10em;
 }
 
-/* ########################################################
- *                    ELEMENTOS HTML
- * ######################################################## */
+/* Remove bottom margin from last paragraph in structural elements */
+main p:last-of-type,
+section p:last-of-type,
+article p:last-of-type,
+aside p:last-of-type,
+footer p:last-of-type {
+    margin-bottom: 0;
+}
 
-/* ==============================
- * Tipografia
- * ============================== */
+/* Empty elements */
+header:empty,
+section:empty,
+article:empty,
+p:empty,
+h2.widget-title:empty,
+h3.widget-title:empty,
+h4.widget-title:empty,
+.entry-title:empty,
+.blog-entry-title:empty,
+.post-metadata:empty {
+    margin: 0;
+    padding: 0;
+    display: none;
+}
 
-body {
+/* 2.2 Typography
+   ========================================================================== */
+
+body,
+html {
     font-weight: 400;
+    /* line-height: 1.6; */
     font-variation-settings: 'wght' 400, 'wdth' 100;
-    font-optical-sizing: auto;
+    /* font-optical-sizing: auto; */
+    /* font-size: calc(1 * var(--bs-body-font-size)); */
+    line-height: 1.6;
+    word-wrap: normal;
+    overflow-wrap: normal;
 }
 
-/* ==============================
- * Cabecalhos (<h1> a <h6>)
- * ============================== */
-
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3,
-h4,
-.h4,
-h5,
-.h5,
-h6,
-.h6 {
-    font-weight: 700;
-    font-variation-settings: 'wght' 700, 'wdth' 100;
-    font-optical-sizing: auto;
-}
-
+/* Header (<h1> to <h6>) */
 h1,
 .h1 {
     font-weight: 700;
     font-variation-settings: 'wght' 700, 'wdth' 100;
+    margin-top: 0;
+    margin-bottom: calc( var(--minimalista-vertical-spacing-default) / 2);
+    /* Adjusting header sizes to match changing body text */
+    /* font-size: calc(2.5 * var(--bs-body-font-size)); */
     line-height: 1.2;
 }
 
@@ -201,6 +161,10 @@ h2,
 .h2 {
     font-weight: 600;
     font-variation-settings: 'wght' 600, 'wdth' 100;
+    margin-top: 0;
+    margin-bottom: calc( var(--minimalista-vertical-spacing-default) / 2);
+    /* Adjusting header sizes to match changing body text */
+    /* font-size: calc(2 * var(--bs-body-font-size)); */
     line-height: 1.3;
 }
 
@@ -208,54 +172,70 @@ h3,
 .h3 {
     font-weight: 600;
     font-variation-settings: 'wght' 600, 'wdth' 100;
-    line-height: 1.4;
+    /* line-height: 1.4; */
+    margin-top: 0;
+    margin-bottom: calc( var(--minimalista-vertical-spacing-default) / 2);
+    /* Adjusting header sizes to match changing body text */
+    /* font-size: calc(1.75 * var(--bs-body-font-size)); */
+    line-height: 1.35;
 }
 
 h4,
 .h4 {
     font-weight: 600;
     font-variation-settings: 'wght' 600, 'wdth' 100;
-    line-height: 1.5;
+    /* line-height: 1.5; */
+    margin-top: 0;
+    margin-bottom: calc( var(--minimalista-vertical-spacing-default) / 2);
+    /* Adjusting header sizes to match changing body text */
+    /* font-size: calc(1.5 * var(--bs-body-font-size)); */
+    line-height: 1.4;
 }
 
 h5,
 .h5 {
     font-weight: 500;
     font-variation-settings: 'wght' 500, 'wdth' 100;
-    line-height: 1.6;
+    /* line-height: 1.6; */
+    margin-top: 0;
+    margin-bottom: calc( var(--minimalista-vertical-spacing-default) / 2);
+    /* Adjusting header sizes to match changing body text */
+    /* font-size: calc(1.25 * var(--bs-body-font-size)); */
+    line-height: 1.5;
 }
 
 h6,
 .h6 {
     font-weight: 500;
     font-variation-settings: 'wght' 500, 'wdth' 100;
-    line-height: 1.7;
+    /* line-height: 1.7; */
+    margin-top: 0;
+    margin-bottom: calc( var(--minimalista-vertical-spacing-default) / 2);
+    /* Adjusting header sizes to match changing body text */
+    /* font-size: calc(1 * var(--bs-body-font-size)); */
+    line-height: 1.6;
 }
 
-/* ==============================
- * Paragrafos
- * ============================== */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.display-1, .display-2, .display-3, .display-4, .display-5, .display-6 {
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: auto;
+}
+
+/* paragraph */
+p {
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
 
 p,
-label,
-blockquote,
-.blockquote,
-dl,
-dt,
-figcaption,
-li,
-textarea {
-    font-weight: 400;
-    font-variation-settings: 'wght' 400, 'wdth' 100;
-    line-height: 1.6;
-    word-break: break-word;
+.form-group,
+table {
+    margin-bottom: calc(var(--minimalista-vertical-spacing-default));
 }
-
-/* 
-p {
-max-width: 40em;
-}
-*/
 
 strong,
 b {
@@ -268,41 +248,76 @@ i {
     font-style: italic;
 }
 
-/* ==============================
- * Listas
- * ============================== */
+label {
+    font-weight: 500;
+    font-variation-settings: 'wght' 500;
+}
 
-/* Remover a margem padrão do primeiro nível de listas */
+/* 2.3 Lists
+   ========================================================================== */
+
+/* Basic styles for lists */
 ul,
 ol {
-    padding-left: 0;
-    margin-left: 0;
+    margin: 0 0 1rem;
+    padding-left: 2rem; /* Sets the initial indentation for lists */
     list-style-position: inside;
 }
 
-/* Manter a indentação dos níveis subsequentes */
 ul ul,
 ul ol,
 ol ul,
 ol ol {
+    margin: 0.5rem 0;
+    /* Adjusts the spacing between nested levels */
     padding-left: 2rem;
-    /* Define o padding esquerdo para subníveis */
-    list-style-position: outside;
-    /* Alinha os marcadores para subníveis */
+    /* Sets indentation for nested levels */
 }
 
-/* ==============================
- * Blocos de citacao
- * ============================== */
+/* Styles for unordered lists */
+ul {
+    list-style-type: disc;
+    /* Sets the default marker to point */
+}
 
-blockquote,
-.blockquote {
-    margin-left: 2rem;
-    margin-right: 2rem;
+ul ul {
+    list-style-type: circle;
+    /* Sets the marker for the second level to circle */
+}
+
+ul ul ul {
+    list-style-type: square;
+    /* Sets the marker for the third level to square */
+}
+
+/* Styles for ordered lists */
+ol {
+    list-style-type: decimal;
+    /* Sets default marker to numbers */
+}
+
+ol ol {
+    list-style-type: lower-alpha;
+    /* Sets the marker for the second level to lowercase letters */
+}
+
+ol ol ol {
+    list-style-type: lower-roman;
+    /* Sets the marker for the third level to lowercase Roman numerals */
+}
+
+/* li {
+    margin-bottom: 0.5rem;
+} */
+
+/* 2.4 Quote blocks
+   ========================================================================== */
+
+blockquote {
     padding: 2rem;
     font-style: italic;
     background-color: var(--bs-light);
-    border-radius: 5px
+    border-radius: 5px;
 }
 
 blockquote i,
@@ -312,110 +327,135 @@ blockquote footer {
     font-style: normal;
 }
 
-blockquote footer,
-.blockquote-footer {
-    margin-top: 1rem;
-}
-
-/* ==============================
- * Tabelas
- * ============================== */
-
-/* ==============================
- * Divisores
- * ============================== */
-
-/* ########################################################
- *                        CONTEUDO DO SITE
- * ######################################################## */
-
-/* ==============================
- * Menu Principal 
- * ============================== */
-
-/* Menu de navegação nao sera afetado */
-.navbar-nav li {
+blockquote footer {
     margin-bottom: 0;
-    /* Remove qualquer margem adicional */
+    padding-bottom: 0;
 }
 
-/* ==============================
- * Area de conteudo principal
- * ============================== */
+/* 2.5 Links
+   ========================================================================== */
 
-/* ==============================
- * Listas customizadas
- * ============================== */
+a,
+.btn-link {
+    cursor: pointer;
+    overflow-wrap: break-word;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-skip-ink: none;
+    transition: color 0.3s ease, text-decoration-color 0.3s ease;
+    font-weight: 500;
+    font-variation-settings: 'wght' 500;
+}
 
-/* Estilo personalizado para listas */
+a:hover,
+a:focus {
+    outline: none;
+}
 
+a:focus {
+    outline: 2px dashed;
+    /* Focus outline for accessibility */
+    outline-offset: 4px;
+    /* Space between outline and link */
+}
 
-/* ==============================
- * Rodape / Footer
- * ============================== */
+/* Accessible focus outline for keyboard navigation */
+a:focus-visible {
+    outline: 2px dashed;
+    outline-offset: 4px;
+}
 
-/* Estilizacao do footer */
-.footer {
+.widget a,
+.btn,
+footer#colophon a {
+    text-decoration: none;
+}
+
+.widget a:hover,
+.widget a:focus,
+footer#colophon a:hover,
+footer#colophon a:focus {
+    text-decoration: underline;
+}
+
+/* 2.6 Buttons
+   ========================================================================== */
+
+.btn-primary:hover {
+    filter: brightness(85%);
+    /* Darkens the color by 15% */
+}
+
+.btn-secondary:hover {
+    filter: brightness(85%);
+    /* Darkens the color by 15% */
+}
+
+/* ========================================================================== */
+/* 3. LAYOUT AND COMPONENT STYLES                                             */
+/* ========================================================================== */
+
+/* 3.1 Navigation
+   ========================================================================== */
+
+/* 3.2 Sidebar
+   ========================================================================== */
+
+.widget {}
+
+footer#colophon {
     text-align: center;
 }
 
-/* ########################################################
- *                        BLOG / POSTAGENS
- * ######################################################## */
+/* 3.3 Blog and Post
+   ========================================================================== */
 
 /* 
- * Quando você define uma página específica para exibir seus posts, essa página geralmente não tem conteúdo próprio,
- * pois seu propósito é listar os posts do blog.
- * No entanto, você pode adicionar um resumo ou descrição a essa página para fornecer um contexto adicional ou uma introdução.
- * Se a verificação for verdadeira, exibe o resumo da "Página para posts" dentro de um parágrafo com a classe page-description.
- * add_post_type_support( 'page', 'excerpt' );
+ * When you set a specific page to display your posts, that page usually doesn't have its own content,
+ * as its purpose is to list the blog posts.
+ * However, you can add a summary or description to this page to provide additional context or an introduction.
+ * If the check is true, it displays the summary of the "Posts page" within a paragraph with the class page-description.
+ * add_post_type_support('page', 'excerpt');
  */
-.page-description {}
-
-/* ==============================
- * Artigos e metadados
- * ============================== */
-
-/**
-  * Observacao: Guarde isso.
-  * main a:link, main a:visited, aside a:link, aside a:visited {}
-  * main a:active, main a:focus, main a:hover, aside a:active, aside a:focus, aside a:hover {}
-  */
-
-article {
-    display: block;
-    /* Garantir que o <article> seja um bloco */
-    clear: both;
-    /* Evitar que elementos flutuantes invadam a área */
-    box-sizing: border-box;
-    /* Incluir padding e borda na largura total e altura */
+.page-description {
+    margin-top: 1rem;
 }
 
-article .entry-content a,
-article .entry-excerpt a  {
-    text-decoration: underline;
- }
+article,
+.entry-header,
+.entry-footer,
+/* .entry-excerpt,
+.entry-content, */
+.post-metadata,
+.post-navigation,
+.post-edit-link {
+    display: block;
+    /* Ensure is a block */
+    clear: both;
+    /* Prevent floating elements from invading the area */
+    box-sizing: border-box;
+    /* Include padding and border on full width and height */
+}
 
-/**
- * Metadata
- */
+.card .entry-header {
+    padding-top: 0;
+}
 
 .post-metadata-primary,
 .post-metadata-secondary {
     font-size: 0.90rem;
 }
 
-/* ==============================
- * Navegacao do blog
- * ============================== */
+.edit-link {
+    padding: var(--minimalista-vertical-spacing-default) 0;
+}
 
-/* ==============================
- * Widgets
- * ============================== */
+.post-navigation {
+    padding: var(--minimalista-vertical-spacing-default) 0;
+}
 
-.widget ul,
-.widget ol {
-    list-style-type: none;
+.avatar-header {
+    margin-bottom: var(--minimalista-vertical-spacing-default);
 }
 
 /* ==============================
@@ -457,107 +497,32 @@ article .entry-excerpt a  {
     content: counters(parent-counter, ".") "." counters(child-counter, ".") " ";
 }
 
-/* ==============================
- * Outros
- * ============================== */
 
-/* ########################################################
- *                FORMULARIOS, BOTOES E LINKS
- * ######################################################## */
+/* 3.4 WP Admin Bar
+   ========================================================================== */
 
-/* ==============================
- * Botoes e Inputs
- * ============================== */
-
-a.btn,
-input[type="submit"] {
-    font-weight: 500;
-    font-variation-settings: 'wght' 500;
+#wpadminbar {
+    background: #23282d;
 }
 
-.btn:focus,
-.form-control:focus {
-    outline: 0;
-    box-shadow: 0 0 0 0.25rem var(--bs-focus-ring-color);
+/* ========================================================================== */
+/* 4. MIDIA (IMAGE, VIDEO, AUDIO, GALLERY)                                    */
+/* ========================================================================== */
+
+/* 4.1 Defaults
+   ========================================================================== */
+
+img,
+figure,
+picture {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
-label {
-    font-weight: 500;
-    font-variation-settings: 'wght' 500;
+.avatar {
+    margin-bottom: var(--minimalista-vertical-spacing-default);
 }
-
-.btn-primary {
-    --bs-btn-color: #fff;
-    --bs-btn-bg: var(--bs-primary);
-    --bs-btn-border-color: var(--bs-primary);
-    --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: var(--bs-primary);
-    --bs-btn-hover-border-color: var(--bs-primary);
-    --bs-btn-focus-shadow-rgb: var(--bs-primary-rgb);
-    --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: var(--bs-primary);
-    --bs-btn-active-border-color: var(--bs-primary);
-    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #fff;
-    --bs-btn-disabled-bg: var(--bs-primary);
-    --bs-btn-disabled-border-color: var(--bs-primary);
-    transition: background-color 0.3s ease, filter 0.3s ease;
-}
-
-.btn-primary:hover {
-    filter: brightness(85%);
-    /* Escurece a cor em 15% */
-}
-
-.btn-secondary {
-    --bs-btn-color: #fff;
-    --bs-btn-bg: var(--bs-secondary);
-    --bs-btn-border-color: var(--bs-secondary);
-    --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: var(--bs-secondary);
-    --bs-btn-hover-border-color: var(--bs-secondary);
-    --bs-btn-focus-shadow-rgb: var(--bs-secondary-rgb);
-    --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: var(--bs-secondary);
-    --bs-btn-active-border-color: var(--bs-secondary);
-    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #fff;
-    --bs-btn-disabled-bg: var(--bs-secondary);
-    --bs-btn-disabled-border-color: var(--bs-secondary);
-    transition: background-color 0.3s ease, filter 0.3s ease;
-}
-
-.btn-secondary:hover {
-    filter: brightness(85%);
-    /* Escurece a cor em 15% */
-}
-
-/* ==============================
- * Links
- * ============================== */
-
-a {
-    cursor: pointer;
-    text-underline-offset: 5px;
-    text-decoration: none;
-    overflow-wrap: break-word;
-    text-decoration-skip-ink: none;
-    font-weight: 500;
-    font-variation-settings: 'wght' 500;
-}
-
-a:hover {
-    text-underline-offset: 5px;
-    text-decoration: var(--bs-link-decoration);
-}
-
-a.btn {
-    text-decoration: none;
-}
-
-/* ########################################################
- *                          IMAGENS
- * ######################################################## */
 
 figcaption,
 .wp-caption-text {
@@ -573,13 +538,6 @@ figcaption,
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/*
-.page-template-page-blog article .thumbnail,
-.page-template-page-home article .thumbnail {
-    max-width: 30%;
-}
-*/
-
 .avatar {
     display: inline-block;
 }
@@ -592,9 +550,25 @@ figcaption,
     height: 80px;
 }
 
-/* ==============================================================================================================
- * Image sizes generated by the theme. This ensures that the image covers the designated area without distorting.
- * ============================================================================================================== */
+/* Custom header styles */
+.custom-header {
+    width: 100%;
+    /* Default to 100% for fluid containers */
+    height: auto;
+    /* Maintain aspect ratio */
+    overflow: hidden;
+}
+
+/*
+.page-template-page-blog article .thumbnail,
+.page-template-page-home article .thumbnail {
+    max-width: 30%;
+}
+*/
+
+/* 4.2 Image sizes generated by the theme. This ensures that the image covers
+       the designated area without distorting.
+   ========================================================================== */
 
 .landscape-small,
 .landscape-medium,
@@ -617,18 +591,43 @@ figcaption,
 .profile-icon-rectangular-small,
 .profile-icon-rectangular-medium,
 .profile-icon-rectangular-large {
-    aspect-ratio: 3 / 4
+    aspect-ratio: 3 / 4;
 }
 
 .profile-icon-square-small,
 .profile-icon-square-medium,
 .profile-icon-square-large {
-    aspect-ratio: 1 / 1
+    aspect-ratio: 1 / 1;
 }
 
-/* ==============================
- * Videos
- * ============================== */
+/* 4.3 Icons
+   ========================================================================== */
+
+/* Icons - FontAwesome */
+.fas:hover,
+.fab:hover {
+    transform: scale(1.1);
+    /* Aumenta o tamanho do ícone em 10% */
+    transition: transform 0.3s ease-in-out;
+    /* Animação suave */
+}
+
+/* Icons - Material */
+.material-icons {
+    vertical-align: -0.125em;
+    font-size: 1.125rem;
+    line-height: 1.5;
+}
+
+.material-symbols-outlined {
+    vertical-align: -0.20em;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    font-size: 1rem;
+}
+
+/* 4.4 Videos
+   ========================================================================== */
 
 /* adjust CSS properties to ensure the video is responsive and fits the container size */
 .video-wrapper {
@@ -650,83 +649,12 @@ figcaption,
     height: 100%;
 }
 
-/* ==============================
- * Ícones
- * ============================== */
-
-/**
- * Icons - FontAwesome
- */
-.fas:hover,
-.fab:hover {
-    transform: scale(1.1);
-    /* Aumenta o tamanho do ícone em 10% */
-    transition: transform 0.3s ease-in-out;
-    /* Animação suave */
-}
-
-/**
-  * Icons - Material
-  */
-.material-icons {
-    vertical-align: -0.125em;
-    font-size: 1.125rem;
-    line-height: 1.5;
-}
-
-.material-symbols-outlined {
-    vertical-align: -0.20em;
-    font-size: 1.125rem;
-    line-height: 1.5;
-    font-size: 1rem;
-}
-
-/* ########################################################
- *               FORMULARIO DE CONTATO DO TEMA
- * ######################################################## */
-
-.contact-form label {
-    font-weight: 500;
-    font-variation-settings: 'wght' 500;
-}
-
-/* ########################################################
- *                      CUSTOMIZER
- * ######################################################## */
-
-/* ==============================
- * Cabecalho personalizado
- * ============================== */
-
-/* Custom header styles */
-.custom-header {
-    width: 100%;
-    /* Default to 100% for fluid containers */
-    height: auto;
-    /* Maintain aspect ratio */
-    overflow: hidden;
-}
-
-/* ########################################################
- *                      MIDIA
- * ######################################################## */
-
-/* ==============================
- * Galeria do Wordpress
- * ============================== */
-
-/* TODO: ate descobri @ */
-.gallery figcaption {
-    display: none;
-}
-
-/* ====================================
- * Galeria do Wordpress ulizando Masonry
- * ===================================== */
+/* 4.5 Wordpress Gallery using Masonry
+   ========================================================================== */
 
 figure.gallery-item {
     margin-bottom: 0;
-    /* desfazer estilo do Bootstrap */
+    /* undo Bootstrap style */
 }
 
 .gallery {
@@ -734,7 +662,7 @@ figure.gallery-item {
     flex-wrap: wrap;
 }
 
-/* Estilos para 0 coluna */
+/* Styles for 0 column */
 .gallery.gallery-columns-0 {
     margin: -0.1rem;
 }
@@ -748,7 +676,7 @@ figure.gallery-item {
     height: auto;
 }
 
-/* Estilos para 1 coluna */
+/* Styles for 1 column */
 .gallery.gallery-columns-1 {
     margin: -0.5rem;
 }
@@ -763,7 +691,7 @@ figure.gallery-item {
     height: auto;
 }
 
-/* Estilos para 2 colunas */
+/* Styles for 2 columns */
 .gallery.gallery-columns-2 {
     margin: -0.5rem;
 }
@@ -778,7 +706,7 @@ figure.gallery-item {
     height: auto;
 }
 
-/* Estilos para 3 colunas */
+/* Styles for 3 columns */
 .gallery.gallery-columns-3 {
     margin: -0.5rem;
 }
@@ -793,7 +721,7 @@ figure.gallery-item {
     height: auto;
 }
 
-/* Estilos para 4 colunas */
+/* Styles for 4 columns */
 .gallery.gallery-columns-4 {
     /* @TODO: VERIFICAR SE EH MESMO DESNECESSARIO margin: -0.5rem; */
 }
@@ -808,7 +736,7 @@ figure.gallery-item {
     height: auto;
 }
 
-/* Estilos para 5 colunas */
+/* Styles for 5 columns */
 .gallery.gallery-columns-5 {
     /* @TODO: VERIFICAR SE EH MESMO DESNECESSARIO margin: -0.5rem; */
 }
@@ -823,7 +751,7 @@ figure.gallery-item {
     height: auto;
 }
 
-/* Estilos para 6 colunas */
+/* Styles for 6 columnss */
 .gallery.gallery-columns-6 {
     /* @TODO: VERIFICAR SE EH MESMO DESNECESSARIO margin: -0.5rem; */
 }
@@ -838,9 +766,8 @@ figure.gallery-item {
     height: auto;
 }
 
-/* ==============================
- * Playlists do Wordpress
- * ============================== */
+/* 4.6 Wordpress Playlists
+   ========================================================================== */
 
 .wp-playlist {
     line-height: 1.8 !important;
@@ -862,22 +789,20 @@ figure.gallery-item {
     text-transform: none !important;
 }
 
-/* ########################################################
- *             WORDPRESS - CLASSES DE ALINHAMENTO
- * ######################################################## */
-
-/* @link https://wpthemetestdata.wordpress.com/ */
+/* 4.7 Wordpress image alignment classes
+   @link https://wpthemetestdata.wordpress.com/
+   ========================================================================== */
 
 .alignleft {
     float: left;
     margin-right: 1rem;
-    margin-bottom: 0.5rem;
+    /* margin-bottom: 0.5rem; */
 }
 
 @media (min-width: 575.98px) {
     .alignleft {
         margin-right: calc(2 * 1rem);
-        margin-bottom: calc(1 * 1rem);
+        /* margin-bottom: calc(1 * 1rem); */
     }
 }
 
@@ -888,7 +813,7 @@ figure.gallery-item {
     margin-left: auto;
     width: 100%;
     text-align: center;
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
 
 }
 
@@ -899,7 +824,7 @@ figure.gallery-item {
     .img-fluid.alignleft {
         float: left;
         margin-right: calc(2 * 1rem);
-        margin-bottom: calc(1 * 1rem);
+        /* margin-bottom: calc(1 * 1rem); */
         width: initial;
         max-width: 40%;
     }
@@ -908,13 +833,13 @@ figure.gallery-item {
 .alignright {
     float: right;
     margin-left: 1rem;
-    margin-bottom: 0.5rem;
+    /* margin-bottom: 0.5rem; */
 }
 
 @media (min-width: 575.98px) {
     .alignright {
         margin-left: calc(2 * 1rem);
-        margin-bottom: calc(1 * 1rem);
+        /* margin-bottom: calc(1 * 1rem); */
     }
 }
 
@@ -925,7 +850,7 @@ figure.gallery-item {
     margin-left: auto;
     width: 100%;
     text-align: center;
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
 
 }
 
@@ -936,7 +861,7 @@ figure.gallery-item {
     .img-fluid.alignright {
         float: right;
         margin-left: calc(2 * 1rem);
-        margin-bottom: calc(1 * 1rem);
+        /* margin-bottom: calc(1 * 1rem); */
         width: initial;
         max-width: 40%;
     }
@@ -949,11 +874,11 @@ figure.gallery-item {
     margin-right: auto;
 }
 
-/* ########################################################
- *             WORDPRESS - CLASSES PARA POST FORMATS
- * ######################################################## */
+/* ========================================================================== */
+/* 5. POST FORMATS                                                            */
+/* ========================================================================== */
 
-/* Estilo para formato de post "image" */
+/* Style for "image" post format */
 .format-image-content img {
     background-color: #fff;
     border: 1px solid var(--bs-border-color);
@@ -962,69 +887,33 @@ figure.gallery-item {
     overflow: hidden;
 }
 
-/* ########################################################
- *                      LEITORES DE TELA
- * ######################################################## */
+/* ========================================================================== */
+/* 6. BOOTSTRAP MODIFICATIONS - @link https: //getbootstrap.com/docs/5.3/     */
+/* ========================================================================== */
 
-/*
- * A classe CSS .screen-reader-text é gerada pelo WordPress e deve ser estilizada no CSS do seu tema.
- * Essa classe é utilizada para fornecer conteúdo textual que será lido apenas por leitores de tela,
- * tornando o site mais acessível para usuários com deficiências visuais.
- * Esse é um código bastante padrão e geralmente seguro para usar. Ele oculta o texto para usuários que não estão usando leitores de tela, 
- * mas torna o texto visível e legível quando focado (por exemplo, através de navegação por teclado).
- */
-
-/* Estilos para .screen-reader-text usando as melhores práticas para acessibilidade */
-.screen-reader-text {
-    border: 0;
-    clip-path: inset(50%);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
+/* Menu list */
+.navbar-nav {
+    margin: 0;
     padding: 0;
-    position: absolute !important;
-    width: 1px;
-    word-wrap: normal !important;
+    list-style-type: none;
 }
 
-/* Estilos adicionais para foco, para tornar o elemento visível quando focado (por exemplo, usando um teclado) */
-.screen-reader-text:focus {
-    background-color: #eee;
-    clip-path: none;
-    color: #444;
-    display: block;
-    font-size: 1em;
-    font-weight: 700;
-    font-variation-settings: 'wght' 700;
-    height: auto;
-    left: 5px;
-    line-height: normal;
-    padding: 15px 23px 14px;
+/* Menu itens */
+.nav-link {
     text-decoration: none;
-    top: 5px;
-    width: auto;
-    z-index: 100000;
-    /* acima de tudo */
 }
 
-/* ########################################################
- *                      BOOTSTRAP 5
- *     @link https: //getbootstrap.com/docs/5.3/
- * ######################################################## */
+ul.list-group,
+ol.list-group {
+    padding-left: 0;
+}
 
- /* Botao que age como link */
- .btn-link {
-    text-underline-offset: 5px;
-    text-decoration: var(--bs-link-decoration);
-    font-weight: 500;
-    font-variation-settings: 'wght' 500;
- }
-
-/* Classe para aplicar a cor primária como fundo */
+/* Apply primary color as background */
 .bg-primary {
     background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
 }
 
+/* Apply secondary color as background */
 .bg-secondary {
     background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity)) !important;
 }
@@ -1066,460 +955,23 @@ figure.gallery-item {
     font-variation-settings: 'wght' 900 !important;
 }
 
-/* ==============================
- * Menu Principal 
- * ============================== */
-
-.navbar,
-.navbar[data-bs-theme=dark] {
-    /* --bs-navbar-color: rgba(255, 255, 255, 0.55); */
-    --bs-navbar-color: rgba(255, 255, 255, 0.75);
-    /* --bs-navbar-hover-color: rgba(255, 255, 255, 0.75); */
-    --bs-navbar-hover-color: rgba(255, 255, 255, 1);
-    --bs-navbar-disabled-color: rgba(255, 255, 255, 0.25);
-    --bs-navbar-active-color: #fff;
-    --bs-navbar-brand-color: #fff;
-    --bs-navbar-brand-hover-color: #fff;
-    --bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.1);
-    /* --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); */
-}
-
-.navbar-brand {
-    color: var(--minimalista-nav-link-color) !important;
-    font-size: var(--bs-navbar-brand-font-size);
-    white-space: nowrap;
-    text-decoration: none;
-    margin-right: 0;
-    /* misterio mas eh 0 que faz o logo alinhar corretamente a esquerda */
-    padding-bottom: var(--minimalista-navbar-brand-padding-y);
-    padding-top: var(--minimalista-navbar-brand-padding-y);
-    font-weight: 600;
-    font-variation-settings: 'wght' 600;
-}
-
-.navbar-brand:hover {
-    color: var(--minimalista-nav-link-color) !important;
-    text-decoration: none;
-}
-
-/* ==============================
- * Dropdowns
- * ============================== */
-
-/* copiado e modificado a partir de .dropdown-menu-dark */
-.dropdown-menu {
-    --bs-dropdown-zindex: 1000;
-    --bs-dropdown-font-size: 1rem;
-    --bs-dropdown-color: #dee2e6;
-    --bs-dropdown-bg: var(--bs-primary);
-    --bs-dropdown-border-color: var(--bs-border-color-translucent);
-    --bs-dropdown-box-shadow: ;
-    /* --bs-dropdown-link-color: #dee2e6; */
-    --bs-dropdown-link-color: #fff;
-    --bs-dropdown-link-hover-color: #fff;
-    --bs-dropdown-divider-bg: var(--bs-border-color-translucent);
-    --bs-dropdown-link-hover-bg: var(--bs-link-hover-color);
-    --bs-dropdown-link-active-color: #fff;
-    --bs-dropdown-link-active-bg: var(--bs-link-hover-color);
-    --bs-dropdown-link-disabled-color: #adb5bd;
-    --bs-dropdown-header-color: #adb5bd;
-    z-index: var(--bs-dropdown-zindex);
-}
-
-/* ==============================
- * Toogler (hamburger)
- * ============================== */
-
-.navbar.bg-primary .navbar-toggler {
-    border-color: var(--bs-white);
-    /* Cor da borda do botão hamburger */
-}
-
-.navbar.bg-primary .navbar-toggler:focus {
-    text-decoration: none;
-    outline: 0;
-    box-shadow: 0 0 0 var(--bs-navbar-toggler-focus-width) rgba(255, 255, 255, 0.2);
-}
-
-.navbar.bg-primary .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-    /* Cor branca para o ícone */
-}
-
-/* ===========================================
- * Logo e Titulo do site / Site Logo and Title
- * =========================================== */
-
-/* Estilo para ajustar o logotipo */
-.custom-logo-link img {
-    display: inline-block;
-}
-
-/* Titulo do site (texto) */
-.site-title {
-    display: inline;
-}
-
-/* ==============================
- * Links de navegacao / Nav links
- * ============================== */
-
-/* Menu de navegacao */
-.nav-link {
-    font-weight: 600;
-    font-variation-settings: 'wght' 600;
-    text-decoration: none;
-}
-
-.nav-link:hover {
-    text-decoration: none;
-}
-
-/* =========================================
- * Tabelas
- * ========================================= */
-
-.table-primary {
-    --bs-table-color: #fff;
-    --bs-table-bg: var(--bs-primary);
-    --bs-table-border-color: var(--bs-primary);
-    --bs-table-striped-bg: var(--bs-primary);
-    --bs-table-striped-color: #fff;
-    --bs-table-active-bg: var(--bs-primary);
-    --bs-table-active-color: #fff;
-    --bs-table-hover-bg: var(--bs-primary);
-    --bs-table-hover-color: #fff;
-    color: var(--bs-table-color);
-    border-color: var(--bs-table-border-color);
-}
-
-.table-secondary {
-    --bs-table-color: #fff;
-    --bs-table-bg: var(--bs-secondary);
-    --bs-table-border-color: var(--bs-secondary);
-    --bs-table-striped-bg: var(--bs-secondary);
-    --bs-table-striped-color: #fff;
-    --bs-table-active-bg: var(--bs-secondary);
-    --bs-table-active-color: #fff;
-    --bs-table-hover-bg: var(--bs-secondary);
-    --bs-table-hover-color: #fff;
-    color: var(--bs-table-color);
-    border-color: var(--bs-table-border-color);
-}
-
-/* =========================================
- * Alertas
- * ========================================= */
-
-.alert-primary {
-    --bs-alert-color: var(--bs-primary-text-emphasis);
-    --bs-alert-bg: var(--bs-primary-bg-subtle);
-    --bs-alert-border-color: var(--bs-primary-border-subtle);
-    --bs-alert-link-color: var(--bs-primary-text-emphasis);
-}
-
-.alert-primary * {
-    filter: brightness(85%);
-    /* Escurece a cor em 15% */
-}
-
-.alert-secondary {
-    --bs-alert-color: var(--bs-secondary-text-emphasis);
-    --bs-alert-bg: var(--bs-secondary-bg-subtle);
-    --bs-alert-border-color: var(--bs-secondary-border-subtle);
-    --bs-alert-link-color: var(--bs-secondary-text-emphasis);
-}
-
-.alert-secondary * {
-    filter: brightness(85%);
-    /* Escurece a cor em 15% */
-}
-
-
-/**
- * Bootstrap Cards
- * https://getbootstrap.com/docs/5.3/components/card/
- */
-
-.card {
-    --bs-card-spacer-y: 1rem;
-    --bs-card-spacer-x: 1rem;
-    --bs-card-title-spacer-y: 0.5rem;
-    --bs-card-title-color: ;
-    --bs-card-subtitle-color: ;
-    --bs-card-border-width: var(--bs-border-width);
-    --bs-card-border-color: var(--bs-border-color);
-    /* customizado */
-    --bs-card-border-radius: var(--bs-border-radius);
-    --bs-card-box-shadow: ;
-    --bs-card-inner-border-radius: calc(var(--bs-border-radius) - (var(--bs-border-width)));
-    --bs-card-cap-padding-y: 0.5rem;
-    --bs-card-cap-padding-x: 1rem;
-    --bs-card-cap-bg: rgba(var(--bs-body-color-rgb), 0.03);
-    --bs-card-cap-color: ;
-    --bs-card-height: ;
-    --bs-card-color: ;
-    --bs-card-bg: var(--bs-body-bg);
-    --bs-card-img-overlay-padding: 1rem;
-    --bs-card-group-margin: 0.75rem;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    height: var(--bs-card-height);
-    color: var(--bs-body-color);
-    word-wrap: break-word;
-    background-color: var(--bs-card-bg);
-    background-clip: border-box;
-    border: var(--bs-card-border-width) solid var(--bs-card-border-color);
-    border-radius: var(--bs-card-border-radius);
-}
-
-/* quando a imagem estiver no corpo do cartão, aplicar a mesma margem inferior 
-de card-title para manter a consistência do espaçamento */
-
-/**
-* Bootstrap Pagination
-* https://getbootstrap.com/docs/5.3/components/pagination/
-*/
-
-.pagination .page-link {
-    text-decoration: none;
-}
-
-/* Elemento de grupo de lista */
-/* .list-group-item:hover {
-    border: 1px solid var(--bs-gray);
-} */
-
-/* ########################################################
- *                      MARGENS
- * ######################################################## */
-
-/**
- * Margens verticais
- */
-
-h6,
-.h6,
-h5,
-.h5,
-h4,
-.h4,
-h3,
-.h3,
-h2,
-.h2,
-h1,
-.h1 {
-    margin-bottom: var(--minimalista-vertical-spacing-2);
-    /* 0.5rem */
-}
-
-p {
-    margin-bottom: var(--minimalista-vertical-spacing-4);
-    /* 1rem */
-}
-
-ul li:not(.list-group-item),
-ol li:not(.list-group-item) {
-    margin-bottom: var(--minimalista-vertical-spacing-2);
-    /* 0.5rem */
-}
-
-ol ol,
-ol ul,
-ul ol,
-ul ul {
-    margin-top: var(--minimalista-vertical-spacing-2);
-    /* 0.5rem */
-}
-
-/* TODO: VERIFICAR */
-/*
-h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
-    margin-bottom:  var(--minimalista-vertical-spacing-5);
-}
-*/
-hr {
-    margin-top: var(--minimalista-vertical-spacing-7);
-    /* 2rem */
-    margin-bottom: var(--minimalista-vertical-spacing-7);
-    /* 2rem */
-}
-
-.site-content {
-    margin-top: var(--minimalista-vertical-spacing-9);
-    /* 3rem */
-    margin-bottom: var(--minimalista-vertical-spacing-9);
-    /* 3rem */
-}
-
-.widget {
-    /* margin-bottom: var(--minimalista-vertical-spacing-9); */
-    /* border: 1px solid transparent; */
-}
-
-
-/* @TODO */
-
-article,
-.comment-list {
-    margin-bottom: var(--minimalista-vertical-spacing-7);
-    /* border: 1px solid #0056b3; */
-    overflow: hidden;
-    /* Keeping an floated image inside the div with CSS
-     * set the overflow property of the containing div to hidden.
-     * @link https://stackoverflow.com/questions/369448/keeping-an-floated-image-inside-the-div-with-css
-     */
-}
-
-.pagination {
-    margin-top: var(--minimalista-vertical-spacing-4);
-    /* 1rem */
-    margin-bottom: var(--minimalista-vertical-spacing-4);
-    /* 1rem */
-}
-
-.widget-title,
-.page-header,
-.entry-header {
-    margin-bottom: var(--minimalista-vertical-spacing-4);
-}
-
-.post-metadata-primary {
-    margin-bottom: var(--minimalista-vertical-spacing-4);
-    /* 1rem */
-}
-
-.post-metadata-secondary {
-    margin-top: var(--minimalista-vertical-spacing-4);
-    /* 1rem */
-}
-
-.post-metadata>* {
-    margin-left: 0;
-    margin-right: var(--minimalista-horizontal-spacing-4);
-    /* 1rem */
-}
-
-footer.footer {
-    padding-top: var(--minimalista-vertical-spacing-4);
-    /* 1rem */
-    padding-bottom: var(--minimalista-vertical-spacing-4);
-    /* 1rem */
-}
-
-.social-link {
-    margin-bottom: calc(1 * var(--minimalista-vertical-spacing-4));
-    /* 1rem */
-}
-
-.social-link i {
-    margin-right: calc(1 * var(--minimalista-horizontal-spacing-4));
-    /* 1rem */
-}
-
-.social-link svg {
-    margin-right: calc(1 * var(--minimalista-horizontal-spacing-4));
-    /* 1rem */
-}
-
-/* images */
-.post-thumbnail img,
-.thumbnail,
-.post-header-image,
-.avatar {
-    margin-bottom: var(--minimalista-vertical-spacing-4);
-    /* 1rem */
-}
-
-.contact-form {
-    margin-top: var(--minimalista-vertical-spacing-4);
-    /* 1rem */
-}
-
-.contact-form .form-group {
-    margin-bottom: var(--minimalista-vertical-spacing-4);
-    /* 1rem */
-}
-
-.wp-playlist-current-item {
-    margin-bottom: var(--minimalista-vertical-spacing-4);
-    /* 1rem */
-}
-
-.custom-logo-link img {
-    margin-right: var(--minimalista-horizontal-spacing-4);
-    /* 1rem */
-    margin-bottom: var(--minimalista-vertical-spacing-0);
-    /* 0rem */
-}
-
-.site-title {
-    margin-right: var(--minimalista-horizontal-spacing-4);
-    /* 1rem */
-}
-
-.pagination .page-item {
-    margin-right: var(--minimalista-horizontal-spacing-2);
-    /* 0.5rem */
-}
-
-.pagination .page-link {
-    padding: var(--minimalista-vertical-spacing-2) var(--minimalista-horizontal-spacing-3);
-    /* 0.5rem 0.75rem */
-}
-
-/* TODO: TESTAR */
-/*
-.card :last-child {
-    margin-bottom: var(--minimalista-vertical-spacing-0);
-}
-*/
-
-.form-group {
-    margin-bottom: var(--minimalista-vertical-spacing-4);
-    /* 1rem */
-}
-
-.continue-reading {
-    margin-top: var(--minimalista-vertical-spacing-4);
-}
-
-.edit-link {
-    margin-top: var(--minimalista-vertical-spacing-4);
-}
-
-table {
-    margin-bottom: var(--minimalista-vertical-spacing-4);
-}
-
-/* ########################################################
- *                      PLUGINS
- * ######################################################## */
-
-/* ==============================
- * Widget Minimalista_Social_Widget 
- * ============================== */
+/* ========================================================================== */
+/* 7. WIDGETS                                                                 */
+/* ========================================================================== */
+
+/* 7.1 Widget Minimalista_Social_Widget 
+   ========================================================================== */
 
 .social-links {
     display: flex;
     flex-direction: column;
+    gap: var(--minimalista-vertical-spacing-default);
 }
 
 .social-link {
     display: flex;
-    align-items: center;
     text-decoration: none;
-    color: #333;
-    font-weight: 400;
-    font-variation-settings: 'wght' 400;
 }
-
-.social-link i {}
-
-.social-link svg {}
 
 .social-link.facebook {
     color: #3b5998;
@@ -1533,211 +985,43 @@ table {
     color: #e1306c;
 }
 
-/* ==============================
- * Plugin Complianz
- * ============================== */
+/* ========================================================================== */
+/* 7. COLOR PALETTES                                                          */
+/* ========================================================================== */
 
-/* Reset styles for #cmplz-document to match the minimalista theme */
-
-#cmplz-document {
-    /* Resetting basic typography */
-    font-family: var(--bs-font-sans-serif, "Helvetica Neue", Helvetica, Arial, sans-serif);
-    font-size: var(--bs-body-font-size, 1rem);
-    line-height: var(--bs-body-line-height, 1.5);
-    color: var(--bs-body-color, #212529);
-}
-
-/* eu acho que nao precisa*/
 /*
-#cmplz-document div[class] {
-    margin-bottom: var(--minimalista-vertical-spacing-4) !important;
-}
-    */
-
-#cmplz-document h1,
-#cmplz-document h2,
-#cmplz-document h3,
-#cmplz-document h4,
-#cmplz-document h5,
-#cmplz-document h6 {
-    color: var(--bs-heading-color, inherit);
-    margin-top: var(--bs-heading-margin-top, 0);
-    margin-bottom: var(--bs-heading-margin-bottom, 0.5rem);
-    font-weight: var(--bs-heading-font-weight, 500);
-    /* @TODO: font-variation-settings: 'wght' 500; */
-    line-height: var(--bs-heading-line-height, 1.2);
+body,
+html {
+    background-color: #f8f9fa;
 }
 
-/* tamanho dos cabecalhos */
-#cmplz-document h1,
-#cmplz-document .h1 {
-    font-size: calc(1.375rem + 1.5vw);
-}
-
-@media (min-width: 1200px) {
-
-    h1,
-    .h1 {
-        font-size: 2.5rem;
-    }
-}
-
-#cmplz-document h2,
-#cmplz-document .h2 {
-    font-size: calc(1.325rem + 0.9vw);
-}
-
-@media (min-width: 1200px) {
-
-    #cmplz-document h2,
-    #cmplz-document .h2 {
-        font-size: 2rem;
-    }
-}
-
-#cmplz-document h3,
-#cmplz-document .h3 {
-    font-size: calc(1.3rem + 0.6vw);
-}
-
-@media (min-width: 1200px) {
-
-    #cmplz-document h3,
-    #cmplz-document .h3 {
-        font-size: 1.75rem;
-    }
-}
-
-#cmplz-document h4,
-#cmplz-document .h4 {
-    font-size: calc(1.275rem + 0.3vw);
-}
-
-@media (min-width: 1200px) {
-
-    #cmplz-document h4,
-    #cmplz-document .h4 {
-        font-size: 1.5rem;
-    }
-}
-
-#cmplz-document h5,
-#cmplz-document .h5 {
-    font-size: 1.25rem;
-}
-
-#cmplz-document h6,
-#cmplz-document .h6 {
-    font-size: 1rem;
-}
-
-/* Espaco emtre as secoes */
-#cmplz-document h2:not(:first-of-type) {
-    margin-top: var(--minimalista-vertical-spacing-4);
-}
-
-/* paragrafos e listas*/
-#cmplz-document p,
-.editor-styles-wrapper .cmplz-unlinked-mode p,
-#cmplz-document li,
-.editor-styles-wrapper .cmplz-unlinked-mode li,
-#cmplz-document td,
-.editor-styles-wrapper .cmplz-unlinked-mode td {
-    margin-top: var(--bs-paragraph-margin-top, 0);
-    margin-bottom: var(--bs-paragraph-margin-bottom, 1rem);
-    color: var(--bs-body-color, #212529);
-    font-size: var(--bs-body-font-size, 1rem);
-}
-
-#cmplz-document a {
-    color: var(--bs-link-color, #0d6efd);
-    text-decoration: var(--bs-link-text-decoration, none);
-}
-
-#cmplz-document a:hover {
-    color: var(--bs-link-hover-color, #0056b3);
-    text-decoration: var(--bs-link-hover-text-decoration, underline);
-}
-
-#cmplz-document ul,
-#cmplz-document ol {
-    padding-left: var(--bs-list-padding-left, 1.5rem);
-    margin-bottom: var(--bs-list-margin-bottom, 1rem);
-}
-
-#cmplz-document ul li,
-#cmplz-document ol li {
-    margin-bottom: var(--bs-list-item-margin-bottom, 0.5rem);
-}
-
-#cmplz-document table {
-    width: 100%;
-    margin-bottom: var(--bs-table-margin-bottom, 1rem);
-    color: var(--bs-table-color, #212529);
-    border-collapse: collapse;
-}
-
-#cmplz-document th,
-#cmplz-document td {
-    padding: var(--bs-table-cell-padding, 0.75rem);
-    vertical-align: top;
-    border-top: 1px solid var(--bs-table-border-color, #dee2e6);
-}
-
-#cmplz-document thead th {
-    vertical-align: bottom;
-    border-bottom: 2px solid var(--bs-table-border-color, #dee2e6);
-}
-
-#cmplz-document tbody+tbody {
-    border-top: 2px solid var(--bs-table-border-color, #dee2e6);
-}
-
-#cmplz-document .table {
-    width: 100%;
-    margin-bottom: var(--bs-table-margin-bottom, 1rem);
-    color: var(--bs-table-color, #212529);
-}
-
-#cmplz-document .table th,
-#cmplz-document .table td {
-    padding: var(--bs-table-cell-padding, 0.75rem);
-    vertical-align: top;
-    border-top: 1px solid var(--bs-table-border-color, #dee2e6);
-}
-
-#cmplz-document .table-bordered {
-    border: 1px solid var(--bs-table-border-color, #dee2e6);
-}
-
-#cmplz-document .table-bordered th,
-#cmplz-document .table-bordered td {
-    border: 1px solid var(--bs-table-border-color, #dee2e6);
-}
-
-#cmplz-document .table-striped tbody tr:nth-of-type(odd) {
-    background-color: rgba(var(--bs-table-striped-bg-rgb, 0, 0, 0), 0.05);
+header {
+    background-color: #DCDCDC;
 }
 
 
-/* ########################################################
- *                      UTILITARIOS
- * ######################################################## */
-
-/* ==============================================
- * Ajustes de Layout / Comportamentos Específicos
- * ============================================== */
-
-/* Hide The Google reCAPTCHA Badge */
-/*
-.grecaptcha-badge { 
-	visibility: hidden; 
+.sidebar {
+    background-color: #f0f0f0;
 }
 */
 
-/* ==============================
- * Helpers/Utilities
- * ============================== */
+.navbar .navbar-nav .nav-link {
+    color: #fff;
+    border: 1px solid transparent;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+footer#colophon {
+    background-color: var(--bs-gray-400);
+}
+
+/* ========================================================================== */
+/* 8. UTILITIES                                                               */
+/* ========================================================================== */
 
 /**
   * Mastering margin collapsing
@@ -1861,41 +1145,9 @@ ul.minimalista-custom-list ul li:last-child {
     /* Espacamento Vertical (Vertical Spacing)  */
 }
 
-
-/* ########################################################
- *                      MEDIA QUERIES
- * ######################################################## */
-
-/**
- * Bootstrap Breakpoints
- * https: //getbootstrap.com/docs/5.3/layout/breakpoints/
- */
-
-/* Small devices (landscape phones, 576px and up) */
-
-/* conter o tamanho da imagem de thumbnail em alguns viewports */
-@media (max-width: 1200px) {}
-
-@media (min-width: 576px) {}
-
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {}
-
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-    /*
-	.navbar-expand-lg .navbar-nav .nav-link {
-		padding-left: var(--minimalista-navbar-nav-link-padding-x);
-		padding-right: var(--minimalista-navbar-nav-link-padding-x);
-	}
-    */
-}
-
-/* X-Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {}
-
-/* XX-Large devices (larger desktops, 1400px and up) */
-@media (min-width: 1400px) {}
+/* ========================================================================== */
+/* 9. MEDIA QUERIES                                                           */
+/* ========================================================================== */
 
 /**
  * Responsive typography
@@ -1909,22 +1161,14 @@ ul.minimalista-custom-list ul li:last-child {
  * @link https://websemantics.uk/tools/responsive-font-calculator/
  */
 
-/* 16px @ 576px increasing to 20px @ 1400px */
-@media (min-width: 576px) {
+@media (min-width: 48em) {
     :root {
-        font-size: calc(1rem + (20 - 16) * ((100vw - 576px) / (1400 - 576)));
-        /* Note: The calc base value (1rem) MUST be stated in REM to maintain accessibility */
-        /* Where: calc = min_font_size_in_rem + (max_font_size - min_font_size) * ((100vw - min_viewport_including_px_unit) / (max_viewport - min_viewport)) */
-        /* Define o tamanho da fonte usando a função calc(). A fórmula calcula o tamanho da fonte como uma interpolação linear entre 16px e 20px à medida que a largura da janela aumenta de 576px a 1400px. */
-
-        /* Safari resize fix */
-        min-height: 0vw;
+      font-size: calc(1.125rem + ((1vw - 0.48rem) * 0.1736));
+      min-height: 0vw;
     }
-}
-
-/* Prevent scaling beyond this breakpoint */
-@media (min-width: 1400px) {
+  }
+  @media (min-width: 120em) {
     :root {
-        font-size: 20px;
+      font-size: 1.25rem;
     }
-}
+  }

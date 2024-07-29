@@ -42,14 +42,14 @@ get_header();
 							<h1 class="page-title"><?php single_post_title(); ?></h1>
 							<?php
 							/* 
-								* Quando você define uma página específica para exibir seus posts, essa página geralmente não tem conteúdo próprio,
-								* pois seu propósito é listar os posts do blog.
-								* No entanto, você pode adicionar um resumo ou descrição a essa página para fornecer um contexto adicional ou uma introdução.
-								* Se a verificação for verdadeira, exibe o resumo da "Página para posts" dentro de um parágrafo com a classe page-description.
-								* add_post_type_support( 'page', 'excerpt' );
-								*/
+							 * When you set a specific page to display your posts, that page usually doesn't have its own content,
+							 * as its purpose is to list the blog posts.
+							 * However, you can add a summary or description to this page to provide additional context or an introduction.
+							 * If the check is true, it displays the summary of the "Posts page" within a paragraph with the class page-description.
+							 * add_post_type_support('page', 'excerpt');
+							 */
 							?>
-							<p class="page-description mt-3"><?php echo get_the_excerpt(get_option('page_for_posts')); ?></p>
+							<p class="page-description"><?php echo get_the_excerpt(get_option('page_for_posts')); ?></p>
 							</header>
 						<?php endif; ?>							
 						
