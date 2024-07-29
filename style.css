@@ -306,9 +306,9 @@ ol ol ol {
     /* Sets the marker for the third level to lowercase Roman numerals */
 }
 
-/* li {
-    margin-bottom: 0.5rem;
-} */
+li:not(.list-group-item) {
+    margin-bottom: calc( var(--minimalista-vertical-spacing-default) / 2);
+}
 
 /* 2.4 Quote blocks
    ========================================================================== */
@@ -401,7 +401,38 @@ footer#colophon a:focus {
 /* 3.2 Sidebar
    ========================================================================== */
 
-.widget {}
+/* Remove default margin from first level of lists */
+.widget ul,
+.widget ol {
+    padding-left: 0;
+    margin-left: 0;
+    list-style-position: inside;
+}
+
+/* Widget Minimalista_Social_Widget */
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--minimalista-vertical-spacing-default);
+}
+
+.social-link {
+    display: flex;
+    text-decoration: none;
+}
+
+.social-link.facebook {
+    color: #3b5998;
+}
+
+.social-link.twitter {
+    color: #1da1f2;
+}
+
+.social-link.instagram {
+    color: #e1306c;
+}
 
 footer#colophon {
     text-align: center;
@@ -898,9 +929,23 @@ figure.gallery-item {
     list-style-type: none;
 }
 
+.navbar .navbar-nav .nav-link {
+    color: #fff;
+    border: 1px solid transparent;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
 /* Menu itens */
 .nav-link {
     text-decoration: none;
+}
+
+li.nav-item {
+    margin-bottom: 0;
 }
 
 ul.list-group,
@@ -955,34 +1000,27 @@ ol.list-group {
     font-variation-settings: 'wght' 900 !important;
 }
 
-/* ========================================================================== */
-/* 7. WIDGETS                                                                 */
-/* ========================================================================== */
-
-/* 7.1 Widget Minimalista_Social_Widget 
+/* 6.1 Dropdowns
    ========================================================================== */
 
-.social-links {
-    display: flex;
-    flex-direction: column;
-    gap: var(--minimalista-vertical-spacing-default);
-}
-
-.social-link {
-    display: flex;
-    text-decoration: none;
-}
-
-.social-link.facebook {
-    color: #3b5998;
-}
-
-.social-link.twitter {
-    color: #1da1f2;
-}
-
-.social-link.instagram {
-    color: #e1306c;
+/* Copied and modified from .dropdown-menu-dark */
+.dropdown-menu {
+    --bs-dropdown-zindex: 1000;
+    --bs-dropdown-font-size: 1rem;
+    --bs-dropdown-color: #dee2e6;
+    --bs-dropdown-bg: var(--bs-primary);
+    --bs-dropdown-border-color: var(--bs-border-color-translucent);
+    --bs-dropdown-box-shadow: ;
+    /* --bs-dropdown-link-color: #dee2e6; */
+    --bs-dropdown-link-color: #fff;
+    --bs-dropdown-link-hover-color: #fff;
+    --bs-dropdown-divider-bg: var(--bs-border-color-translucent);
+    --bs-dropdown-link-hover-bg: var(--bs-link-hover-color);
+    --bs-dropdown-link-active-color: #fff;
+    --bs-dropdown-link-active-bg: var(--bs-link-hover-color);
+    --bs-dropdown-link-disabled-color: #adb5bd;
+    --bs-dropdown-header-color: #adb5bd;
+    z-index: var(--bs-dropdown-zindex);
 }
 
 /* ========================================================================== */
@@ -1004,16 +1042,6 @@ header {
     background-color: #f0f0f0;
 }
 */
-
-.navbar .navbar-nav .nav-link {
-    color: #fff;
-    border: 1px solid transparent;
-}
-
-.navbar .navbar-nav .nav-link:hover {
-    border: 1px solid white;
-    border-radius: 5px;
-}
 
 footer#colophon {
     background-color: var(--bs-gray-400);
