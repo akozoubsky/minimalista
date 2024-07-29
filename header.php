@@ -39,7 +39,12 @@ if (!defined('ABSPATH')) {
 				echo '<style>.custom-logo-link { max-width: ' . esc_attr( $logo_width ) . 'px; height: auto;}</style>';
 				the_custom_logo();
 			} else { ?>
-				<span class="navbar-brand site-title me-0 me-lg-2"><?php echo esc_html( get_bloginfo( 'name' ) ) ?></span><?php ;
+				<span class="navbar-brand site-title me-0 me-lg-2">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+						<?php echo esc_html( get_bloginfo( 'name' ) ); ?>
+					</a>
+				</span>
+			<?php
 			}
 			?>
 
