@@ -534,6 +534,9 @@ function minimalista_display_post_metadata_primary($additional_classes = '')
         $div_classes .= ' ' . $additional_classes;
     }
 
+    // Open meta container
+    echo '<div class="entry-meta">';
+
     // Open Bootstrap 5 "post-metadata" container
     echo '<div class="' . $div_classes . '">';
 
@@ -577,6 +580,8 @@ function minimalista_display_post_metadata_primary($additional_classes = '')
     }
 
     echo '</div>';  // Close the "post-metadata" container
+
+    echo '</div><!-- .entry-meta -->'; // Close the "meta" container
 }
 
 /**
