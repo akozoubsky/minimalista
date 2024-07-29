@@ -136,8 +136,8 @@ h4.widget-title:empty,
 body,
 html {
     font-weight: 400;
-    /* line-height: 1.6; */
     font-variation-settings: 'wght' 400, 'wdth' 100;
+    /* line-height: 1.6; */
     /* font-optical-sizing: auto; */
     /* font-size: calc(1 * var(--bs-body-font-size)); */
     line-height: 1.6;
@@ -395,6 +395,11 @@ footer#colophon a:focus {
 /* 3. LAYOUT AND COMPONENT STYLES                                             */
 /* ========================================================================== */
 
+.site-title {
+    font-weight: 600;
+    font-variation-settings: 'wght' 600, 'wdth' 100;
+}
+
 /* 3.1 Navigation
    ========================================================================== */
 
@@ -459,7 +464,8 @@ article,
 .entry-content, */
 .post-metadata,
 .post-navigation,
-.post-edit-link {
+.post-edit-link,
+.wp-playlist {
     display: block;
     /* Ensure is a block */
     clear: both;
@@ -688,6 +694,10 @@ figure.gallery-item {
     /* undo Bootstrap style */
 }
 
+p + .gallery {
+    padding-top: var(--minimalista-vertical-spacing-default);
+}
+
 .gallery {
     display: flex;
     flex-wrap: wrap;
@@ -800,9 +810,6 @@ figure.gallery-item {
 /* 4.6 Wordpress Playlists
    ========================================================================== */
 
-.wp-playlist {
-    line-height: 1.8 !important;
-}
 
 .wp-playlist-current-item {
     height: auto !important;
@@ -819,6 +826,86 @@ figure.gallery-item {
 .wp-playlist-item-artist {
     text-transform: none !important;
 }
+
+/* Sugestoes */
+
+/* Personalização da Barra de Controle */
+.wp-playlist .mejs-container .mejs-controls {
+    background-color: #333; /* Cor de fundo personalizada */
+    border-radius: 5px; /* Borda arredondada */
+}
+
+.wp-playlist .mejs-container .mejs-button button {
+    color: #fff; /* Cor dos ícones */
+    background-color: transparent; /* Fundo transparente para botões */
+    border: none; /* Remover borda padrão */
+}
+
+.wp-playlist .mejs-container .mejs-time,
+.wp-playlist .mejs-container .mejs-duration {
+    color: #fff; /* Cor do texto de tempo */
+}
+
+/* Customização da Barra de Progresso */
+.wp-playlist .mejs-container .mejs-time-rail .mejs-time-total {
+    background-color: #555; /* Cor de fundo da barra de progresso */
+    border-radius: 5px; /* Bordas arredondadas */
+}
+
+.wp-playlist .mejs-container .mejs-time-rail .mejs-time-loaded {
+    background-color: #999; /* Cor da parte carregada */
+}
+
+.wp-playlist .mejs-container .mejs-time-rail .mejs-time-current {
+    background-color: #007bff; /* Cor da parte tocada */
+}
+
+
+/* Estilo dos Títulos e Informações de Faixa */
+.wp-playlist-item .wp-playlist-caption {
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    font-variation-settings: 'wght' 600;
+}
+
+.wp-playlist-item .wp-playlist-item-title {
+    /* font-size: 14px; */
+    color: #111;
+}
+
+.wp-playlist-item .wp-playlist-item-artist {
+    font-size: 12px;
+    color: #999;
+}
+
+/* Responsividade e Acessibilidade */
+@media (max-width: 768px) {
+    .wp-playlist .mejs-container {
+        width: 100%;
+    }
+}
+
+.wp-playlist .mejs-container .mejs-controls button:focus {
+    outline: 2px solid #007bff; /* Estilo de foco para acessibilidade */
+}
+
+/* Tipografia e Espaçamento */
+.wp-playlist .mejs-container {
+    padding: 10px; /* Espaçamento interno */
+}
+
+.wp-playlist .mejs-container .mejs-controls {
+    padding: 5px; /* Espaçamento dos controles */
+}
+
+/* Integração com Temas */
+.wp-playlist .mejs-container .mejs-controls {
+    background-color: var(--theme-background-color, #333);
+    color: var(--theme-text-color, #fff);
+}
+
+
 
 /* 4.7 Wordpress image alignment classes
    @link https://wpthemetestdata.wordpress.com/

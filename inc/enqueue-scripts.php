@@ -50,7 +50,7 @@ function minimalista_enqueue_styles_and_scripts() {
     /**
      * Estilo do tema
      */
-	wp_enqueue_style( 'minimalista-theme-style', get_stylesheet_uri(), array('bootstrap-style','fontawesome-style'), _S_VERSION );
+	wp_enqueue_style( 'minimalista-theme-style', get_stylesheet_uri(), array('bootstrap-style','fontawesome-style','wp-mediaelement'), _S_VERSION );
 	wp_style_add_data( 'minimalista-theme-style', 'rtl', 'replace' ); 
     
     /* ########################################################
@@ -86,7 +86,7 @@ function minimalista_enqueue_styles_and_scripts() {
 	}
 	
 }
-add_action( 'wp_enqueue_scripts', 'minimalista_enqueue_styles_and_scripts' );
+add_action( 'wp_enqueue_scripts', 'minimalista_enqueue_styles_and_scripts', 20 );
 
 /**
  * Dequeue Block Styles
