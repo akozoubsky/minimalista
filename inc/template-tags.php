@@ -1336,3 +1336,68 @@ function minimalista_excerpt_length( $length ) {
     return 20; // Define o número de palavras no excerpt
 }
 add_filter( 'excerpt_length', 'minimalista_excerpt_length', 999 );
+
+
+/* ########################################################
+ *                    Related Posts
+ * ######################################################## */
+
+ //echo do_shortcode('[display-posts post_type="post" taxonomy="tag" exclude_current="true" template="dps-widget-bs" wrapper="ul" wrapper_class="list-group" posts_per_page="' . $posts_per_page . '"]');
+
+
+/**
+ * Display Related Posts by Tags
+ *
+ * This function displays related posts based on the tags of the current post.
+ * It excludes the current post from the related posts list and allows for a
+ * customizable number of posts to be displayed. Additional parameters allow
+ * for custom templates and wrappers to be used.
+ *
+ * @param int $posts_per_page Number of related posts to display. Default is 5.
+ * @param string $template The template to use for displaying posts.
+ * @param string $wrapper The HTML wrapper for the posts.
+ * @param string $wrapper_class The CSS class for the wrapper.
+ * @return void
+ */
+function minimalista_display_related_posts_by_tags($posts_per_page = 5, $template = '', $wrapper = 'ul', $wrapper_class = 'list-group') {
+    global $post;
+    $current_post_id = $post->ID;
+    $tags = wp_get_post_tags($current_post_id);
+    $tag_ids = array();
+
+    if ($tags) {
+        foreach ($tags as $tag) {
+            $tag_ids[] = $tag->term_id;
+        }
+    }
+
+    if (!empty($tag_ids)) {
+        $args = array(
+            'tag__in' => $tag_ids,
+            'post__not_in' => array($current_post_id),
+            'posts_per_page' => $posts_per_page
+        );
+
+        $related_posts = new WP_Query($args);
+
+        if ($related_posts->have_posts()) {
+            echo '<div class="related-posts my-3">';
+            echo '<h5>Você também pode gostar de:</h5>';
+            
+            $shortcode = sprintf(
+                '[display-posts post_type="post" taxonomy="tag" exclude_current="true" posts_per_page="%d" template="%s" wrapper="%s" wrapper_class="%s"]',
+                $posts_per_page,
+                esc_attr($template),
+                esc_attr($wrapper),
+                esc_attr($wrapper_class)
+            );
+
+            echo do_shortcode($shortcode);
+            echo '</div>';
+        }
+
+        wp_reset_postdata();
+    }
+}
+
+

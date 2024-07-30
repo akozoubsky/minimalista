@@ -25,6 +25,10 @@ License URI: LICENSE
     --minimalista-vertical-spacing-default: 1.25rem;
     /* horizontal spacing */
     --minimalista-horizontal-spacing-default: 1.25rem;
+
+    /* --minimalista-btn-primary-hover-bg: var(--minimalista-btn-primary-hover-bg, var(--bs-primary));
+    --minimalista-btn-secondary-hover-bg: var(--minimalista-btn-secondary-hover-bg, var(--bs-secondary));
+     */
 }
 
 /* ========================================================================== */
@@ -75,10 +79,6 @@ footer {
 /* Navigation Styles */
 .navbar {
     margin-bottom: var(--minimalista-vertical-spacing-default);
-}
-
-.navbar .navbar-nav .nav-link {
-    padding: 10px 15px;
 }
 
 /* header Styles */
@@ -151,7 +151,7 @@ h1,
     font-weight: 700;
     font-variation-settings: 'wght' 700, 'wdth' 100;
     margin-top: 0;
-    margin-bottom: calc( var(--minimalista-vertical-spacing-default) / 2);
+    margin-bottom: calc(var(--minimalista-vertical-spacing-default) / 2);
     /* Adjusting header sizes to match changing body text */
     /* font-size: calc(2.5 * var(--bs-body-font-size)); */
     line-height: 1.2;
@@ -162,7 +162,7 @@ h2,
     font-weight: 600;
     font-variation-settings: 'wght' 600, 'wdth' 100;
     margin-top: 0;
-    margin-bottom: calc( var(--minimalista-vertical-spacing-default) / 2);
+    margin-bottom: calc(var(--minimalista-vertical-spacing-default) / 2);
     /* Adjusting header sizes to match changing body text */
     /* font-size: calc(2 * var(--bs-body-font-size)); */
     line-height: 1.3;
@@ -174,7 +174,7 @@ h3,
     font-variation-settings: 'wght' 600, 'wdth' 100;
     /* line-height: 1.4; */
     margin-top: 0;
-    margin-bottom: calc( var(--minimalista-vertical-spacing-default) / 2);
+    margin-bottom: calc(var(--minimalista-vertical-spacing-default) / 2);
     /* Adjusting header sizes to match changing body text */
     /* font-size: calc(1.75 * var(--bs-body-font-size)); */
     line-height: 1.35;
@@ -186,7 +186,7 @@ h4,
     font-variation-settings: 'wght' 600, 'wdth' 100;
     /* line-height: 1.5; */
     margin-top: 0;
-    margin-bottom: calc( var(--minimalista-vertical-spacing-default) / 2);
+    margin-bottom: calc(var(--minimalista-vertical-spacing-default) / 2);
     /* Adjusting header sizes to match changing body text */
     /* font-size: calc(1.5 * var(--bs-body-font-size)); */
     line-height: 1.4;
@@ -198,7 +198,7 @@ h5,
     font-variation-settings: 'wght' 500, 'wdth' 100;
     /* line-height: 1.6; */
     margin-top: 0;
-    margin-bottom: calc( var(--minimalista-vertical-spacing-default) / 2);
+    margin-bottom: calc(var(--minimalista-vertical-spacing-default) / 2);
     /* Adjusting header sizes to match changing body text */
     /* font-size: calc(1.25 * var(--bs-body-font-size)); */
     line-height: 1.5;
@@ -210,15 +210,30 @@ h6,
     font-variation-settings: 'wght' 500, 'wdth' 100;
     /* line-height: 1.7; */
     margin-top: 0;
-    margin-bottom: calc( var(--minimalista-vertical-spacing-default) / 2);
+    margin-bottom: calc(var(--minimalista-vertical-spacing-default) / 2);
     /* Adjusting header sizes to match changing body text */
     /* font-size: calc(1 * var(--bs-body-font-size)); */
     line-height: 1.6;
 }
 
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6,
-.display-1, .display-2, .display-3, .display-4, .display-5, .display-6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.display-1,
+.display-2,
+.display-3,
+.display-4,
+.display-5,
+.display-6 {
     word-break: normal;
     overflow-wrap: normal;
     hyphens: auto;
@@ -260,7 +275,8 @@ label {
 ul,
 ol {
     margin: 0 0 1rem;
-    padding-left: 2rem; /* Sets the initial indentation for lists */
+    padding-left: 2rem;
+    /* Sets the initial indentation for lists */
     list-style-position: inside;
 }
 
@@ -307,7 +323,7 @@ ol ol ol {
 }
 
 li:not(.list-group-item) {
-    margin-bottom: calc( var(--minimalista-vertical-spacing-default) / 2);
+    margin-bottom: calc(var(--minimalista-vertical-spacing-default) / 2);
 }
 
 /* 2.4 Quote blocks
@@ -335,60 +351,76 @@ blockquote footer {
 /* 2.5 Links
    ========================================================================== */
 
-a,
-.btn-link {
+/* Estilos para links */
+a {
+    color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+    /* Define a cor dos links com uma variável CSS */
     cursor: pointer;
+    /* Define o cursor como pointer para indicar que é clicável */
     overflow-wrap: break-word;
-    text-decoration: underline;
-    text-underline-offset: 5px;
-    text-decoration-skip-ink: none;
-    transition: color 0.3s ease, text-decoration-color 0.3s ease;
-    font-weight: 500;
-    font-variation-settings: 'wght' 500;
-}
-
-a:hover,
-a:focus {
-    outline: none;
-}
-
-a:focus {
-    outline: 2px dashed;
-    /* Focus outline for accessibility */
-    outline-offset: 4px;
-    /* Space between outline and link */
-}
-
-/* Accessible focus outline for keyboard navigation */
-a:focus-visible {
-    outline: 2px dashed;
-    outline-offset: 4px;
-}
-
-.widget a,
-.btn,
-footer#colophon a {
+    /* Permite a quebra de palavras longas */
     text-decoration: none;
+    /* Remove a sublinha padrão */
+    text-underline-offset: 5px;
+    /* Define a distância da sublinha */
+    text-decoration-skip-ink: auto;
+    /* Ajusta a sublinha para evitar sobreposição com os caracteres */
+    transition: color 0.3s ease, text-decoration-color 0.3s ease;
+    /* Suaviza a transição de cor e decoração */
+    font-weight: 500;
+    /* Define um peso de fonte intermediário */
+    font-variation-settings: 'wght' 500;
+    /* Ajusta a variação de peso da fonte para fontes variáveis */
 }
 
-.widget a:hover,
-.widget a:focus,
-footer#colophon a:hover,
-footer#colophon a:focus {
+/* @TODO: isso aqui eh para ser eliminado */
+/* a:visited:not(.btn):not(.navbar a) {
+    color: var(--bs-link-color);
+} */
+
+a:hover {
+    /* color: var(--bs-link-hover-color); */
+    --bs-link-color-rgb: var(--bs-link-hover-color-rgb);
+    /* Define a cor dos links no estado hover */
     text-decoration: underline;
+    /* Adiciona sublinha no estado hover */
 }
 
-/* 2.6 Buttons
-   ========================================================================== */
-
-.btn-primary:hover {
-    filter: brightness(85%);
-    /* Darkens the color by 15% */
+a:focus {
+    outline: 1px dashed;
+    /* Adiciona uma linha tracejada ao redor do link ao focar */
+    outline-offset: 4px;
+    /* Define a distância entre a linha tracejada e o elemento */
 }
 
-.btn-secondary:hover {
-    filter: brightness(85%);
-    /* Darkens the color by 15% */
+a:focus-visible {
+    outline: 1px dashed;
+    /* Mantém o estilo de foco visível para navegação por teclado */
+    outline-offset: 4px;
+    /* Define a distância entre a linha tracejada e o elemento */
+}
+
+a:active {
+    color: var(--bs-link-hover-color);
+    /* Define a cor dos links enquanto são clicados */
+    text-decoration: underline;
+    /* Mantém a sublinha para consistência visual */
+}
+
+a:disabled {
+    color: var(--bs-link-color);
+    /* Define a cor dos links desabilitados */
+    cursor: not-allowed;
+    /* Indica que o link não é clicável */
+    text-decoration: none;
+    /* Remove a sublinha dos links desabilitados */
+    opacity: 0.3
+}
+
+a:not([href]):not([class]),
+a:not([href]):not([class]):hover {
+    color: inherit;
+    text-decoration: none;
 }
 
 /* ========================================================================== */
@@ -402,6 +434,8 @@ footer#colophon a:focus {
 }
 
 .site-title a {
+    font-weight: 600;
+    font-variation-settings: 'wght' 600, 'wdth' 100;
     color: #fff;
     text-decoration: none;
 }
@@ -443,10 +477,6 @@ footer#colophon a:focus {
 
 .social-link.instagram {
     color: #e1306c;
-}
-
-footer#colophon {
-    text-align: center;
 }
 
 /* 3.3 Blog and Post
@@ -548,6 +578,40 @@ article,
     background: #23282d;
 }
 
+/* 3.5 Site Footer
+   ========================================================================== */
+
+footer#colophon {
+    /* padding-top: var(--minimalista-vertical-spacing-default); */
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+footer#colophon .widget-title {
+    line-height: 1;
+    margin: 0;
+    padding: var(--minimalista-vertical-spacing-default) 0;
+}
+
+footer#colophon .list-group-item {
+    border: none;
+    padding-left: 0;
+}
+
+footer#colophon ul,
+footer#colophon ol {
+    list-style: none;
+}
+
+.copyright {
+    padding: var(--minimalista-vertical-spacing-default) 0;
+    text-align: center;
+}
+
+/* .widget-area {
+    border: 1px solid red;
+} */
+
 /* ========================================================================== */
 /* 4. MIDIA (IMAGE, VIDEO, AUDIO, GALLERY)                                    */
 /* ========================================================================== */
@@ -560,7 +624,7 @@ figure,
 picture {
     max-width: 100%;
     height: auto;
-    display: block;
+    /* display: block; */
 }
 
 .avatar {
@@ -700,7 +764,7 @@ figure.gallery-item {
     /* undo Bootstrap style */
 }
 
-p + .gallery {
+p+.gallery {
     padding-top: var(--minimalista-vertical-spacing-default);
 }
 
@@ -837,33 +901,43 @@ p + .gallery {
 
 /* Personalização da Barra de Controle */
 .wp-playlist .mejs-container .mejs-controls {
-    background-color: #333; /* Cor de fundo personalizada */
-    border-radius: 5px; /* Borda arredondada */
+    background-color: #333;
+    /* Cor de fundo personalizada */
+    border-radius: 5px;
+    /* Borda arredondada */
 }
 
 .wp-playlist .mejs-container .mejs-button button {
-    color: #fff; /* Cor dos ícones */
-    background-color: transparent; /* Fundo transparente para botões */
-    border: none; /* Remover borda padrão */
+    color: #fff;
+    /* Cor dos ícones */
+    background-color: transparent;
+    /* Fundo transparente para botões */
+    border: none;
+    /* Remover borda padrão */
 }
 
 .wp-playlist .mejs-container .mejs-time,
 .wp-playlist .mejs-container .mejs-duration {
-    color: #fff; /* Cor do texto de tempo */
+    color: #fff;
+    /* Cor do texto de tempo */
 }
 
 /* Customização da Barra de Progresso */
 .wp-playlist .mejs-container .mejs-time-rail .mejs-time-total {
-    background-color: #555; /* Cor de fundo da barra de progresso */
-    border-radius: 5px; /* Bordas arredondadas */
+    background-color: #555;
+    /* Cor de fundo da barra de progresso */
+    border-radius: 5px;
+    /* Bordas arredondadas */
 }
 
 .wp-playlist .mejs-container .mejs-time-rail .mejs-time-loaded {
-    background-color: #999; /* Cor da parte carregada */
+    background-color: #999;
+    /* Cor da parte carregada */
 }
 
 .wp-playlist .mejs-container .mejs-time-rail .mejs-time-current {
-    background-color: #007bff; /* Cor da parte tocada */
+    background-color: #007bff;
+    /* Cor da parte tocada */
 }
 
 
@@ -893,16 +967,19 @@ p + .gallery {
 }
 
 .wp-playlist .mejs-container .mejs-controls button:focus {
-    outline: 2px solid #007bff; /* Estilo de foco para acessibilidade */
+    outline: 2px solid #007bff;
+    /* Estilo de foco para acessibilidade */
 }
 
 /* Tipografia e Espaçamento */
 .wp-playlist .mejs-container {
-    padding: 10px; /* Espaçamento interno */
+    padding: 10px;
+    /* Espaçamento interno */
 }
 
 .wp-playlist .mejs-container .mejs-controls {
-    padding: 5px; /* Espaçamento dos controles */
+    padding: 5px;
+    /* Espaçamento dos controles */
 }
 
 /* Integração com Temas */
@@ -910,8 +987,6 @@ p + .gallery {
     background-color: var(--theme-background-color, #333);
     color: var(--theme-text-color, #fff);
 }
-
-
 
 /* 4.7 Wordpress image alignment classes
    @link https://wpthemetestdata.wordpress.com/
@@ -926,7 +1001,7 @@ p + .gallery {
 @media (min-width: 575.98px) {
     .alignleft {
         margin-right: calc(2 * 1rem);
-        /* margin-bottom: calc(1 * 1rem); */
+        /* margin-bottom: calc(1 * var(--minimalista-vertical-spacing-default)); */
     }
 }
 
@@ -937,7 +1012,7 @@ p + .gallery {
     margin-left: auto;
     width: 100%;
     text-align: center;
-    /* margin-bottom: 1rem; */
+    margin-bottom: calc(1 * var(--minimalista-vertical-spacing-default));
 
 }
 
@@ -948,7 +1023,7 @@ p + .gallery {
     .img-fluid.alignleft {
         float: left;
         margin-right: calc(2 * 1rem);
-        /* margin-bottom: calc(1 * 1rem); */
+        margin-bottom: calc(0.5 * var(--minimalista-vertical-spacing-default));
         width: initial;
         max-width: 40%;
     }
@@ -963,7 +1038,7 @@ p + .gallery {
 @media (min-width: 575.98px) {
     .alignright {
         margin-left: calc(2 * 1rem);
-        /* margin-bottom: calc(1 * 1rem); */
+        /* margin-bottom: calc(1 * var(--minimalista-vertical-spacing-default)); */
     }
 }
 
@@ -974,7 +1049,7 @@ p + .gallery {
     margin-left: auto;
     width: 100%;
     text-align: center;
-    /* margin-bottom: 1rem; */
+    margin-bottom: calc(1 * var(--minimalista-vertical-spacing-default));
 
 }
 
@@ -985,7 +1060,7 @@ p + .gallery {
     .img-fluid.alignright {
         float: right;
         margin-left: calc(2 * 1rem);
-        /* margin-bottom: calc(1 * 1rem); */
+        margin-bottom: calc(0.5 * var(--minimalista-vertical-spacing-default));
         width: initial;
         max-width: 40%;
     }
@@ -1015,6 +1090,319 @@ p + .gallery {
 /* 6. BOOTSTRAP MODIFICATIONS - @link https: //getbootstrap.com/docs/5.3/     */
 /* ========================================================================== */
 
+ul.list-group,
+ol.list-group {
+    padding-left: 0;
+}
+
+/* 6.1 Buttons
+   ========================================================================== */
+
+a.btn {
+    text-decoration: none;
+}
+
+.btn {
+    --bs-btn-padding-x: 0.75rem;
+    --bs-btn-padding-y: 0.375rem;
+    --bs-btn-font-family: ;
+    --bs-btn-font-size: 1rem;
+    --bs-btn-font-weight: 400;
+    --bs-btn-line-height: 1.5;
+    --bs-btn-color: var(--bs-body-color);
+    --bs-btn-bg: transparent;
+    --bs-btn-border-width: var(--bs-border-width);
+    --bs-btn-border-color: transparent;
+    --bs-btn-border-radius: var(--bs-border-radius);
+    --bs-btn-hover-border-color: transparent;
+    --bs-btn-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+    --bs-btn-disabled-opacity: 0.65;
+    --bs-btn-focus-box-shadow: 0 0 0 0.25rem rgba(var(--bs-btn-focus-shadow-rgb), .5);
+    display: inline-block;
+    padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
+    font-family: var(--bs-btn-font-family);
+    font-size: var(--bs-btn-font-size);
+    font-weight: var(--bs-btn-font-weight);
+    line-height: var(--bs-btn-line-height);
+    color: var(--bs-btn-color);
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
+    border-radius: var(--bs-btn-border-radius);
+    background-color: var(--bs-btn-bg);
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn:hover {
+    color: var(--bs-btn-hover-color);
+    background-color: var(--bs-btn-hover-bg);
+    border-color: var(--bs-btn-hover-border-color);
+}
+
+.btn-check+.btn:hover {
+    color: var(--bs-btn-color);
+    background-color: var(--bs-btn-bg);
+    border-color: var(--bs-btn-border-color);
+}
+
+.btn:focus-visible {
+    color: var(--bs-btn-hover-color);
+    background-color: var(--bs-btn-hover-bg);
+    border-color: var(--bs-btn-hover-border-color);
+    outline: 0;
+    box-shadow: var(--bs-btn-focus-box-shadow);
+}
+
+.btn-check:focus-visible+.btn {
+    border-color: var(--bs-btn-hover-border-color);
+    outline: 0;
+    box-shadow: var(--bs-btn-focus-box-shadow);
+}
+
+.btn-check:checked+.btn,
+:not(.btn-check)+.btn:active,
+.btn:first-child:active,
+.btn.active,
+.btn.show {
+    color: var(--bs-btn-active-color);
+    background-color: var(--bs-btn-active-bg);
+    border-color: var(--bs-btn-active-border-color);
+}
+
+.btn-check:checked+.btn:focus-visible,
+:not(.btn-check)+.btn:active:focus-visible,
+.btn:first-child:active:focus-visible,
+.btn.active:focus-visible,
+.btn.show:focus-visible {
+    box-shadow: var(--bs-btn-focus-box-shadow);
+}
+
+.btn:disabled,
+.btn.disabled,
+fieldset:disabled .btn {
+    color: var(--bs-btn-disabled-color);
+    pointer-events: none;
+    background-color: var(--bs-btn-disabled-bg);
+    border-color: var(--bs-btn-disabled-border-color);
+    opacity: var(--bs-btn-disabled-opacity);
+}
+
+.btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--bs-primary);
+    --bs-btn-border-color: var(--bs-primary);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--minimalista-btn-primary-hover-bg, red);
+    --bs-btn-hover-border-color: var(--bs-primary);
+    --bs-btn-focus-shadow-rgb: var(--bs-primary-rgb);
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--bs-primary);
+    --bs-btn-active-border-color: var(--bs-primary);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: var(--bs-primary);
+    --bs-btn-disabled-border-color: var(--bs-primary);
+    transition: background-color 0.3s ease, filter 0.3s ease;
+}
+
+.btn-secondary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--bs-secondary);
+    --bs-btn-border-color: var(--bs-secondary);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--minimalista-btn-secondary-hover-bg, red);
+    --bs-btn-hover-border-color: var(--bs-secondary);
+    --bs-btn-focus-shadow-rgb: var(--bs-secondary-rgb);
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--bs-secondary);
+    --bs-btn-active-border-color: var(--bs-secondary);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: var(--bs-secondary);
+    --bs-btn-disabled-border-color: var(--bs-secondary);
+    transition: background-color 0.3s ease, filter 0.3s ease;
+}
+
+.btn-outline-primary {
+    --bs-btn-color: var(--bs-primary);
+    --bs-btn-border-color: var(--bs-primary);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--bs-primary);
+    --bs-btn-hover-border-color: var(--bs-primary);
+    --bs-btn-focus-shadow-rgb: 13, 110, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--bs-primary);
+    --bs-btn-active-border-color: var(--bs-primary);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: var(--bs-primary);
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: var(--bs-primary);
+    --bs-gradient: none;
+}
+
+.btn-link {
+    --bs-btn-font-weight: 400;
+    --bs-btn-color: var(--bs-link-color);
+    --bs-btn-bg: transparent;
+    --bs-btn-border-color: transparent;
+    --bs-btn-hover-color: var(--bs-link-hover-color);
+    --bs-btn-hover-border-color: transparent;
+    --bs-btn-active-color: var(--bs-link-hover-color);
+    --bs-btn-active-border-color: transparent;
+    --bs-btn-disabled-color: #6c757d;
+    --bs-btn-disabled-border-color: transparent;
+    --bs-btn-box-shadow: 0 0 0 #000;
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    text-decoration: underline;
+}
+
+.btn-link:focus-visible {
+    color: var(--bs-btn-color);
+}
+
+.btn-link:hover {
+    color: var(--bs-btn-hover-color);
+}
+
+
+/* ---- */
+
+/* .btn-primary:hover {
+    filter: brightness(85%);
+}
+
+.btn-secondary:hover {
+    filter: brightness(85%);
+} */
+
+.btn-minimalista-shadow {
+    border: 2px solid var(--bs-primary-border-subtle) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    transition: box-shadow 0.3s ease !important;
+}
+
+.btn-minimalista-shadow:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+.button-minimalista-3d-primary {
+    background-color: var(--bs-primary);
+    /* Cor de fundo */
+    border: none;
+    /* Remove borda padrão */
+    color: white;
+    /* Cor do texto */
+    /* padding: 15px 32px; */
+    /* Espaçamento interno */
+    /*  text-align: center; */
+    /* Centraliza o texto */
+    text-decoration: none;
+    /* Remove sublinhado */
+    display: inline-block;
+    /* Mantém o elemento em linha */
+    /* font-size: 16px; */
+    /* Tamanho da fonte */
+    /* margin: 4px 2px; */
+    /* Margem ao redor do botão */
+    cursor: pointer;
+    /* Cursor de mão ao passar o mouse */
+    border-radius: 8px;
+    /* Bordas arredondadas */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    /* Sombra para profundidade */
+    transition: all 0.3s ease;
+    /* Transição suave */
+}
+
+.button-minimalista-3d-primary:hover {
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+    /* Aumenta a sombra ao passar o mouse */
+    /* transform: translateY(-2px); */
+    /* Eleva o botão levemente */
+}
+
+.button-minimalista-3d-primary:active {
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    /* Reduz a sombra ao clicar */
+    transform: translateY(0);
+    /* Botão volta à posição original */
+}
+
+/* 6.2 Dropdowns
+   ========================================================================== */
+
+/* Copied and modified from .dropdown-menu-dark */
+.dropdown-menu {
+    --bs-dropdown-zindex: 1000;
+    --bs-dropdown-font-size: 1rem;
+    --bs-dropdown-color: #dee2e6;
+    --bs-dropdown-bg: var(--bs-primary);
+    --bs-dropdown-border-color: var(--bs-border-color-translucent);
+    --bs-dropdown-box-shadow: ;
+    /* --bs-dropdown-link-color: #dee2e6; */
+    --bs-dropdown-link-color: #fff;
+    --bs-dropdown-link-hover-color: #fff;
+    --bs-dropdown-divider-bg: var(--bs-border-color-translucent);
+    --bs-dropdown-link-hover-bg: var(--bs-link-hover-color);
+    --bs-dropdown-link-active-color: #fff;
+    --bs-dropdown-link-active-bg: var(--bs-link-hover-color);
+    --bs-dropdown-link-disabled-color: #adb5bd;
+    --bs-dropdown-header-color: #adb5bd;
+    z-index: var(--bs-dropdown-zindex);
+}
+
+/* 6.3 Nav
+   ========================================================================== */
+
+.navbar {
+    --bs-navbar-padding-x: 0;
+    --bs-navbar-padding-y: 0.5rem;
+    --bs-navbar-color: rgba(var(--bs-emphasis-color-rgb), 0.65);
+    --bs-navbar-hover-color: rgba(var(--bs-emphasis-color-rgb), 0.8);
+    --bs-navbar-disabled-color: rgba(var(--bs-emphasis-color-rgb), 0.3);
+    --bs-navbar-active-color: rgba(var(--bs-emphasis-color-rgb), 1);
+    --bs-navbar-brand-padding-y: 0.3125rem;
+    --bs-navbar-brand-margin-end: 1rem;
+    --bs-navbar-brand-font-size: 1.25rem;
+    --bs-navbar-brand-color: rgba(var(--bs-emphasis-color-rgb), 1);
+    --bs-navbar-brand-hover-color: rgba(var(--bs-emphasis-color-rgb), 1);
+    --bs-navbar-nav-link-padding-x: 0.5rem;
+    --bs-navbar-toggler-padding-y: 0.25rem;
+    --bs-navbar-toggler-padding-x: 0.75rem;
+    --bs-navbar-toggler-font-size: 1.25rem;
+    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    --bs-navbar-toggler-border-color: rgba(var(--bs-emphasis-color-rgb), 0.15);
+    --bs-navbar-toggler-border-radius: var(--bs-border-radius);
+    --bs-navbar-toggler-focus-width: 0.25rem;
+    --bs-navbar-toggler-transition: box-shadow 0.15s ease-in-out;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x);
+}
+
+.navbar-brand {
+    padding-top: var(--bs-navbar-brand-padding-y);
+    padding-bottom: var(--bs-navbar-brand-padding-y);
+    margin-right: var(--bs-navbar-brand-margin-end);
+    font-size: var(--bs-navbar-brand-font-size);
+    color: var(--bs-navbar-brand-color);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+    color: var(--bs-navbar-brand-hover-color);
+}
+
 /* Menu list */
 .navbar-nav {
     margin: 0;
@@ -1025,6 +1413,9 @@ p + .gallery {
 .navbar .navbar-nav .nav-link {
     color: #fff;
     border: 1px solid transparent;
+    padding: 10px 15px;
+    text-decoration: none;
+
 }
 
 .navbar .navbar-nav .nav-link:hover {
@@ -1041,20 +1432,75 @@ li.nav-item {
     margin-bottom: 0;
 }
 
-ul.list-group,
-ol.list-group {
-    padding-left: 0;
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    color: var(--bs-white);
+    background-color: var(--bs-primary);
 }
 
-/* Apply primary color as background */
-.bg-primary {
-    background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
+
+
+.form-check-input:checked {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
 }
 
-/* Apply secondary color as background */
-.bg-secondary {
-    background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity)) !important;
+/* 6.4 Bootstrap Cards
+   ========================================================================== */
+
+.card {
+    --bs-card-spacer-y: 1rem;
+    --bs-card-spacer-x: 1rem;
+    --bs-card-title-spacer-y: 0.5rem;
+    --bs-card-title-color: ;
+    --bs-card-subtitle-color: ;
+    --bs-card-border-width: var(--bs-border-width);
+    --bs-card-border-color: var(--bs-border-color);
+    /* customizado */
+    --bs-card-border-radius: var(--bs-border-radius);
+    --bs-card-box-shadow: ;
+    --bs-card-inner-border-radius: calc(var(--bs-border-radius) - (var(--bs-border-width)));
+    --bs-card-cap-padding-y: 0.5rem;
+    --bs-card-cap-padding-x: 1rem;
+    --bs-card-cap-bg: rgba(var(--bs-body-color-rgb), 0.03);
+    --bs-card-cap-color: ;
+    --bs-card-height: ;
+    --bs-card-color: ;
+    --bs-card-bg: var(--bs-body-bg);
+    --bs-card-img-overlay-padding: 1rem;
+    --bs-card-group-margin: 0.75rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: var(--bs-card-height);
+    color: var(--bs-body-color);
+    word-wrap: break-word;
+    background-color: var(--bs-card-bg);
+    background-clip: border-box;
+    border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+    border-radius: var(--bs-card-border-radius);
 }
+
+/* quando a imagem estiver no corpo do cartão, aplicar a mesma margem inferior 
+de card-title para manter a consistência do espaçamento */
+
+
+/* 6.4 Pagination
+   ========================================================================== */
+
+.pagination .page-link {
+    text-decoration: none;
+}
+
+.active>.page-link,
+.page-link.active {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+/* 6.5 Display
+   ========================================================================== */
 
 .lead,
 .display-1,
@@ -1093,51 +1539,17 @@ ol.list-group {
     font-variation-settings: 'wght' 900 !important;
 }
 
-/* 6.1 Dropdowns
+/* 6.6 Background
    ========================================================================== */
 
-/* Copied and modified from .dropdown-menu-dark */
-.dropdown-menu {
-    --bs-dropdown-zindex: 1000;
-    --bs-dropdown-font-size: 1rem;
-    --bs-dropdown-color: #dee2e6;
-    --bs-dropdown-bg: var(--bs-primary);
-    --bs-dropdown-border-color: var(--bs-border-color-translucent);
-    --bs-dropdown-box-shadow: ;
-    /* --bs-dropdown-link-color: #dee2e6; */
-    --bs-dropdown-link-color: #fff;
-    --bs-dropdown-link-hover-color: #fff;
-    --bs-dropdown-divider-bg: var(--bs-border-color-translucent);
-    --bs-dropdown-link-hover-bg: var(--bs-link-hover-color);
-    --bs-dropdown-link-active-color: #fff;
-    --bs-dropdown-link-active-bg: var(--bs-link-hover-color);
-    --bs-dropdown-link-disabled-color: #adb5bd;
-    --bs-dropdown-header-color: #adb5bd;
-    z-index: var(--bs-dropdown-zindex);
+/* Apply primary color as background */
+.bg-primary {
+    background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
 }
 
-/* ========================================================================== */
-/* 7. COLOR PALETTES                                                          */
-/* ========================================================================== */
-
-/*
-body,
-html {
-    background-color: #f8f9fa;
-}
-
-header {
-    background-color: #DCDCDC;
-}
-
-
-.sidebar {
-    background-color: #f0f0f0;
-}
-*/
-
-footer#colophon {
-    background-color: var(--bs-gray-400);
+/* Apply secondary color as background */
+.bg-secondary {
+    background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity)) !important;
 }
 
 /* ========================================================================== */
@@ -1194,13 +1606,18 @@ footer#colophon {
 }
 
 /* Remover marcadores e preenchimento esquerdo das listas */
-ul.no-bullet {
+ul.no-bullet,
+ol.no-bullet {
     list-style: none;
+}
+
+ul.no-margin,
+ol.no-margin {
     padding-left: 0;
 }
 
 /* Espacamento Vertical (Vertical Spacing) - Remove a margem inferior dos elementos com a classe .no-margin */
-.no-margin {
+.no-margin-bottom {
     margin-bottom: 0;
 }
 
@@ -1235,30 +1652,8 @@ ul.minimalista-custom-list {
     /* Remove marcadores de lista, se necessário */
     padding-left: 0 !important;
     /* Remove padding padrão */
-    margin-left: 0 !important;
+    /* margin-left: 0 !important; */
     /* Garantir que não haja margem adicional */
-}
-
-ul.minimalista-custom-list li {
-    padding-left: var(--minimalista-horizontal-spacing-4) !important;
-    /* O espaço entre o marcador e o texto */
-    position: relative !important;
-}
-
-ul.minimalista-custom-list li::before {
-    content: "•" !important;
-    /* Adiciona um marcador customizado */
-    position: absolute !important;
-    left: 0 !important;
-    /* Posiciona o marcador à esquerda do item */
-    color: var(--bs-primary) !important;
-    /* Cor do marcador */
-    font-size: 1.2rem !important;
-    /* Tamanho do marcador */
-    top: 50% !important;
-    /* Centraliza verticalmente */
-    transform: translateY(-50%) !important;
-    /* Ajuste de centralização vertical */
 }
 
 ul.minimalista-custom-list ul li:last-child {
@@ -1269,6 +1664,38 @@ ul.minimalista-custom-list ul li:last-child {
 /* ========================================================================== */
 /* 9. MEDIA QUERIES                                                           */
 /* ========================================================================== */
+
+/**
+ * Bootstrap Breakpoints
+ * https: //getbootstrap.com/docs/5.3/layout/breakpoints/
+ */
+
+/* Small devices (landscape phones, 576px and up) */
+
+/* conter o tamanho da imagem de thumbnail em alguns viewports */
+@media (max-width: 1200px) {}
+
+@media (min-width: 576px) {}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    /*
+	.navbar-expand-lg .navbar-nav .nav-link {
+		padding-left: var(--minimalista-navbar-nav-link-padding-x);
+		padding-right: var(--minimalista-navbar-nav-link-padding-x);
+	}
+    */
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {}
+
 
 /**
  * Responsive typography
@@ -1284,12 +1711,13 @@ ul.minimalista-custom-list ul li:last-child {
 
 @media (min-width: 48em) {
     :root {
-      font-size: calc(1.125rem + ((1vw - 0.48rem) * 0.1736));
-      min-height: 0vw;
+        font-size: calc(1.125rem + ((1vw - 0.48rem) * 0.1736));
+        min-height: 0vw;
     }
-  }
-  @media (min-width: 120em) {
+}
+
+@media (min-width: 120em) {
     :root {
-      font-size: 1.25rem;
+        font-size: 1.25rem;
     }
-  }
+}

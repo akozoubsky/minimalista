@@ -29,9 +29,7 @@ if (!defined('ABSPATH')) {
 		
 <header class="navbar navbar-expand-lg navbar-dark bg-primary">
 	<nav class="container flex-wrap flex-lg-nowrap" aria-label="Main navigation">
-		<div class="d-lg-none" style="width: 4.25rem;"></div>
-
-			<!-- <a class="navbar-brand me-lg-2" href="<?php echo esc_url( home_url( '/' ) ); ?>"> -->
+		<!-- <div class="d-lg-none" style="width: 4.25rem;"></div> -->
 
 			<?php
 			if ( has_custom_logo() ) {
@@ -47,7 +45,6 @@ if (!defined('ABSPATH')) {
 			<?php
 			}
 			?>
-
 
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -67,8 +64,7 @@ if (!defined('ABSPATH')) {
 				?>
 			</div>
 
-
-		</div>
+		<!-- </div> -->
 	</nav>
 
 	<?php if ( get_header_image() ) : ?>

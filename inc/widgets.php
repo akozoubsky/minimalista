@@ -725,3 +725,54 @@ function register_custom_bootstrap_gallery_widget() {
 }
 add_action( 'widgets_init', 'register_custom_bootstrap_gallery_widget' );
 
+/**
+ * Register Footer Widgets
+ *
+ * This function registers multiple widget areas for the footer.
+ * Each widget area will adjust responsively based on the number of active widgets.
+ *
+ * @return void
+ */
+function minimalista_register_footer_widgets() {
+    register_sidebar(array(
+        'name' => 'Footer Widget Area 1',
+        'id' => 'footer-1',
+        'description' => 'Appears in the footer area as the first column.',
+        'before_widget' => '<div class="widget %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="widget-title">',
+        'after_title' => '</h4>',
+    ));
+
+    register_sidebar(array(
+        'name' => 'Footer Widget Area 2',
+        'id' => 'footer-2',
+        'description' => 'Appears in the footer area as the second column.',
+        'before_widget' => '<div class="widget %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="widget-title">',
+        'after_title' => '</h4>',
+    ));
+
+    register_sidebar(array(
+        'name' => 'Footer Widget Area 3',
+        'id' => 'footer-3',
+        'description' => 'Appears in the footer area as the third column.',
+        'before_widget' => '<div class="widget %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="widget-title">',
+        'after_title' => '</h4>',
+    ));
+
+    register_sidebar(array(
+        'name' => 'Footer Widget Area 4',
+        'id' => 'footer-4',
+        'description' => 'Appears in the footer area as the fourth column.',
+        'before_widget' => '<div class="widget %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="widget-title">',
+        'after_title' => '</h4>',
+    ));
+}
+add_action('widgets_init', 'minimalista_register_footer_widgets');
+
