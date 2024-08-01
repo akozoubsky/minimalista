@@ -31,56 +31,69 @@ if (is_active_sidebar('footer-4')) $active_widgets++;
 
 // Define a largura das colunas baseado no número de widgets ativos
 $md = ($active_widgets > 0) ? 12 / $active_widgets : 12;
+$md = 3; /* fixed */
 ?>
 
-<footer id="colophon" class="footer">
+<footer id="colophon" class="footer" itemscope itemtype="http://schema.org/WPFooter">
 
-<?php if ($active_widgets) : ?>
+	<div class="container">
 
-<div class="container-fluid px-lg-5 py-5">
-	
-		<div class="row justify-content-center">
-		
-		<?php if (is_active_sidebar('footer-1')) : ?>
-			<div class="col-md-<?php echo intval($md); ?> col-sm-6 col-lg-<?php echo intval($md); ?> mx-auto">
-				<div class="widget-area">
-					<?php dynamic_sidebar('footer-1'); ?>
+		<?php if ($active_widgets) : ?>
+
+			<div class="footer-widgets">
+
+				<div class="row">
+
+					<?php if (is_active_sidebar('footer-1')) : ?>
+						<div class="col-md-<?php echo intval($md); ?> col-sm-6 col-lg-<?php echo intval($md); ?> mx-auto">
+							<div class="widget-area">
+								<?php dynamic_sidebar('footer-1'); ?>
+							</div>
+						</div>
+					<?php endif; ?>
+					<?php if (is_active_sidebar('footer-2')) : ?>
+						<div class="col-md-<?php echo intval($md); ?> col-sm-6 col-lg-<?php echo intval($md); ?> mx-auto">
+							<div class="widget-area">
+								<?php dynamic_sidebar('footer-2'); ?>
+							</div>
+						</div>
+					<?php endif; ?>
+					<?php if (is_active_sidebar('footer-3')) : ?>
+						<div class="col-md-<?php echo intval($md); ?> col-sm-6 col-lg-<?php echo intval($md); ?> mx-auto">
+							<div class="widget-area">
+								<?php dynamic_sidebar('footer-3'); ?>
+							</div>
+						</div>
+					<?php endif; ?>
+					<?php if (is_active_sidebar('footer-4')) : ?>
+						<div class="col-md-<?php echo intval($md); ?> col-sm-6 col-lg-<?php echo intval($md); ?> mx-auto">
+							<div class="widget-area">
+								<?php dynamic_sidebar('footer-4'); ?>
+							</div>
+						</div>
+					<?php endif; ?>
+
 				</div>
-			</div>
-		<?php endif; ?>
-		<?php if (is_active_sidebar('footer-2')) : ?>
-			<div class="col-md-<?php echo intval($md); ?> col-sm-6 col-lg-<?php echo intval($md); ?> mx-auto">
-				<div class="widget-area">
-					<?php dynamic_sidebar('footer-2'); ?>
-				</div>
-			</div>
-		<?php endif; ?>
-		<?php if (is_active_sidebar('footer-3')) : ?>
-			<div class="col-md-<?php echo intval($md); ?> col-sm-6 col-lg-<?php echo intval($md); ?> mx-auto">
-				<div class="widget-area">
-					<?php dynamic_sidebar('footer-3'); ?>
-				</div>
-			</div>
-		<?php endif; ?>
-		<?php if (is_active_sidebar('footer-4')) : ?>
-			<div class="col-md-<?php echo intval($md); ?> col-sm-6 col-lg-<?php echo intval($md); ?> mx-auto">
-				<div class="widget-area">
-					<?php dynamic_sidebar('footer-4'); ?>
-				</div>
-			</div>
+
+			</div><!-- ./footer-widgets -->
+
 		<?php endif; ?>
 
-	</div>
-</div>
+		<div class="footer-baseboard">
 
-<?php endif; ?>
+			<div class="copyright-info d-flex justify-content-between">
+				<span>&copy; <?php echo date('Y'); ?> <?php echo minimalista_display_site_name('site-name', false); ?>. Todos os direitos reservados.</span>
+				<?php if (get_the_privacy_policy_link()) : ?>
+					<a href="<?php echo esc_url(get_privacy_policy_url()); ?>" itemprop="url">Política de privacidade</a>
+				<?php endif; ?>
+			</div>
+		</div>
 
-	<div class="copyright">
-			<span class="">&copy; <?php echo date('Y'); ?> <?php echo get_bloginfo('name'); ?>. Todos os direitos reservados.</span>
-	</div>
-		
-</footer><!-- #colophon -->
+	</div><!-- ./container -->
+
+</footer>
 
 <?php wp_footer(); ?>
 </body>
+
 </html>

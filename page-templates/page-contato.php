@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Página de Contato V.1
+ * Template Name: Contact Page V.1
  *
  * The template for sending contact forms.
  * 

@@ -20,7 +20,7 @@ function minimalista_wpautop_control_meta_box()
 {
     add_meta_box(
         'wpautop_control',                                              // ID do metabox
-        __('Desativar parágrafo automático', 'minimalista'),    // Título do metabox
+        __('Disable automatic paragraph', 'minimalista'),    // Título do metabox
         'minimalista_wpautop_control_callback',                                     // Callback para renderizar o conteúdo do metabox
         ['post', 'page'],                                               // Telas onde o metabox será exibido (posts e páginas)
         'side',                                                         // Contexto (lateral)
@@ -41,7 +41,7 @@ function minimalista_wpautop_control_callback($post)
     $value = get_post_meta($post->ID, '_disable_wpautop', true);
     echo '<label>';
     echo '<input type="checkbox" name="disable_wpautop" value="1" ' . checked($value, '1', false) . '>';
-    echo ' ' . __('Desabilitar wpautop', 'minimalista');
+    echo ' ' . __('Disable wpautop', 'minimalista');
     echo '</label>';
 }
 

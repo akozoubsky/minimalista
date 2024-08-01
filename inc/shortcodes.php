@@ -7,6 +7,21 @@
  * @author Alexandre Kozoubsky
  */
 
+ /* Use: [minimalista_bloginfo key='name'] OU [minimalista_bloginfo key='wpurl'] */
+if ( ! function_exists( 'minimalista_bloginfo_shortcode' ) ) {
+	
+	function minimalista_bloginfo_shortcode( $atts ) {
+		
+	   extract(shortcode_atts(array(
+		   'key' => '',
+	   ), $atts));
+	   return get_bloginfo($key);
+	   
+	}
+
+}
+add_shortcode('bloginfo', 'minimalista_bloginfo_shortcode');
+
 /**
  * Shortcode to display the latest [N] posts.
  *
@@ -16,7 +31,7 @@
  * @return string HTML output of the latest posts.
  */
 
-function latest_posts_bs_card_shortcode($atts)
+function minimalista_latest_posts_bs_card_shortcode($atts)
 {
     // Extract shortcode attributes, set default number of posts to 5 and default image size
     $atts = shortcode_atts(array(
@@ -122,7 +137,7 @@ function latest_posts_bs_card_shortcode($atts)
 
     return $output;
 }
-add_shortcode('latest_posts_bs_card', 'latest_posts_bs_card_shortcode');
+add_shortcode('latest_posts_bs_card', 'minimalista_latest_posts_bs_card_shortcode');
 
 /**
  * Shortcode to display a list of posts with variable design based on the featured image format.
@@ -165,7 +180,7 @@ function minimalista_custom_posts_listing_shortcode($atts)
 {
     // Default attributes
     $atts = shortcode_atts([
-        'posts_per_page'  => 6,
+        'posts_per_page'  => 11,
         'image_size'      => 'large',
         'image_classes'   => '', // Additional classes for <img>
         'title_tag'       => 'h4',

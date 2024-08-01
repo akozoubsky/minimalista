@@ -47,6 +47,76 @@ add_filter( 'post_class', 'minimalista_set_attr_post' );
 	}
 endif;
 
+/**
+ * Retrieve the custom logo with optional classes and specific size in pixels.
+ *
+ * This function returns the custom logo for the theme with optional classes
+ * for the link and image elements, allowing for a specific image size in pixels.
+ *
+ * @param string $link_class Optional. Class for the <a> element. Default is ''.
+ * @param string $img_class Optional. Class for the <img> element. Default is ''.
+ * @param int $width Optional. The desired width of the logo image in pixels. Default is 0 (original size).
+ * @param int $height Optional. The desired height of the logo image in pixels. Default is 0 (original size).
+ * @return string HTML markup for the custom logo with specified classes and size.
+ * 
+ * Example: minimalista_get_custom_logo('d-inline-block custom-logo-link navbar-brand me-1', 'd-inline-block custom-logo align-middle rounded-circle', 25, 25 ); ?>
+ */
+function minimalista_get_custom_logo($link_class = '', $img_class = '', $width = 0, $height = 0) {
+    // Get the custom logo ID set in the theme customizer
+    $custom_logo_id = get_theme_mod('custom_logo');
+    $html = '';
+
+    if ($custom_logo_id) {
+        // Get the URL of the custom logo image with specified size
+        $logo = wp_get_attachment_image_src($custom_logo_id, array($width, $height));
+
+        if (has_custom_logo()) {
+            // Construct the HTML for the logo with optional link and image classes
+            $html = sprintf('<a href="%1$s" class="%2$s" rel="home" itemprop="url"><img src="%3$s" class="%4$s" alt="%5$s" itemprop="logo" width="%6$d" height="%7$d"></a>',
+                esc_url(home_url('/')),
+                esc_attr($link_class),
+                esc_url($logo[0]),
+                esc_attr($img_class),
+                esc_attr(get_bloginfo('name')),
+                intval($logo[1]),
+                intval($logo[2])
+            );
+        }
+    }
+
+    return $html; // Return the constructed HTML
+}
+
+/**
+ * Display the site name as a link, optionally with the site description.
+ *
+ * This function returns the site name as a link and optionally the site description,
+ * allowing for a specific display of the site's identity. It includes SEO-friendly
+ * attributes and microdata for better accessibility and search engine optimization.
+ *
+ * @param string $link_class Optional. Class for the <a> element. Default is ''.
+ * @param bool $display_description Optional. Whether to display the site description. Default is false.
+ * @param string $separator Optional. Separator between the site name and description. Default is '|'.
+ * @return string HTML markup for the site name and optional description.
+ * 
+ * Example: echo minimalista_display_site_name('site-name', true);
+ */
+function minimalista_display_site_name($link_class = '', $display_description = false, $separator = '|') {
+    $site_name = get_bloginfo('name');
+    $description = get_bloginfo('description');
+    $html = sprintf('<a href="%1$s" class="%2$s" itemprop="url"><span itemprop="name">%3$s</span></a>',
+        esc_url(home_url('/')),
+        esc_attr($link_class),
+        esc_html($site_name)
+    );
+
+    if ($display_description && $description) {
+        $html .= ' ' . esc_html($separator) . ' <span itemprop="description">' . esc_html($description) . '</span>';
+    }
+
+    return $html;
+}
+
 if ( ! function_exists( 'minimalista_posted_on' ) ) :
     /**
      * Prints HTML with meta information for the current post-date/time.
@@ -89,8 +159,7 @@ if ( ! function_exists( 'minimalista_posted_on' ) ) :
 
         // Create the final string with the link to the post for the publication date
         $posted_on = sprintf(
-            /* translators: %s: post date. */
-            esc_html_x( 'Publicado em %s', 'post date', 'minimalista' ),
+            esc_html_x( 'Published on %s', 'post date', 'minimalista' ),
             '<a href="' . esc_url( $published_link ) . '" rel="bookmark">' . $time_string_published . '</a>'
         );
 
@@ -99,7 +168,7 @@ if ( ! function_exists( 'minimalista_posted_on' ) ) :
         if ( $time_string_modified ) {
             $updated_on = sprintf(
                 /* translators: %s: modified date. */
-                esc_html_x( 'Atualizado em %s', 'modified date', 'minimalista' ),
+                esc_html_x( 'Updated %s', 'modified date', 'minimalista' ),
                 '<a href="' . esc_url( $modified_link ) . '" rel="bookmark">' . $time_string_modified . '</a>'
             );
         }
@@ -107,7 +176,7 @@ if ( ! function_exists( 'minimalista_posted_on' ) ) :
         // Display the author information
         $author_info = sprintf(
             /* translators: %s: post author. */
-            esc_html_x( 'por %s', 'post author', 'minimalista' ),
+            esc_html_x( 'by %s', 'post author posted on', 'minimalista' ),
             '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( $published_author_id ) ) . '">' . esc_html( $published_author_name ) . '</a></span>'
         );
 
@@ -115,8 +184,7 @@ if ( ! function_exists( 'minimalista_posted_on' ) ) :
         $modified_author_info = '';
         if ( $published_author_id !== $modified_author_id && $modified_author_name ) {
             $modified_author_info = sprintf(
-                /* translators: %s: modified author. */
-                esc_html_x( 'por %s', 'modified author', 'minimalista' ),
+                esc_html_x( 'by %s', 'modified author posted on', 'minimalista' ),
                 '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( $modified_author_id ) ) . '">' . esc_html( $modified_author_name ) . '</a></span>'
             );
         }
@@ -130,6 +198,42 @@ if ( ! function_exists( 'minimalista_posted_on' ) ) :
         echo '</div>';
     }
 endif;
+
+/**
+ * Count the number of words in a post's content.
+ *
+ * This function calculates the number of words in a given post's content.
+ * It uses wp_strip_all_tags to remove any HTML tags from the content and
+ * preg_split with a regular expression to handle spaces, line breaks, and other
+ * whitespace characters effectively. This ensures a more accurate word count
+ * compared to simpler methods like explode(' ', $content), which may miscount
+ * words by not properly handling multiple spaces or different types of whitespace.
+ *
+ * @param int|null $post_id The ID of the post. If not provided, the current post is used.
+ * @return int The number of words in the post content.
+ */
+function minimalista_count_words_in_post($post_id = null) {
+    // Get the global post object if no post ID is provided
+    if (is_null($post_id)) {
+        global $post;
+        $post_id = $post->ID;
+    }
+
+    // Get the post content
+    $content = get_post_field('post_content', $post_id);
+
+    // Remove HTML tags and unnecessary characters
+    $clean_content = wp_strip_all_tags($content);
+
+    // Split the content into words based on whitespace characters
+    // This ensures that multiple spaces, tabs, or new lines are handled properly
+    $words = preg_split('/\s+/', $clean_content, -1, PREG_SPLIT_NO_EMPTY);
+
+    // Count the number of words
+    $word_count = count($words);
+
+    return $word_count;
+}
 
 /**
  * Display the time since a post was published in a human-readable format.
@@ -156,23 +260,23 @@ function minimalista_display_time_since_posted()
     // Determine the appropriate time unit and value
     if ($time_difference < $hour) {
         $time_value = round($time_difference / $minute);
-        $time_unit = _n('minute', 'minutes', $time_value, 'light-cms-bootstrap');
+        $time_unit = _n('minute', 'minutes', $time_value, 'minimalista');
     } elseif ($time_difference < $day) {
         $time_value = round($time_difference / $hour);
-        $time_unit = _n('hour', 'hours', $time_value, 'light-cms-bootstrap');
+        $time_unit = _n('hour', 'hours', $time_value, 'minimalista');
     } elseif ($time_difference < $week) {
         $time_value = round($time_difference / $day);
-        $time_unit = _n('day', 'days', $time_value, 'light-cms-bootstrap');
+        $time_unit = _n('day', 'days', $time_value, 'minimalista');
     } elseif ($time_difference < $year) {
         $time_value = round($time_difference / $week);
-        $time_unit = _n('week', 'weeks', $time_value, 'light-cms-bootstrap');
+        $time_unit = _n('week', 'weeks', $time_value, 'minimalista');
     } else {
         $time_value = round($time_difference / $year);
-        $time_unit = _n('year', 'years', $time_value, 'light-cms-bootstrap');
+        $time_unit = _n('year', 'years', $time_value, 'minimalista');
     }
 
     // Display the time since posted
-    echo sprintf(_n('%s ' . $time_unit . ' ago', '%s ' . $time_unit . ' ago', $time_value, 'light-cms-bootstrap'), $time_value);
+    echo sprintf(_n('%s ' . $time_unit . ' ago', '%s ' . $time_unit . ' ago', $time_value, 'minimalista'), $time_value);
 }
 
 if ( ! function_exists( 'minimalista_posted_by' ) ) :
@@ -182,7 +286,7 @@ if ( ! function_exists( 'minimalista_posted_by' ) ) :
 	function minimalista_posted_by() {
 		$byline = sprintf(
 			/* translators: %s: post author. */
-			esc_html_x( 'by %s', 'post author', 'minimalista' ),
+			esc_html_x( 'by %s', 'post author display time since posted', 'minimalista' ),
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
 
@@ -660,10 +764,10 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
             break;
         case 'aside':
             // Metadata specific to aside posts
-            $word_count = str_word_count(strip_tags(get_the_content()));
+            $word_count = minimalista_count_words_in_post();
             $post_time = get_the_time('g:i a');
 
-            echo '<span class="aside-word-count me-4"><i class="fas fa-pencil-alt"></i> ' . sprintf(_n('%s palavra', '%s palavras', $word_count, 'minimalista'), $word_count) . '</span>';
+            echo '<span class="aside-word-count me-4"><i class="fas fa-pencil-alt"></i> ' . sprintf(_n('%s word', '%s words', $word_count, 'minimalista'), $word_count) . '</span>';
             echo '<span class="aside-post-time me-4"><i class="fas fa-clock"></i> ' . esc_html($post_time) . '</span>';
             break;
         case 'gallery':
@@ -671,9 +775,9 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
             $gallery_images = get_post_meta(get_the_ID(), 'gallery_images', true);
             if (!empty($gallery_images) && is_array($gallery_images)) {
                 $num_images = count($gallery_images);
-                echo '<span class="gallery-count me-4"><i class="fas fa-images"></i> ' . sprintf(_n('%s imagem', '%s imagens', $num_images, 'minimalista'), $num_images) . '</span>';
+                echo '<span class="gallery-count me-4"><i class="fas fa-images"></i> ' . sprintf(_n('%s image', '%s images', $num_images, 'minimalista'), $num_images) . '</span>';
             } else {
-                echo '<span class="gallery-empty me-4">' . __('Sem imagens na galeria', 'minimalista') . '</span>';
+                echo '<span class="gallery-empty me-4">' . __('No images in gallery', 'minimalista') . '</span>';
             }
             break;
         case 'link':
@@ -683,7 +787,7 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
             // O título e o domínio do link são exibidos, com um ícone apropriado e um link clicável.
             $main_link = get_post_meta(get_the_ID(), 'main_link', true);
             if (!empty($main_link)) {
-                $link_title = get_post_meta(get_the_ID(), 'link_title', true) ?: __('Link Externo', 'minimalista');
+                $link_title = get_post_meta(get_the_ID(), 'link_title', true) ?: __('External Link', 'minimalista');
                 $link_domain = parse_url($main_link, PHP_URL_HOST);
                 echo '<span class="post-main-link me-4"><i class="fas fa-external-link-alt"></i> <a href="' . esc_url($main_link) . '" target="_blank" rel="noopener noreferrer">' . esc_html($link_title) . ' (' . esc_html($link_domain) . ')</a></span>';
             }
@@ -707,10 +811,10 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
             $chat_line_count = get_post_meta(get_the_ID(), 'chat_line_count', true);
 
             if (!empty($chat_participants)) {
-                echo '<span class="chat-participants me-4"><i class="fas fa-users"></i> ' . sprintf(_n('%s participante', '%s participantes', $chat_participants, 'minimalista'), $chat_participants) . '</span>';
+                echo '<span class="chat-participants me-4"><i class="fas fa-users"></i> ' . sprintf(_n('%s participant', '%s participants', $chat_participants, 'minimalista'), $chat_participants) . '</span>';
             }
             if (!empty($chat_line_count)) {
-                echo '<span class="chat-line-count me-4"><i class="fas fa-comment-dots"></i> ' . sprintf(_n('%s linha', '%s linhas', $chat_line_count, 'minimalista'), $chat_line_count) . '</span>';
+                echo '<span class="chat-line-count me-4"><i class="fas fa-comment-dots"></i> ' . sprintf(_n('%s line', '%s lines', $chat_line_count, 'minimalista'), $chat_line_count) . '</span>';
             }
             break;
     }
@@ -1241,8 +1345,8 @@ function minimalista_comments_pagination() {
             'format'       => '',
             'current'      => $current_page,
             'total'        => $total_pages,
-            'prev_text'    => '<i class="fas fa-angle-left"></i> ' . __('Anterior', 'minimalista'),
-            'next_text'    => __('Próximo', 'minimalista') . ' <i class="fas fa-angle-right"></i>',
+            'prev_text'    => '<i class="fas fa-angle-left"></i> ' . __('Previous', 'minimalista'),
+            'next_text'    => __('Next', 'minimalista') . ' <i class="fas fa-angle-right"></i>',
             'type'         => 'array',
             'add_args'     => false,
             'add_fragment' => '#comments',  // Adicionar um fragmento para pular para os comentários
@@ -1400,4 +1504,327 @@ function minimalista_display_related_posts_by_tags($posts_per_page = 5, $templat
     }
 }
 
+/**
+ * Display a list of posts with various options for layout, pagination, and filtering.
+ *
+ * @param array $query_args Arguments for WP_Query.
+ * @param array $display_args Additional display options.
+ * 
+ * Example:
+ *                     minimalista_display_posts(
+ *                       // Argumentos para WP_Query
+ *                       [
+ *                           'post_type' => 'post',
+ *                           'orderby' => 'date',
+ *                           'order' => 'DESC',
+ *                           // Outros argumentos específicos de WP_Query
+ *                       ],
+ *                       // Argumentos específicos para a exibição dos posts
+ *                       [
+ *                           'layout' => 'list', // Pode ser 'list', 'grid' ou 'mosaic'
+ *                           'html_before' => '<div class="posts-container">',
+ *                           'html_after' => '</div>',
+ *                           // Outros argumentos de exibição, como personalização de HTML
+ *                       ]
+ *                   );
+ */
+function minimalista_display_posts($query_args = [], $display_args = [])
+{
+    // Argumentos padrão para WP_Query
+    $default_query_args = [
+        'posts_per_page' => 12,
+        'post_status'    => 'publish',
+    ];
 
+    $query_args = array_merge($default_query_args, $query_args);
+
+    // Argumentos padrão para a exibição
+    $default_display_args = [
+        'layout' => 'list', // Pode ser 'list', 'grid' ou 'mosaic'
+        'html_before' => '',
+        'html_after' => '',
+    ];
+    $display_args = array_merge($default_display_args, $display_args);
+
+    // Defina um valor padrão para layout
+    $default_layout = 'list';
+
+    // Verifique se o layout está definido e é um dos valores esperados
+    $layout = isset($display_args['layout']) && in_array($display_args['layout'], ['list', 'grid', 'mosaic']) ? $display_args['layout'] : $default_layout;
+
+    /* PROVISORIO */
+    $image_size = 'custom-thumbnail';
+    $image_classes = 'thumbnail img-fluid';
+    $show_thumbnail = true;
+    $show_excerpt = true;
+    $title_tag = 'h2';
+    $classes = '';
+
+    // Verifica se o 'post_type' já está definido em $query_args
+    if (!isset($query_args['post_type'])) {
+        $query_args['post_type'] = 'post'; // Define um tipo padrão se não fornecido
+    }
+
+    // Configura a paginação
+    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+    $query_args['paged'] = $paged;
+
+    $query = new WP_Query($query_args);
+
+    if ($query->have_posts()) {
+
+        echo $args['html_before'] ?? '';
+
+        // Escolha o layout (grid, lista, mosaico) com base em $args
+        // Dentro da função minimalista_display_posts(), após verificar se há posts
+        if ($query->have_posts()) {
+
+            switch ($layout) {
+
+                case 'list':
+
+                    // Lógica para layout de lista
+                    echo '<ul class="posts-list list-unstyled">'; // Lista de posts
+
+                    while ($query->have_posts()) {
+                        $query->the_post();
+
+                        $post_format = get_post_format() ?: 'standard';
+                        $image_format = get_featured_image_format(get_the_ID());
+
+                        echo '<li class="post-item">';
+
+                        ob_start(); // Inicia o buffering de saída
+                        post_class('blog-posting mb-5');
+                        $article_classes = ob_get_clean(); // Captura a saída e limpa o buffer
+
+                        echo '<article id="post-' . get_the_ID() . '" ' . $article_classes . ' itemscope itemtype="http://schema.org/BlogPosting">';
+                       
+                        // Apply different designs based on the image format.
+                        switch ($image_format) {
+
+                            case 'landscape':
+                                // Landscape format design.
+
+                                $image_classes = $image_classes . '';
+
+                                // Display image, title and summary.
+                                echo '<div class="card border-0">';
+                                
+                                echo '<div class="card-body p-0">';
+                                echo '<div class="card-title">';
+                                
+                                echo '<header class="entry-header">';
+                                display_post_title($title_tag, '', true);
+                                display_post_metadata_primary('');
+                                echo '</header><!-- ./header -->';
+                                echo '</div><!-- .card-title -->';
+                                echo '<div class="card-img">';
+                                if ($show_thumbnail) {
+                                    display_post_thumbnail($image_size, $image_classes, true);
+                                }
+                                echo '</div><!-- ./card-img -->';
+                                // Conditional display the excerpt
+                                if ($show_excerpt) {
+                                    echo '<div class="card-text">';
+                                    display_post_excerpt();
+                                    echo '</div><!-- ./card-text -->';
+                                }
+                                echo '</div><!-- .card-body -->';
+                                echo '</div><!-- ./card -->';
+
+                                break;
+
+                            case 'portrait':
+                                // Portrait format design.
+
+                                //$image_classes .= ' rounded-start';
+
+                                // Display image, title and summary.
+                                echo '<div class="card mb-3 border-0">';
+                                echo '<div class="row g-0">';
+
+                                // Conditional display of the thumbnail
+                                if ($show_thumbnail) {
+                                    echo '<div class="col-md-4">';
+                                    // Chama a função para exibir a miniatura do post
+                                    echo '<div class="card-img">';
+                                    display_post_thumbnail($image_size, $image_classes, true);
+                                    echo '</div><!-- ./card-img -->';
+                                    echo '</div><!-- ./col-md-4 -->';
+                                }
+
+                                // Column layout adaptable to the existence or not of the image
+                                // A classe da div é definida pelo operador ternário com base na condição $show_thumbnail
+                                echo '<div class="' . ($show_thumbnail ? 'col-md-8' : 'col-12') . '">';
+                                // Conteúdo aqui
+                                echo '<div class="card-body' . ($show_thumbnail ? '' : ' p-0') . '">';
+                                echo '<header class="entry-header card-title">';
+                                display_post_title($title_tag, '', true);
+                                display_post_metadata_primary('');
+                                echo '</header><!-- ./header -->';
+                                // Conditional display the excerpt
+                                if ($show_excerpt) {
+                                    echo '<div class="card-text">';
+                                    display_post_excerpt();
+                                    echo '</div><!-- .card-text -->';
+                                }
+                                echo '</div><!-- .card-body -->';
+                                echo '</div>';
+
+                                echo '</div><!-- ./row -->';
+                                echo '</div><!-- ./card -->';
+
+                                break;
+
+                            case 'square':
+                                // Square format design.
+
+                                // Display image, title and summary.
+                                echo '<div class="card mb-3 border-0">';
+                                echo '<div class="row g-0">';
+
+                                // Conditional display of the thumbnail
+                                if ($show_thumbnail) {
+                                    echo '<div class="col-md-4">';
+                                    // Chama a função para exibir a miniatura do post
+                                    echo '<div class="card-img">';
+                                    display_post_thumbnail($image_size, $image_classes, true);
+                                    echo '</div><!-- ./card-img -->';
+                                    echo '</div><!-- ./col-md-4 -->';
+                                }
+
+                                // Column layout adaptable to the existence or not of the image
+                                // A classe da div é definida pelo operador ternário com base na condição $show_thumbnail
+                                echo '<div class="' . ($show_thumbnail ? 'col-md-8' : 'col-12') . '">';
+                                // Conteúdo aqui
+                                echo '<div class="card-body' . ($show_thumbnail ? '' : ' p-0') . '">';
+                                echo '<header class="entry-header card-title">';
+                                display_post_title($title_tag, '', true);
+                                display_post_metadata_primary('');
+                                echo '</header><!-- ./header -->';
+                                // Conditional display the excerpt
+                                if ($show_excerpt) {
+                                    echo '<div class="card-text">';
+                                    display_post_excerpt();
+                                    echo '</div><!-- .card-text -->';
+                                }
+                                echo '</div><!-- .card-body -->';
+                                echo '</div>';
+
+                                echo '</div><!-- ./row -->';
+                                echo '</div><!-- ./card -->';
+
+                                break;
+
+                            default:
+                                // Fallback design if no featured image is found.
+
+                                // Display image, title and summary.
+                                echo '<div class="card border-0">';
+                                echo '<div class="card-body p-0">';
+                                echo '<div class="card-title">';
+                                echo '<header class="entry-header">';
+                                display_post_title($title_tag, '', true);
+                                display_post_metadata_primary('');
+                                echo '</header><!-- ./header -->';
+                                echo '</div><!-- .card-title -->';
+                                // Conditional display the excerpt
+                                if ($show_excerpt) {
+                                    echo '<div class="card-text">';
+                                    display_post_excerpt();
+                                    echo '</div><!-- ./card-text -->';
+                                }
+                                echo '</div><!-- .card-body -->';
+                                echo '</div><!-- ./card -->';
+                        }
+
+                        echo '<article>';
+
+                        echo '</li>';
+                    }
+
+                    echo '</ul>';
+
+                    custom_pagination($query);
+                    
+                    break;
+
+                case 'grid':
+
+                    // Lógica para layout de grid
+                    echo '<div class="row row-cols-1 row-cols-md-2 g-4">'; // Início da grid
+
+                    while ($query->have_posts()) {
+                        $query->the_post();
+
+                        // Lógica para exibir o conteúdo do post
+                        
+                        echo '<div class="col">'; // Colunas da grid
+                        
+                        echo '<div class="card post-item h-100">';
+                        echo '<article id="post-' . get_the_ID() . '" ' . $classes . ' itemscope itemtype="http://schema.org/BlogPosting">';
+                        display_post_thumbnail($image_size, $image_classes, true);
+                        echo '<div class="card-body">';
+                        echo '<div class="card-title">';
+                        display_post_title($title_tag, '', true);
+                        display_post_metadata_primary();
+                        echo '</div><!-- ./card-title -->';
+                        
+                        echo '<div class="card-text">';
+                        // Conditional display the excerpt
+                        if ($show_excerpt) {
+                            display_post_excerpt();
+                        }
+                        echo '</div><!-- ./card-text -->';
+                        echo '</div><!-- ./card-body -->';
+                        echo '<article>';
+                        echo '</div><!-- ./card -->';
+                        
+                        echo '</div><!-- ./col -->';
+                        
+                       
+                    }
+
+                    echo '</div>'; // Fim da grid
+
+                    custom_pagination($query);
+
+                    break;
+
+                case 'mosaic':
+
+                    // Lógica para layout de mosaic
+                    echo '<div class="mosaic-layout">'; // Início do layout mosaic
+
+                    while ($query->have_posts()) {
+                        $query->the_post();
+                        echo '<div class="mosaic-item">'; // Itens do mosaic
+                        // Lógica para exibir o conteúdo do post
+                        echo '</div>';
+                    }
+
+                    echo '</div>'; // Fim do layout mosaic
+                    break;
+
+                default:
+
+                    // Lógica padrão se nenhum layout for especificado ou se for desconhecido
+
+                    break;
+            }
+
+            // Implementação de paginação ou carregamento infinito
+            // ...
+
+        }
+
+
+        // Paginação ou Carregamento Infinito
+        // ...
+
+        echo $args['html_after'] ?? '';
+    }
+
+    wp_reset_postdata();
+}

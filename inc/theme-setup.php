@@ -133,8 +133,11 @@ function minimalista_setup() {
 	// Remove blank SVGs 
 	remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );		
 
+	// Enable shortcodes in editor.
+	add_filter('the_content', 'do_shortcode');
+
 	// Enable shortcodes in widgets.
-	add_filter('widget_text', 'do_shortcode');		
+	add_filter('widget_text', 'do_shortcode');
 
 	// Remove feed icon link from legacy RSS widget.
 	add_filter( 'rss_widget_feed_link', '__return_false' );

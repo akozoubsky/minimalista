@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Página de Projetos
+ * Template Name: Projects Page
  *
  * The template for displaying Projects.
  *

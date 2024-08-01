@@ -330,7 +330,7 @@ add_action('profile_update', 'minimalista_prevent_username_as_display_name');
  */
 function minimalista_validate_display_name($errors, $update, $user) {
     if ($update && $user->user_login === $user->display_name) {
-        $errors->add('display_name_error', __('Você não pode usar seu Nome de usuário (username) para ser exibido publicamente (display name). Por favor, escolha outro.', 'minimalista'));
+        $errors->add('display_name_error', __('You may not use your username to be displayed publicly (display name). Please choose another one.', 'minimalista'));
     }
 }
 add_action('user_profile_update_errors', 'minimalista_validate_display_name', 10, 3);

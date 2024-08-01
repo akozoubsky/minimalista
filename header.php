@@ -33,16 +33,9 @@ if (!defined('ABSPATH')) {
 
 			<?php
 			if ( has_custom_logo() ) {
-				$logo_width = get_theme_mod( 'minimalista_logo_width', 100 );
-				echo '<style>.custom-logo-link { max-width: ' . esc_attr( $logo_width ) . 'px; height: auto;}</style>';
-				the_custom_logo();
-			} else { ?>
-				<span class="navbar-brand site-title me-0 me-lg-2">
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-						<?php echo esc_html( get_bloginfo( 'name' ) ); ?>
-					</a>
-				</span>
-			<?php
+				echo minimalista_get_custom_logo('d-inline-block custom-logo-link navbar-brand', 'd-inline-block custom-logo align-middle rounded-circle', 60 );
+			} else {
+				echo minimalista_display_site_name('d-inline-block site-name navbar-brand');
 			}
 			?>
 

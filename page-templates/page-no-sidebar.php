@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Página Sem Barra Lateral V.1
+ * Template Name: No Sidebar V.1
  * 
  * The template for displaying all pages without sidebar
  * 

@@ -3,10 +3,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: _s 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/_s\n"
-"POT-Creation-Date: 2020-04-17T21:03:15+00:00\n"
-"PO-Revision-Date: 2024-06-29 18:07-0300\n"
-"Last-Translator: \n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/minimalista\n"
+"POT-Creation-Date: 2024-08-01T23:14:32+02:00\n"
+"PO-Revision-Date: 2024-08-01 18:15-0300\n"
+"Last-Translator: Alexandre kozoubsky <akozubsky@gmail.com>\n"
 "Language-Team: \n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -17,38 +17,45 @@ msgstr ""
 "X-Domain: _s\n"
 
 #. Theme Name of the theme
-msgid "_s"
-msgstr ""
+#: D:\htdocs\augustofredericoschmidt.local\wp-content\themes\minimalista\style.css
+msgid "minimalista"
+msgstr "minimalista"
 
 #. Theme URI of the theme
-msgid "https://underscores.me/"
-msgstr "https://underscores.me/"
+#: D:\htdocs\augustofredericoschmidt.local\wp-content\themes\minimalista\style.css
+msgid "https://github.com/akozoubsky/minimalista"
+msgstr "https://github.com/akozoubsky/minimalista"
 
 #. Description of the theme
+#: D:\htdocs\augustofredericoschmidt.local\wp-content\themes\minimalista\style.css
 msgid ""
-"Hi. I'm a starter theme called <code>_s</code>, or <em>underscores</em>, if "
-"you like. I'm a theme meant for hacking so don't use me as a <em>Parent "
-"Theme</em>. Instead try turning me into the next, most awesome, WordPress "
-"theme out there. That's what I'm here for."
+"Minimalista is a clean, elegant, and fully customizable WordPress theme "
+"based on the Underscores starter theme. Ideal for bloggers, small "
+"businesses, and personal websites, Minimalista offers a responsive design, "
+"customizable colors, and various layout options to create a unique and "
+"professional online presence."
 msgstr ""
-"Oi. Eu sou um tema inicial chamado <code>_s</code>, ou <em>underscores</em>, "
-"se preferir. Sou um tema destinado a modificações, então não me use como um "
-"<em>Tema Pai</em>. Em vez disso, tente me transformar no próximo tema "
-"WordPress mais incrível que existe. É para isso que estou aqui."
+"O Minimalista é um tema WordPress limpo, elegante e totalmente "
+"personalizável, baseado no tema inicial Underscores. Ideal para blogueiros, "
+"pequenas empresas e sites pessoais, o Minimalista oferece um design "
+"responsivo, cores personalizáveis e várias opções de layout para criar uma "
+"presença online única e profissional."
 
 #. Author of the theme
-msgid "Automattic"
-msgstr "Automattic"
+#: D:\htdocs\augustofredericoschmidt.local\wp-content\themes\minimalista\style.css
+msgid "Alexandre Kozoubsky"
+msgstr "Alexandre Kozoubsky"
 
 #. Author URI of the theme
-msgid "https://automattic.com/"
-msgstr "https://automattic.com/"
+#: D:\htdocs\augustofredericoschmidt.local\wp-content\themes\minimalista\style.css
+msgid "https://alexandrekozoubsky.com.br/"
+msgstr "https://alexandrekozoubsky.com.br/"
 
-#: 404.php:18
+#: 404.php:32
 msgid "Oops! That page can&rsquo;t be found."
 msgstr "Ops! Essa página não pode ser encontrada."
 
-#: 404.php:22
+#: 404.php:37
 msgid ""
 "It looks like nothing was found at this location. Maybe try one of the links "
 "below or a search?"
@@ -56,14 +63,29 @@ msgstr ""
 "Parece que nada foi encontrado neste local. Talvez tentar um dos links "
 "abaixo ou uma pesquisa?"
 
-#: 404.php:31
+#: 404.php:44
+msgid "Popular Posts"
+msgstr "Postagens populares"
+
+#: 404.php:49
 msgid "Most Used Categories"
 msgstr "Categorias mais usadas"
 
-#. translators: %1$s: smiley
-#: 404.php:49
-msgid "Try looking in the monthly archives. %1$s"
-msgstr "Tente procurar nos arquivos mensais. %1$s"
+#: 404.php:66
+msgid "Need Help?"
+msgstr "Precisa de Ajuda?"
+
+#: 404.php:67
+msgid "If you need further assistance, feel free to contact us."
+msgstr "Se precisar de mais assistência, sinta-se à vontade para nos contatar."
+
+#: 404.php:68
+msgid "Contact Us"
+msgstr "Contate-nos"
+
+#: classes/class-wp-bootstrap-5-navwalker.php:383
+msgid "Add a menu"
+msgstr "Adicionar um menu"
 
 #. translators: 1: title.
 #: comments.php:35
@@ -78,123 +100,337 @@ msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] "%1$s pensamento sobre &ldquo;%2$s&rdquo;"
 msgstr[1] "%1$s pensamentos sobre &ldquo;%2$s&rdquo;"
 
-#: comments.php:68
+#: comments.php:79
 msgid "Comments are closed."
 msgstr "Os comentários estão encerrados."
 
-#: footer.php:18
-msgid "https://wordpress.org/"
-msgstr "https://wordpress.org/"
+#: inc/customizer.php:69
+msgid "Logo Settings"
+msgstr "Configurações de Logotipo"
 
-#. translators: %s: CMS name, i.e. WordPress.
-#: footer.php:21
-msgid "Proudly powered by %s"
-msgstr "Orgulhosamente alimentado por %s"
+#: inc/customizer.php:82
+msgid "Logo Width (px)"
+msgstr "Largura do Logotipo (px)"
 
-#. translators: 1: Theme name, 2: Theme author.
-#: footer.php:27
-msgid "Theme: %1$s by %2$s."
-msgstr "Tema: %1$s por %2$s."
+#: inc/metabox.php:23
+msgid "Disable automatic paragraph"
+msgstr "Desativar parágrafo automático"
 
-#: functions.php:53
-msgid "Primary"
-msgstr "Principal"
+#: inc/metabox.php:44
+msgid "Disable wpautop"
+msgstr "Desativar wpautop"
 
-#: functions.php:130
-msgid "Sidebar"
-msgstr "Barra Lateral"
+#: inc/shortcodes.php:196
+msgid "View All Posts"
+msgstr "Ver Todas as Postagens"
 
-#: functions.php:132
-msgid "Add widgets here."
-msgstr "Adicione widgets aqui."
+#: inc/template-functions.php:333
+msgid ""
+"You may not use your username to be displayed publicly (display name). "
+"Please choose another one."
+msgstr ""
+"Você não pode usar seu nome de usuário para ser exibido publicamente (nome "
+"de exibição). Por favor, escolha outro."
 
-#: header.php:26
-msgid "Skip to content"
-msgstr "Pular para o conteúdo"
-
-#: header.php:49
-msgid "Primary Menu"
-msgstr "Menu Principal"
-
-#. translators: %s: post date.
-#: inc/template-tags.php:30
+#: inc/template-tags.php:162
 msgctxt "post date"
-msgid "Posted on %s"
+msgid "Published on %s"
 msgstr "Publicado em %s"
 
+#. translators: %s: modified date.
+#: inc/template-tags.php:171
+msgctxt "modified date"
+msgid "Updated %s"
+msgstr "Atualizado em %s"
+
 #. translators: %s: post author.
-#: inc/template-tags.php:46
-msgctxt "post author"
+#: inc/template-tags.php:179
+msgctxt "post author posted on"
+msgid "by %s"
+msgstr "por %s"
+
+#: inc/template-tags.php:187
+msgctxt "modified author posted on"
+msgid "by %s"
+msgstr "por %s"
+
+#: inc/template-tags.php:263
+msgid "minute"
+msgid_plural "minutes"
+msgstr[0] "minuto"
+msgstr[1] "minutos"
+
+#: inc/template-tags.php:266
+msgid "hour"
+msgid_plural "hours"
+msgstr[0] "hora"
+msgstr[1] "horas"
+
+#: inc/template-tags.php:269
+msgid "day"
+msgid_plural "days"
+msgstr[0] "dia"
+msgstr[1] "dias"
+
+#: inc/template-tags.php:272
+msgid "week"
+msgid_plural "weeks"
+msgstr[0] "semana"
+msgstr[1] "semanas"
+
+#: inc/template-tags.php:275
+msgid "year"
+msgid_plural "years"
+msgstr[0] "ano"
+msgstr[1] "anos"
+
+#: inc/template-tags.php:279
+msgid "%s "
+msgid_plural "%s "
+msgstr[0] "%s "
+msgstr[1] "%s "
+
+#. translators: %s: post author.
+#: inc/template-tags.php:289
+msgctxt "post author display time since posted"
 msgid "by %s"
 msgstr "por %s"
 
 #. translators: used between list items, there is a space after the comma
-#: inc/template-tags.php:63
+#: inc/template-tags.php:306
 msgid ", "
 msgstr ", "
 
 #. translators: 1: list of categories.
-#: inc/template-tags.php:66
+#: inc/template-tags.php:309
 msgid "Posted in %1$s"
 msgstr "Categorizado em %1$s"
 
 #. translators: used between list items, there is a space after the comma
-#: inc/template-tags.php:70
+#: inc/template-tags.php:313
 msgctxt "list item separator"
 msgid ", "
 msgstr ", "
 
 #. translators: 1: list of tags.
-#: inc/template-tags.php:73
+#: inc/template-tags.php:316
 msgid "Tagged %1$s"
 msgstr "Marcado com %1$s"
 
 #. translators: %s: post title
-#: inc/template-tags.php:83
+#: inc/template-tags.php:326
 msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
 msgstr "Deixe um comentário<span class=\"screen-reader-text\"> em %s</span>"
 
+#: inc/template-tags.php:655
+msgid "Aside"
+msgstr "Nota"
+
+#: inc/template-tags.php:658
+msgid "Gallery"
+msgstr "Galeria"
+
+#: inc/template-tags.php:661
+msgid "Link"
+msgstr "Link"
+
+#: inc/template-tags.php:664
+msgid "Image"
+msgstr "Imagem"
+
+#: inc/template-tags.php:667
+msgid "Quote"
+msgstr "Citação"
+
+#: inc/template-tags.php:670
+msgid "Status"
+msgstr "Status"
+
+#: inc/template-tags.php:673
+msgid "Video"
+msgstr "Vídeo"
+
+#: inc/template-tags.php:676
+msgid "Audio"
+msgstr "Áudio"
+
+#: inc/template-tags.php:679
+msgid "Chat"
+msgstr "Chat"
+
+#: inc/template-tags.php:770
+msgid "%s word"
+msgid_plural "%s words"
+msgstr[0] "%s palavra"
+msgstr[1] "%s palavras"
+
+#: inc/template-tags.php:778
+msgid "%s image"
+msgid_plural "%s images"
+msgstr[0] "%s imagem"
+msgstr[1] "%s imagens"
+
+#: inc/template-tags.php:780
+msgid "No images in gallery"
+msgstr "Sem imagens na galeria"
+
+#: inc/template-tags.php:790
+msgid "External Link"
+msgstr "Link externo"
+
+#: inc/template-tags.php:814
+msgid "%s participant"
+msgid_plural "%s participants"
+msgstr[0] "%s participante"
+msgstr[1] "%s participantes"
+
+#: inc/template-tags.php:817
+msgid "%s line"
+msgid_plural "%s lines"
+msgstr[0] "%s linha"
+msgstr[1] "%s linhas"
+
 #. translators: %s: Name of current post. Only visible to screen readers
-#: inc/template-tags.php:100 template-parts/content-page.php:39
+#: inc/template-tags.php:855
 msgid "Edit <span class=\"screen-reader-text\">%s</span>"
 msgstr "Edite <span class=\"screen-reader-text\">%s</span>"
 
-#: inc/woocommerce.php:186
-msgid "View your shopping cart"
-msgstr "Ver seu carrinho de compras"
+#: inc/template-tags.php:1117
+msgid "Name"
+msgstr "Nome"
 
-#. translators: number of items in the mini cart.
-#: inc/woocommerce.php:190
-msgid "%d item"
-msgid_plural "%d items"
-msgstr[0] "%d item"
-msgstr[1] "%d itens"
+#: inc/template-tags.php:1119
+msgid "Email"
+msgstr "E-mail"
+
+#: inc/template-tags.php:1121
+msgid "Website"
+msgstr "Site"
+
+#: inc/template-tags.php:1124
+msgid "Comment"
+msgstr "Comentário"
+
+#: inc/template-tags.php:1348
+msgid "Previous"
+msgstr "Anterior"
+
+#: inc/template-tags.php:1349
+msgid "Next"
+msgstr "Próximo"
+
+#: inc/template-tags.php:1391
+msgid "Next page"
+msgstr "Próxima página"
+
+#: inc/template-tags.php:1392
+msgid "Previous page"
+msgstr "Página anterior"
+
+#: inc/theme-setup.php:55
+msgid "Primary"
+msgstr "Principal"
+
+#: inc/widgets.php:20
+msgid "Sidebar"
+msgstr "Barra Lateral"
+
+#: inc/widgets.php:22
+msgid "Add widgets here."
+msgstr "Adicione widgets aqui."
+
+#: inc/widgets.php:46
+msgid "Social Media Links"
+msgstr "Links de mídia social"
+
+#: inc/widgets.php:47
+msgid "A widget to display social media links."
+msgstr "Um widget para exibir links de mídia social."
+
+#: inc/widgets.php:88
+msgid "Title:"
+msgstr "Título:"
+
+#: inc/widgets.php:92
+msgid "Facebook URL:"
+msgstr "URL do Facebook:"
+
+#: inc/widgets.php:96
+msgid "Twitter URL:"
+msgstr "URL do Twitter:"
+
+#: inc/widgets.php:100
+msgid "Instagram URL:"
+msgstr "URL do Instagram:"
+
+#. Template Name of the theme
+msgid "Blog Cards"
+msgstr "Cartões de Blog"
+
+#. Template Name of the theme
+msgid "Blog 2"
+msgstr "Blog 2"
+
+#. Template Name of the theme
+msgid "Blog"
+msgstr "Blog"
+
+#. Template Name of the theme
+msgid "Contact Page V.1"
+msgstr "Página de Contato V.1"
+
+#. Template Name of the theme
+msgid "Front Page"
+msgstr "Página Inicial"
+
+#. Template Name of the theme
+msgid "No Sidebar V.1"
+msgstr "Sem Barra Lateral V.1"
+
+#. Template Name of the theme
+msgid "Projects Page"
+msgstr "Página de Projetos"
 
 #. translators: %s: search query.
-#: search.php:22
+#: search.php:42
 msgid "Search Results for: %s"
 msgstr "Resultados da pesquisa por: %s"
 
-#: single.php:23
-msgid "Previous:"
-msgstr "Anterior:"
+#: search.php:73
+msgid "Search Results"
+msgstr "Resultados da pesquisa"
 
-#: single.php:24
-msgid "Next:"
-msgstr "Próximo:"
+#: search.php:78
+msgid "Please enter at least 3 characters for your search."
+msgstr "Por favor, insira pelo menos 3 caracteres para sua pesquisa."
 
-#: template-parts/content-none.php:14
+#: searchform.php:25
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr "Pesquisar &hellip;"
+
+#: searchform.php:25
+msgctxt "label"
+msgid "Search for"
+msgstr "Pesquisar por"
+
+#: searchform.php:26
+msgctxt "submit button"
+msgid "Search"
+msgstr "Pesquisar"
+
+#: template-parts/content-none.php:17
 msgid "Nothing Found"
 msgstr "Nada Encontrado"
 
 #. translators: 1: link to WP admin new post page.
-#: template-parts/content-none.php:24
+#: template-parts/content-none.php:27
 msgid ""
 "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
 msgstr ""
 "Pronto para publicar sua primeira postagem? <a href=\"%1$s\">Comece aqui</a>."
 
-#: template-parts/content-none.php:37
+#: template-parts/content-none.php:40
 msgid ""
 "Sorry, but nothing matched your search terms. Please try again with some "
 "different keywords."
@@ -202,7 +438,7 @@ msgstr ""
 "Desculpe, mas nada correspondeu aos seus termos de busca. Por favor, tente "
 "novamente com outras palavras-chave."
 
-#: template-parts/content-none.php:44
+#: template-parts/content-none.php:47
 msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
 "searching can help."
@@ -210,40 +446,67 @@ msgstr ""
 "Parece que não conseguimos encontrar o que você está procurando. Talvez uma "
 "busca possa ajudar."
 
-#: template-parts/content-page.php:25 template-parts/content.php:53
-msgid "Pages:"
-msgstr "Páginas:"
+#, fuzzy
+#~| msgctxt "post date"
+#~| msgid "Published on %s"
+#~ msgctxt "post date"
+#~ msgid "Publicado em %s"
+#~ msgstr "Publicado em %s"
 
-#. translators: %s: Name of current post. Only visible to screen readers
-#: template-parts/content.php:40
-msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
-msgstr "Continue lendo<span class=\"screen-reader-text\"> \"%s\"</span>"
+#~ msgid "https://underscores.me/"
+#~ msgstr "https://underscores.me/"
 
-msgctxt "post date"
-msgid "Published on %s"
-msgstr "Publicado em %s"
+#~ msgid ""
+#~ "Hi. I'm a starter theme called <code>_s</code>, or <em>underscores</em>, "
+#~ "if you like. I'm a theme meant for hacking so don't use me as a "
+#~ "<em>Parent Theme</em>. Instead try turning me into the next, most "
+#~ "awesome, WordPress theme out there. That's what I'm here for."
+#~ msgstr ""
+#~ "Oi. Eu sou um tema inicial chamado <code>_s</code>, ou <em>underscores</"
+#~ "em>, se preferir. Sou um tema destinado a modificações, então não me use "
+#~ "como um <em>Tema Pai</em>. Em vez disso, tente me transformar no próximo "
+#~ "tema WordPress mais incrível que existe. É para isso que estou aqui."
 
-msgctxt "modified date"
-msgid "Updated on %s"
-msgstr "Atualizado em %s"
+#~ msgid "Automattic"
+#~ msgstr "Automattic"
 
-msgctxt "modified author"
-msgid "by %s"
-msgstr "por %s"
+#~ msgid "https://automattic.com/"
+#~ msgstr "https://automattic.com/"
 
+#~ msgid "Try looking in the monthly archives. %1$s"
+#~ msgstr "Tente procurar nos arquivos mensais. %1$s"
 
-msgid "Name"
-msgstr "Nome"
+#~ msgid "https://wordpress.org/"
+#~ msgstr "https://wordpress.org/"
 
-msgid "Email"
-msgstr "E-mail"
+#~ msgid "Proudly powered by %s"
+#~ msgstr "Orgulhosamente alimentado por %s"
 
-msgid "Website"
-msgstr "Site"
+#~ msgid "Theme: %1$s by %2$s."
+#~ msgstr "Tema: %1$s por %2$s."
 
-msgid "Comment"
-msgstr "Comentário"
+#~ msgid "Skip to content"
+#~ msgstr "Pular para o conteúdo"
 
-msgid "Comments"
-msgstr "Comentários"
+#~ msgid "Primary Menu"
+#~ msgstr "Menu Principal"
 
+#~ msgid "View your shopping cart"
+#~ msgstr "Ver seu carrinho de compras"
+
+#~ msgid "%d item"
+#~ msgid_plural "%d items"
+#~ msgstr[0] "%d item"
+#~ msgstr[1] "%d itens"
+
+#~ msgid "Next:"
+#~ msgstr "Próximo:"
+
+#~ msgid "Pages:"
+#~ msgstr "Páginas:"
+
+#~ msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+#~ msgstr "Continue lendo<span class=\"screen-reader-text\"> \"%s\"</span>"
+
+#~ msgid "Comments"
+#~ msgstr "Comentários"
