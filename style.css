@@ -97,7 +97,9 @@ header .custom-logo {
     margin: 0;
 }
 
-iframe {
+iframe,
+embed,
+object {
     max-width: 100%;
 }
 
@@ -262,6 +264,7 @@ b {
 em,
 i {
     font-style: italic;
+    font-variation-settings: 'ital' 1;
 }
 
 label {
@@ -333,6 +336,7 @@ li:not(.list-group-item) {
 blockquote {
     padding: 2rem;
     font-style: italic;
+    font-variation-settings: 'ital' 1;
     background-color: var(--bs-light);
     border-radius: 5px;
 }
@@ -347,6 +351,17 @@ blockquote footer {
 blockquote footer {
     margin-bottom: 0;
     padding-bottom: 0;
+}
+
+q {
+    quotes: "“" "”" "‘" "’"; /* Define custom quotes */
+    font-style: italic;
+    font-variation-settings: 'ital' 1;
+}
+/* Estilo para citações dentro de citações */
+q q {
+    quotes: "‘" "’"; /* Single quotes for nested quotes */
+    font-style: normal; /* Texto normal para diferenciar */
 }
 
 /* 2.5 Links
