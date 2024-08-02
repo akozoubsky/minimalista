@@ -7,7 +7,7 @@
  * @author Alexandre Kozoubsky
  */
 
- /* Use: [minimalista_bloginfo key='name'] OU [minimalista_bloginfo key='wpurl'] */
+ /* Use: [bloginfo key='name'] OU [bloginfo key='wpurl'] */
 if ( ! function_exists( 'minimalista_bloginfo_shortcode' ) ) {
 	
 	function minimalista_bloginfo_shortcode( $atts ) {

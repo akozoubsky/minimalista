@@ -697,7 +697,6 @@ figure,
 picture {
     max-width: 100%;
     height: auto;
-    /* display: block; */
 }
 
 .avatar {
@@ -706,10 +705,11 @@ picture {
 
 figcaption,
 .wp-caption-text {
+    max-width: 100%;
     padding: 1rem 0.5rem;
     text-align: center;
     font-size: 0.875em;
-    color: #666;
+    color: var(--bs-gray-600);
 }
 
 .post-thumbnail img,
@@ -832,6 +832,11 @@ figcaption,
 /* 4.5 Wordpress Gallery using Masonry
    ========================================================================== */
 
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 figure.gallery-item {
     margin-bottom: 0;
     /* undo Bootstrap style */
@@ -841,9 +846,9 @@ p+.gallery {
     padding-top: var(--minimalista-vertical-spacing-default);
 }
 
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
+.gallery .figcaption,
+.gallery .wp-caption-text {
+    display: none;
 }
 
 /* Styles for 0 column */
@@ -1158,6 +1163,9 @@ p+.gallery {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
+
+/* Style for "aside" format posts */
+
 
 /* ========================================================================== */
 /* 6. BOOTSTRAP REDEFINITIONS OR MODIFICATIONS
