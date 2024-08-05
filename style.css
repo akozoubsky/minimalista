@@ -269,7 +269,6 @@ body,
 html {
     margin: 0;
     padding: 0;
-    background-color: #fdfdfd;
 }
 
 /* Main Content Styles */
@@ -1020,7 +1019,6 @@ footer#colophon a {
     --minimalista-article-meta-color: #000;
     --minimalista-article-entry-title-link-color: rgb(0,0,0);
     */
-    --minimalista-article-format-icon-color: #3a5c4b;
 }
 
 .warning__icon {
@@ -1937,6 +1935,13 @@ de card-title para manter a consistência do espaçamento */
   */
 
 /* Classes para espaçamentos sem colapso de margem */
+
+.no-collapse-0 {
+    display: flex;
+    flex-direction: column;
+    gap: 0 !important;
+}
+
 .no-collapse-1 {
     display: flex;
     flex-direction: column;
