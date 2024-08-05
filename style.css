@@ -26,9 +26,235 @@ License URI: LICENSE
     /* horizontal spacing */
     --minimalista-horizontal-spacing-default: 1.25rem;
 
-    /* --minimalista-btn-primary-hover-bg: var(--minimalista-btn-primary-hover-bg, var(--bs-primary));
-    --minimalista-btn-secondary-hover-bg: var(--minimalista-btn-secondary-hover-bg, var(--bs-secondary));
-     */
+    --minimalista-color-black-html: #000000;
+    --minimalista-color-black-rgb: rgb(0, 0, 0);
+    --minimalista-color-black-hue: 0;
+    --minimalista-color-black-hsl: hsl(0, 0%, 0%);
+
+    --minimalista-color-navy-blue-html: #000080;
+    --minimalista-color-navy-blue-rgb: rgb(0, 0, 128);
+    --minimalista-color-navy-blue-hue: 240;
+    --minimalista-color-navy-blue-hsl: hsl(240, 100%, 25%);
+
+    --minimalista-color-blue-html: #0000FF;
+    --minimalista-color-blue-rgb: rgb(0, 0, 255);
+    --minimalista-color-blue-hue: 240;
+    --minimalista-color-blue-hsl: hsl(240, 100%, 50%);
+
+    --minimalista-color-teal-html: #008080;
+    --minimalista-color-teal-rgb: rgb(0, 128, 128);
+    --minimalista-color-teal-hue: 180;
+    --minimalista-color-teal-hsl: hsl(180, 100%, 25%);
+
+    --minimalista-color-green-html: #00FF00;
+    --minimalista-color-green-rgb: rgb(0, 255, 0);
+    --minimalista-color-green-hue: 120;
+    --minimalista-color-green-hsl: hsl(120, 100%, 50%);
+
+    --minimalista-color-aqua-html: #00FFFF;
+    --minimalista-color-aqua-rgb: rgb(0, 255, 255);
+    --minimalista-color-aqua-hue: 180;
+    --minimalista-color-aqua-hsl: hsl(180, 100%, 50%);
+
+    --minimalista-color-blue-green-html: #0D98BA;
+    --minimalista-color-blue-green-rgb: rgb(13, 152, 186);
+    --minimalista-color-blue-green-hue: 194;
+    --minimalista-color-blue-green-hsl: hsl(194, 87%, 39%);
+
+    --minimalista-color-forest-green-html: #228B22;
+    --minimalista-color-forest-green-rgb: rgb(34, 139, 34);
+    --minimalista-color-forest-green-hue: 120;
+    --minimalista-color-forest-green-hsl: hsl(120, 61%, 34%);
+
+    --minimalista-color-turquoise-html: #40E0D0;
+    --minimalista-color-turquoise-rgb: rgb(64, 224, 208);
+    --minimalista-color-turquoise-hue: 174;
+    --minimalista-color-turquoise-hsl: hsl(174, 72%, 56%);
+
+    --minimalista-color-royal-blue-html: #4169E1;
+    --minimalista-color-royal-blue-rgb: rgb(65, 105, 225);
+    --minimalista-color-royal-blue-hue: 225;
+    --minimalista-color-royal-blue-hsl: hsl(225, 73%, 57%);
+
+    --minimalista-color-indigo-html: #4B0082;
+    --minimalista-color-indigo-rgb: rgb(75, 0, 130);
+    --minimalista-color-indigo-hue: 275;
+    --minimalista-color-indigo-hsl: hsl(275, 100%, 25%);
+
+    --minimalista-color-rebecca-purple-html: #663399;
+    --minimalista-color-rebecca-purple-rgb: rgb(102, 51, 153);
+    --minimalista-color-rebecca-purple-hue: 270;
+    --minimalista-color-rebecca-purple-hsl: hsl(270, 50%, 40%);
+
+    --minimalista-color-slate-gray-html: #708090;
+    --minimalista-color-slate-gray-rgb: rgb(112, 128, 144);
+    --minimalista-color-slate-gray-hue: 210;
+    --minimalista-color-slate-gray-hsl: hsl(210, 13%, 50%);
+
+    --minimalista-color-maroon-html: #800000;
+    --minimalista-color-maroon-rgb: rgb(128, 0, 0);
+    --minimalista-color-maroon-hue: 0;
+    --minimalista-color-maroon-hsl: hsl(0, 100%, 25%);
+
+    --minimalista-color-purple-html: #800080;
+    --minimalista-color-purple-rgb: rgb(128, 0, 128);
+    --minimalista-color-purple-hue: 300;
+    --minimalista-color-purple-hsl: hsl(300, 100%, 25%);
+
+    --minimalista-color-olive-html: #808000;
+    --minimalista-color-olive-rgb: rgb(128, 128, 0);
+    --minimalista-color-olive-hue: 60;
+    --minimalista-color-olive-hsl: hsl(60, 100%, 25%);
+
+    --minimalista-color-sky-blue-html: #87CEEB;
+    --minimalista-color-sky-blue-rgb: rgb(135, 206, 235);
+    --minimalista-color-sky-blue-hue: 197;
+    --minimalista-color-sky-blue-hsl: hsl(197, 71%, 73%);
+
+    --minimalista-color-blue-purple-html: #8A2BE2;
+    --minimalista-color-blue-purple-rgb: rgb(138, 43, 226);
+    --minimalista-color-blue-purple-hue: 271;
+    --minimalista-color-blue-purple-hsl: hsl(271, 76%, 53%);
+
+    --minimalista-color-mint-green-html: #98FF98;
+    --minimalista-color-mint-green-rgb: rgb(152, 255, 152);
+    --minimalista-color-mint-green-hue: 120;
+    --minimalista-color-mint-green-hsl: hsl(120, 100%, 80%);
+
+    --minimalista-color-yellow-green-html: #ADFF2F;
+    --minimalista-color-yellow-green-rgb: rgb(173, 255, 47);
+    --minimalista-color-yellow-green-hue: 80;
+    --minimalista-color-yellow-green-hsl: hsl(80, 100%, 59%);
+
+    --minimalista-color-lavender-floral-html: #B57EDC;
+    --minimalista-color-lavender-floral-rgb: rgb(181, 126, 220);
+    --minimalista-color-lavender-floral-hue: 275;
+    --minimalista-color-lavender-floral-hsl: hsl(275, 59%, 68%);
+
+    --minimalista-color-red-purple-html: #C71585;
+    --minimalista-color-red-purple-rgb: rgb(199, 21, 133);
+    --minimalista-color-red-purple-hue: 322;
+    --minimalista-color-red-purple-hsl: hsl(322, 82%, 43%);
+
+    --minimalista-color-lavender-blue-html: #CCCCFF;
+    --minimalista-color-lavender-blue-rgb: rgb(204, 204, 255);
+    --minimalista-color-lavender-blue-hue: 240;
+    --minimalista-color-lavender-blue-hsl: hsl(240, 100%, 90%);
+
+    --minimalista-color-chocolate-html: #D2691E;
+    --minimalista-color-chocolate-rgb: rgb(210, 105, 30);
+    --minimalista-color-chocolate-hue: 25;
+    --minimalista-color-chocolate-hsl: hsl(25, 75%, 47%);
+
+    --minimalista-color-crimson-html: #DC143C;
+    --minimalista-color-crimson-rgb: rgb(220, 20, 60);
+    --minimalista-color-crimson-hue: 348;
+    --minimalista-color-crimson-hsl: hsl(348, 83%, 47%);
+
+    --minimalista-color-plum-html: #DDA0DD;
+    --minimalista-color-plum-rgb: rgb(221, 160, 221);
+    --minimalista-color-plum-hue: 300;
+    --minimalista-color-plum-hsl: hsl(300, 47%, 75%);
+
+    --minimalista-color-lavender-html: #E6E6FA;
+    --minimalista-color-lavender-rgb: rgb(230, 230, 250);
+    --minimalista-color-lavender-hue: 240;
+    --minimalista-color-lavender-hsl: hsl(240, 66%, 94%);
+
+    --minimalista-color-beige-html: #F5F5DC;
+    --minimalista-color-beige-rgb: rgb(245, 245, 220);
+    --minimalista-color-beige-hue: 60;
+    --minimalista-color-beige-hsl: hsl(60, 56%, 91%);
+
+    --minimalista-color-salmon-html: #FA8072;
+    --minimalista-color-salmon-rgb: rgb(250, 128, 114);
+    --minimalista-color-salmon-hue: 6;
+    --minimalista-color-salmon-hsl: hsl(6, 93%, 71%);
+
+    --minimalista-color-sunset-orange-html: #FD5E53;
+    --minimalista-color-sunset-orange-rgb: rgb(253, 94, 83);
+    --minimalista-color-sunset-orange-hue: 4;
+    --minimalista-color-sunset-orange-hsl: hsl(4, 98%, 66%);
+
+    --minimalista-color-red-html: #FF0000;
+    --minimalista-color-red-rgb: rgb(255, 0, 0);
+    --minimalista-color-red-hue: 0;
+    --minimalista-color-red-hsl: hsl(0, 100%, 50%);
+
+    --minimalista-color-magenta-html: #FF00FF;
+    --minimalista-color-magenta-rgb: rgb(255, 0, 255);
+    --minimalista-color-magenta-hue: 300;
+    --minimalista-color-magenta-hsl: hsl(300, 100%, 50%);
+
+    --minimalista-color-deep-pink-html: #FF1493;
+    --minimalista-color-deep-pink-rgb: rgb(255, 20, 147);
+    --minimalista-color-deep-pink-hue: 328;
+    --minimalista-color-deep-pink-hsl: hsl(328, 100%, 54%);
+
+    --minimalista-color-orange-red-html: #FF4500;
+    --minimalista-color-orange-red-rgb: rgb(255, 69, 0);
+    --minimalista-color-orange-red-hue: 16;
+    --minimalista-color-orange-red-hsl: hsl(16, 100%, 50%);
+
+    --minimalista-color-hot-pink-html: #FF69B4;
+    --minimalista-color-hot-pink-rgb: rgb(255, 105, 180);
+    --minimalista-color-hot-pink-hue: 330;
+    --minimalista-color-hot-pink-hsl: hsl(330, 100%, 71%);
+
+    --minimalista-color-coral-html: #FF7F50;
+    --minimalista-color-coral-rgb: rgb(255, 127, 80);
+    --minimalista-color-coral-hue: 16;
+    --minimalista-color-coral-hsl: hsl(16, 100%, 66%);
+
+    --minimalista-color-light-salmon-html: #FFA07A;
+    --minimalista-color-light-salmon-rgb: rgb(255, 160, 122);
+    --minimalista-color-light-salmon-hue: 17;
+    --minimalista-color-light-salmon-hsl: hsl(17, 100%, 74%);
+
+    --minimalista-color-orange-html: #FFA500;
+    --minimalista-color-orange-rgb: rgb(255, 165, 0);
+    --minimalista-color-orange-hue: 39;
+    --minimalista-color-orange-hsl: hsl(39, 100%, 50%);
+
+    --minimalista-color-yellow-orange-html: #FFAE42;
+    --minimalista-color-yellow-orange-rgb: rgb(255, 174, 66);
+    --minimalista-color-yellow-orange-hue: 36;
+    --minimalista-color-yellow-orange-hsl: hsl(36, 100%, 63%);
+
+    --minimalista-color-gold-html: #FFD700;
+    --minimalista-color-gold-rgb: rgb(255, 215, 0);
+    --minimalista-color-gold-hue: 51;
+    --minimalista-color-gold-hsl: hsl(51, 100%, 50%);
+
+    --minimalista-color-peach-html: #FFDAB9;
+    --minimalista-color-peach-rgb: rgb(255, 218, 185);
+    --minimalista-color-peach-hue: 28;
+    --minimalista-color-peach-hsl: hsl(28, 100%, 86%);
+
+    --minimalista-color-yellow-html: #FFFF00;
+    --minimalista-color-yellow-rgb: rgb(255, 255, 0);
+    --minimalista-color-yellow-hue: 60;
+    --minimalista-color-yellow-hsl: hsl(60, 100%, 50%);
+
+    --minimalista-color-canary-yellow-html: #FFFF99;
+    --minimalista-color-canary-yellow-rgb: rgb(255, 255, 153);
+    --minimalista-color-canary-yellow-hue: 60;
+    --minimalista-color-canary-yellow-hsl: hsl(60, 100%, 80%);
+
+    --minimalista-color-floral-white-html: #FFFAF0;
+    --minimalista-color-floral-white-rgb: rgb(255, 250, 240);
+    --minimalista-color-floral-white-hue: 40;
+    --minimalista-color-floral-white-hsl: hsl(40, 100%, 97%);
+
+    --minimalista-color-white-html: #FFFFFF;
+    --minimalista-color-white-rgb: rgb(255, 255, 255);
+    --minimalista-color-white-hue: 0;
+    --minimalista-color-white-hsl: hsl(0, 0%, 100%);
+
+    --minimalista-color-black-html: #000000;
+    --minimalista-color-black-rgb: rgb(0, 0, 0);
+    --minimalista-color-black-hue: 0;
+    --minimalista-color-black-hsl: hsl(0, 0%, 0%);
 }
 
 /* ========================================================================== */
@@ -47,7 +273,8 @@ html {
 }
 
 /* Main Content Styles */
-.site-main {
+.site-main,
+.sidebar {
     padding: var(--minimalista-vertical-spacing-default) 0;
 }
 
@@ -59,32 +286,9 @@ article {
     margin-bottom: calc(1 * var(--minimalista-vertical-spacing-default));
 }
 
-/* .entry-excerpt, .entry-content {
-    padding: var(--minimalista-vertical-spacing-default) 0;
-} */
-
-/* Sidebar Styles */
-.sidebar {
-    padding: var(--minimalista-vertical-spacing-default) 0;
-}
-
-.sidebar .widget {
-    margin-bottom: calc(2 * var(--minimalista-vertical-spacing-default));
-}
-
-/* Footer Styles */
+header,
 footer {
     padding: calc(var(--minimalista-vertical-spacing-default)) 0;
-}
-
-/* Navigation Styles */
-.navbar {
-    margin-bottom: var(--minimalista-vertical-spacing-default);
-}
-
-/* header Styles */
-header {
-    padding: var(--minimalista-vertical-spacing-default) 0;
 }
 
 header.page-header {
@@ -95,6 +299,15 @@ header.page-header {
 header .site-title,
 header .custom-logo {
     margin: 0;
+}
+
+.sidebar .widget {
+    margin-bottom: calc(2 * var(--minimalista-vertical-spacing-default));
+}
+
+/* Navigation Styles */
+.navbar {
+    margin-bottom: var(--minimalista-vertical-spacing-default);
 }
 
 iframe,
@@ -112,6 +325,7 @@ textarea:not([rows]) {
 main p:last-of-type,
 section p:last-of-type,
 article p:last-of-type,
+.entry-content p:last-of-type,
 aside p:last-of-type,
 footer p:last-of-type {
     margin-bottom: 0;
@@ -395,7 +609,6 @@ a {
 } */
 
 a:hover {
-    /* color: var(--bs-link-hover-color); */
     --bs-link-color-rgb: var(--bs-link-hover-color-rgb);
     /* Define a cor dos links no estado hover */
     text-decoration: underline;
@@ -588,6 +801,10 @@ article,
     margin-bottom: var(--minimalista-vertical-spacing-default);
 }
 
+#related-posts {
+    padding: var(--minimalista-vertical-spacing-default) 0;
+}
+
 /* ==============================
  * Comments form (comentarios)
  * ============================== */
@@ -683,6 +900,138 @@ footer#colophon .list-group-item {
 
 footer#colophon a {
     color: white;
+}
+
+/* 3.6 Article component
+   ========================================================================== */
+
+/* Estilo base para artigos */
+.article-component {
+	--minimalista-article-padding: calc(var(--minimalista-vertical-spacing-default));
+    --minimalista-article-border-color: var(--bs-border-color);
+	--minimalista-article-border: var(--bs-border-width) var(--bs-border-style) var(--minimalista-article-border-color);
+    --minimalista-article-border-radius: var(--bs-border-radius);
+    --minimalista-article-box-shadow: var(--bs-box-shadow);
+    --minimalista-article-bg: var(--bs-body-bg);
+    --minimalista-article-margin-bottom: calc(var(--minimalista-vertical-spacing-default));
+    --minimalista-article-page-title-color: var(--bs-body-color);
+    --minimalista-article-entry-title-color: var(--bs-secondary);
+    --minimalista-article-entry-title-link-color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+    --minimalista-article-entry-title-link-color-hover: rgb(var(--bs-link-hover-color-rgb));
+    --minimalista-article-line-height: var(--bs-body-line-height);
+    --minimalista-article-color: var(--bs-body-color);
+    --minimalista-article-paragraph-margin-bottom: calc(var(--minimalista-vertical-spacing-default) / 2);
+    --minimalista-article-footer-margin-top: calc(var(--minimalista-vertical-spacing-default));
+    --minimalista-article-footer-border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+    --minimalista-article-meta-font-size: 0.875rem;
+    --minimalista-article-meta-color: var(--bs-gray-700);
+    --minimalista-article-meta-link-color: var(--bs-link-color);
+    --minimalista-article-meta-link-hover-color: var(--bs-link-hover-color);
+    --minimalista-article-format-icon-font-size: 2rem;
+    --minimalista-article-format-icon-color: var(--bs-body-color);
+    display: flex;
+    flex-direction: column;
+    gap: 0; 
+    padding: var(--minimalista-article-padding);
+    border: var(--minimalista-article-border);
+    border-radius: var(--minimalista-article-border-radius);
+    box-shadow: var(--minimalista-article-box-shadow);
+    background-color: var(--minimalista-article-bg);
+    position: relative;
+    margin-bottom: var(--minimalista-article-margin-bottom);
+}
+
+.article-header {
+    padding-top: 0; /* ajustar espaçamento vertical com o header */
+}
+
+.article-header .page-title {
+    color: var(--minimalista-article-page-title-color, var(--bs-body-color));
+}
+
+.article-header .entry-title {
+    color: var(--minimalista-article-entry-title-color, var(--bs-secondary));
+}
+
+.article-header .entry-title a {
+    color: var(--minimalista-article-entry-title-link-color);
+}
+
+.article-header .entry-title a:hover {
+    color: var(--minimalista-article-entry-title-link-color-hover);
+}
+
+.article-content {
+    line-height: var(--minimalista-article-line-height, var(--bs-body-line-height));
+    color: var(--minimalista-article-color, var(--bs-body-color));
+}
+
+.article-content p {
+    margin-bottom: var(--minimalista-article-paragraph-margin-bottom, calc(var(--minimalista-vertical-spacing-default) / 2));
+}
+
+.article-footer {
+    margin-top: var(--minimalista-article-footer-margin-top, calc(var(--minimalista-vertical-spacing-default)));
+    border-top: var(--minimalista-article-footer-border, var(--bs-border-width) var(--bs-border-style) var(--bs-border-color));
+    padding-bottom: 0; /* ajustar espaçamento vertical com o header */
+}
+
+.article-component .entry-meta {
+    font-size: var(--minimalista-article-meta-font-size, 0.875rem);
+    color: var(--minimalista-article-meta-color, var(--bs-gray));
+}
+
+.article-component .entry-meta a {
+    text-decoration: none;
+    color: var(--minimalista-article-meta-link-color, var(--bs-link-color));
+}
+
+.article-component .entry-meta a:hover {
+    text-decoration: underline;
+    color: var(--minimalista-article-meta-link-hover-color, var(--bs-link-hover-color));
+}
+
+.article-component .format-icon {
+    font-size: var(--minimalista-article-format-icon-font-size, 2rem);
+    font-weight: 900;
+    font-variation-settings: 'wght' 900, 'wdth' 100;
+    color: var(--minimalista-article-format-icon-color, var(--bs-body-color));
+    margin-right: calc(var(--minimalista-horizontal-spacing-default) / 2);
+}
+
+/* 3.7 Article component - Post Formats
+   ========================================================================== */
+
+/* Estilo para posts no formato "standard" */
+.article-component-standard {
+    --minimalista-article-border-color: var(--bs-gray-300);
+}
+
+/* Estilo para posts no formato "aside" */
+.article-component-aside {
+    /* 
+    --hue-complementary: calc(var(--minimalista-color-canary-yellow-hue) - 180);
+    --minimalista-article-border-color: var(--bs-gray-300);
+    --minimalista-article-format-icon-color: hsl(var(--hue-complementary), 50%, 50%);
+    --minimalista-article-format-icon-color: hsl(var(--minimalista-article-format-icon-color), 50%, 50%); */
+    /*
+    --minimalista-article-bg: var(--minimalista-color-canary-yellow-html);
+    --minimalista-article-footer-border: var(--bs-border-width) var(--bs-border-style) #000;
+    --minimalista-article-meta-color: #000;
+    --minimalista-article-entry-title-link-color: rgb(0,0,0);
+    */
+    --minimalista-article-format-icon-color: #3a5c4b;
+}
+
+.warning__icon {
+    --lightness: 40%;
+    /* --minimalista-color-canary-yellow-hsl: hsl(60, 100%, 80%); */
+    fill: hsl(var(--hue), var(--saturation), var(--lightness));
+  }
+
+.format-aside-content {
+    display: flex;
+    flex-direction: row;
 }
 
 /* ========================================================================== */
@@ -1150,22 +1499,6 @@ p+.gallery {
     margin-left: auto;
     margin-right: auto;
 }
-
-/* ========================================================================== */
-/* 5. POST FORMATS                                                            */
-/* ========================================================================== */
-
-/* Style for "image" post format */
-.format-image-content img {
-    background-color: #fff;
-    border: 1px solid var(--bs-border-color);
-    border-radius: 0.375rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-
-/* Style for "aside" format posts */
-
 
 /* ========================================================================== */
 /* 6. BOOTSTRAP REDEFINITIONS OR MODIFICATIONS
