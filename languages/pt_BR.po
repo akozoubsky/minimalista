@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _s 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/minimalista\n"
-"POT-Creation-Date: 2024-08-01T23:14:32+02:00\n"
-"PO-Revision-Date: 2024-08-01 18:15-0300\n"
+"POT-Creation-Date: 2024-08-04T10:52:58+02:00\n"
+"PO-Revision-Date: 2024-08-04 06:00-0300\n"
 "Last-Translator: Alexandre kozoubsky <akozubsky@gmail.com>\n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -185,145 +185,149 @@ msgstr[0] "ano"
 msgstr[1] "anos"
 
 #: inc/template-tags.php:279
+msgid "ago"
+msgstr "atrás"
+
+#: inc/template-tags.php:282
 msgid "%s "
 msgid_plural "%s "
 msgstr[0] "%s "
 msgstr[1] "%s "
 
 #. translators: %s: post author.
-#: inc/template-tags.php:289
+#: inc/template-tags.php:293
 msgctxt "post author display time since posted"
 msgid "by %s"
 msgstr "por %s"
 
 #. translators: used between list items, there is a space after the comma
-#: inc/template-tags.php:306
+#: inc/template-tags.php:310
 msgid ", "
 msgstr ", "
 
 #. translators: 1: list of categories.
-#: inc/template-tags.php:309
+#: inc/template-tags.php:313
 msgid "Posted in %1$s"
 msgstr "Categorizado em %1$s"
 
 #. translators: used between list items, there is a space after the comma
-#: inc/template-tags.php:313
+#: inc/template-tags.php:317
 msgctxt "list item separator"
 msgid ", "
 msgstr ", "
 
 #. translators: 1: list of tags.
-#: inc/template-tags.php:316
+#: inc/template-tags.php:320
 msgid "Tagged %1$s"
 msgstr "Marcado com %1$s"
 
 #. translators: %s: post title
-#: inc/template-tags.php:326
+#: inc/template-tags.php:330
 msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
 msgstr "Deixe um comentário<span class=\"screen-reader-text\"> em %s</span>"
 
-#: inc/template-tags.php:655
+#: inc/template-tags.php:660
 msgid "Aside"
 msgstr "Nota"
 
-#: inc/template-tags.php:658
+#: inc/template-tags.php:663
 msgid "Gallery"
 msgstr "Galeria"
 
-#: inc/template-tags.php:661
+#: inc/template-tags.php:666
 msgid "Link"
 msgstr "Link"
 
-#: inc/template-tags.php:664
+#: inc/template-tags.php:669
 msgid "Image"
 msgstr "Imagem"
 
-#: inc/template-tags.php:667
+#: inc/template-tags.php:672
 msgid "Quote"
 msgstr "Citação"
 
-#: inc/template-tags.php:670
+#: inc/template-tags.php:675
 msgid "Status"
 msgstr "Status"
 
-#: inc/template-tags.php:673
+#: inc/template-tags.php:678
 msgid "Video"
 msgstr "Vídeo"
 
-#: inc/template-tags.php:676
+#: inc/template-tags.php:681
 msgid "Audio"
 msgstr "Áudio"
 
-#: inc/template-tags.php:679
+#: inc/template-tags.php:684
 msgid "Chat"
 msgstr "Chat"
 
-#: inc/template-tags.php:770
+#: inc/template-tags.php:773
 msgid "%s word"
 msgid_plural "%s words"
 msgstr[0] "%s palavra"
 msgstr[1] "%s palavras"
 
-#: inc/template-tags.php:778
+#: inc/template-tags.php:781
 msgid "%s image"
 msgid_plural "%s images"
 msgstr[0] "%s imagem"
 msgstr[1] "%s imagens"
 
-#: inc/template-tags.php:780
+#: inc/template-tags.php:783
 msgid "No images in gallery"
 msgstr "Sem imagens na galeria"
 
-#: inc/template-tags.php:790
+#: inc/template-tags.php:793
 msgid "External Link"
 msgstr "Link externo"
 
-#: inc/template-tags.php:814
+#: inc/template-tags.php:817
 msgid "%s participant"
 msgid_plural "%s participants"
 msgstr[0] "%s participante"
 msgstr[1] "%s participantes"
 
-#: inc/template-tags.php:817
+#: inc/template-tags.php:820
 msgid "%s line"
 msgid_plural "%s lines"
 msgstr[0] "%s linha"
 msgstr[1] "%s linhas"
 
 #. translators: %s: Name of current post. Only visible to screen readers
-#: inc/template-tags.php:855
+#: inc/template-tags.php:858
 msgid "Edit <span class=\"screen-reader-text\">%s</span>"
 msgstr "Edite <span class=\"screen-reader-text\">%s</span>"
 
-#: inc/template-tags.php:1117
+#: inc/template-tags.php:1120
 msgid "Name"
 msgstr "Nome"
 
-#: inc/template-tags.php:1119
+#: inc/template-tags.php:1122
 msgid "Email"
 msgstr "E-mail"
 
-#: inc/template-tags.php:1121
+#: inc/template-tags.php:1124
 msgid "Website"
 msgstr "Site"
 
-#: inc/template-tags.php:1124
+#: inc/template-tags.php:1127
 msgid "Comment"
 msgstr "Comentário"
 
-#: inc/template-tags.php:1348
+#: inc/template-tags.php:1351
 msgid "Previous"
 msgstr "Anterior"
 
-#: inc/template-tags.php:1349
+#: inc/template-tags.php:1352
 msgid "Next"
 msgstr "Próximo"
 
-#: inc/template-tags.php:1391
+#: inc/template-tags.php:1394
 msgid "Next page"
 msgstr "Próxima página"
 
-#: inc/template-tags.php:1392
+#: inc/template-tags.php:1395
 msgid "Previous page"
 msgstr "Página anterior"
 
