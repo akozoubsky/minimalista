@@ -25,7 +25,6 @@
 
         minimalista_display_post_metadata_primary();
         ?>
-
     </header><!-- .entry-header -->
 
 	<?php minimalista_display_post_thumbnail("custom-thumbnail"); ?>
@@ -36,7 +35,10 @@
     set_query_var('template_part_name', 'format-' . $post_format);
     get_template_part('template-parts/format/format', $post_format);
     minimalista_link_pages();
-    minimalista_display_post_metadata_secondary();
     ?>
-	
+
+    <footer class="entry-footer">
+        <?php minimalista_display_post_metadata_secondary(''); ?>
+    </footer>
+    
 </article><!-- #post-<?php the_ID(); ?> -->

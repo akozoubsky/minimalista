@@ -71,8 +71,11 @@ get_header(); ?>
 							minimalista_display_post_thumbnail('thumbnail','thumbnail alignleft', true);
 							minimalista_display_post_excerpt();
 							minimalista_link_pages();
-							minimalista_display_post_metadata_secondary();
 							?>
+							
+							<footer class="entry-footer">
+								<?php minimalista_display_post_metadata_secondary(''); ?>
+							</footer>
 
 						</article><!-- #post-<?php the_ID(); ?> -->
 

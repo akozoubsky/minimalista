@@ -104,7 +104,9 @@ get_header(); ?>
                                             minimalista_display_post_excerpt();
                                         }
 
-                                        minimalista_display_post_metadata_secondary();
+                                        echo '<footer class="entry-footer">';
+                                        minimalista_display_post_metadata_secondary('');
+                                        echo '</footer>';
                                         ?>
 
                                     </article><!-- /.blog-post -->
