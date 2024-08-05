@@ -961,7 +961,7 @@ function minimalista_display_post_content($content_class = '', $html_before = ''
 
     // Buffering the output
     ob_start();
-    the_content();
+    the_content( __( 'Continue reading', 'minimalista' ) ); // more tag
     $content_output = ob_get_clean();
 
     // Checking if the content exists
