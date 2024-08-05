@@ -275,8 +275,12 @@ function minimalista_display_time_since_posted()
         $time_unit = _n('year', 'years', $time_value, 'minimalista');
     }
 
-    // Display the time since posted
-    echo sprintf(_n('%s ' . $time_unit . ' ago', '%s ' . $time_unit . ' ago', $time_value, 'minimalista'), $time_value);
+    // Translate "ago"
+    $ago = __('ago', 'minimalista');
+
+    // Return the time since posted
+    return sprintf(_n('%s ' . $time_unit . ' ' . $ago, '%s ' . $time_unit . ' ' . $ago, $time_value, 'minimalista'), $time_value);
+
 }
 
 if ( ! function_exists( 'minimalista_posted_by' ) ) :
@@ -652,7 +656,7 @@ function minimalista_display_post_metadata_primary($additional_classes = '')
     // Format-specific Metadata
     switch ($post_format) {
         case 'aside':
-            echo '<span class="post-format post-format-aside text-break me-4">' . minimalista_generate_icon_html("fa-pencil-alt", "me-2") . __('Aside', 'minimalista') . '</span>';
+            echo '<span class="post-format post-format-aside text-break me-4">' . minimalista_generate_icon_html("fa-pen-to-square", "me-2") . __('Aside', 'minimalista') . '</span>';
             break;
         case 'gallery':
             echo '<span class="post-format post-format-gallery text-break me-4">' . minimalista_generate_icon_html("fa-images", "me-2") . __('Gallery', 'minimalista') . '</span>';
@@ -713,7 +717,7 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
     }
 
     // Open footer container
-    echo '<footer class="entry-footer">';
+    echo '<div class="entry-meta">';
 
     // Open Bootstrap 5 "post-metadata" container
     echo '<div class="' . $div_classes . '">';
@@ -765,10 +769,8 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
         case 'aside':
             // Metadata specific to aside posts
             $word_count = minimalista_count_words_in_post();
-            $post_time = get_the_time('g:i a');
-
-            echo '<span class="aside-word-count me-4"><i class="fas fa-pencil-alt"></i> ' . sprintf(_n('%s word', '%s words', $word_count, 'minimalista'), $word_count) . '</span>';
-            echo '<span class="aside-post-time me-4"><i class="fas fa-clock"></i> ' . esc_html($post_time) . '</span>';
+            echo '<span class="aside-word-count me-4"><i class="fa fas fa-pencil-alt"></i> ' . sprintf(_n('%s word', '%s words', $word_count, 'minimalista'), $word_count) . '</span>';
+            echo '<span class="aside-post-time me-4"><i class="fa fas fa-clock"></i> ' . minimalista_display_time_since_posted() . '</span>';
             break;
         case 'gallery':
             // Metadata specific to gallery posts
@@ -834,7 +836,7 @@ function minimalista_display_post_metadata_secondary($additional_classes = '')
 
     echo '</div><!-- .post-metadata -->';  // Close the "post-metadata" container
 
-    echo '</footer><!-- .entry-footer -->'; // Close the "footer" container
+    echo '</div><!-- .entry-meta -->'; // Close the "entry-meta" container
 }
 
 /**
@@ -1485,7 +1487,7 @@ function minimalista_display_related_posts_by_tags($posts_per_page = 5, $templat
         $related_posts = new WP_Query($args);
 
         if ($related_posts->have_posts()) {
-            echo '<div class="related-posts my-3">';
+            echo '<section id="related-posts" class="related-posts">';
             echo '<h5>Você também pode gostar de:</h5>';
             
             $shortcode = sprintf(
@@ -1497,7 +1499,7 @@ function minimalista_display_related_posts_by_tags($posts_per_page = 5, $templat
             );
 
             echo do_shortcode($shortcode);
-            echo '</div>';
+            echo '</section>';
         }
 
         wp_reset_postdata();
