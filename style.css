@@ -320,32 +320,6 @@ textarea:not([rows]) {
     min-height: 10em;
 }
 
-/* Remove bottom margin from last paragraph in structural elements */
-main p:last-of-type,
-section p:last-of-type,
-article p:last-of-type,
-.entry-content p:last-of-type,
-aside p:last-of-type,
-footer p:last-of-type {
-    margin-bottom: 0;
-}
-
-/* Empty elements */
-header:empty,
-section:empty,
-article:empty,
-p:empty,
-h2.widget-title:empty,
-h3.widget-title:empty,
-h4.widget-title:empty,
-.entry-title:empty,
-.blog-entry-title:empty,
-.post-metadata:empty {
-    margin: 0;
-    padding: 0;
-    display: none;
-}
-
 /* 2.2 Typography
    ========================================================================== */
 
@@ -567,14 +541,18 @@ blockquote footer {
 }
 
 q {
-    quotes: "“" "”" "‘" "’"; /* Define custom quotes */
+    quotes: "“" "”" "‘" "’";
+    /* Define custom quotes */
     font-style: italic;
     font-variation-settings: 'ital' 1;
 }
+
 /* Estilo para citações dentro de citações */
 q q {
-    quotes: "‘" "’"; /* Single quotes for nested quotes */
-    font-style: normal; /* Texto normal para diferenciar */
+    quotes: "‘" "’";
+    /* Single quotes for nested quotes */
+    font-style: normal;
+    /* Texto normal para diferenciar */
 }
 
 /* 2.5 Links
@@ -683,10 +661,14 @@ a:not([href]):not([class]):hover {
 }
 
 .sidebar .list-group-item:hover {
-    background-color: #f0f0f0; /* Cor de fundo ao passar o mouse */
-    color: #333; /* Cor do texto ao passar o mouse */
-    border-color: #ddd; /* Cor da borda ao passar o mouse */
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Suaviza a transição */
+    background-color: #f0f0f0;
+    /* Cor de fundo ao passar o mouse */
+    color: #333;
+    /* Cor do texto ao passar o mouse */
+    border-color: #ddd;
+    /* Cor da borda ao passar o mouse */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    /* Suaviza a transição */
 }
 
 .sidebar .card,
@@ -804,6 +786,29 @@ article,
     padding: var(--minimalista-vertical-spacing-default) 0;
 }
 
+/* "More" link */
+.more-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: var(--bs-primary);
+    border-radius: 0.25rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.more-link:hover,
+.more-link:focus {
+    background-color: var(--minimalista-btn-primary-hover-bg, red);
+    text-decoration: none;
+}
+
+.entry-content .more-link {
+    margin: calc(var(--minimalista-vertical-spacing-default)/2) 0;
+}
+
 /* ==============================
  * Comments form (comentarios)
  * ============================== */
@@ -860,24 +865,24 @@ footer#colophon {
 }
 
 footer#colophon .footer-widgets {
-    padding: calc( 2 * var(--minimalista-vertical-spacing-default) ) 0;
+    padding: calc(2 * var(--minimalista-vertical-spacing-default)) 0;
     /* border: 1px solid red; */
 }
 
 footer#colophon .footer-baseboard {
-   padding: calc( 0.5 * var(--minimalista-vertical-spacing-default) ) 0;
+    padding: calc(0.5 * var(--minimalista-vertical-spacing-default)) 0;
 }
 
 footer#colophon .widget-area {
-    padding: calc( 2 * var(--minimalista-vertical-spacing-default) ) 0;
+    padding: calc(2 * var(--minimalista-vertical-spacing-default)) 0;
 }
 
 footer#colophon .site-info {
-    padding: calc( 0.5 * var(--minimalista-vertical-spacing-default) ) 0;
+    padding: calc(0.5 * var(--minimalista-vertical-spacing-default)) 0;
 }
 
 footer#colophon .copyright-info {
-    padding: calc( 0.5 * var(--minimalista-vertical-spacing-default) ) 0;
+    padding: calc(0.5 * var(--minimalista-vertical-spacing-default)) 0;
 }
 
 footer#colophon .widget-title {
@@ -902,9 +907,9 @@ footer#colophon .list-group-item {
 
 /* Estilo base para artigos */
 .article-component {
-	--minimalista-article-padding: calc(var(--minimalista-vertical-spacing-default));
+    --minimalista-article-padding: calc(var(--minimalista-vertical-spacing-default));
     --minimalista-article-border-color: var(--bs-border-color);
-	--minimalista-article-border: var(--bs-border-width) var(--bs-border-style) var(--minimalista-article-border-color);
+    --minimalista-article-border: var(--bs-border-width) var(--bs-border-style) var(--minimalista-article-border-color);
     --minimalista-article-border-radius: var(--bs-border-radius);
     --minimalista-article-box-shadow: var(--bs-box-shadow);
     --minimalista-article-bg: var(--bs-body-bg);
@@ -926,7 +931,7 @@ footer#colophon .list-group-item {
     --minimalista-article-format-icon-color: var(--bs-body-color);
     display: flex;
     flex-direction: column;
-    gap: 0; 
+    gap: 0;
     padding: var(--minimalista-article-padding);
     border: var(--minimalista-article-border);
     border-radius: var(--minimalista-article-border-radius);
@@ -937,7 +942,8 @@ footer#colophon .list-group-item {
 }
 
 .article-header {
-    padding-top: 0; /* ajustar espaçamento vertical com o header */
+    padding-top: 0;
+    /* ajustar espaçamento vertical com o header */
 }
 
 .article-header .page-title {
@@ -968,7 +974,8 @@ footer#colophon .list-group-item {
 .article-footer {
     margin-top: var(--minimalista-article-footer-margin-top, calc(var(--minimalista-vertical-spacing-default)));
     border-top: var(--minimalista-article-footer-border, var(--bs-border-width) var(--bs-border-style) var(--bs-border-color));
-    padding-bottom: 0; /* ajustar espaçamento vertical com o header */
+    padding-bottom: 0;
+    /* ajustar espaçamento vertical com o header */
 }
 
 .article-component .entry-meta {
@@ -994,7 +1001,17 @@ footer#colophon .list-group-item {
     margin-right: calc(var(--minimalista-horizontal-spacing-default) / 2);
 }
 
-/* 3.7 Article component - Post Formats
+/* 3.7 Article component - Sticky Post
+   ========================================================================== */
+
+/* Sticky posts */
+.article-component.sticky {
+    /* background-color: #f9f9f9; */
+    border: 5px solid gray;
+    margin-bottom: 2rem;
+}
+
+/* 3.8 Article component - Post Formats
    ========================================================================== */
 
 /* Estilo para posts no formato "standard" */
@@ -1021,7 +1038,7 @@ footer#colophon .list-group-item {
     --lightness: 40%;
     /* --minimalista-color-canary-yellow-hsl: hsl(60, 100%, 80%); */
     fill: hsl(var(--hue), var(--saturation), var(--lightness));
-  }
+}
 
 .format-aside-content {
     display: flex;
@@ -1145,7 +1162,7 @@ figcaption,
     font-size: 1rem;
 }
 
-/* 4.4 Videos
+/* 4.4 WordPress and Videos
    ========================================================================== */
 
 /* adjust CSS properties to ensure the video is responsive and fits the container size */
@@ -1781,7 +1798,7 @@ fieldset:disabled .btn {
 .navbar-nav .nav-link:not(.dropdown-item) {
     border: 1px solid transparent;
     padding: 10px 15px;
-    
+
 }
 
 .navbar .navbar-nav .nav-link:hover:not(.dropdown-item) {
@@ -1850,20 +1867,34 @@ li.nav-item {
 de card-title para manter a consistência do espaçamento */
 
 
-/* 6.4 Pagination
+/* 6.5 Pagination
    ========================================================================== */
 
-.pagination .page-link {
+ul.pagination {
+    padding: calc(1 * var(--minimalista-vertical-spacing-default)) 0;
+    margin-bottom: 0;
+}
+
+li.page-item {
+    margin: 0 var(--minimalista-horizontal-spacing-default) 0 0;
+}
+
+ul.pagination .page-link {
     text-decoration: none;
 }
 
-.active>.page-link,
-.page-link.active {
-    background-color: var(--bs-primary);
-    border-color: var(--bs-primary);
+ul.pagination .page-link:hover {
+    text-decoration: none;
 }
 
-/* 6.5 Display
+ul.pagination .active>.page-link,
+ul.pagination .page-link.active {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    text-decoration: none;
+}
+
+/* 6.6 Display
    ========================================================================== */
 
 .lead,
@@ -1903,7 +1934,7 @@ de card-title para manter a consistência do espaçamento */
     font-variation-settings: 'wght' 900 !important;
 }
 
-/* 6.6 Background
+/* 6.7 Background
    ========================================================================== */
 
 /* Apply primary color as background */
@@ -1916,9 +1947,55 @@ de card-title para manter a consistência do espaçamento */
     background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity)) !important;
 }
 
+/* 6.8 Badge
+   ========================================================================== */
+
+.badge {
+    --bs-badge-padding-y: 0.5em;
+}
+
 /* ========================================================================== */
 /* 8. UTILITIES                                                               */
 /* ========================================================================== */
+
+/* Remove bottom margin from last paragraph in structural elements */
+
+/* main p:last-of-type,
+section p:last-of-type,
+article p:last-of-type,
+.entry-content p:last-of-type,
+aside p:last-of-type,
+footer p:last-of-type {
+    margin-bottom: 0;
+} */
+
+p:last-child,
+p :last-of-type,
+p :last-child {
+    margin-bottom: 0 !important;
+}
+
+li:last-child,
+li :last-of-type,
+li :last-child {
+    margin-bottom: 0 !important;
+}
+
+/* Empty elements */
+header:empty,
+section:empty,
+article:empty,
+p:empty,
+h2.widget-title:empty,
+h3.widget-title:empty,
+h4.widget-title:empty,
+.entry-title:empty,
+.blog-entry-title:empty,
+.post-metadata:empty {
+    margin: 0;
+    padding: 0;
+    display: none;
+}
 
 /**
   * Mastering margin collapsing
@@ -1996,7 +2073,8 @@ ol.no-margin {
     display: none;
 }
 
-smaller, .smaller {
+smaller,
+.smaller {
     font-size: 0.9em;
 }
 
@@ -2037,7 +2115,109 @@ ul.minimalista-custom-list ul li:last-child {
 }
 
 /* ========================================================================== */
-/* 9. MEDIA QUERIES                                                           */
+/* 9. PRINT                                                           */
+/* ========================================================================== */
+
+@media print {
+
+    @page {
+        margin: 2cm;
+    }
+
+    body {
+        background-color: #fff;
+        font-family: Georgia, "Times New Roman", Times, serif !important;
+        color: #000;
+        text-shadow: none;
+        filter: none;
+        -ms-filter: none;
+    }
+
+    /* Setting content width, unsetting floats and margins */
+    /* Attention: the classes and IDs vary from theme to theme. Thus, set own classes here */
+    #content,
+    #main,
+    #primary {
+        width: 100%;
+        margin: 0;
+        float: none;
+    }
+
+    /* Setting margins */
+    @page {
+        margin: 2cm;
+    }
+
+    /* Defining all page breaks */
+    a {
+        page-break-inside: avoid;
+    }
+
+    blockquote {
+        page-break-inside: avoid;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6,
+    .display-1,
+    .display-2,
+    .display-3,
+    .display-4,
+    .display-5,
+    .display-6 {
+        page-break-after: avoid;
+        page-break-inside: avoid;
+    }
+
+    img {
+        page-break-inside: avoid;
+        page-break-after: avoid;
+    }
+
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+
+    ul,
+    ol,
+    dl {
+        page-break-before: avoid;
+    }
+
+    /* Hiding unnecessary elements for the print */
+    #site-extras,
+    nav,
+    aside,
+    .site-info,
+    .author-bio,
+    .heading,
+    .related-posts,
+    #breadcrumbs,
+    #footer,
+    .post-byline,
+    .site-title img,
+    .post-tags,
+    .post-edit-link,
+    .more-link {
+        display: none;
+    }
+
+}
+
+
+/* ========================================================================== */
+/* 10. MEDIA QUERIES                                                           */
 /* ========================================================================== */
 
 /**
