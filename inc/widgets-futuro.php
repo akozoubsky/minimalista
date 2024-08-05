@@ -20,9 +20,9 @@ function minimalista_widgets_init()
             'name'          => esc_html__('Sidebar', 'minimalista'),
             'id'            => 'sidebar-1',
             'description'   => esc_html__('Add widgets here.', 'minimalista'),
-            'before_widget' => '<section id="%1$s" class="widget %2$s">',
-            'after_widget'  => '</section>',
-            'before_title'  => '<h4 class="widget-title">',
+            'before_widget' => '<section id="%1$s" class="card widget %2$s"><div class="card-body">',
+            'after_widget'  => '</div></section>',
+            'before_title'  => '<h4 class="card-title widget-title">',
             'after_title'   => '</h4>',
         )
     );
