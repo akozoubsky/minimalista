@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _s 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/minimalista\n"
-"POT-Creation-Date: 2024-08-04T10:52:58+02:00\n"
-"PO-Revision-Date: 2024-08-04 06:00-0300\n"
+"POT-Creation-Date: 2024-08-05T23:46:30+02:00\n"
+"PO-Revision-Date: 2024-08-05 18:47-0300\n"
 "Last-Translator: Alexandre kozoubsky <akozubsky@gmail.com>\n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -17,17 +17,17 @@ msgstr ""
 "X-Domain: _s\n"
 
 #. Theme Name of the theme
-#: D:\htdocs\augustofredericoschmidt.local\wp-content\themes\minimalista\style.css
+#: C:\xampp\htdocs\testes01\wp-content\themes\minimalista\style.css
 msgid "minimalista"
 msgstr "minimalista"
 
 #. Theme URI of the theme
-#: D:\htdocs\augustofredericoschmidt.local\wp-content\themes\minimalista\style.css
+#: C:\xampp\htdocs\testes01\wp-content\themes\minimalista\style.css
 msgid "https://github.com/akozoubsky/minimalista"
 msgstr "https://github.com/akozoubsky/minimalista"
 
 #. Description of the theme
-#: D:\htdocs\augustofredericoschmidt.local\wp-content\themes\minimalista\style.css
+#: C:\xampp\htdocs\testes01\wp-content\themes\minimalista\style.css
 msgid ""
 "Minimalista is a clean, elegant, and fully customizable WordPress theme "
 "based on the Underscores starter theme. Ideal for bloggers, small "
@@ -42,12 +42,12 @@ msgstr ""
 "presença online única e profissional."
 
 #. Author of the theme
-#: D:\htdocs\augustofredericoschmidt.local\wp-content\themes\minimalista\style.css
+#: C:\xampp\htdocs\testes01\wp-content\themes\minimalista\style.css
 msgid "Alexandre Kozoubsky"
 msgstr "Alexandre Kozoubsky"
 
 #. Author URI of the theme
-#: D:\htdocs\augustofredericoschmidt.local\wp-content\themes\minimalista\style.css
+#: C:\xampp\htdocs\testes01\wp-content\themes\minimalista\style.css
 msgid "https://alexandrekozoubsky.com.br/"
 msgstr "https://alexandrekozoubsky.com.br/"
 
@@ -226,108 +226,112 @@ msgstr "Marcado com %1$s"
 msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
 msgstr "Deixe um comentário<span class=\"screen-reader-text\"> em %s</span>"
 
-#: inc/template-tags.php:660
+#: inc/template-tags.php:659
 msgid "Aside"
 msgstr "Nota"
 
-#: inc/template-tags.php:663
+#: inc/template-tags.php:662
 msgid "Gallery"
 msgstr "Galeria"
 
-#: inc/template-tags.php:666
+#: inc/template-tags.php:665
 msgid "Link"
 msgstr "Link"
 
-#: inc/template-tags.php:669
+#: inc/template-tags.php:668
 msgid "Image"
 msgstr "Imagem"
 
-#: inc/template-tags.php:672
+#: inc/template-tags.php:671
 msgid "Quote"
 msgstr "Citação"
 
-#: inc/template-tags.php:675
+#: inc/template-tags.php:674
 msgid "Status"
 msgstr "Status"
 
-#: inc/template-tags.php:678
+#: inc/template-tags.php:677
 msgid "Video"
 msgstr "Vídeo"
 
-#: inc/template-tags.php:681
+#: inc/template-tags.php:680
 msgid "Audio"
 msgstr "Áudio"
 
-#: inc/template-tags.php:684
+#: inc/template-tags.php:683
 msgid "Chat"
 msgstr "Chat"
 
-#: inc/template-tags.php:773
+#: inc/template-tags.php:772
 msgid "%s word"
 msgid_plural "%s words"
 msgstr[0] "%s palavra"
 msgstr[1] "%s palavras"
 
-#: inc/template-tags.php:781
+#: inc/template-tags.php:780
 msgid "%s image"
 msgid_plural "%s images"
 msgstr[0] "%s imagem"
 msgstr[1] "%s imagens"
 
-#: inc/template-tags.php:783
+#: inc/template-tags.php:782
 msgid "No images in gallery"
 msgstr "Sem imagens na galeria"
 
-#: inc/template-tags.php:793
+#: inc/template-tags.php:792
 msgid "External Link"
 msgstr "Link externo"
 
-#: inc/template-tags.php:817
+#: inc/template-tags.php:816
 msgid "%s participant"
 msgid_plural "%s participants"
 msgstr[0] "%s participante"
 msgstr[1] "%s participantes"
 
-#: inc/template-tags.php:820
+#: inc/template-tags.php:819
 msgid "%s line"
 msgid_plural "%s lines"
 msgstr[0] "%s linha"
 msgstr[1] "%s linhas"
 
 #. translators: %s: Name of current post. Only visible to screen readers
-#: inc/template-tags.php:858
+#: inc/template-tags.php:857
 msgid "Edit <span class=\"screen-reader-text\">%s</span>"
 msgstr "Edite <span class=\"screen-reader-text\">%s</span>"
 
-#: inc/template-tags.php:1120
+#: inc/template-tags.php:964
+msgid "Continue reading"
+msgstr "Continue lendo"
+
+#: inc/template-tags.php:1119
 msgid "Name"
 msgstr "Nome"
 
-#: inc/template-tags.php:1122
+#: inc/template-tags.php:1121
 msgid "Email"
 msgstr "E-mail"
 
-#: inc/template-tags.php:1124
+#: inc/template-tags.php:1123
 msgid "Website"
 msgstr "Site"
 
-#: inc/template-tags.php:1127
+#: inc/template-tags.php:1126
 msgid "Comment"
 msgstr "Comentário"
 
-#: inc/template-tags.php:1351
+#: inc/template-tags.php:1350
 msgid "Previous"
 msgstr "Anterior"
 
-#: inc/template-tags.php:1352
+#: inc/template-tags.php:1351
 msgid "Next"
 msgstr "Próximo"
 
-#: inc/template-tags.php:1394
+#: inc/template-tags.php:1393
 msgid "Next page"
 msgstr "Próxima página"
 
-#: inc/template-tags.php:1395
+#: inc/template-tags.php:1394
 msgid "Previous page"
 msgstr "Página anterior"
 
@@ -335,35 +339,35 @@ msgstr "Página anterior"
 msgid "Primary"
 msgstr "Principal"
 
-#: inc/widgets.php:20
+#: inc/widgets-futuro.php:20 inc/widgets.php:20
 msgid "Sidebar"
 msgstr "Barra Lateral"
 
-#: inc/widgets.php:22
+#: inc/widgets-futuro.php:22 inc/widgets.php:22
 msgid "Add widgets here."
 msgstr "Adicione widgets aqui."
 
-#: inc/widgets.php:46
+#: inc/widgets-futuro.php:46 inc/widgets.php:46
 msgid "Social Media Links"
 msgstr "Links de mídia social"
 
-#: inc/widgets.php:47
+#: inc/widgets-futuro.php:47 inc/widgets.php:47
 msgid "A widget to display social media links."
 msgstr "Um widget para exibir links de mídia social."
 
-#: inc/widgets.php:88
+#: inc/widgets-futuro.php:88 inc/widgets.php:88
 msgid "Title:"
 msgstr "Título:"
 
-#: inc/widgets.php:92
+#: inc/widgets-futuro.php:92 inc/widgets.php:92
 msgid "Facebook URL:"
 msgstr "URL do Facebook:"
 
-#: inc/widgets.php:96
+#: inc/widgets-futuro.php:96 inc/widgets.php:96
 msgid "Twitter URL:"
 msgstr "URL do Twitter:"
 
-#: inc/widgets.php:100
+#: inc/widgets-futuro.php:100 inc/widgets.php:100
 msgid "Instagram URL:"
 msgstr "URL do Instagram:"
 
