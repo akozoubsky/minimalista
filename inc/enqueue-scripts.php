@@ -50,7 +50,7 @@ function minimalista_enqueue_styles_and_scripts() {
     /**
      * Estilo do tema
      */
-	wp_enqueue_style( 'minimalista-theme-style', get_stylesheet_uri(), array('bootstrap-style','fontawesome-style','wp-mediaelement','wp-add-custom-css'), _S_VERSION );
+	wp_enqueue_style( 'minimalista-theme-style', get_stylesheet_uri(), array('bootstrap-style','fontawesome-style'), _S_VERSION );
 	wp_style_add_data( 'minimalista-theme-style', 'rtl', 'replace' ); 
     
     /* ########################################################
