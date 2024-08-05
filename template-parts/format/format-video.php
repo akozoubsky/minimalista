@@ -6,9 +6,10 @@
  * Alternatively, if the post consists only of a URL, that will be the video URL.
  * May also contain the video as an attachment to the post, if video support is enabled on the blog (like via a plugin).
  *
- * @package LightCMSBootstrap
+ * @package Minimalista
  * @version 1.0.0
  * @author Alexandre Kozoubsky
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  * @TODO
  */
 ?>

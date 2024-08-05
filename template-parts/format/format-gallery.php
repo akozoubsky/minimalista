@@ -4,9 +4,10 @@
  *
  * Post will likely contain a gallery shortcode and will have image attachments.
  *
- * @package LightCMSBootstrap
+ * @package Minimalista
  * @version 1.0.0
  * @author Alexandre Kozoubsky
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  */
 ?>
 

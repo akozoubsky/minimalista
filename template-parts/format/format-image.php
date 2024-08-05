@@ -6,9 +6,10 @@
  * Alternatively, if the post consists only of a URL, that will be the image URL and the title 
  * of the post (post_title) will be the title attribute for the image.
  *
- * @package LightCMSBootstrap
+ * @package Minimalista
  * @version 1.0.0
  * @author Alexandre Kozoubsky
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  */
 ?>
 

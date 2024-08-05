@@ -5,9 +5,10 @@
  * A quotation. Probably will contain a blockquote holding the quote content.
  * Alternatively, the quote may be just the content, with the source/author being the title.
  *
- * @package LightCMSBootstrap
+ * @package Minimalista
  * @version 1.0.0
  * @author Alexandre Kozoubsky
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  * @TODO
  */
 ?>

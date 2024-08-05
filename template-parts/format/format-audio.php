@@ -4,7 +4,7 @@
  *
  * An audio file or playlist. Could be used for Podcasting.
  *
- * @package LightCMSBootstrap
+ * @package Minimalista
  * @version 1.0.0
  * @author Alexandre Kozoubsky
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/

@@ -1,14 +1,20 @@
-<!-- content-standard.php -->
+<?php
+/**
+ * Template part for displaying standard post format. 
+ * 
+ * @package Minimalista
+ * @version 1.0.0
+ * @author Alexandre Kozoubsky
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ */
+?>
 
-<!-- Início do Post no formato padrão -->
 <div class="format-standard-content">
-    <!-- Conteúdo do Post -->
     <?php
-    if ( is_singular() ) {
+    if (is_singular()) {
         minimalista_display_post_content();
     } else {
         minimalista_display_post_excerpt();
     }
     ?>
 </div>
-<!-- Fim do Post no formato padrão -->
