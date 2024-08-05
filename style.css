@@ -897,10 +897,6 @@ footer#colophon .list-group-item {
     background-color: transparent;
 }
 
-footer#colophon a {
-    color: white;
-}
-
 /* 3.6 Article component
    ========================================================================== */
 
@@ -1044,10 +1040,6 @@ figure,
 picture {
     max-width: 100%;
     height: auto;
-}
-
-.avatar {
-    margin-bottom: var(--minimalista-vertical-spacing-default);
 }
 
 figcaption,
