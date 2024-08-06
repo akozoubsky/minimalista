@@ -79,9 +79,16 @@ $md = 3; /* fixed */
 
 		<?php endif; ?>
 
-		<div class="footer-baseboard">
+	</div><!-- ./container -->
+
+	<div class="footer-baseboard">
+
+		<div class="container">
+
 			<div class="copyright-info d-flex justify-content-between">
-				<span>&copy; <?php echo date('Y'); ?> <?php if (get_bloginfo('name')) { echo minimalista_display_site_name('site-name', false) . '.'; } ?> Todos os direitos reservados.</span>
+				<span>&copy; <?php echo date('Y'); ?> <?php if (get_bloginfo('name')) {
+															echo minimalista_display_site_name('site-name', false) . '.';
+														} ?> Todos os direitos reservados.</span>
 				<?php if (get_the_privacy_policy_link()) : ?>
 					<a href="<?php echo esc_url(get_privacy_policy_url()); ?>" itemprop="url">Política de privacidade</a>
 				<?php endif; ?>
