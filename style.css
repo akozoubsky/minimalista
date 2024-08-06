@@ -1215,10 +1215,11 @@ p+.gallery {
 
 .gallery-columns-0 .gallery-item {
     width: 33.33333333%;
+    border: 0 none transparent;
 }
 
 .gallery-columns-0 .gallery-item img {
-    max-width: 100%;
+    width: 100%; */
     height: auto;
 }
 
