@@ -93,9 +93,10 @@ $md = 3; /* fixed */
 					<a href="<?php echo esc_url(get_privacy_policy_url()); ?>" itemprop="url">Política de privacidade</a>
 				<?php endif; ?>
 			</div>
-		</div>
+			
+		</div><!-- ./container -->
 
-	</div><!-- ./container -->
+	</div>
 
 </footer>
 
