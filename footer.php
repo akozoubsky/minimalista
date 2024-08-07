@@ -22,25 +22,24 @@ if (!defined('ABSPATH')) {
 </div><!-- #content .site-content -->
 
 <?php
-$active_widgets = 0;
+$active_footer_widgets = 0;
 
-if (is_active_sidebar('footer-1')) $active_widgets++;
-if (is_active_sidebar('footer-2')) $active_widgets++;
-if (is_active_sidebar('footer-3')) $active_widgets++;
-if (is_active_sidebar('footer-4')) $active_widgets++;
+if (is_active_sidebar('footer-1')) $active_footer_widgets++;
+if (is_active_sidebar('footer-2')) $active_footer_widgets++;
+if (is_active_sidebar('footer-3')) $active_footer_widgets++;
+if (is_active_sidebar('footer-4')) $active_footer_widgets++;
 
 // Define a largura das colunas baseado no número de widgets ativos
-$md = ($active_widgets > 0) ? 12 / $active_widgets : 12;
-$md = 3; /* fixed */
+$md = ($active_footer_widgets > 0) ? 12 / $active_footer_widgets : 12;
 ?>
 
 <footer id="colophon" class="footer" itemscope itemtype="http://schema.org/WPFooter">
 
-	<div class="container">
+	<?php if ($active_footer_widgets) : ?>
 
-		<?php if ($active_widgets) : ?>
+		<div class="footer-widgets">
 
-			<div class="footer-widgets">
+			<div class="container">
 
 				<div class="row">
 
@@ -75,11 +74,11 @@ $md = 3; /* fixed */
 
 				</div>
 
-			</div><!-- ./footer-widgets -->
+			</div><!-- ./container -->
 
-		<?php endif; ?>
+		</div><!-- ./footer-widgets -->
 
-	</div><!-- ./container -->
+	<?php endif; ?>
 
 	<div class="footer-baseboard">
 
@@ -102,5 +101,4 @@ $md = 3; /* fixed */
 
 <?php wp_footer(); ?>
 </body>
-
 </html>
