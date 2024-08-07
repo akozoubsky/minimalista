@@ -1195,6 +1195,7 @@ figcaption,
     display: flex;
     flex-wrap: wrap;
     box-sizing: border-box;
+    padding: calc( 2 * var(--minimalista-vertical-spacing-default) ) 0;
 }
 
 figure.gallery-item {
@@ -1202,10 +1203,6 @@ figure.gallery-item {
     margin-bottom: 0;
     box-sizing: border-box;
     border: 1px solid white;
-}
-
-p+.gallery {
-    padding-top: var(--minimalista-vertical-spacing-default);
 }
 
 .gallery .figcaption,
@@ -1942,15 +1939,10 @@ footer p:last-of-type {
 } */
 
 p:last-child,
-p :last-of-type,
-p :last-child {
-    margin-bottom: 0 !important;
-}
-
+p:last-of-type,
 li:last-child,
-li :last-of-type,
-li :last-child {
-    margin-bottom: 0 !important;
+li:last-of-type {
+    margin-bottom: 0;
 }
 
 /* Empty elements */

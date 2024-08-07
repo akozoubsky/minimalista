@@ -13,7 +13,14 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-function minimalista_widgets_init()
+/**
+ * Register Sidebar Widgets
+ *
+ * This function registers a widget areas for the sidebar.
+ *
+ * @return void
+ */
+function minimalista_register_sidebar_widgets()
 {
     register_sidebar(
         array(
@@ -27,11 +34,60 @@ function minimalista_widgets_init()
         )
     );
 }
-add_action('widgets_init', 'minimalista_widgets_init');
+add_action('widgets_init', 'minimalista_register_sidebar_widgets');
 
+/**
+ * Register Footer Widgets
+ *
+ * This function registers multiple widget areas for the footer.
+ * Each widget area will adjust responsively based on the number of active widgets.
+ *
+ * @return void
+ */
+function minimalista_register_footer_widgets() {
+    register_sidebar(array(
+        'name' => 'Footer Widget Area 1',
+        'id' => 'footer-1',
+        'description' => 'Appears in the footer area as the first column.',
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="widget-title">',
+        'after_title' => '</h4>',
+    ));
 
-function minimalista_register_social_widget()
-{
+    register_sidebar(array(
+        'name' => 'Footer Widget Area 2',
+        'id' => 'footer-2',
+        'description' => 'Appears in the footer area as the second column.',
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="widget-title">',
+        'after_title' => '</h4>',
+    ));
+
+    register_sidebar(array(
+        'name' => 'Footer Widget Area 3',
+        'id' => 'footer-3',
+        'description' => 'Appears in the footer area as the third column.',
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="widget-title">',
+        'after_title' => '</h4>',
+    ));
+
+    register_sidebar(array(
+        'name' => 'Footer Widget Area 4',
+        'id' => 'footer-4',
+        'description' => 'Appears in the footer area as the fourth column.',
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h4 class="widget-title">',
+        'after_title' => '</h4>',
+    ));
+}
+add_action('widgets_init', 'minimalista_register_footer_widgets');
+
+function minimalista_register_social_widget() {
     register_widget('Minimalista_Social_Widget');
 }
 add_action('widgets_init', 'minimalista_register_social_widget');
@@ -726,53 +782,239 @@ function register_custom_bootstrap_gallery_widget() {
 add_action( 'widgets_init', 'register_custom_bootstrap_gallery_widget' );
 
 /**
- * Register Footer Widgets
+ * Add a custom class field to all widgets.
  *
- * This function registers multiple widget areas for the footer.
- * Each widget area will adjust responsively based on the number of active widgets.
- *
- * @return void
+ * @param WP_Widget $widget The widget instance.
+ * @param null|array $return Return null or array (passed by reference).
+ * @param array $instance The widget instance's settings.
  */
-function minimalista_register_footer_widgets() {
-    register_sidebar(array(
-        'name' => 'Footer Widget Area 1',
-        'id' => 'footer-1',
-        'description' => 'Appears in the footer area as the first column.',
-        'before_widget' => '<div class="card widget %2$s">',
-        'after_widget' => '</div>',
-        'before_title' => '<h4 class="widget-title">',
-        'after_title' => '</h4>',
-    ));
-
-    register_sidebar(array(
-        'name' => 'Footer Widget Area 2',
-        'id' => 'footer-2',
-        'description' => 'Appears in the footer area as the second column.',
-        'before_widget' => '<div class="widget %2$s">',
-        'after_widget' => '</div>',
-        'before_title' => '<h4 class="widget-title">',
-        'after_title' => '</h4>',
-    ));
-
-    register_sidebar(array(
-        'name' => 'Footer Widget Area 3',
-        'id' => 'footer-3',
-        'description' => 'Appears in the footer area as the third column.',
-        'before_widget' => '<div class="widget %2$s">',
-        'after_widget' => '</div>',
-        'before_title' => '<h4 class="widget-title">',
-        'after_title' => '</h4>',
-    ));
-
-    register_sidebar(array(
-        'name' => 'Footer Widget Area 4',
-        'id' => 'footer-4',
-        'description' => 'Appears in the footer area as the fourth column.',
-        'before_widget' => '<div class="widget %2$s">',
-        'after_widget' => '</div>',
-        'before_title' => '<h4 class="widget-title">',
-        'after_title' => '</h4>',
-    ));
+function minimalista_add_custom_class_field($widget, $return, $instance) {
+    if (!isset($instance['custom_class'])) {
+        $instance['custom_class'] = ''; // Default value.
+    }
+    ?>
+    <p>
+        <label for="<?php echo $widget->get_field_id('custom_class'); ?>"><?php _e('Custom Class:', 'minimalista'); ?></label>
+        <input class="widefat" id="<?php echo $widget->get_field_id('custom_class'); ?>" name="<?php echo $widget->get_field_name('custom_class'); ?>" type="text" value="<?php echo esc_attr($instance['custom_class']); ?>">
+    </p>
+    <?php
 }
-add_action('widgets_init', 'minimalista_register_footer_widgets');
+add_action('in_widget_form', 'minimalista_add_custom_class_field', 10, 3);
 
+/**
+ * Save the custom class field for all widgets.
+ *
+ * @param array $instance The widget instance's settings.
+ * @param array $new_instance New settings for this instance as input by the user via `WP_Widget::form()`.
+ * @param array $old_instance Old settings for this instance.
+ * @return array The updated settings.
+ */
+function minimalista_save_custom_class_field($instance, $new_instance, $old_instance) {
+    $instance['custom_class'] = sanitize_text_field($new_instance['custom_class']);
+    return $instance;
+}
+add_filter('widget_update_callback', 'minimalista_save_custom_class_field', 10, 3);
+
+/**
+ * Add the custom class to the widget parameters before display.
+ *
+ * @param array $params The widget parameters.
+ * @return array The modified widget parameters.
+ */
+function minimalista_apply_custom_class($params) {
+    global $wp_registered_widgets;
+
+    // Get the widget ID.
+    $widget_id = $params[0]['widget_id'];
+
+    // Get the widget options.
+    $widget_obj = $wp_registered_widgets[$widget_id];
+    $widget_opt = get_option($widget_obj['callback'][0]->option_name);
+    $widget_num = $widget_obj['params'][0]['number'];
+
+    // Check for a custom class in the widget options.
+    if (isset($widget_opt[$widget_num]['custom_class']) && !empty($widget_opt[$widget_num]['custom_class'])) {
+        // Add the custom class to the widget container.
+        $params[0]['before_widget'] = str_replace('class="', 'class="' . esc_attr($widget_opt[$widget_num]['custom_class']) . ' ', $params[0]['before_widget']);
+    }
+
+    return $params;
+}
+add_filter('dynamic_sidebar_params', 'minimalista_apply_custom_class');
+
+/**
+ * Register the Bootstrap Card widget.
+ */
+function register_bootstrap_card_widget() {
+    register_widget('Bootstrap_Card_Widget');
+}
+add_action('widgets_init', 'register_bootstrap_card_widget');
+
+/**
+ * Widget API: Bootstrap_Card_Widget class
+ *
+ * @package Minimalista
+ * @since 1.0.0
+ * @version 1.0.0
+ */
+
+ /**
+ * Core class used to implement the Bootstrap Card widget.
+ *
+ * @since 1.0.0
+ *
+ * @see WP_Widget
+ */
+class Bootstrap_Card_Widget extends WP_Widget {
+
+     /**
+     * Sets up a new Bootstrap Card widget instance.
+     *
+     * @since 1.0.0
+     */
+    function __construct() {
+        parent::__construct(
+            'bootstrap_card_widget',
+            __('Bootstrap Card', 'minimalista'),
+            array('description' => __('A Bootstrap 5.3 card widget', 'minimalista'))
+        );
+    }
+
+    /**
+     * Outputs the content for the current Bootstrap Card widget instance.
+     *
+     * @since 1.0.0
+     *
+     * @param array $args Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'.
+     * @param array $instance Settings for the current Bootstrap Card widget instance.
+     */
+    public function widget($args, $instance) {
+        echo $args['before_widget'];
+        
+        $width = !empty($instance['width']) ? $instance['width'] : '100%';
+        $img_url = !empty($instance['img_url']) ? $instance['img_url'] : '';
+        $img_alt = !empty($instance['img_alt']) ? $instance['img_alt'] : '';
+        $title = !empty($instance['title']) ? $instance['title'] : '';
+        $title_tag = !empty($instance['title_tag']) ? $instance['title_tag'] : 'h4';
+        $text = !empty($instance['text']) ? $instance['text'] : '';
+        $btn_text = !empty($instance['btn_text']) ? $instance['btn_text'] : '';
+        $btn_url = !empty($instance['btn_url']) ? $instance['btn_url'] : '';
+        $btn_class = !empty($instance['btn_class']) ? $instance['btn_class'] : 'btn';
+
+        ?>
+        <div class="card" style="width: <?php echo esc_attr($width); ?>;">
+            <?php if ($img_url) : ?>
+                <img src="<?php echo esc_url($img_url); ?>" class="card-img-top" alt="<?php echo esc_attr($img_alt); ?>">
+            <?php endif; ?>
+            <?php if ($title || $text || $btn_text) : ?>
+            <div class="card-body">
+                <?php if ($title) : ?>
+                    <<?php echo esc_attr($title_tag); ?> class="card-title"><?php echo esc_html($title); ?></<?php echo esc_attr($title_tag); ?>>
+                <?php endif; ?>
+                <?php if ($text) : ?>
+                    <div class="card-text"><?php echo do_shortcode(apply_filters('the_content', $text)); ?></div>
+                <?php endif; ?>
+                <?php if ($btn_text && $btn_url) : ?>
+                    <div class="text-center">
+                        <a href="<?php echo esc_url($btn_url); ?>" class="<?php echo esc_attr($btn_class); ?>"><?php echo esc_html($btn_text); ?></a>
+                    </div>
+                    <?php endif; ?>
+            </div>
+            <?php endif; ?>
+        </div>
+        <?php
+
+        echo $args['after_widget'];
+    }
+
+    /**
+     * Outputs the settings form for the Bootstrap Card widget.
+     *
+     * @since 1.0.0
+     *
+     * @param array $instance Current settings.
+     */
+    public function form($instance) {
+        $width = !empty($instance['width']) ? $instance['width'] : '100%';
+        $img_url = !empty($instance['img_url']) ? $instance['img_url'] : '';
+        $img_alt = !empty($instance['img_alt']) ? $instance['img_alt'] : '';
+        $title = !empty($instance['title']) ? $instance['title'] : '';
+        $title_tag = !empty($instance['title_tag']) ? $instance['title_tag'] : 'h4';
+        $text = !empty($instance['text']) ? $instance['text'] : '';
+        $btn_text = !empty($instance['btn_text']) ? $instance['btn_text'] : '';
+        $btn_url = !empty($instance['btn_url']) ? $instance['btn_url'] : '';
+        $btn_class = !empty($instance['btn_class']) ? $instance['btn_class'] : 'btn';
+        ?>
+        <p>
+            <label for="<?php echo $this->get_field_id('width'); ?>"><?php _e('Card Width:', 'minimalista'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('width'); ?>" name="<?php echo $this->get_field_name('width'); ?>" type="text" value="<?php echo esc_attr($width); ?>">
+            <small><?php _e('Use valid CSS width values (e.g., 18rem, 100%, 250px)', 'minimalista'); ?></small>
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('img_url'); ?>"><?php _e('Image URL:', 'minimalista'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('img_url'); ?>" name="<?php echo $this->get_field_name('img_url'); ?>" type="text" value="<?php echo esc_url($img_url); ?>">
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('img_alt'); ?>"><?php _e('Image Alt Text:', 'minimalista'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('img_alt'); ?>" name="<?php echo $this->get_field_name('img_alt'); ?>" type="text" value="<?php echo esc_attr($img_alt); ?>">
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Card Title:', 'minimalista'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>">
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('title_tag'); ?>"><?php _e('Card Title Tag:', 'minimalista'); ?></label>
+            <select class="widefat" id="<?php echo $this->get_field_id('title_tag'); ?>" name="<?php echo $this->get_field_name('title_tag'); ?>">
+                <?php
+                $tags = array('h1', 'h2', 'h3', 'h4', 'h5', 'p', 'span');
+                foreach ($tags as $tag) {
+                    echo '<option value="' . esc_attr($tag) . '"' . selected($title_tag, $tag, false) . '>' . esc_html($tag) . '</option>';
+                }
+                ?>
+            </select>
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('text'); ?>"><?php _e('Card Text:', 'minimalista'); ?></label>
+            <textarea class="widefat" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>" rows="10"><?php echo esc_textarea($text); ?></textarea>
+            <small><?php _e('You can use HTML tags and shortcodes.', 'minimalista'); ?></small>
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('btn_text'); ?>"><?php _e('Button Text:', 'minimalista'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('btn_text'); ?>" name="<?php echo $this->get_field_name('btn_text'); ?>" type="text" value="<?php echo esc_attr($btn_text); ?>">
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('btn_url'); ?>"><?php _e('Button URL:', 'minimalista'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('btn_url'); ?>" name="<?php echo $this->get_field_name('btn_url'); ?>" type="text" value="<?php echo esc_url($btn_url); ?>">
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('btn_class'); ?>"><?php _e('Button Class:', 'minimalista'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('btn_class'); ?>" name="<?php echo $this->get_field_name('btn_class'); ?>" type="text" value="<?php echo esc_attr($btn_class); ?>">
+            <small><?php _e('Optional. Use additional Bootstrap button classes (e.g., btn-primary, btn-secondary)', 'minimalista'); ?></small>
+        </p>
+        <?php
+    }
+
+    /**
+     * Handles updating the settings for the current Bootstrap Card widget instance.
+     *
+     * @since 1.0.0
+     *
+     * @param array $new_instance New settings for this instance as input by the user via WP_Widget::form().
+     * @param array $old_instance Old settings for this instance.
+     * @return array Settings to save or bool false to cancel saving.
+     */
+    public function update($new_instance, $old_instance) {
+        $instance = array();
+        $instance['width'] = (!empty($new_instance['width'])) ? sanitize_text_field($new_instance['width']) : '100%';
+        $instance['img_url'] = (!empty($new_instance['img_url'])) ? esc_url_raw($new_instance['img_url']) : '';
+        $instance['img_alt'] = (!empty($new_instance['img_alt'])) ? sanitize_text_field($new_instance['img_alt']) : '';
+        $instance['title'] = (!empty($new_instance['title'])) ? sanitize_text_field($new_instance['title']) : '';
+        $instance['title_tag'] = (!empty($new_instance['title_tag'])) ? sanitize_text_field($new_instance['title_tag']) : 'h4';
+        $instance['text'] = (!empty($new_instance['text'])) ? wp_kses_post($new_instance['text']) : '';
+        $instance['btn_text'] = (!empty($new_instance['btn_text'])) ? sanitize_text_field($new_instance['btn_text']) : '';
+        $instance['btn_url'] = (!empty($new_instance['btn_url'])) ? esc_url_raw($new_instance['btn_url']) : '';
+        $instance['btn_class'] = (!empty($new_instance['btn_class'])) ? sanitize_text_field($new_instance['btn_class']) : 'btn';
+
+        return $instance;
+    }
+}
