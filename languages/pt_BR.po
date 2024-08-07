@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _s 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/minimalista\n"
-"POT-Creation-Date: 2024-08-05T23:46:30+02:00\n"
-"PO-Revision-Date: 2024-08-05 18:47-0300\n"
+"POT-Creation-Date: 2024-08-07T06:45:24+02:00\n"
+"PO-Revision-Date: 2024-08-07 01:50-0300\n"
 "Last-Translator: Alexandre kozoubsky <akozubsky@gmail.com>\n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -17,17 +17,17 @@ msgstr ""
 "X-Domain: _s\n"
 
 #. Theme Name of the theme
-#: C:\xampp\htdocs\testes01\wp-content\themes\minimalista\style.css
+#: D:\htdocs\augustofredericoschmidt.local\wp-content\themes\minimalista\style.css
 msgid "minimalista"
 msgstr "minimalista"
 
 #. Theme URI of the theme
-#: C:\xampp\htdocs\testes01\wp-content\themes\minimalista\style.css
+#: D:\htdocs\augustofredericoschmidt.local\wp-content\themes\minimalista\style.css
 msgid "https://github.com/akozoubsky/minimalista"
 msgstr "https://github.com/akozoubsky/minimalista"
 
 #. Description of the theme
-#: C:\xampp\htdocs\testes01\wp-content\themes\minimalista\style.css
+#: D:\htdocs\augustofredericoschmidt.local\wp-content\themes\minimalista\style.css
 msgid ""
 "Minimalista is a clean, elegant, and fully customizable WordPress theme "
 "based on the Underscores starter theme. Ideal for bloggers, small "
@@ -42,12 +42,12 @@ msgstr ""
 "presença online única e profissional."
 
 #. Author of the theme
-#: C:\xampp\htdocs\testes01\wp-content\themes\minimalista\style.css
+#: D:\htdocs\augustofredericoschmidt.local\wp-content\themes\minimalista\style.css
 msgid "Alexandre Kozoubsky"
 msgstr "Alexandre Kozoubsky"
 
 #. Author URI of the theme
-#: C:\xampp\htdocs\testes01\wp-content\themes\minimalista\style.css
+#: D:\htdocs\augustofredericoschmidt.local\wp-content\themes\minimalista\style.css
 msgid "https://alexandrekozoubsky.com.br/"
 msgstr "https://alexandrekozoubsky.com.br/"
 
@@ -339,37 +339,101 @@ msgstr "Página anterior"
 msgid "Primary"
 msgstr "Principal"
 
-#: inc/widgets-futuro.php:20 inc/widgets.php:20
+#: inc/widgets.php:27
 msgid "Sidebar"
 msgstr "Barra Lateral"
 
-#: inc/widgets-futuro.php:22 inc/widgets.php:22
+#: inc/widgets.php:29
 msgid "Add widgets here."
 msgstr "Adicione widgets aqui."
 
-#: inc/widgets-futuro.php:46 inc/widgets.php:46
+#: inc/widgets.php:102
 msgid "Social Media Links"
 msgstr "Links de mídia social"
 
-#: inc/widgets-futuro.php:47 inc/widgets.php:47
+#: inc/widgets.php:103
 msgid "A widget to display social media links."
 msgstr "Um widget para exibir links de mídia social."
 
-#: inc/widgets-futuro.php:88 inc/widgets.php:88
+#: inc/widgets.php:144
 msgid "Title:"
 msgstr "Título:"
 
-#: inc/widgets-futuro.php:92 inc/widgets.php:92
+#: inc/widgets.php:148
 msgid "Facebook URL:"
 msgstr "URL do Facebook:"
 
-#: inc/widgets-futuro.php:96 inc/widgets.php:96
+#: inc/widgets.php:152
 msgid "Twitter URL:"
 msgstr "URL do Twitter:"
 
-#: inc/widgets-futuro.php:100 inc/widgets.php:100
+#: inc/widgets.php:156
 msgid "Instagram URL:"
 msgstr "URL do Instagram:"
+
+#: inc/widgets.php:797
+msgid "Custom Class:"
+msgstr "Classe customizada:"
+
+#: inc/widgets.php:878
+msgid "Bootstrap Card"
+msgstr "Cartão do Bootstrap"
+
+#: inc/widgets.php:879
+msgid "A Bootstrap 5.3 card widget"
+msgstr "Um Widget do Bootstrap 5.3"
+
+#: inc/widgets.php:949
+msgid "Card Width:"
+msgstr "Largura do cartão:"
+
+#: inc/widgets.php:951
+msgid "Use valid CSS width values (e.g., 18rem, 100%, 250px)"
+msgstr "Use valores de largura CSS válidos (por exemplo, 18rem, 100%, 250px)"
+
+#: inc/widgets.php:954
+msgid "Image URL:"
+msgstr "URL da imagem:"
+
+#: inc/widgets.php:958
+msgid "Image Alt Text:"
+msgstr "Texto alternativo da imagem:"
+
+#: inc/widgets.php:962
+msgid "Card Title:"
+msgstr "Título do cartão:"
+
+#: inc/widgets.php:966
+msgid "Card Title Tag:"
+msgstr "Tag do título do cartão"
+
+#: inc/widgets.php:977
+msgid "Card Text:"
+msgstr "Texto do cartão"
+
+#: inc/widgets.php:979
+msgid "You can use HTML tags and shortcodes."
+msgstr "Você pode usar tags HTML e shortcodes."
+
+#: inc/widgets.php:982
+msgid "Button Text:"
+msgstr "Texto do botão:"
+
+#: inc/widgets.php:986
+msgid "Button URL:"
+msgstr "URL do Botão:"
+
+#: inc/widgets.php:990
+msgid "Button Class:"
+msgstr "Classe do botão:"
+
+#: inc/widgets.php:992
+msgid ""
+"Optional. Use additional Bootstrap button classes (e.g., btn-primary, btn-"
+"secondary)"
+msgstr ""
+"Opcional. Use classes de botão Bootstrap adicionais (por exemplo: btn-"
+"primary, btn-secondary)"
 
 #. Template Name of the theme
 msgid "Blog Cards"

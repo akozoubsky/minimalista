@@ -9,33 +9,33 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-08-05T23:46:30+02:00\n"
+"POT-Creation-Date: 2024-08-07T06:45:24+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: minimalista\n"
 
 #. Theme Name of the theme
-#: C:\xampp\htdocs\testes01\wp-content\themes\minimalista\style.css
+#: D:\htdocs\augustofredericoschmidt.local\wp-content\themes\minimalista\style.css
 msgid "minimalista"
 msgstr ""
 
 #. Theme URI of the theme
-#: C:\xampp\htdocs\testes01\wp-content\themes\minimalista\style.css
+#: D:\htdocs\augustofredericoschmidt.local\wp-content\themes\minimalista\style.css
 msgid "https://github.com/akozoubsky/minimalista"
 msgstr ""
 
 #. Description of the theme
-#: C:\xampp\htdocs\testes01\wp-content\themes\minimalista\style.css
+#: D:\htdocs\augustofredericoschmidt.local\wp-content\themes\minimalista\style.css
 msgid "Minimalista is a clean, elegant, and fully customizable WordPress theme based on the Underscores starter theme. Ideal for bloggers, small businesses, and personal websites, Minimalista offers a responsive design, customizable colors, and various layout options to create a unique and professional online presence."
 msgstr ""
 
 #. Author of the theme
-#: C:\xampp\htdocs\testes01\wp-content\themes\minimalista\style.css
+#: D:\htdocs\augustofredericoschmidt.local\wp-content\themes\minimalista\style.css
 msgid "Alexandre Kozoubsky"
 msgstr ""
 
 #. Author URI of the theme
-#: C:\xampp\htdocs\testes01\wp-content\themes\minimalista\style.css
+#: D:\htdocs\augustofredericoschmidt.local\wp-content\themes\minimalista\style.css
 msgid "https://alexandrekozoubsky.com.br/"
 msgstr ""
 
@@ -319,44 +319,96 @@ msgstr ""
 msgid "Primary"
 msgstr ""
 
-#: inc/widgets-futuro.php:20
-#: inc/widgets.php:20
+#: inc/widgets.php:27
 msgid "Sidebar"
 msgstr ""
 
-#: inc/widgets-futuro.php:22
-#: inc/widgets.php:22
+#: inc/widgets.php:29
 msgid "Add widgets here."
 msgstr ""
 
-#: inc/widgets-futuro.php:46
-#: inc/widgets.php:46
+#: inc/widgets.php:102
 msgid "Social Media Links"
 msgstr ""
 
-#: inc/widgets-futuro.php:47
-#: inc/widgets.php:47
+#: inc/widgets.php:103
 msgid "A widget to display social media links."
 msgstr ""
 
-#: inc/widgets-futuro.php:88
-#: inc/widgets.php:88
+#: inc/widgets.php:144
 msgid "Title:"
 msgstr ""
 
-#: inc/widgets-futuro.php:92
-#: inc/widgets.php:92
+#: inc/widgets.php:148
 msgid "Facebook URL:"
 msgstr ""
 
-#: inc/widgets-futuro.php:96
-#: inc/widgets.php:96
+#: inc/widgets.php:152
 msgid "Twitter URL:"
 msgstr ""
 
-#: inc/widgets-futuro.php:100
-#: inc/widgets.php:100
+#: inc/widgets.php:156
 msgid "Instagram URL:"
+msgstr ""
+
+#: inc/widgets.php:797
+msgid "Custom Class:"
+msgstr ""
+
+#: inc/widgets.php:878
+msgid "Bootstrap Card"
+msgstr ""
+
+#: inc/widgets.php:879
+msgid "A Bootstrap 5.3 card widget"
+msgstr ""
+
+#: inc/widgets.php:949
+msgid "Card Width:"
+msgstr ""
+
+#: inc/widgets.php:951
+msgid "Use valid CSS width values (e.g., 18rem, 100%, 250px)"
+msgstr ""
+
+#: inc/widgets.php:954
+msgid "Image URL:"
+msgstr ""
+
+#: inc/widgets.php:958
+msgid "Image Alt Text:"
+msgstr ""
+
+#: inc/widgets.php:962
+msgid "Card Title:"
+msgstr ""
+
+#: inc/widgets.php:966
+msgid "Card Title Tag:"
+msgstr ""
+
+#: inc/widgets.php:977
+msgid "Card Text:"
+msgstr ""
+
+#: inc/widgets.php:979
+msgid "You can use HTML tags and shortcodes."
+msgstr ""
+
+#: inc/widgets.php:982
+msgid "Button Text:"
+msgstr ""
+
+#: inc/widgets.php:986
+msgid "Button URL:"
+msgstr ""
+
+#: inc/widgets.php:990
+msgid "Button Class:"
+msgstr ""
+
+#: inc/widgets.php:992
+msgid "Optional. Use additional Bootstrap button classes (e.g., btn-primary, btn-secondary)"
 msgstr ""
 
 #. Template Name of the theme
