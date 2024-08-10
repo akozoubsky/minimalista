@@ -26,6 +26,7 @@ License URI: LICENSE
     /* horizontal spacing */
     --minimalista-horizontal-spacing-default: 1.25rem;
 
+    /* Favorit colors */
     --minimalista-color-black-html: #000000;
     --minimalista-color-black-rgb: rgb(0, 0, 0);
     --minimalista-color-black-hue: 0;
@@ -85,6 +86,11 @@ License URI: LICENSE
     --minimalista-color-rebecca-purple-rgb: rgb(102, 51, 153);
     --minimalista-color-rebecca-purple-hue: 270;
     --minimalista-color-rebecca-purple-hsl: hsl(270, 50%, 40%);
+
+    --minimalista-color-granite-gray-html: #676767;
+    --minimalista-color-granite-gray-rgb: rgb(103,103,103);
+    --minimalista-color-granite-gray-hue: 0;
+    --minimalista-color-granite-gray-hsl: hsl(0, 0%, 40%);
 
     --minimalista-color-slate-gray-html: #708090;
     --minimalista-color-slate-gray-rgb: rgb(112, 128, 144);
@@ -307,6 +313,10 @@ header .custom-logo {
 /* Navigation Styles */
 .navbar {
     margin-bottom: var(--minimalista-vertical-spacing-default);
+}
+
+.container-breadcrumb {
+    padding: calc(var(--minimalista-vertical-spacing-default)) 0;
 }
 
 iframe,
@@ -561,29 +571,16 @@ q q {
 /* Estilos para links */
 a {
     color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
-    /* Define a cor dos links com uma variável CSS */
     cursor: pointer;
-    /* Define o cursor como pointer para indicar que é clicável */
     overflow-wrap: break-word;
-    /* Permite a quebra de palavras longas */
+    /* Allows you to break longer words */
     text-decoration: none;
-    /* Remove a sublinha padrão */
     text-underline-offset: 5px;
-    /* Define a distância da sublinha */
     text-decoration-skip-ink: auto;
-    /* Ajusta a sublinha para evitar sobreposição com os caracteres */
+    /* Adjusts the underline to avoid overlapping with characters */
     transition: color 0.3s ease, text-decoration-color 0.3s ease;
-    /* Suaviza a transição de cor e decoração */
-    font-weight: 500;
-    /* Define um peso de fonte intermediário */
-    font-variation-settings: 'wght' 500;
-    /* Ajusta a variação de peso da fonte para fontes variáveis */
+    /* Softens color and decoration transitions */
 }
-
-/* @TODO: isso aqui eh para ser eliminado */
-/* a:visited:not(.btn):not(.navbar a) {
-    color: var(--bs-link-color);
-} */
 
 a:hover {
     --bs-link-color-rgb: var(--bs-link-hover-color-rgb);
@@ -1083,7 +1080,9 @@ figcaption,
     padding: 1rem 0.5rem;
     text-align: center;
     font-size: 0.875em;
-    color: var(--bs-gray-600);
+    font-style: italic;
+    font-variation-settings: 'ital' 1;    
+    color: var(--minimalista-color-granite-gray-html);
 }
 
 .post-thumbnail img,
@@ -2066,7 +2065,7 @@ smaller,
 }
 
 /* ==============================
- * Listas customizadas
+ * Custom lists
  * ============================== */
 
 /* Estilo personalizado para listas */
@@ -2091,6 +2090,19 @@ ul.minimalista-custom-list {
 ul.minimalista-custom-list ul li:last-child {
     margin-bottom: 0;
     /* Espacamento Vertical (Vertical Spacing)  */
+}
+
+/* ==============================
+ * Colors
+ * ============================== */
+
+.minimalista-lighter-text {
+    color: var(--bs-secondary-color);
+}
+
+.minimalista-dividers-and-disabled {
+    /* Use the bg option for dividers and to indicate disabled component states */
+    color: var(--bs-secondary-bg);
 }
 
 /* ========================================================================== */

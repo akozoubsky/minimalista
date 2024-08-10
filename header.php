@@ -69,4 +69,14 @@ if (!defined('ABSPATH')) {
 	<?php endif; ?>
 </header>
 
+<?php if ( function_exists('bcn_display') ) {
+	echo '<div class="container">';
+	echo '<div class="container-breadcrumb" typeof="BreadcrumbList" vocab="https://schema.org/">';
+	echo '<nav aria-label="breadcrumb">';
+	bcn_display();
+	echo '</nav>';
+	echo '</div><!-- ./container-breadcrumb -->';
+	echo '</div><!-- ./container -->';
+} ?>
+
 <div id="content" class="site-content">
