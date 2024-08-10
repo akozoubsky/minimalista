@@ -69,7 +69,7 @@ if (!defined('ABSPATH')) {
 	<?php endif; ?>
 </header>
 
-<?php if ( function_exists('bcn_display') ) {
+<?php if ( function_exists('bcn_display') && !is_front_page()) {
 	echo '<div class="container">';
 	echo '<div class="container-breadcrumb" typeof="BreadcrumbList" vocab="https://schema.org/">';
 	echo '<nav aria-label="breadcrumb">';
