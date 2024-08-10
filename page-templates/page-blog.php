@@ -68,19 +68,23 @@ get_header();  // Include the header.php file
                             $show_thumbnail = true;
                             $show_excerpt = true;
                             $title_tag = 'h2';
+                            $post_format = get_post_format() ?: 'standard';
+
                         ?>
 
                             <div class="col-12">
 
-                                <article id="post-<?php the_ID(); ?>" <?php post_class("blog-posting"); ?> itemscope itemtype="http://schema.org/BlogPosting">
+                                <article id="post-<?php the_ID(); ?>" <?php post_class("blog-posting article-component article-component-" . $post_format); ?> itemscope itemtype="http://schema.org/BlogPosting">
 
                                     <?php
-                                    // Display title, summary, and image.
+                                    echo '<div class="article-component-header">';
                                     echo '<header class="entry-header">';
                                     minimalista_display_post_title($title_tag, '', true);
                                     minimalista_display_post_metadata_primary('');
                                     echo '</header>';
+                                    echo '</div><!-- .article-component-header -->';
 
+                                    echo '<div class="article-component-content">';
                                     // Conditional display of the thumbnail
                                     if ($show_thumbnail) {
                                         minimalista_display_post_thumbnail($image_size, $image_classes, true);
@@ -89,16 +93,18 @@ get_header();  // Include the header.php file
                                     // Conditional display the excerpt
                                     if ($show_excerpt) {
                                         //minimalista_display_post_excerpt();
-                                        $post_format = get_post_format() ?: 'standard';
                                         // Load specific template part based on the post format
                                         set_query_var('template_part_name', 'format-' . $post_format);
                                         get_template_part('template-parts/format/format', $post_format);
                                         minimalista_link_pages();
                                     }
+                                    echo '</div><!-- .article-component-content -->';
        
+                                    echo '<div class="article-component-footer">';
                                     echo '<footer class="entry-footer">';
                                     minimalista_display_post_metadata_secondary('');
                                     echo '</footer>';
+                                    echo '</div><!-- .article-component-footer -->';
                                     ?>
 
                                 </article><!-- /.blog-post -->

@@ -773,6 +773,14 @@ article,
     font-size: 0.90rem;
 }
 
+.format-icon {
+    font-size: 2rem;
+    font-weight: 900;
+    font-variation-settings: 'wght' 900, 'wdth' 100;
+    color: var(--bs-body-color);
+    margin-right: calc(var(--minimalista-horizontal-spacing-default) / 2);
+}
+
 .edit-link {
     padding: var(--minimalista-vertical-spacing-default) 0;
 }
@@ -914,7 +922,7 @@ footer#colophon .list-group-item {
     --minimalista-article-border-color: var(--bs-border-color);
     --minimalista-article-border: var(--bs-border-width) var(--bs-border-style) var(--minimalista-article-border-color);
     --minimalista-article-border-radius: var(--bs-border-radius);
-    --minimalista-article-box-shadow: var(--bs-box-shadow);
+    --minimalista-article-box-shadow: ;
     --minimalista-article-bg: var(--bs-body-bg);
     --minimalista-article-margin-bottom: calc(var(--minimalista-vertical-spacing-default));
     --minimalista-article-page-title-color: var(--bs-body-color);
@@ -944,37 +952,44 @@ footer#colophon .list-group-item {
     margin-bottom: var(--minimalista-article-margin-bottom);
 }
 
-.article-header {
+.single .article-component {
+    --minimalista-article-box-shadow: var(--bs-box-shadow);
+}
+
+.article-component .page-header,
+.article-component .entry-header {
     padding-top: 0;
     /* ajustar espaçamento vertical com o header */
 }
 
-.article-header .page-title {
+.article-component .page-title {
     color: var(--minimalista-article-page-title-color, var(--bs-body-color));
 }
 
-.article-header .entry-title {
+.article-component .entry-title {
     color: var(--minimalista-article-entry-title-color, var(--bs-secondary));
 }
 
-.article-header .entry-title a {
+.article-component .entry-title a {
     color: var(--minimalista-article-entry-title-link-color);
 }
 
-.article-header .entry-title a:hover {
+.article-component .entry-title a:hover {
     color: var(--minimalista-article-entry-title-link-color-hover);
 }
 
-.article-content {
+.article-component .entry-content,
+.article-component .entry-excerpt {
     line-height: var(--minimalista-article-line-height, var(--bs-body-line-height));
     color: var(--minimalista-article-color, var(--bs-body-color));
 }
 
-.article-content p {
+.article-component .entry-content p,
+.article-component .entry-excerpt p {
     margin-bottom: var(--minimalista-article-paragraph-margin-bottom, calc(var(--minimalista-vertical-spacing-default) / 2));
 }
 
-.article-footer {
+.article-component .entry-footer {
     margin-top: var(--minimalista-article-footer-margin-top, calc(var(--minimalista-vertical-spacing-default)));
     border-top: var(--minimalista-article-footer-border, var(--bs-border-width) var(--bs-border-style) var(--bs-border-color));
     padding-bottom: 0;
@@ -1844,9 +1859,9 @@ ul.pagination {
     margin-bottom: 0;
 }
 
-li.page-item {
+/* li.page-item {
     margin: 0 var(--minimalista-horizontal-spacing-default) 0 0;
-}
+} */
 
 ul.pagination .page-link {
     text-decoration: none;

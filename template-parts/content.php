@@ -15,20 +15,23 @@ $post_format = get_post_format() ?: 'standard';
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('article-component article-component-' . $post_format); ?>>
 <!-- <article id="post-<?php the_ID(); ?>" <?php post_class('article-component') ?>> -->
-    <?php if (is_singular()) : ?>
-        <header class="article-header page-header">
-            <?php minimalista_display_custom_header_image(); ?>
-            <?php minimalista_display_post_title('h1', 'page-title', ''); ?>
-            <?php minimalista_display_post_metadata_primary(); ?>
-        </header>
-    <?php else : ?>
-        <header class="article-header entry-header">
-            <?php minimalista_display_post_title('h2', 'entry-title', 'true'); ?>
-            <?php minimalista_display_post_metadata_primary(); ?>
-        </header>
-    <?php endif; ?>
 
-    <div class="article-content">
+    <div class="article-component-header">
+        <?php if (is_singular()) : ?>
+            <header class="page-header">
+                <?php minimalista_display_custom_header_image(); ?>
+                <?php minimalista_display_post_title('h1', 'page-title', ''); ?>
+                <?php minimalista_display_post_metadata_primary(); ?>
+            </header>
+        <?php else : ?>
+            <header class="entry-header">
+                <?php minimalista_display_post_title('h2', 'entry-title', 'true'); ?>
+                <?php minimalista_display_post_metadata_primary(); ?>
+            </header>
+        <?php endif; ?>
+    </div><!-- .article-component-header -->
+
+    <div class="article-component-content">
         <div class="article-thumbnail">
             <?php if (is_singular()) : ?>
                 <?php minimalista_display_post_thumbnail('thumbnail', 'thumbnail alignleft', false); ?>
@@ -43,11 +46,13 @@ $post_format = get_post_format() ?: 'standard';
         get_template_part('template-parts/format/format', $post_format);
         minimalista_link_pages();
         ?>
-    </div><!-- .article-content -->
+    </div><!-- .article-component-content -->
 
-    <footer class="article-footer entry-footer">
-        <?php minimalista_display_post_metadata_secondary(); ?>
-    </footer><!-- .article-footer -->
+    <div class="article-component-footer">
+        <footer class="entry-footer">
+            <?php minimalista_display_post_metadata_secondary(); ?>
+        </footer><!-- .article-footer -->
+    </div><!-- .article-component-footer -->
 
 </article><!-- #post-<?php the_ID(); ?> -->
 

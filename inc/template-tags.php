@@ -656,7 +656,7 @@ function minimalista_display_post_metadata_primary($additional_classes = '')
     // Format-specific Metadata
     switch ($post_format) {
         case 'aside':
-            echo '<span class="post-format post-format-aside text-break me-4">' . minimalista_generate_icon_html("fa-pen-to-square", "me-2") . __('Aside', 'minimalista') . '</span>';
+            //echo '<span class="post-format post-format-aside text-break me-4">' . minimalista_generate_icon_html("fa-pen-to-square", "me-2") . __('Aside', 'minimalista') . '</span>';
             break;
         case 'gallery':
             echo '<span class="post-format post-format-gallery text-break me-4">' . minimalista_generate_icon_html("fa-images", "me-2") . __('Gallery', 'minimalista') . '</span>';
