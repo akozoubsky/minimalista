@@ -23,7 +23,7 @@ if (!defined('ABSPATH')) {
 <form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>" onsubmit="return validateSearch()">
     <div class="input-group">
         <input type="search" id="s" class="form-control search-field" placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'minimalista' ); ?>" value="<?php echo get_search_query(); ?>" name="s" aria-label="<?php echo _x( 'Search for', 'label', 'minimalista' ); ?>" />
-        <button type="submit" class="btn btn-secondary search-submit"><?php echo esc_attr_x( 'Search', 'submit button', 'minimalista' ); ?></button>
+        <button type="submit" class="btn btn-primary search-submit"><?php echo esc_attr_x( 'Search', 'submit button', 'minimalista' ); ?></button>
     </div>
 </form>
 
