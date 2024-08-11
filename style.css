@@ -570,7 +570,6 @@ q q {
 
 /* Estilos para links */
 a {
-    color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
     cursor: pointer;
     overflow-wrap: break-word;
     /* Allows you to break longer words */
@@ -582,48 +581,40 @@ a {
     /* Softens color and decoration transitions */
 }
 
-a:hover {
-    --bs-link-color-rgb: var(--bs-link-hover-color-rgb);
-    /* Define a cor dos links no estado hover */
-    text-decoration: underline;
-    /* Adiciona sublinha no estado hover */
-}
-
 a:focus {
     outline: 1px dashed;
-    /* Adiciona uma linha tracejada ao redor do link ao focar */
     outline-offset: 4px;
-    /* Define a distância entre a linha tracejada e o elemento */
 }
 
 a:focus-visible {
     outline: 1px dashed;
-    /* Mantém o estilo de foco visível para navegação por teclado */
     outline-offset: 4px;
-    /* Define a distância entre a linha tracejada e o elemento */
-}
-
-a:active {
-    color: var(--bs-link-hover-color);
-    /* Define a cor dos links enquanto são clicados */
-    text-decoration: underline;
-    /* Mantém a sublinha para consistência visual */
 }
 
 a:disabled {
     color: var(--bs-link-color);
-    /* Define a cor dos links desabilitados */
     cursor: not-allowed;
-    /* Indica que o link não é clicável */
     text-decoration: none;
-    /* Remove a sublinha dos links desabilitados */
     opacity: 0.3
 }
 
-a:not([href]):not([class]),
-a:not([href]):not([class]):hover {
-    color: inherit;
+.widget a:not(.btn),
+.container-breadcrumb a,
+#related-posts a,
+#colophon a {
+    /* color: inherit; */
     text-decoration: none;
+}
+
+.widget a:not(.btn):hover,
+.widget a:not(.btn):active,
+.container-breadcrumb a:hover,
+.container-breadcrumb a:active,
+#related-posts a:hover,
+#related-posts a:active,
+#colophon a:hover,
+#colophon a:active {
+    text-decoration: underline;
 }
 
 /* ========================================================================== */
@@ -1768,7 +1759,6 @@ fieldset:disabled .btn {
 .navbar-nav {
     display: flex;
     flex-direction: column;
-    padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x);
     margin-bottom: 0;
     list-style: none;
 }
