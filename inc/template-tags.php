@@ -1201,20 +1201,22 @@ function minimalista_the_post_navigation()
         $next_posts_link = str_replace('Mais Antigos', 'Mais antigos<i class="fas fa-arrow-right ms-2"></i>', $next_posts_link);
     }
 
-    // Início da Navegação de Posts (d-flex e justify-content-between para alinhamento)
-    echo '<div class="post-navigation d-flex justify-content-between">';
+    if ($previous_posts_link || $next_posts_link) {
+        // Início da Navegação de Posts (d-flex e justify-content-between para alinhamento)
+        echo '<div class="post-navigation d-flex justify-content-between">';
 
-    // Exibe o botão "Posts mais recentes" apenas se houver posts mais recentes
-    if ($previous_posts_link) {
-        echo $previous_posts_link;
+        // Exibe o botão "Posts mais recentes" apenas se houver posts mais recentes
+        if ($previous_posts_link) {
+            echo $previous_posts_link;
+        }
+
+        // Exibe o botão "Posts mais antigos" apenas se houver posts mais antigos
+        if ($next_posts_link) {
+            echo $next_posts_link;
+        }
+
+        echo '</div>';  // Fim da Navegação de Posts
     }
-
-    // Exibe o botão "Posts mais antigos" apenas se houver posts mais antigos
-    if ($next_posts_link) {
-        echo $next_posts_link;
-    }
-
-    echo '</div>';  // Fim da Navegação de Posts
 }
 
 /**
