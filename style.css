@@ -278,13 +278,17 @@ html {
 }
 
 /* Main Content Styles */
-.site-main,
-.sidebar {
-    padding: var(--minimalista-vertical-spacing-default) 0;
+#primary,
+#secondary {
+    margin: var(--minimalista-vertical-spacing-default) 0;
 }
 
 section {
-    margin-bottom: calc(3 * var(--minimalista-vertical-spacing-default));
+    margin-bottom: calc(2 * var(--minimalista-vertical-spacing-default));
+}
+
+section:last-of-type {
+    margin-bottom: 0;
 }
 
 article {
@@ -550,6 +554,10 @@ blockquote footer {
     padding-bottom: 0;
 }
 
+.blockquote-footer {
+    color: var(--minimalista-color-granite-gray-html);
+}
+
 q {
     quotes: "“" "”" "‘" "’";
     /* Define custom quotes */
@@ -670,7 +678,7 @@ a:disabled {
     --bs-card-border-color: var(--bs-gray-600);
     border: var(--bs-card-border-width) solid var(--bs-card-border-color);
 } 
-
+/* 
 .sidebar p,
 .sidebar li,
 .sidebar dd,
@@ -693,9 +701,9 @@ a:disabled {
 .sidebar cite,
 .sidebar ins,
 .sidebar del {
-    font-size: 0.9em;
+    font-size: 1em;
 }
-
+ */
 /* Widget Minimalista_Social_Widget */
 
 .social-links {
@@ -781,8 +789,42 @@ article,
     margin-bottom: var(--minimalista-vertical-spacing-default);
 }
 
+/* Related Posts */
+
 #related-posts {
     padding: var(--minimalista-vertical-spacing-default) 0;
+}
+
+.related-posts-title {
+    margin-bottom: var(--minimalista-vertical-spacing-default);
+}
+
+#related-posts .card {
+    /*
+    color: var(--bs-body-color);
+    background-color: var(--bs-card-bg);
+    */
+    color: white;
+    background-color: var(--bs-secondary);
+}
+#related-posts .card a {
+        color: white;
+}
+
+#related-posts .card-title {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100%; /* Garante que o link ocupe toda a altura do contêiner */
+}
+
+#related-posts .card-title a {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100%; /* Garante que o link ocupe toda a altura do contêiner */
+    text-align: center; /* Centraliza o texto */
+    width: 100%; /* Garante que o link ocupe toda a largura do contêiner */
 }
 
 /* "More" link */
@@ -2061,7 +2103,7 @@ smaller,
 /* Estilo personalizado para listas */
 
 .minimalista-custom-list-section {
-    margin-bottom: var(--minimalista-vertical-spacing-7);
+    margin-bottom: var(--minimalista-vertical-spacing-default);
 }
 
 .minimalista-custom-list-section:last-child {

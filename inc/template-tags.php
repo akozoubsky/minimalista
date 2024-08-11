@@ -1490,7 +1490,7 @@ function minimalista_display_related_posts_by_tags($posts_per_page = 5, $templat
 
         if ($related_posts->have_posts()) {
             echo '<section id="related-posts" class="related-posts">';
-            echo '<h5>Você também pode gostar de:</h5>';
+            echo '<h5 class="related-posts-title">Você também pode gostar de:</h5>';
             
             $shortcode = sprintf(
                 '[display-posts post_type="post" taxonomy="tag" exclude_current="true" posts_per_page="%d" template="%s" wrapper="%s" wrapper_class="%s"]',
