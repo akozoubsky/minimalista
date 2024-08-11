@@ -70,13 +70,13 @@ if (!defined('ABSPATH')) {
 </header>
 
 <?php if ( function_exists('bcn_display') && !is_front_page()) {
-	echo '<div class="container">';
 	echo '<div class="container-breadcrumb" typeof="BreadcrumbList" vocab="https://schema.org/">';
+	echo '<div class="container">';
 	echo '<nav aria-label="breadcrumb">';
 	bcn_display();
 	echo '</nav>';
-	echo '</div><!-- ./container-breadcrumb -->';
 	echo '</div><!-- ./container -->';
+	echo '</div><!-- ./container-breadcrumb -->';
 } ?>
 
 <div id="content" class="site-content">
