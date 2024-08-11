@@ -912,7 +912,11 @@ class Bootstrap_Card_Widget extends WP_Widget {
                     <<?php echo esc_attr($title_tag); ?> class="card-title"><?php echo esc_html($title); ?></<?php echo esc_attr($title_tag); ?>>
                 <?php endif; ?>
                 <?php if ($text) : ?>
-                    <div class="card-text"><?php echo do_shortcode(apply_filters('the_content', $text)); ?></div>
+                    <?php
+                    remove_filter('the_content', 'wpautop');
+                    $filtered_text = apply_filters('the_content', $text);
+                    ?>
+                    <div class="card-text"><?php echo do_shortcode($filtered_text); ?></div>
                 <?php endif; ?>
                 <?php if ($btn_text && $btn_url) : ?>
                     <div class="text-center">
