@@ -25,6 +25,7 @@ License URI: LICENSE
     --minimalista-vertical-spacing-default: 1.25rem;
     /* horizontal spacing */
     --minimalista-horizontal-spacing-default: 1.25rem;
+    --bs-nav-link-font-weight
 
     /* Favorit colors */
     --minimalista-color-black-html: #000000;
@@ -1711,6 +1712,15 @@ ol.list-group {
 
 /* 6.3 Nav
    ========================================================================== */
+
+.nav {
+    --bs-nav-link-font-weight: 500;
+}
+
+.nav-link {
+    font-weight: var(--bs-nav-link-font-weight);
+    font-variation-settings: 'wght' 500;
+}
 
 /* Lines: 3950, 4003 */
 .navbar-nav {
