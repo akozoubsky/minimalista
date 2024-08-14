@@ -26,7 +26,6 @@ License URI: LICENSE
     /* horizontal spacing */
     --minimalista-horizontal-spacing-default: 1.25rem;
     --bs-nav-link-font-weight
-
     /* Favorit colors */
     --minimalista-color-black-html: #000000;
     --minimalista-color-black-rgb: rgb(0, 0, 0);
@@ -89,7 +88,7 @@ License URI: LICENSE
     --minimalista-color-rebecca-purple-hsl: hsl(270, 50%, 40%);
 
     --minimalista-color-granite-gray-html: #676767;
-    --minimalista-color-granite-gray-rgb: rgb(103,103,103);
+    --minimalista-color-granite-gray-rgb: rgb(103, 103, 103);
     --minimalista-color-granite-gray-hue: 0;
     --minimalista-color-granite-gray-hsl: hsl(0, 0%, 40%);
 
@@ -670,7 +669,7 @@ a:disabled {
 
 
 .footer .card {
-    
+
     --bs-card-border-radius: 1px;
     /*
     border-radius: var(--bs-card-border-radius);
@@ -678,7 +677,8 @@ a:disabled {
     */
     --bs-card-border-color: var(--bs-gray-600);
     border: var(--bs-card-border-width) solid var(--bs-card-border-color);
-} 
+}
+
 /* 
 .sidebar p,
 .sidebar li,
@@ -808,24 +808,33 @@ article,
     color: white;
     background-color: var(--bs-secondary);
 }
+
 #related-posts .card a {
-        color: white;
+    color: white;
 }
 
 #related-posts .card-title {
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    height: 100%; /* Garante que o link ocupe toda a altura do contêiner */
+    justify-content: center;
+    /* Centraliza horizontalmente */
+    align-items: center;
+    /* Centraliza verticalmente */
+    height: 100%;
+    /* Garante que o link ocupe toda a altura do contêiner */
 }
 
 #related-posts .card-title a {
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    height: 100%; /* Garante que o link ocupe toda a altura do contêiner */
-    text-align: center; /* Centraliza o texto */
-    width: 100%; /* Garante que o link ocupe toda a largura do contêiner */
+    justify-content: center;
+    /* Centraliza horizontalmente */
+    align-items: center;
+    /* Centraliza verticalmente */
+    height: 100%;
+    /* Garante que o link ocupe toda a altura do contêiner */
+    text-align: center;
+    /* Centraliza o texto */
+    width: 100%;
+    /* Garante que o link ocupe toda a largura do contêiner */
 }
 
 /* "More" link */
@@ -1115,7 +1124,7 @@ figcaption,
     text-align: center;
     font-size: 0.875em;
     font-style: italic;
-    font-variation-settings: 'ital' 1;    
+    font-variation-settings: 'ital' 1;
     color: var(--minimalista-color-granite-gray-html);
 }
 
@@ -1243,7 +1252,7 @@ figcaption,
     display: flex;
     flex-wrap: wrap;
     box-sizing: border-box;
-    padding: calc( 2 * var(--minimalista-vertical-spacing-default) ) 0;
+    padding: calc(2 * var(--minimalista-vertical-spacing-default)) 0;
 }
 
 figure.gallery-item {
@@ -1264,8 +1273,8 @@ figure.gallery-item {
 }
 
 .gallery-columns-0 .gallery-item img {
-    width: 100%; */
-    height: auto;
+    width: 100%;
+    */ height: auto;
 }
 
 /* Styles for 1 column */
@@ -1605,7 +1614,7 @@ ol.list-group {
     --bs-btn-disabled-bg: transparent;
     --bs-btn-disabled-border-color: var(--bs-secondary);
     --bs-gradient: none;
-  }
+}
 
 /* Theme Classes */
 
@@ -1761,11 +1770,6 @@ li.nav-item {
     background-color: var(--bs-primary);
 }
 
-.form-check-input:checked {
-    background-color: var(--bs-primary);
-    border-color: var(--bs-primary);
-}
-
 /* 6.4 Bootstrap Cards
    ========================================================================== */
 
@@ -1855,6 +1859,14 @@ ul.pagination .page-link.active {
 
 .badge {
     --bs-badge-padding-y: 0.5em;
+}
+
+/* 6.9 Forms
+   ========================================================================== */
+
+.form-check-input:checked {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
 }
 
 /* ========================================================================== */
