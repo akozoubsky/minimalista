@@ -116,7 +116,7 @@ get_header();  // Include the header.php file
                     </div><!-- .row -->
 
                     <?php
-                    minimalista_custom_query_pagination($blog_query);  // Call the pagination function here
+                    minimalista_custom_query_pagination($blog_query);  // Call the pagination function
 
                     wp_reset_postdata();  // Restore the original post data
  

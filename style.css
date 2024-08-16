@@ -441,6 +441,7 @@ h6,
     word-break: normal;
     overflow-wrap: normal;
     hyphens: auto;
+    display: inline-block;
 }
 
 /* paragraph */
@@ -1996,6 +1997,24 @@ smaller,
     border-radius: 5px;
 }
 
+.outline-hover:hover {
+    border-color: transparent;
+    outline: var(--bs-border-width) solid var(--bs-border-color-translucent);
+    box-shadow: var(--bs-box-shadow);
+}
+
+.outline-hover-primary:hover {
+    border-color: transparent;
+    outline: calc(2 * var(--bs-border-width)) solid var(--bs-primary);
+    box-shadow: var(--bs-box-shadow);
+}
+
+.outline-hover-secondary:hover {
+    border-color: transparent;
+    outline: calc(2 * var(--bs-border-width)) solid var(--bs-secondary);
+    box-shadow: var(--bs-box-shadow);
+}
+
 /* ==============================
  * Custom lists
  * ============================== */
@@ -2012,16 +2031,11 @@ smaller,
 
 ul.minimalista-custom-list {
     list-style-type: none !important;
-    /* Remove marcadores de lista, se necessário */
     padding-left: 0 !important;
-    /* Remove padding padrão */
-    /* margin-left: 0 !important; */
-    /* Garantir que não haja margem adicional */
 }
 
 ul.minimalista-custom-list ul li:last-child {
     margin-bottom: 0;
-    /* Espacamento Vertical (Vertical Spacing)  */
 }
 
 /* ==============================

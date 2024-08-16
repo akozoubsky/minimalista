@@ -60,7 +60,7 @@ get_header(); ?>
 					'post_type' => 'post',
 					//'category_name' => 'blog', // Slug da categoria
 					'paged' => $paged,
-                    'posts_per_page' => 3, // Limita o número de posts a 3
+                    //'posts_per_page' => 3, // Limita o número de posts a 3
 				);
 
 				$blog_query = new WP_Query($args);
@@ -85,15 +85,16 @@ get_header(); ?>
 
                                 <div class="col-12">
 
-                                    <article id="post-<?php the_ID(); ?>" <?php post_class("blog-posting"); ?> itemscope itemtype="http://schema.org/BlogPosting">
-
+                                    <article id="post-<?php the_ID(); ?>" <?php post_class("blog-posting article-component article-component-" . $post_format); ?> itemscope itemtype="http://schema.org/BlogPosting">
                                         <?php
-                                        // Display title, summary, and image.
+                                        echo '<div class="article-component-header">';
                                         echo '<header class="entry-header">';
                                         minimalista_display_post_title($title_tag, '', true);
                                         minimalista_display_post_metadata_primary('');
                                         echo '</header>';
+                                        echo '</div><!-- .article-component-header -->';
 
+                                        echo '<div class="article-component-content">';
                                         // Conditional display of the thumbnail
                                         if ($show_thumbnail) {
                                             minimalista_display_post_thumbnail($image_size, $image_classes, true);
@@ -103,10 +104,13 @@ get_header(); ?>
                                         if ($show_excerpt) {
                                             minimalista_display_post_excerpt();
                                         }
+                                        echo '</div><!-- .article-component-content -->';
 
+                                        echo '<div class="article-component-footer">';
                                         echo '<footer class="entry-footer">';
                                         minimalista_display_post_metadata_secondary('');
                                         echo '</footer>';
+                                        echo '</div><!-- .article-component-footer -->';
                                         ?>
 
                                     </article><!-- /.blog-post -->
@@ -120,7 +124,7 @@ get_header(); ?>
                     </section><!-- ./blog-query -->
 
                     <?php
-                    //minimalista_custom_query_pagination($blog_query);  // Call the pagination function here
+                    //minimalista_custom_query_pagination($blog_query);  // Call the pagination function
 
                     wp_reset_postdata();  // Restore the original post data
  
