@@ -581,7 +581,7 @@ a {
     cursor: pointer;
     overflow-wrap: break-word;
     /* Allows you to break longer words */
-    text-decoration: none;
+   /*  text-decoration: none; */
     text-underline-offset: 5px;
     text-decoration-skip-ink: auto;
     /* Adjusts the underline to avoid overlapping with characters */

@@ -1,9 +1,11 @@
 <?php
 /**
- * Template Name: No Sidebar V.1
+ * Template Name: Pagina Inicial Full
  * 
  * The template for displaying all pages without sidebar
- * 
+ *
+ * Página inicial estática
+ *
  * @package Minimalista
  * @since 1.0.0
  * @author Alexandre Kozoubsky
@@ -28,7 +30,7 @@ get_header();
 				while ( have_posts() ) :
 					the_post();
 
-					get_template_part( 'template-parts/content', 'page' );
+					get_template_part( 'template-parts/content', 'front-page' );
 
 					// If comments are open or we have at least one comment, load up the comment template.
 					/* Nao permitir comentarios em paginas

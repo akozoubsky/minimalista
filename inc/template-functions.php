@@ -76,23 +76,45 @@ function get_featured_image_format($post_id = null)
  * ######################################################## */
 
 /**
- * Change the base for author URLs and flush the rewrite rules if necessary.
- *
- * This function changes the base for author URLs from 'author' to 'perfil' and flushes the
- * rewrite rules to apply the changes if they are not already configured correctly.
- *
- * @global WP_Rewrite $wp_rewrite WordPress rewrite rules global.
+ * ==============================================================================
+ * PERSONALIZAÇÃO DE AUTOR E SEGURANÇA
+ * ==============================================================================
  */
-function minimalista_change_author_base() {
-    global $wp_rewrite;
-    $author_base = 'perfil';
 
-    if ( $wp_rewrite->author_base !== $author_base ) {
-        $wp_rewrite->author_base = $author_base;
-        $wp_rewrite->flush_rules();
+// 1. Mudar a base da URL de 'author' para 'perfil'
+// NOTA IMPORTANTE: Após adicionar este código, vá em Configurações > Links Permanentes
+// e clique em "Salvar Alterações" UMA VEZ para o WordPress reconhecer a mudança.
+function minimalista_custom_author_base() {
+    global $wp_rewrite;
+    $wp_rewrite->author_base = 'perfil';
+}
+add_action( 'init', 'minimalista_custom_author_base' );
+
+// 2. Bloquear enumeração de usuários via URL (?author=1)
+// Usamos o hook 'init' para bloquear ANTES do redirecionamento canônico do WP.
+function minimalista_block_user_enumeration() {
+    // Verifica se NÃO é admin e se o parâmetro 'author' está presente na URL crua
+    if ( ! is_admin() && isset( $_GET['author'] ) && preg_match( '/^[0-9]+$/', $_GET['author'] ) ) {
+        wp_redirect( home_url(), 301 );
+        exit;
     }
 }
-add_action( 'init', 'minimalista_change_author_base' );
+add_action( 'init', 'minimalista_block_user_enumeration' );
+
+// 3. Remover o Sitemap de Usuários (Sua regra original)
+// Impede que o WP gere o arquivo wp-sitemap-users-1.xml
+add_filter( 'wp_sitemaps_add_provider', function( $provider, $name ) {
+    if ( 'users' === $name ) {
+        return false;
+    }
+    return $provider;
+}, 10, 2 );
+
+/**
+ * ==============================================================================
+ * FIM PERSONALIZAÇÃO DE AUTOR E SEGURANÇA
+ * ==============================================================================
+ */
 
 /**
  * Add disallow rules to the robots.txt file to prevent indexing of specified paths or file types.

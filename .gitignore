@@ -1,1 +1,41 @@
+# ==============================================================================
+# .gitignore para Provisionamento de Host e Infraestrutura
+# ==============================================================================
+
+# Variáveis de Ambiente e Credenciais (CRÍTICO)
+.env
+.env.*
+.env.local
+*.secret
+*.pem
+*.key
+*.cert
+
+# Pastas de Dados e Volumes de Contêineres
+data/
+db/
+certs/
+letsencrypt/
+
+# Logs e Arquivos Temporários
+*.log
+*.tmp
+*.bak
+*.bkp
+*.swp
+*.swo
+*~
+
+# Arquivos de Sistema (Linux / Ubuntu / Mint / macOS)
+.Trash-*
+.directory
+.DS_Store
+
+# Diretórios de Editores e IDEs
+.vscode/
+.idea/
+
+# Scripts de teste locais (permite criar scripts descartáveis sem commitar)
+test_*.sh
+
 wp-cli.phar
