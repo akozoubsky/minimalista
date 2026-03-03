@@ -50,6 +50,9 @@ get_header(); ?>
 
 				if ($projetos_query->have_posts()) :
 					while ($projetos_query->have_posts()) : $projetos_query->the_post();
+
+						$post_format = get_post_format() ?: 'standard';
+
 						/*
 						 * Include the Post-Type-specific template for the content.
 						 * If you want to override this in a child theme, then include a file
@@ -58,24 +61,30 @@ get_header(); ?>
 						//get_template_part( 'template-parts/content', 'projetos' );
 						?>
 
-						<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+						<article id="post-<?php the_ID(); ?>" <?php post_class("blog-posting article-component article-component-" . $post_format); ?> itemscope itemtype="http://schema.org/BlogPosting">
 
-							<header class="entry-header">
-								<?php
-								minimalista_display_post_title('h2','entry-title', 'true');
-								minimalista_display_post_metadata_primary();
-								?>
-							</header><!-- .entry-header -->
+							<div class="article-component-header">
+								<header class="entry-header">
+									<?php
+									minimalista_display_post_title('h2','entry-title', 'true');
+									minimalista_display_post_metadata_primary();
+									?>
+								</header><!-- .entry-header -->
+							</div><!-- .article-component-header -->
 						
-							<?php
-							minimalista_display_post_thumbnail('thumbnail','thumbnail alignleft', true);
-							minimalista_display_post_excerpt();
-							minimalista_link_pages();
-							?>
+							<div class="article-component-content">
+								<?php
+								minimalista_display_post_thumbnail('thumbnail','thumbnail alignleft', true);
+								minimalista_display_post_excerpt();
+								minimalista_link_pages();
+								?>
+							</div><!-- .article-component-content -->
 							
-							<footer class="entry-footer">
-								<?php minimalista_display_post_metadata_secondary(''); ?>
-							</footer>
+							<div class="article-component-footer">
+								<footer class="entry-footer">
+									<?php minimalista_display_post_metadata_secondary(''); ?>
+								</footer>
+							</div><!-- .article-component-footer -->
 
 						</article><!-- #post-<?php the_ID(); ?> -->
 
